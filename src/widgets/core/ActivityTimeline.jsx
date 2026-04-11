@@ -20,7 +20,7 @@ export default function ActivityTimeline() {
       .finally(() => setLoading(false));
   }, [activeWorkspaceId]);
 
-  const points = data?.timeline || [];
+  const points = Array.isArray(data) ? data : (data?.timeline || data || []);
 
   return (
     <WidgetCard title="Activity Timeline" subtitle="Visit activity over time" loading={loading} error={error} empty={!data || points.length === 0}>
@@ -34,12 +34,12 @@ export default function ActivityTimeline() {
           </defs>
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 11, fill: '#9196A8' }}
+            tick={{ fontSize: 11, fill: 'var(--text-secondary, #9196A8)' }}
             axisLine={{ stroke: 'var(--border-primary)' }}
             tickLine={false}
           />
           <YAxis
-            tick={{ fontSize: 11, fill: '#9196A8' }}
+            tick={{ fontSize: 11, fill: 'var(--text-secondary, #9196A8)' }}
             axisLine={false}
             tickLine={false}
             width={40}

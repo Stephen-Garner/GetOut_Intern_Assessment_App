@@ -22,6 +22,15 @@ const SEGMENT_LABELS = {
   new_member: 'New Member',
 };
 
+const SEGMENT_DESCRIPTIONS = {
+  ghost: '0 visits, 30+ days since purchase',
+  one_and_done: '1 visit, inactive 45+ days',
+  approaching_threshold: '2-3 visits, nearing activation',
+  in_the_zone: '4-10 visits, likely to renew',
+  power_user: '11+ visits, brand ambassador',
+  new_member: 'Recently joined, < 30 days',
+};
+
 const SEGMENT_ORDER = ['ghost', 'one_and_done', 'approaching_threshold', 'in_the_zone', 'power_user', 'new_member'];
 
 export default function SegmentOverview() {
@@ -40,7 +49,7 @@ export default function SegmentOverview() {
       .finally(() => setLoading(false));
   }, [activeWorkspaceId]);
 
-  const segments = data?.segments || [];
+  const segments = Array.isArray(data) ? data : (data?.segments || data || []);
   const totalMembers = segments.reduce((sum, s) => sum + (s.count || 0), 0);
 
   const barData = [
@@ -53,6 +62,10 @@ export default function SegmentOverview() {
 
   return (
     <WidgetCard title="Segment Overview" subtitle="Member distribution across engagement segments" loading={loading} error={error} empty={!data}>
+      <p className="text-xs text-content-muted mb-3">
+        Members are segmented by visit behavior. The goal: move members from left (high risk) to right (low risk).
+        Members with 4+ visits are dramatically more likely to renew.
+      </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-5">
         {SEGMENT_ORDER.map(key => {
           const seg = segments.find(s => s.segment === key);
@@ -61,12 +74,18 @@ export default function SegmentOverview() {
           return (
             <div
               key={key}
-              className="bg-surface-tertiary rounded-lg p-3 border-l-4"
+              className="bg-surface-tertiary rounded-lg p-3 border-l-4 cursor-pointer hover:bg-surface-secondary transition-colors"
               style={{ borderLeftColor: SEGMENT_COLORS[key] }}
+              onClick={() => {
+                const { setActivePage, setMemberFilter } = useAppStore.getState();
+                setMemberFilter({ segment: key });
+                setActivePage('members');
+              }}
             >
               <p className="text-xs text-content-muted truncate">{SEGMENT_LABELS[key]}</p>
               <p className="text-lg font-semibold text-content-primary mt-1">{count.toLocaleString()}</p>
               <p className="text-xs text-content-muted">{pct}%</p>
+              <p className="text-[10px] text-content-muted mt-0.5 leading-tight">{SEGMENT_DESCRIPTIONS[key]}</p>
             </div>
           );
         })}

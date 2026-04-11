@@ -253,26 +253,26 @@ export default function Interventions() {
           <tbody className="divide-y divide-border-subtle">
             {interventions.map((item, idx) => (
               <tr
-                key={item.member_id || idx}
+                key={item.memberId || item.member_id || idx}
                 className="hover:bg-surface-tertiary transition-colors cursor-pointer"
               >
                 <td className="px-4 py-3 text-content-primary font-medium">
-                  {item.name || item.member_id || `Member ${idx + 1}`}
+                  {item.name || item.memberId || item.member_id || `Member ${idx + 1}`}
                 </td>
                 <td className="px-4 py-3">
                   <SegmentBadge segment={item.segment} />
                 </td>
                 <td className="px-4 py-3">
-                  <HealthDot score={item.health_score} />
+                  <HealthDot score={item.healthScore ?? item.health_score} />
                 </td>
                 <td className="px-4 py-3 text-content-secondary">
                   {item.market || 'N/A'}
                 </td>
                 <td className="px-4 py-3 text-content-secondary max-w-[200px] truncate">
-                  {item.trigger_reason || 'At-risk segment detected'}
+                  {item.triggerReason || item.trigger_reason || 'At-risk segment detected'}
                 </td>
                 <td className="px-4 py-3 text-content-secondary max-w-[200px] truncate">
-                  {item.recommended_action || 'Review member profile'}
+                  {item.recommendedAction || item.recommended_action || 'Review member profile'}
                 </td>
                 <td className="px-4 py-3">
                   <StatusBadge />

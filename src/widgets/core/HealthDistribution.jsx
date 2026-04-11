@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLin
 import useAppStore from '../../stores/useAppStore.js';
 import { api } from '../../utils/api.js';
 import WidgetCard from './WidgetCard.jsx';
+import HealthScoreTooltip from '../../components/HealthScoreTooltip.jsx';
 
 function binColor(index, total) {
   const ratio = index / (total - 1);
@@ -33,17 +34,17 @@ export default function HealthDistribution() {
   const median = data?.median ?? null;
 
   return (
-    <WidgetCard title="Health Score Distribution" subtitle="Distribution of member health scores across bins" loading={loading} error={error} empty={!data || bins.length === 0}>
+    <WidgetCard title={<span className="inline-flex items-center gap-1.5">Health Score Distribution <HealthScoreTooltip /></span>} subtitle="Distribution of member health scores across bins" loading={loading} error={error} empty={!data || bins.length === 0}>
       <ResponsiveContainer width="100%" height={240}>
         <BarChart data={bins} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
           <XAxis
-            dataKey="label"
-            tick={{ fontSize: 11, fill: '#9196A8' }}
+            dataKey="range"
+            tick={{ fontSize: 11, fill: 'var(--text-secondary, #9196A8)' }}
             axisLine={{ stroke: 'var(--border-primary)' }}
             tickLine={false}
           />
           <YAxis
-            tick={{ fontSize: 11, fill: '#9196A8' }}
+            tick={{ fontSize: 11, fill: 'var(--text-secondary, #9196A8)' }}
             axisLine={false}
             tickLine={false}
             width={36}
@@ -75,6 +76,20 @@ export default function HealthDistribution() {
           {median !== null && <span>Median: <strong className="text-content-primary">{median.toFixed(1)}</strong></span>}
         </div>
       )}
+
+      <div className="flex items-center gap-4 mt-3 justify-center">
+        {[
+          { label: 'Critical (0-25)', color: '#EF4444' },
+          { label: 'At Risk (26-50)', color: '#F97316' },
+          { label: 'Healthy (51-75)', color: '#EAB308' },
+          { label: 'Strong (76-100)', color: '#22C55E' },
+        ].map(r => (
+          <div key={r.label} className="flex items-center gap-1.5 text-xs text-content-muted">
+            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: r.color }} />
+            {r.label}
+          </div>
+        ))}
+      </div>
     </WidgetCard>
   );
 }

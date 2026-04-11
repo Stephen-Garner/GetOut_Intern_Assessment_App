@@ -22,7 +22,7 @@ export default function ChannelBreakdown() {
       .finally(() => setLoading(false));
   }, [activeWorkspaceId]);
 
-  const channels = data?.channels || [];
+  const channels = Array.isArray(data) ? data : (data?.channels || data || []);
 
   return (
     <WidgetCard title="Channel Breakdown" subtitle="Member distribution and performance by channel" loading={loading} error={error} empty={!data || channels.length === 0}>
@@ -33,7 +33,7 @@ export default function ChannelBreakdown() {
             <PieChart>
               <Pie
                 data={channels}
-                dataKey="members"
+                dataKey="memberCount"
                 nameKey="channel"
                 cx="50%"
                 cy="50%"
@@ -77,7 +77,7 @@ export default function ChannelBreakdown() {
             </thead>
             <tbody>
               {channels.map((ch, i) => {
-                const isHighGhost = (ch.ghost_pct ?? 0) > 30;
+                const isHighGhost = (ch.ghostPercent ?? ch.ghost_pct ?? 0) > 30;
                 return (
                   <tr
                     key={ch.channel}
@@ -89,11 +89,11 @@ export default function ChannelBreakdown() {
                         {ch.channel}
                       </span>
                     </td>
-                    <td className="py-2 pr-3 text-right text-content-secondary">{(ch.members ?? 0).toLocaleString()}</td>
-                    <td className="py-2 pr-3 text-right text-content-secondary">{(ch.avg_visits ?? 0).toFixed(1)}</td>
-                    <td className="py-2 pr-3 text-right text-content-secondary">{(ch.avg_health ?? 0).toFixed(1)}</td>
+                    <td className="py-2 pr-3 text-right text-content-secondary">{(ch.memberCount ?? ch.members ?? 0).toLocaleString()}</td>
+                    <td className="py-2 pr-3 text-right text-content-secondary">{(ch.avgVisits ?? ch.avg_visits ?? 0).toFixed(1)}</td>
+                    <td className="py-2 pr-3 text-right text-content-secondary">{(ch.avgHealthScore ?? ch.avg_health ?? 0).toFixed(1)}</td>
                     <td className={`py-2 text-right font-medium ${isHighGhost ? 'text-danger' : 'text-content-secondary'}`}>
-                      {(ch.ghost_pct ?? 0).toFixed(1)}%
+                      {(ch.ghostPercent ?? ch.ghost_pct ?? 0).toFixed(1)}%
                     </td>
                   </tr>
                 );

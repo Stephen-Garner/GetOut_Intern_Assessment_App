@@ -9,6 +9,12 @@ const useAppStore = create((set, get) => ({
   aiPanelOpen: false,
   theme: initialTheme,
 
+  // Member filter (set by segment cards, consumed by Members page)
+  memberFilter: null,
+
+  // Toast notifications
+  toast: null,
+
   // Workspace State
   activeWorkspaceId: null,
   workspaces: [],
@@ -26,6 +32,9 @@ const useAppStore = create((set, get) => ({
 
   // Actions
   setActivePage: (pageId) => set({ activePageId: pageId }),
+  setMemberFilter: (filter) => set({ memberFilter: filter }),
+  showToast: (message) => set({ toast: message }),
+  hideToast: () => set({ toast: null }),
 
   toggleAIPanel: () => set((s) => ({ aiPanelOpen: !s.aiPanelOpen })),
 

@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Database, Trash2, Check, FolderOpen, Upload, Loader2, RotateCcw, Save, RefreshCw } from 'lucide-react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { Database, Trash2, Check, FolderOpen, Upload, Loader2, RotateCcw, Save, RefreshCw, FileText, X } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import { useWorkspace } from '../hooks/useWorkspace.js';
 import { api } from '../utils/api.js';
@@ -62,13 +62,24 @@ export default function Settings() {
   const [importing, setImporting] = useState(false);
   const [error, setError] = useState(null);
 
-  // Column mapping state
+  // Drag-and-drop upload state
+  const fileInputRef = useRef(null);
+  const [dragOver, setDragOver] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState([]); // { file, name, size, detectedType, headers, rowCount }
+
+  // Inline mapping state (import flow)
+  const [showMapping, setShowMapping] = useState(false);
+  const [mappingEntries, setMappingEntries] = useState([]);
+  const [canonicalFields, setCanonicalFields] = useState([]);
+
+  // Column mapping state (existing workspace read-only view)
   const [mappingFields, setMappingFields] = useState([]);
   const [columnMapping, setColumnMapping] = useState([]);
   const [mappingLoading, setMappingLoading] = useState(false);
   const [mappingSaving, setMappingSaving] = useState(false);
   const [mappingError, setMappingError] = useState(null);
   const [mappingSuccess, setMappingSuccess] = useState(null);
+  const [editingMapping, setEditingMapping] = useState(false);
 
   // Threshold state
   const [thresholds, setThresholds] = useState(DEFAULT_THRESHOLDS);
@@ -144,8 +155,90 @@ export default function Settings() {
     setSelectedFiles((prev) => (prev.includes(file) ? prev.filter((f) => f !== file) : [...prev, file]));
   }
 
+  function detectFileType(headers) {
+    const h = headers.map(s => s.toLowerCase());
+    if (h.some(x => x.includes('visit_id') || x.includes('visit_date')) && h.some(x => x.includes('venue'))) return 'Visit history';
+    if (h.some(x => x.includes('venue_id')) && h.some(x => x.includes('popularity'))) return 'Venue reference';
+    if (h.some(x => x.includes('snapshot_date'))) return 'Historical snapshots';
+    if (h.some(x => x.includes('member_id') || x.includes('purchase') || x.includes('visit'))) return 'Member data';
+    return 'Data file';
+  }
+
+  function handleFileDrop(fileList) {
+    if (!fileList || fileList.length === 0) return;
+    const newFiles = Array.from(fileList);
+    const promises = newFiles.map((file) => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const text = e.target.result;
+          const lines = text.split('\n').filter(l => l.trim());
+          const headers = lines.length > 0 ? lines[0].split(/[,\t]/).map(h => h.trim().replace(/^["']|["']$/g, '')) : [];
+          const rowCount = Math.max(0, lines.length - 1);
+          const detectedType = detectFileType(headers);
+          resolve({ file, name: file.name, size: file.size, detectedType, headers, rowCount });
+        };
+        reader.readAsText(file);
+      });
+    });
+    Promise.all(promises).then((parsed) => {
+      setUploadedFiles((prev) => [...prev, ...parsed]);
+    });
+  }
+
+  function removeFile(index) {
+    setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  async function uploadFiles(fileList) {
+    const formData = new FormData();
+    for (const f of fileList) {
+      formData.append('files', f.file);
+    }
+    const res = await fetch('/api/upload', { method: 'POST', body: formData });
+    if (!res.ok) throw new Error('Upload failed');
+    return res.json();
+  }
+
   async function handleImport() {
-    if (!newName.trim() || selectedFiles.length === 0) return;
+    if (!newName.trim()) return;
+    // If we have uploaded files, use the new upload flow
+    if (uploadedFiles.length > 0) {
+      setImporting(true);
+      setError(null);
+      try {
+        // Step 1: Upload files to server
+        const uploadResult = await uploadFiles(uploadedFiles);
+
+        // Step 2: Auto-map columns from the first file with member-like headers
+        const memberFile = uploadedFiles.find(f => f.detectedType === 'Member data') || uploadedFiles[0];
+        const fields = await api.get('/mapping/fields');
+        setCanonicalFields(Array.isArray(fields) ? fields : []);
+
+        const autoMapResult = await api.post('/mapping/auto', { headers: memberFile.headers });
+        const entries = Array.isArray(autoMapResult) ? autoMapResult :
+          (autoMapResult && autoMapResult.mapping ? autoMapResult.mapping : []);
+
+        // Build mapping entries with auto-match info
+        const mapped = memberFile.headers.map((col) => {
+          const match = entries.find(e => e.csv_column === col);
+          return {
+            csvColumn: col,
+            canonicalField: match ? (match.canonical_field || 'skip') : 'skip',
+            autoMatched: match ? (match.canonical_field && match.canonical_field !== 'skip') : false,
+          };
+        });
+        setMappingEntries(mapped);
+        setShowMapping(true);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setImporting(false);
+      }
+      return;
+    }
+    // Fallback: use selected files from data/ directory
+    if (selectedFiles.length === 0) return;
     setImporting(true);
     setError(null);
     try {
@@ -159,6 +252,47 @@ export default function Settings() {
       setImporting(false);
     }
   }
+
+  function updateMapping(csvColumn, canonicalField) {
+    setMappingEntries((prev) =>
+      prev.map((entry) =>
+        entry.csvColumn === csvColumn ? { ...entry, canonicalField, autoMatched: false } : entry
+      )
+    );
+  }
+
+  async function confirmImport() {
+    setImporting(true);
+    setError(null);
+    try {
+      const mapping = mappingEntries.reduce((acc, entry) => {
+        if (entry.canonicalField !== 'skip') {
+          acc[entry.csvColumn] = entry.canonicalField;
+        }
+        return acc;
+      }, {});
+      const fileNames = uploadedFiles.map(f => f.name);
+      await api.post('/workspaces', {
+        name: newName.trim(),
+        files: fileNames,
+        mapping,
+      });
+      // Reset state
+      setNewName('');
+      setUploadedFiles([]);
+      setShowMapping(false);
+      setMappingEntries([]);
+      loadFiles();
+      await loadWorkspaces();
+      useAppStore.getState().setActivePage('dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setImporting(false);
+    }
+  }
+
+  const allAutoMatched = mappingEntries.length > 0 && mappingEntries.every(e => e.autoMatched || e.canonicalField === 'skip');
 
   function handleMappingChange(csvColumn, canonicalField) {
     setColumnMapping((prev) =>
@@ -306,14 +440,61 @@ export default function Settings() {
             className="w-full px-3 py-2 rounded-md bg-surface-tertiary border border-border-subtle text-sm text-content-primary placeholder:text-content-muted outline-none focus:border-accent transition-colors mb-3"
           />
 
-          <div className="mb-3">
-            <div className="flex items-center gap-2 mb-2">
-              <FolderOpen size={14} className="text-content-muted" />
-              <span className="text-xs font-medium text-content-secondary">Files in data/ directory</span>
+          {/* Drop zone */}
+          <div
+            onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+            onDragLeave={() => setDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragOver(false);
+              handleFileDrop(e.dataTransfer.files);
+            }}
+            onClick={() => fileInputRef.current?.click()}
+            className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+              dragOver ? 'border-accent bg-accent/5' : 'border-border-primary hover:border-accent/50 hover:bg-surface-tertiary'
+            }`}
+          >
+            <Upload size={24} className="mx-auto mb-2 text-content-muted" />
+            <p className="text-sm text-content-primary">Drag & drop CSV files here</p>
+            <p className="text-xs text-content-muted mt-1">or click to browse</p>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".csv,.tsv,.txt"
+              multiple
+              className="hidden"
+              onChange={(e) => handleFileDrop(e.target.files)}
+            />
+          </div>
+
+          {/* Uploaded file list */}
+          {uploadedFiles.length > 0 && (
+            <div className="mt-3 space-y-2">
+              {uploadedFiles.map((f, i) => (
+                <div key={i} className="flex items-center gap-3 p-2.5 rounded-lg bg-surface-tertiary">
+                  <FileText size={16} className="text-content-muted shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-content-primary truncate">{f.name}</p>
+                    <p className="text-xs text-content-muted">
+                      {(f.size / 1024).toFixed(0)} KB · {f.rowCount} rows · {f.detectedType}
+                    </p>
+                  </div>
+                  <button onClick={() => removeFile(i)} className="text-content-muted hover:text-[var(--danger)]">
+                    <X size={14} />
+                  </button>
+                </div>
+              ))}
             </div>
-            {files.length > 0 ? (
-              <div className="space-y-1 max-h-40 overflow-y-auto">
-                {files.map((f) => (
+          )}
+
+          {/* Collapsible data/ directory browser */}
+          <details className="mt-3">
+            <summary className="text-xs text-content-muted cursor-pointer hover:text-content-secondary">
+              Or select from data/ directory ({files.length} files)
+            </summary>
+            <div className="mt-2 space-y-1">
+              {files.length > 0 ? (
+                files.map((f) => (
                   <button
                     key={f}
                     onClick={() => toggleFile(f)}
@@ -332,27 +513,74 @@ export default function Settings() {
                     </div>
                     <span className="truncate">{f}</span>
                   </button>
-                ))}
-              </div>
-            ) : (
-              <p className="text-xs text-content-muted px-3 py-2">
-                No files found. Place CSV files in the <code className="px-1 py-0.5 bg-surface-tertiary rounded text-xs">data/</code> directory.
-              </p>
-            )}
-          </div>
+                ))
+              ) : (
+                <p className="text-xs text-content-muted px-3 py-2">
+                  No files found. Place CSV files in the <code className="px-1 py-0.5 bg-surface-tertiary rounded text-xs">data/</code> directory.
+                </p>
+              )}
+            </div>
+          </details>
 
           {error && (
-            <p className="text-xs text-[var(--danger)] mb-3">{error}</p>
+            <p className="text-xs text-[var(--danger)] mt-3">{error}</p>
           )}
 
-          <button
-            onClick={handleImport}
-            disabled={!newName.trim() || selectedFiles.length === 0 || importing}
-            className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
-          >
-            {importing ? <Loader2 size={15} className="animate-spin" /> : <Upload size={15} />}
-            {importing ? 'Importing...' : 'Import & Create Workspace'}
-          </button>
+          {!showMapping && (
+            <button
+              onClick={handleImport}
+              disabled={!newName.trim() || (uploadedFiles.length === 0 && selectedFiles.length === 0) || importing}
+              className="flex items-center gap-2 px-4 py-2 mt-3 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              {importing ? <Loader2 size={15} className="animate-spin" /> : <Upload size={15} />}
+              {importing ? 'Uploading...' : 'Import & Create Workspace'}
+            </button>
+          )}
+
+          {/* Inline column mapping */}
+          {showMapping && (
+            <div className="mt-4 p-4 rounded-lg bg-surface-secondary border border-border-subtle">
+              <h4 className="text-sm font-medium text-content-primary mb-3">Column Mapping</h4>
+              {allAutoMatched && (
+                <p className="text-xs text-[#22C55E] mb-3">All columns were automatically matched.</p>
+              )}
+              <div className="space-y-2 max-h-60 overflow-y-auto">
+                {mappingEntries.map((entry) => (
+                  <div key={entry.csvColumn} className="flex items-center gap-3">
+                    <span className="text-xs text-content-secondary w-32 truncate">{entry.csvColumn}</span>
+                    <span className="text-content-muted">&#8594;</span>
+                    <select
+                      value={entry.canonicalField}
+                      onChange={(e) => updateMapping(entry.csvColumn, e.target.value)}
+                      className="flex-1 text-xs px-2 py-1 rounded bg-surface-tertiary border border-border-subtle text-content-primary"
+                    >
+                      <option value="skip">Skip this column</option>
+                      {canonicalFields.map(f => (
+                        <option key={f} value={f}>{f}</option>
+                      ))}
+                    </select>
+                    {entry.autoMatched && <Check size={14} className="text-[#22C55E] shrink-0" />}
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-2 mt-4">
+                <button
+                  onClick={confirmImport}
+                  disabled={importing}
+                  className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
+                >
+                  {importing ? <Loader2 size={15} className="animate-spin" /> : <Check size={15} />}
+                  {importing ? 'Importing...' : 'Confirm & Import'}
+                </button>
+                <button
+                  onClick={() => setShowMapping(false)}
+                  className="px-4 py-2 text-sm font-medium text-content-muted hover:text-content-primary transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -363,16 +591,16 @@ export default function Settings() {
           <div className="p-4 rounded-lg bg-surface-secondary border border-border-subtle">
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm text-content-secondary">
-                Map CSV columns to canonical fields for <span className="font-medium text-content-primary">{activeWorkspace.name}</span>
+                Column mapping for <span className="font-medium text-content-primary">{activeWorkspace.name}</span>
               </p>
-              <button
-                onClick={handleAutoMap}
-                disabled={mappingLoading || columnMapping.length === 0}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-accent hover:text-accent-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-              >
-                <RefreshCw size={12} />
-                Auto-Map
-              </button>
+              {!editingMapping && columnMapping.length > 0 && (
+                <button
+                  onClick={() => setEditingMapping(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-accent hover:text-accent-hover transition-colors"
+                >
+                  Edit
+                </button>
+              )}
             </div>
 
             {mappingLoading ? (
@@ -383,8 +611,36 @@ export default function Settings() {
               <div className="py-6 text-center">
                 <p className="text-sm text-content-muted">No column mapping available. Import data first to configure mapping.</p>
               </div>
+            ) : !editingMapping ? (
+              /* Read-only view */
+              <div className="space-y-1.5 max-h-60 overflow-y-auto">
+                {columnMapping.filter(e => e.canonical_field && e.canonical_field !== 'skip').map((entry) => (
+                  <div key={entry.csv_column} className="flex items-center gap-3 text-xs">
+                    <span className="text-content-secondary w-32 truncate">{entry.csv_column}</span>
+                    <span className="text-content-muted">&#8594;</span>
+                    <span className="text-content-primary">{entry.canonical_field}</span>
+                    <Check size={12} className="text-[#22C55E] shrink-0" />
+                  </div>
+                ))}
+                {columnMapping.filter(e => !e.canonical_field || e.canonical_field === 'skip').length > 0 && (
+                  <p className="text-xs text-content-muted mt-2">
+                    {columnMapping.filter(e => !e.canonical_field || e.canonical_field === 'skip').length} column(s) skipped
+                  </p>
+                )}
+              </div>
             ) : (
+              /* Editable view */
               <>
+                <div className="flex items-center justify-end mb-2">
+                  <button
+                    onClick={handleAutoMap}
+                    disabled={mappingLoading || columnMapping.length === 0}
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-accent hover:text-accent-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    <RefreshCw size={12} />
+                    Auto-Map
+                  </button>
+                </div>
                 <div className="space-y-2 max-h-72 overflow-y-auto mb-4">
                   <div className="grid grid-cols-2 gap-3 px-1 pb-1">
                     <span className="text-xs font-semibold text-content-muted uppercase tracking-wider">CSV Column</span>
@@ -413,9 +669,9 @@ export default function Settings() {
                             ))}
                           </select>
                           {isMatched ? (
-                            <Check size={14} className="text-green-500 shrink-0" />
+                            <Check size={14} className="text-[#22C55E] shrink-0" />
                           ) : (
-                            <span className="text-xs text-orange-400 shrink-0 whitespace-nowrap">Not mapped</span>
+                            <span className="text-xs text-[#F97316] shrink-0 whitespace-nowrap">Not mapped</span>
                           )}
                         </div>
                       </div>
@@ -431,17 +687,25 @@ export default function Settings() {
                   <p className="text-xs text-[var(--danger)] mb-3">{mappingError}</p>
                 )}
                 {mappingSuccess && (
-                  <p className="text-xs text-green-500 mb-3">{mappingSuccess}</p>
+                  <p className="text-xs text-[#22C55E] mb-3">{mappingSuccess}</p>
                 )}
 
-                <button
-                  onClick={handleSaveMapping}
-                  disabled={mappingSaving}
-                  className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
-                >
-                  {mappingSaving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
-                  {mappingSaving ? 'Saving...' : 'Confirm Mapping & Re-run Segmentation'}
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSaveMapping}
+                    disabled={mappingSaving}
+                    className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
+                  >
+                    {mappingSaving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
+                    {mappingSaving ? 'Saving...' : 'Save & Re-run Segmentation'}
+                  </button>
+                  <button
+                    onClick={() => { setEditingMapping(false); loadColumnMapping(); }}
+                    className="px-4 py-2 text-sm font-medium text-content-muted hover:text-content-primary transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </>
             )}
           </div>

@@ -34,7 +34,7 @@ export default function MarketComparison() {
       .finally(() => setLoading(false));
   }, [activeWorkspaceId]);
 
-  const markets = data?.markets || [];
+  const markets = Array.isArray(data) ? data : (data?.markets || data || []);
 
   const sorted = useMemo(() => {
     return [...markets].sort((a, b) => {
@@ -56,10 +56,10 @@ export default function MarketComparison() {
 
   const columns = [
     { key: 'market', label: 'Market' },
-    { key: 'members', label: 'Members' },
-    { key: 'ghost_pct', label: 'Ghost %' },
-    { key: 'avg_health', label: 'Avg Health' },
-    { key: 'first_use_rate', label: 'First Use Rate' },
+    { key: 'totalMembers', label: 'Members' },
+    { key: 'ghostPercent', label: 'Ghost %' },
+    { key: 'avgHealthScore', label: 'Avg Health' },
+    { key: 'firstUseRate', label: 'First Use Rate' },
   ];
 
   return (
@@ -86,15 +86,15 @@ export default function MarketComparison() {
             {sorted.map((row, i) => (
               <tr key={row.market || i} className="border-b border-border-subtle last:border-0">
                 <td className="py-2.5 pr-4 font-medium text-content-primary">{row.market}</td>
-                <td className="py-2.5 pr-4 text-content-secondary">{(row.members ?? 0).toLocaleString()}</td>
-                <td className={`py-2.5 pr-4 font-medium ${ghostColor(row.ghost_pct ?? 0)}`}>
-                  {(row.ghost_pct ?? 0).toFixed(1)}%
+                <td className="py-2.5 pr-4 text-content-secondary">{(row.totalMembers ?? row.members ?? 0).toLocaleString()}</td>
+                <td className={`py-2.5 pr-4 font-medium ${ghostColor(row.ghostPercent ?? row.ghost_pct ?? 0)}`}>
+                  {(row.ghostPercent ?? row.ghost_pct ?? 0).toFixed(1)}%
                 </td>
-                <td className={`py-2.5 pr-4 font-medium ${healthColor(row.avg_health ?? 0)}`}>
-                  {(row.avg_health ?? 0).toFixed(1)}
+                <td className={`py-2.5 pr-4 font-medium ${healthColor(row.avgHealthScore ?? row.avg_health ?? 0)}`}>
+                  {(row.avgHealthScore ?? row.avg_health ?? 0).toFixed(1)}
                 </td>
                 <td className="py-2.5 pr-4 text-content-secondary">
-                  {(row.first_use_rate ?? 0).toFixed(1)}%
+                  {(row.firstUseRate ?? row.first_use_rate ?? 0).toFixed(1)}%
                 </td>
               </tr>
             ))}

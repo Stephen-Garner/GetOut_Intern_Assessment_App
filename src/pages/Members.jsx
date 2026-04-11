@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Users, Search, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import { api } from '../utils/api.js';
 import MemberDetailPanel from '../components/MemberDetailPanel.jsx';
+import HealthScoreTooltip from '../components/HealthScoreTooltip.jsx';
 
 const SEGMENT_COLORS = {
   ghost: '#EF4444',
@@ -27,6 +28,8 @@ const PAGE_LIMIT = 50;
 
 export default function Members() {
   const activeWorkspaceId = useAppStore((s) => s.activeWorkspaceId);
+  const memberFilter = useAppStore((s) => s.memberFilter);
+  const appliedFilter = useRef(false);
 
   // Data state
   const [members, setMembers] = useState([]);
@@ -106,6 +109,17 @@ export default function Members() {
       }
     })();
   }, [activeWorkspaceId]);
+
+  // Apply member filter from store on mount (e.g. from segment card click)
+  useEffect(() => {
+    if (memberFilter && !appliedFilter.current) {
+      appliedFilter.current = true;
+      if (memberFilter.segment) {
+        setSelectedSegments([memberFilter.segment]);
+      }
+      useAppStore.getState().setMemberFilter(null);
+    }
+  }, [memberFilter]);
 
   // Reset page when filters change
   useEffect(() => {
@@ -307,7 +321,7 @@ export default function Members() {
           <thead className="bg-surface-secondary sticky top-0 z-[1]">
             <tr>
               {[
-                { key: '_health_score', label: 'Health' },
+                { key: '_health_score', label: 'Health', hasTooltip: true },
                 { key: 'last_name', label: 'Name' },
                 { key: 'home_market', label: 'Market' },
                 { key: '_segment', label: 'Segment' },
@@ -323,6 +337,7 @@ export default function Members() {
                 >
                   <span className="inline-flex items-center gap-1">
                     {col.label}
+                    {col.hasTooltip && <HealthScoreTooltip />}
                     <SortIcon column={col.key} />
                   </span>
                 </th>

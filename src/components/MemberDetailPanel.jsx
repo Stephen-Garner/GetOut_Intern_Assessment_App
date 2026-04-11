@@ -1,4 +1,5 @@
 import { X, Calendar, MapPin, Activity, Clock } from 'lucide-react';
+import HealthScoreTooltip from './HealthScoreTooltip.jsx';
 
 const SEGMENT_COLORS = {
   ghost: '#EF4444',
@@ -107,7 +108,10 @@ export default function MemberDetailPanel({ member, onClose }) {
               </span>
             </div>
             <div className="flex items-start gap-4 ml-4">
-              <HealthCircle score={member._health_score ?? 0} />
+              <div className="flex flex-col items-center gap-1">
+                <HealthCircle score={member._health_score ?? 0} />
+                <HealthScoreTooltip />
+              </div>
               <button
                 onClick={onClose}
                 className="p-1 rounded hover:bg-surface-tertiary text-content-muted transition-colors"
