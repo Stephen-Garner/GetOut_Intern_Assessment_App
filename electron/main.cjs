@@ -32,10 +32,9 @@ function getFreePort() {
 async function startServer() {
   const port = await getFreePort();
 
-  // Dynamic import for ESM server module
-  const { createServer } = await import(
-    path.join(__dirname, '..', 'server', 'index.js')
-  );
+  // Dynamic import for ESM server module (file:// URL required for ESM from CJS)
+  const serverPath = path.join(__dirname, '..', 'server', 'index.js');
+  const { createServer } = await import(`file://${serverPath}`);
 
   const { app: expressApp } = createServer({
     port,
@@ -64,7 +63,7 @@ function createWindow() {
     trafficLightPosition: { x: 16, y: 16 },
     backgroundColor: '#0A0A0F',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
       nodeIntegration: false,
     },

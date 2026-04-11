@@ -7,7 +7,7 @@
   "bin": {
     "beacon": "./bin/beacon.js"
   },
-  "main": "electron/main.js",
+  "main": "electron/main.cjs",
   "scripts": {
     "beacon": "concurrently -n server,client -c blue,green \"node server/index.js\" \"vite\"",
     "dev": "npm run beacon",
