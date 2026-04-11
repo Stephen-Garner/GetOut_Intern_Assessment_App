@@ -1,19 +1,80 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Database, Trash2, Check, FolderOpen, Upload, Loader2 } from 'lucide-react';
+import { Database, Trash2, Check, FolderOpen, Upload, Loader2, RotateCcw, Save, RefreshCw } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import { useWorkspace } from '../hooks/useWorkspace.js';
 import { api } from '../utils/api.js';
 import ThemeToggle from '../components/ThemeToggle.jsx';
 
+const SEGMENT_COLORS = {
+  ghost: '#EF4444',
+  one_and_done: '#F97316',
+  approaching_threshold: '#EAB308',
+  in_the_zone: '#22C55E',
+  power_user: '#3B82F6',
+  new_member: '#8B5CF6',
+};
+
+const SEGMENT_LABELS = {
+  ghost: 'Ghost',
+  one_and_done: 'One & Done',
+  approaching_threshold: 'Approaching',
+  in_the_zone: 'In the Zone',
+  power_user: 'Power User',
+};
+
+const DEFAULT_THRESHOLDS = {
+  ghost: { maxVisits: 1, minDaysSincePurchase: 60 },
+  one_and_done: { maxVisits: 2, minDaysSinceLastVisit: 30 },
+  approaching_threshold: { minVisits: 3, maxVisits: 7 },
+  in_the_zone: { minVisits: 8, maxVisits: 15 },
+  power_user: { minVisits: 16 },
+};
+
+const THRESHOLD_FIELDS = {
+  ghost: [
+    { key: 'maxVisits', label: 'Max Visits' },
+    { key: 'minDaysSincePurchase', label: 'Min Days Since Purchase' },
+  ],
+  one_and_done: [
+    { key: 'maxVisits', label: 'Max Visits' },
+    { key: 'minDaysSinceLastVisit', label: 'Min Days Since Last Visit' },
+  ],
+  approaching_threshold: [
+    { key: 'minVisits', label: 'Min Visits' },
+    { key: 'maxVisits', label: 'Max Visits' },
+  ],
+  in_the_zone: [
+    { key: 'minVisits', label: 'Min Visits' },
+    { key: 'maxVisits', label: 'Max Visits' },
+  ],
+  power_user: [
+    { key: 'minVisits', label: 'Min Visits' },
+  ],
+};
+
 export default function Settings() {
   const { theme } = useAppStore();
-  const { workspaces, activeWorkspace, createWorkspace, deleteWorkspace, switchWorkspace } = useWorkspace();
+  const { workspaces, activeWorkspace, activeWorkspaceId, createWorkspace, deleteWorkspace, switchWorkspace, loadWorkspaces } = useWorkspace();
 
   const [files, setFiles] = useState([]);
   const [newName, setNewName] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [importing, setImporting] = useState(false);
   const [error, setError] = useState(null);
+
+  // Column mapping state
+  const [mappingFields, setMappingFields] = useState([]);
+  const [columnMapping, setColumnMapping] = useState([]);
+  const [mappingLoading, setMappingLoading] = useState(false);
+  const [mappingSaving, setMappingSaving] = useState(false);
+  const [mappingError, setMappingError] = useState(null);
+  const [mappingSuccess, setMappingSuccess] = useState(null);
+
+  // Threshold state
+  const [thresholds, setThresholds] = useState(DEFAULT_THRESHOLDS);
+  const [thresholdsSaving, setThresholdsSaving] = useState(false);
+  const [thresholdsError, setThresholdsError] = useState(null);
+  const [thresholdsSuccess, setThresholdsSuccess] = useState(null);
 
   const loadFiles = useCallback(async () => {
     try {
@@ -24,9 +85,60 @@ export default function Settings() {
     }
   }, []);
 
+  const loadMappingFields = useCallback(async () => {
+    try {
+      const data = await api.get('/mapping/fields');
+      setMappingFields(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error('Failed to load mapping fields:', err);
+    }
+  }, []);
+
+  const loadColumnMapping = useCallback(async () => {
+    if (!activeWorkspaceId) return;
+    setMappingLoading(true);
+    setMappingError(null);
+    try {
+      const data = await api.get(`/mapping?workspace=${activeWorkspaceId}`);
+      if (Array.isArray(data) && data.length > 0) {
+        setColumnMapping(data);
+      } else if (data && typeof data === 'object' && data.mapping) {
+        setColumnMapping(Array.isArray(data.mapping) ? data.mapping : []);
+      } else {
+        setColumnMapping([]);
+      }
+    } catch (err) {
+      console.error('Failed to load column mapping:', err);
+      setColumnMapping([]);
+    } finally {
+      setMappingLoading(false);
+    }
+  }, [activeWorkspaceId]);
+
+  const loadThresholds = useCallback(async () => {
+    if (!activeWorkspaceId) return;
+    try {
+      const ws = await api.get(`/workspaces/${activeWorkspaceId}`);
+      if (ws && ws.thresholds) {
+        setThresholds({ ...DEFAULT_THRESHOLDS, ...ws.thresholds });
+      } else {
+        setThresholds(DEFAULT_THRESHOLDS);
+      }
+    } catch (err) {
+      console.error('Failed to load thresholds:', err);
+      setThresholds(DEFAULT_THRESHOLDS);
+    }
+  }, [activeWorkspaceId]);
+
   useEffect(() => {
     loadFiles();
-  }, [loadFiles]);
+    loadMappingFields();
+  }, [loadFiles, loadMappingFields]);
+
+  useEffect(() => {
+    loadColumnMapping();
+    loadThresholds();
+  }, [loadColumnMapping, loadThresholds]);
 
   function toggleFile(file) {
     setSelectedFiles((prev) => (prev.includes(file) ? prev.filter((f) => f !== file) : [...prev, file]));
@@ -47,6 +159,85 @@ export default function Settings() {
       setImporting(false);
     }
   }
+
+  function handleMappingChange(csvColumn, canonicalField) {
+    setColumnMapping((prev) =>
+      prev.map((entry) =>
+        entry.csv_column === csvColumn ? { ...entry, canonical_field: canonicalField } : entry
+      )
+    );
+    setMappingSuccess(null);
+  }
+
+  async function handleAutoMap() {
+    if (!activeWorkspaceId) return;
+    setMappingLoading(true);
+    setMappingError(null);
+    setMappingSuccess(null);
+    try {
+      const headers = columnMapping.map((entry) => entry.csv_column);
+      const data = await api.post('/mapping/auto', { headers, workspace: activeWorkspaceId });
+      if (Array.isArray(data)) {
+        setColumnMapping(data);
+      } else if (data && data.mapping) {
+        setColumnMapping(Array.isArray(data.mapping) ? data.mapping : []);
+      }
+      setMappingSuccess('Auto-mapping applied');
+    } catch (err) {
+      setMappingError(err.message);
+    } finally {
+      setMappingLoading(false);
+    }
+  }
+
+  async function handleSaveMapping() {
+    if (!activeWorkspaceId) return;
+    setMappingSaving(true);
+    setMappingError(null);
+    setMappingSuccess(null);
+    try {
+      await api.put(`/mapping?workspace=${activeWorkspaceId}`, { mapping: columnMapping });
+      // Re-run segmentation after saving mapping
+      await api.post(`/data/segment?workspace=${activeWorkspaceId}`);
+      setMappingSuccess('Mapping saved and segmentation updated');
+    } catch (err) {
+      setMappingError(err.message);
+    } finally {
+      setMappingSaving(false);
+    }
+  }
+
+  function handleThresholdChange(segment, field, value) {
+    const numValue = value === '' ? '' : Number(value);
+    setThresholds((prev) => ({
+      ...prev,
+      [segment]: { ...prev[segment], [field]: numValue },
+    }));
+    setThresholdsSuccess(null);
+  }
+
+  function handleResetThresholds() {
+    setThresholds(DEFAULT_THRESHOLDS);
+    setThresholdsSuccess(null);
+  }
+
+  async function handleSaveThresholds() {
+    if (!activeWorkspaceId) return;
+    setThresholdsSaving(true);
+    setThresholdsError(null);
+    setThresholdsSuccess(null);
+    try {
+      await api.put(`/workspaces/${activeWorkspaceId}`, { thresholds });
+      await api.post(`/data/segment?workspace=${activeWorkspaceId}`);
+      setThresholdsSuccess('Thresholds saved and segmentation updated');
+    } catch (err) {
+      setThresholdsError(err.message);
+    } finally {
+      setThresholdsSaving(false);
+    }
+  }
+
+  const requiredFields = ['member_id', 'total_visits'];
 
   return (
     <div className="p-6 max-w-3xl mx-auto overflow-y-auto h-full">
@@ -164,6 +355,165 @@ export default function Settings() {
           </button>
         </div>
       </section>
+
+      {/* Column Mapping */}
+      {activeWorkspace && (
+        <section className="mb-8">
+          <h2 className="text-sm font-semibold text-content-primary mb-3 uppercase tracking-wider">Column Mapping</h2>
+          <div className="p-4 rounded-lg bg-surface-secondary border border-border-subtle">
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-sm text-content-secondary">
+                Map CSV columns to canonical fields for <span className="font-medium text-content-primary">{activeWorkspace.name}</span>
+              </p>
+              <button
+                onClick={handleAutoMap}
+                disabled={mappingLoading || columnMapping.length === 0}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-accent hover:text-accent-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              >
+                <RefreshCw size={12} />
+                Auto-Map
+              </button>
+            </div>
+
+            {mappingLoading ? (
+              <div className="flex items-center justify-center py-8">
+                <Loader2 size={20} className="animate-spin text-content-muted" />
+              </div>
+            ) : columnMapping.length === 0 ? (
+              <div className="py-6 text-center">
+                <p className="text-sm text-content-muted">No column mapping available. Import data first to configure mapping.</p>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-2 max-h-72 overflow-y-auto mb-4">
+                  <div className="grid grid-cols-2 gap-3 px-1 pb-1">
+                    <span className="text-xs font-semibold text-content-muted uppercase tracking-wider">CSV Column</span>
+                    <span className="text-xs font-semibold text-content-muted uppercase tracking-wider">Maps To</span>
+                  </div>
+                  {columnMapping.map((entry) => {
+                    const isMatched = entry.canonical_field && entry.canonical_field !== 'skip';
+                    const isRequired = requiredFields.includes(entry.canonical_field);
+                    return (
+                      <div key={entry.csv_column} className="grid grid-cols-2 gap-3 items-center px-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-content-primary truncate">{entry.csv_column}</span>
+                          {isRequired && <span className="text-accent text-xs">*</span>}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={entry.canonical_field || 'skip'}
+                            onChange={(e) => handleMappingChange(entry.csv_column, e.target.value)}
+                            className="flex-1 bg-surface-tertiary border border-border-subtle rounded px-2 py-1.5 text-sm text-content-primary outline-none focus:border-accent transition-colors"
+                          >
+                            <option value="skip">Skip this column</option>
+                            {mappingFields.map((field) => (
+                              <option key={field} value={field}>
+                                {field}
+                              </option>
+                            ))}
+                          </select>
+                          {isMatched ? (
+                            <Check size={14} className="text-green-500 shrink-0" />
+                          ) : (
+                            <span className="text-xs text-orange-400 shrink-0 whitespace-nowrap">Not mapped</span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <p className="text-xs text-content-muted mb-3">
+                  Fields marked with <span className="text-accent">*</span> are required: {requiredFields.join(', ')}
+                </p>
+
+                {mappingError && (
+                  <p className="text-xs text-[var(--danger)] mb-3">{mappingError}</p>
+                )}
+                {mappingSuccess && (
+                  <p className="text-xs text-green-500 mb-3">{mappingSuccess}</p>
+                )}
+
+                <button
+                  onClick={handleSaveMapping}
+                  disabled={mappingSaving}
+                  className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
+                >
+                  {mappingSaving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
+                  {mappingSaving ? 'Saving...' : 'Confirm Mapping & Re-run Segmentation'}
+                </button>
+              </>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Segmentation Thresholds */}
+      {activeWorkspace && (
+        <section className="mb-8">
+          <h2 className="text-sm font-semibold text-content-primary mb-3 uppercase tracking-wider">Segmentation Thresholds</h2>
+          <div className="p-4 rounded-lg bg-surface-secondary border border-border-subtle">
+            <p className="text-sm text-content-secondary mb-4">
+              Adjust how members are categorized into segments for <span className="font-medium text-content-primary">{activeWorkspace.name}</span>
+            </p>
+
+            <div className="space-y-4 mb-5">
+              {Object.entries(THRESHOLD_FIELDS).map(([segment, fields]) => (
+                <div key={segment} className="flex items-start gap-3">
+                  <div className="flex items-center gap-2 w-36 pt-1.5 shrink-0">
+                    <span
+                      className="w-3 h-3 rounded-full shrink-0"
+                      style={{ backgroundColor: SEGMENT_COLORS[segment] }}
+                    />
+                    <span className="text-sm font-medium text-content-primary">
+                      {SEGMENT_LABELS[segment]}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {fields.map((field) => (
+                      <div key={field.key} className="flex items-center gap-2">
+                        <label className="text-xs text-content-muted whitespace-nowrap">{field.label}:</label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={thresholds[segment]?.[field.key] ?? ''}
+                          onChange={(e) => handleThresholdChange(segment, field.key, e.target.value)}
+                          className="bg-surface-tertiary border border-border-subtle rounded px-2 py-1 w-20 text-sm text-content-primary outline-none focus:border-accent transition-colors"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {thresholdsError && (
+              <p className="text-xs text-[var(--danger)] mb-3">{thresholdsError}</p>
+            )}
+            {thresholdsSuccess && (
+              <p className="text-xs text-green-500 mb-3">{thresholdsSuccess}</p>
+            )}
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleSaveThresholds}
+                disabled={thresholdsSaving}
+                className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {thresholdsSaving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
+                {thresholdsSaving ? 'Saving...' : 'Save & Re-run Segmentation'}
+              </button>
+              <button
+                onClick={handleResetThresholds}
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-content-muted hover:text-content-primary transition-colors"
+              >
+                <RotateCcw size={14} />
+                Reset to Defaults
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Appearance */}
       <section className="mb-8">
