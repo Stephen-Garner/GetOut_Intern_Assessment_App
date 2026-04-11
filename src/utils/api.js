@@ -1,6 +1,17 @@
-const BASE = '/api';
+let BASE = '/api';
+let baseResolved = false;
+
+async function resolveBase() {
+  if (baseResolved) return;
+  if (window.beacon?.isElectron) {
+    const serverUrl = await window.beacon.getServerUrl();
+    BASE = `${serverUrl}/api`;
+  }
+  baseResolved = true;
+}
 
 async function request(path, options = {}) {
+  await resolveBase();
   const url = `${BASE}${path}`;
   const config = {
     headers: { 'Content-Type': 'application/json' },
