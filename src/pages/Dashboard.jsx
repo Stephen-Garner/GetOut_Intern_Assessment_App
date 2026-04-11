@@ -1,6 +1,13 @@
 import { LayoutDashboard, ArrowRight } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import { useWorkspace } from '../hooks/useWorkspace.js';
+import SegmentOverview from '../widgets/core/SegmentOverview.jsx';
+import ActivationFunnel from '../widgets/core/ActivationFunnel.jsx';
+import HealthDistribution from '../widgets/core/HealthDistribution.jsx';
+import SegmentMigration from '../widgets/core/SegmentMigration.jsx';
+import MarketComparison from '../widgets/core/MarketComparison.jsx';
+import ChannelBreakdown from '../widgets/core/ChannelBreakdown.jsx';
+import ActivityTimeline from '../widgets/core/ActivityTimeline.jsx';
 
 export default function Dashboard() {
   const { setActivePage } = useAppStore();
@@ -31,26 +38,36 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 overflow-y-auto h-full">
       <div className="mb-6">
         <h1 className="text-xl font-semibold text-content-primary">Dashboard</h1>
         <p className="text-sm text-content-muted mt-1">
           Workspace: {activeWorkspace.name}
         </p>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div
-            key={i}
-            className="aspect-[4/3] rounded-lg border border-dashed border-border-primary bg-surface-secondary flex items-center justify-center"
-          >
-            <p className="text-xs text-content-muted">Widget slot {i}</p>
-          </div>
-        ))}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="col-span-2">
+          <SegmentOverview />
+        </div>
+        <div>
+          <ActivationFunnel />
+        </div>
+        <div>
+          <HealthDistribution />
+        </div>
+        <div className="col-span-2">
+          <SegmentMigration />
+        </div>
+        <div>
+          <MarketComparison />
+        </div>
+        <div>
+          <ChannelBreakdown />
+        </div>
+        <div className="col-span-2">
+          <ActivityTimeline />
+        </div>
       </div>
-      <p className="text-xs text-content-muted mt-4 text-center">
-        Charts and metrics coming in Phase 2
-      </p>
     </div>
   );
 }
