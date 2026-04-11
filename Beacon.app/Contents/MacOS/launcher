@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Resolve the project directory
+# This script is at Beacon.app/Contents/MacOS/launcher
+# So ../../.. gets us to the folder containing Beacon.app (the beacon project root)
+PROJECT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)"
+
+# Open Terminal and run Beacon
+osascript -e "
+tell application \"Terminal\"
+  activate
+  do script \"cd '$PROJECT_DIR' && if [ ! -d node_modules ]; then echo 'First run, installing dependencies...' && npm install && echo ''; fi && echo 'Starting Beacon...' && npm run beacon\"
+end tell
+"

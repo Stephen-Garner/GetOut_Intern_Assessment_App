@@ -1,0 +1,21 @@
+member_id,first_name,last_name,email,market,segment,plan_type,purchase_date,last_visit_date,total_visits,annual_fee,status
+M001,Sarah,Chen,sarah.chen@email.com,Austin,Champion,Family Premium,2025-01-15,2026-04-08,18,125,active
+M002,James,Rodriguez,james.r@email.com,Denver,At Risk,Individual,2025-03-22,2025-12-01,3,49,active
+M003,Emily,Watson,emily.w@email.com,Nashville,Engaged,Couple,2025-02-10,2026-03-28,9,79,active
+M004,Michael,Brooks,m.brooks@email.com,Austin,Dormant,Individual,2025-06-01,2025-08-15,1,19,active
+M005,Ashley,Kim,ashley.kim@email.com,Portland,Champion,Family Premium,2024-11-20,2026-04-10,24,125,active
+M006,David,Thompson,david.t@email.com,Denver,At Risk,Couple,2025-04-15,2026-01-05,3,49,active
+M007,Rachel,Nguyen,rachel.n@email.com,Nashville,New,Individual,2026-03-01,2026-03-15,1,29,active
+M008,Chris,Martinez,chris.m@email.com,Austin,Engaged,Family,2025-07-12,2026-03-22,7,99,active
+M009,Lauren,Davis,lauren.d@email.com,Portland,Dormant,Individual,2025-01-30,2025-05-20,2,19,active
+M010,Kevin,Wilson,kevin.w@email.com,Denver,Champion,Family Premium,2024-09-05,2026-04-09,31,125,active
+M011,Jessica,Lee,jessica.l@email.com,Nashville,At Risk,Couple,2025-05-18,2025-11-22,2,49,active
+M012,Ryan,Taylor,ryan.t@email.com,Austin,Engaged,Individual,2025-08-25,2026-04-01,6,29,active
+M013,Amanda,Brown,amanda.b@email.com,Portland,New,Family,2026-02-14,2026-03-10,2,99,active
+M014,Daniel,Garcia,daniel.g@email.com,Denver,Dormant,Individual,2025-02-28,2025-06-10,1,19,inactive
+M015,Stephanie,Clark,steph.c@email.com,Nashville,Champion,Family Premium,2024-12-01,2026-04-07,22,125,active
+M016,Brandon,Miller,brandon.m@email.com,Austin,At Risk,Couple,2025-09-10,2026-01-18,3,49,active
+M017,Nicole,Anderson,nicole.a@email.com,Portland,Engaged,Individual,2025-06-20,2026-03-15,8,29,active
+M018,Tyler,Moore,tyler.m@email.com,Denver,New,Family,2026-01-05,2026-02-20,2,99,active
+M019,Megan,White,megan.w@email.com,Nashville,Dormant,Individual,2025-04-01,2025-07-30,1,19,inactive
+M020,Andrew,Harris,andrew.h@email.com,Austin,Champion,Family Premium,2024-10-15,2026-04-11,28,125,active
