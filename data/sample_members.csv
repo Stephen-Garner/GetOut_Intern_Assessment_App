@@ -1,21 +1,251 @@
-member_id,first_name,last_name,email,market,segment,plan_type,purchase_date,last_visit_date,total_visits,annual_fee,status
-M001,Sarah,Chen,sarah.chen@email.com,Austin,Champion,Family Premium,2025-01-15,2026-04-08,18,125,active
-M002,James,Rodriguez,james.r@email.com,Denver,At Risk,Individual,2025-03-22,2025-12-01,3,49,active
-M003,Emily,Watson,emily.w@email.com,Nashville,Engaged,Couple,2025-02-10,2026-03-28,9,79,active
-M004,Michael,Brooks,m.brooks@email.com,Austin,Dormant,Individual,2025-06-01,2025-08-15,1,19,active
-M005,Ashley,Kim,ashley.kim@email.com,Portland,Champion,Family Premium,2024-11-20,2026-04-10,24,125,active
-M006,David,Thompson,david.t@email.com,Denver,At Risk,Couple,2025-04-15,2026-01-05,3,49,active
-M007,Rachel,Nguyen,rachel.n@email.com,Nashville,New,Individual,2026-03-01,2026-03-15,1,29,active
-M008,Chris,Martinez,chris.m@email.com,Austin,Engaged,Family,2025-07-12,2026-03-22,7,99,active
-M009,Lauren,Davis,lauren.d@email.com,Portland,Dormant,Individual,2025-01-30,2025-05-20,2,19,active
-M010,Kevin,Wilson,kevin.w@email.com,Denver,Champion,Family Premium,2024-09-05,2026-04-09,31,125,active
-M011,Jessica,Lee,jessica.l@email.com,Nashville,At Risk,Couple,2025-05-18,2025-11-22,2,49,active
-M012,Ryan,Taylor,ryan.t@email.com,Austin,Engaged,Individual,2025-08-25,2026-04-01,6,29,active
-M013,Amanda,Brown,amanda.b@email.com,Portland,New,Family,2026-02-14,2026-03-10,2,99,active
-M014,Daniel,Garcia,daniel.g@email.com,Denver,Dormant,Individual,2025-02-28,2025-06-10,1,19,inactive
-M015,Stephanie,Clark,steph.c@email.com,Nashville,Champion,Family Premium,2024-12-01,2026-04-07,22,125,active
-M016,Brandon,Miller,brandon.m@email.com,Austin,At Risk,Couple,2025-09-10,2026-01-18,3,49,active
-M017,Nicole,Anderson,nicole.a@email.com,Portland,Engaged,Individual,2025-06-20,2026-03-15,8,29,active
-M018,Tyler,Moore,tyler.m@email.com,Denver,New,Family,2026-01-05,2026-02-20,2,99,active
-M019,Megan,White,megan.w@email.com,Nashville,Dormant,Individual,2025-04-01,2025-07-30,1,19,inactive
-M020,Andrew,Harris,andrew.h@email.com,Austin,Champion,Family Premium,2024-10-15,2026-04-11,28,125,active
+member_id,first_name,last_name,email,market,zip_code,purchase_date,renewal_date,acquisition_channel,total_visits,last_visit_date,plan_tier,plan_price,venue_name_last,venue_type_last
+MEM-1099,Fatima,Bell,fatima.bell@aol.com,Phoenix,85006,2025-10-31,2026-10-31,Organic Search,3,2025-12-05,Couple,49,Octane Raceway,Arcade
+MEM-1064,Jose,Alvarez,jose.alvarez@yahoo.com,Phoenix,85006,2025-01-06,2026-01-06,Facebook Ads,2,2025-05-20,Couple,49,Children's Museum of Phoenix,Museum
+MEM-1223,Yuna,Hill,yuna.hill@yahoo.com,Nashville,37217,2025-01-14,2026-01-14,Groupon,2,2025-04-22,Individual,29,Nashville Zoo,Zoo
+MEM-1013,Peter,Vasquez,peter.vasquez@aol.com,Salt Lake City,84117,2025-01-02,2026-01-02,Facebook Ads,27,2026-04-02,Family,99,Discovery Gateway Museum,Museum
+MEM-1038,Tanya,Watson,tanya.watson@aol.com,Salt Lake City,84116,2025-09-17,2026-09-17,Organic Search,25,2026-04-10,Individual,29,Classic Fun Center,Arcade
+MEM-1094,Kwame,Ramirez,kwame.ramirez@aol.com,Phoenix,85003,2026-03-18,2027-03-18,Groupon,0,,Family Premium,125,,
+MEM-1075,Donald,Perry,donald.perry@gmail.com,Phoenix,85013,2025-06-19,2026-06-19,Groupon,0,,Family,99,,
+MEM-1210,Kyle,Choi,kyle.choi@gmail.com,Nashville,37206,2025-02-28,2026-02-28,Organic Search,24,2026-04-04,Family Premium,125,Nashville Shores,Water Park
+MEM-1041,Carter,Watson,carter.watson@gmail.com,Salt Lake City,84121,2025-11-09,2026-11-09,Facebook Ads,0,,Family,99,,
+MEM-1196,Diego,Adams,diego.adams@aol.com,Denver,80214,2025-07-24,2026-07-24,Instagram Ads,24,2026-04-03,Individual,29,Monster Mini Golf Denver,Mini Golf
+MEM-1193,Ashley,Fischer,ashley.fischer@hotmail.com,Denver,80202,2025-02-22,2026-02-22,Affiliate,1,2025-08-18,Family,99,Downtown Aquarium Denver,Aquarium
+MEM-1150,Thomas,Cruz,thomas.cruz@gmail.com,Dallas,75107,2025-07-28,2026-07-28,Facebook Ads,0,,Individual,29,,
+MEM-1070,Susan,Hall,susan.hall@yahoo.com,Phoenix,85018,2026-03-25,2027-03-25,Facebook Ads,0,,Family,99,,
+MEM-1214,David,Weber,david.weber@yahoo.com,Nashville,37214,2025-10-30,2026-10-30,Word of Mouth,8,2026-02-28,Individual,29,The Frist Art Museum,Museum
+MEM-1208,Stephen,Rodriguez,stephen.rodriguez@gmail.com,Nashville,37211,2025-04-23,2026-04-23,Word of Mouth,3,2025-12-15,Couple,49,Nashville Zoo,Zoo
+MEM-1164,Fatima,Long,fatima.long@icloud.com,Denver,80202,2025-03-02,2026-03-02,Word of Mouth,6,2026-02-20,Individual,29,EscapeWorks Denver,Escape Room
+MEM-1082,Tyler,Morris,tyler.morris@gmail.com,Phoenix,85003,2026-01-31,2027-01-31,Groupon,0,,Family Premium,125,,
+MEM-1115,Frank,Johnson,frank.johnson@gmail.com,Dallas,75114,2025-12-14,2026-12-14,Word of Mouth,0,,Couple,49,,
+MEM-1155,Stephen,Moreau,stephen.moreau@icloud.com,Denver,80210,2025-03-20,2026-03-20,Word of Mouth,9,2026-03-07,Couple,49,Wings Over the Rockies Museum,Museum
+MEM-1037,Chloe,Lewis,chloe.lewis@hotmail.com,Salt Lake City,84112,2025-06-27,2026-06-27,Facebook Ads,8,2025-11-26,Couple,49,Putters Fun Center,Mini Golf
+MEM-1026,Anthony,Rivera,anthony.rivera@aol.com,Salt Lake City,84108,2025-12-10,2026-12-10,Word of Mouth,7,2026-01-20,Family,99,Loveland Living Planet Aquarium,Aquarium
+MEM-1184,Hiroshi,Foster,hiroshi.foster@aol.com,Denver,80220,2025-05-18,2026-05-18,Facebook Ads,2,2026-03-06,Couple,49,Lucky Strike Denver,Bowling
+MEM-1147,Samantha,Singh,samantha.singh@gmail.com,Dallas,75104,2026-03-01,2027-03-01,Groupon,0,,Couple,49,,
+MEM-1060,Frank,Anderson,frank.anderson@gmail.com,Phoenix,85014,2025-07-23,2026-07-23,Organic Search,1,2026-02-23,Couple,49,Arizona Science Center,Museum
+MEM-1225,Adrian,Alvarez,adrian.alvarez@yahoo.com,Nashville,37209,2026-03-23,2027-03-23,Facebook Ads,0,,Couple,49,,
+MEM-1245,Teresa,Bennett,teresa.bennett@outlook.com,Nashville,37204,2025-02-12,2026-02-12,Instagram Ads,1,2025-09-19,Family,99,Grand Ole Golf,Mini Golf
+MEM-1212,Priya,Walker,priya.walker@hotmail.com,Nashville,37221,2025-10-19,2026-10-19,Groupon,1,2025-12-30,Individual,29,Pins Mechanical Nashville,Bowling
+MEM-1236,Rowan,Scott,rowan.scott@outlook.com,Nashville,37217,2025-06-29,2026-06-29,Word of Mouth,11,2026-04-01,Family,99,Nashville Zoo,Zoo
+MEM-1023,Savannah,Thompson,savannah.thompson@icloud.com,Salt Lake City,84105,2026-03-04,2027-03-04,Groupon,4,2026-03-28,Individual,29,Escape This SLC,Escape Room
+MEM-1169,Kathleen,Miller,kathleen.miller@icloud.com,Denver,80209,2025-02-08,2026-02-08,Word of Mouth,1,2025-09-19,Family,99,EscapeWorks Denver,Escape Room
+MEM-1187,Jade,Henderson,jade.henderson@aol.com,Denver,80214,2025-09-01,2026-09-01,Word of Mouth,7,2026-02-02,Couple,49,Denver Museum of Nature,Museum
+MEM-1073,Stephanie,Diaz,stephanie.diaz@proton.me,Phoenix,85015,2025-02-14,2026-02-14,Facebook Ads,7,2026-02-16,Individual,29,Phoenix Escape Room,Escape Room
+MEM-1104,Frank,James,frank.james@gmail.com,Dallas,75120,2026-02-17,2027-02-17,Word of Mouth,7,2026-03-05,Individual,29,Epic Waters Indoor Waterpark,Water Park
+MEM-1243,Olivia,Lopez,olivia.lopez@aol.com,Nashville,37217,2025-04-20,2026-04-20,Word of Mouth,3,2025-10-24,Couple,49,Adventure Science Center,Museum
+MEM-1170,Brian,Harris,brian.harris@proton.me,Denver,80209,2025-01-18,2026-01-18,Instagram Ads,4,2025-05-13,Family,99,Lucky Strike Denver,Bowling
+MEM-1106,Teresa,Nakamura,teresa.nakamura@gmail.com,Dallas,75121,2025-12-12,2026-12-12,Instagram Ads,16,2026-04-07,Family,99,Main Event Dallas,Arcade
+MEM-1153,Joshua,Butler,joshua.butler@icloud.com,Denver,80202,2025-11-20,2026-11-20,Word of Mouth,1,2026-01-05,Family Premium,125,EscapeWorks Denver,Escape Room
+MEM-1148,Sebastian,Anderson,sebastian.anderson@icloud.com,Dallas,75111,2025-02-04,2026-02-04,Organic Search,1,2025-10-26,Family Premium,125,Pinstack Plano,Bowling
+MEM-1043,Patricia,Nguyen,patricia.nguyen@proton.me,Salt Lake City,84101,2025-08-06,2026-08-06,Facebook Ads,7,2025-11-19,Family,99,Loveland Living Planet Aquarium,Aquarium
+MEM-1123,Dennis,Phillips,dennis.phillips@yahoo.com,Dallas,75121,2025-05-13,2026-05-13,Groupon,0,,Couple,49,,
+MEM-1183,Emeka,Becker,emeka.becker@icloud.com,Denver,80211,2025-05-11,2026-05-11,Instagram Ads,3,2025-10-01,Couple,49,Downtown Aquarium Denver,Aquarium
+MEM-1134,Amara,Watanabe,amara.watanabe@hotmail.com,Dallas,75122,2025-09-12,2026-09-12,Groupon,4,2026-03-04,Couple,49,Urban Air Trampoline Park,Trampoline Park
+MEM-1112,Dennis,Jones,dennis.jones@proton.me,Dallas,75119,2025-06-06,2026-06-06,Word of Mouth,5,2025-09-10,Family,99,Epic Waters Indoor Waterpark,Water Park
+MEM-1032,Caleb,Fisher,caleb.fisher@aol.com,Salt Lake City,84104,2025-03-01,2026-03-01,Organic Search,2,2025-06-20,Family Premium,125,Get Air Trampoline Park,Trampoline Park
+MEM-1116,Chen,Taylor,chen.taylor@yahoo.com,Dallas,75119,2025-05-24,2026-05-24,Instagram Ads,1,2025-12-18,Family,99,Topgolf Dallas,Arcade
+MEM-1144,Svetlana,Hall,svetlana.hall@yahoo.com,Dallas,75107,2025-04-22,2026-04-22,Instagram Ads,1,2025-10-04,Individual,29,Topgolf Dallas,Arcade
+MEM-1088,Stephanie,Ramirez,stephanie.ramirez@icloud.com,Phoenix,85006,2026-02-19,2027-02-19,Word of Mouth,1,2026-02-22,Family,99,Bowlero Scottsdale,Bowling
+MEM-1084,Marcus,Lindgren,marcus.lindgren@outlook.com,Phoenix,85001,2025-09-29,2026-09-29,Organic Search,5,2026-01-02,Family Premium,125,Arizona Science Center,Museum
+MEM-1002,Adrian,Chavez,adrian.chavez@outlook.com,Salt Lake City,84110,2025-09-29,2026-09-29,Organic Search,2,2026-01-25,Family,99,Fat Cats SLC,Bowling
+MEM-1050,Raymond,Sanchez,raymond.sanchez@aol.com,Salt Lake City,84108,2025-08-08,2026-08-08,Word of Mouth,2,2025-09-02,Couple,49,Loveland Living Planet Aquarium,Aquarium
+MEM-1003,Douglas,Wilson,douglas.wilson@hotmail.com,Salt Lake City,84121,2025-05-23,2026-05-23,Word of Mouth,0,,Couple,49,,
+MEM-1086,Sandra,Carter,sandra.carter@aol.com,Phoenix,85002,2025-10-02,2026-10-02,Organic Search,0,,Couple,49,,
+MEM-1133,Amara,Ramirez,amara.ramirez@outlook.com,Dallas,75101,2026-01-25,2027-01-25,Affiliate,1,2026-01-27,Couple,49,Hawaiian Falls,Water Park
+MEM-1036,Brian,Ibrahim,brian.ibrahim@aol.com,Salt Lake City,84118,2026-03-24,2027-03-24,Word of Mouth,0,,Family,99,,
+MEM-1205,Nancy,Turner,nancy.turner@hotmail.com,Nashville,37211,2025-03-14,2026-03-14,Organic Search,8,2025-07-09,Family Premium,125,Nashville Zoo,Zoo
+MEM-1067,Stephanie,Garcia,stephanie.garcia@yahoo.com,Phoenix,85003,2026-02-05,2027-02-05,Affiliate,1,2026-02-18,Couple,49,Topgolf Scottsdale,Arcade
+MEM-1201,Betty,Scott,betty.scott@hotmail.com,Denver,80208,2026-02-23,2027-02-23,Groupon,3,2026-03-07,Family Premium,125,Elitch Gardens,Amusement Park
+MEM-1034,Ivy,Sanchez,ivy.sanchez@outlook.com,Salt Lake City,84101,2025-02-09,2026-02-09,Facebook Ads,5,2026-02-15,Individual,29,Salt Lake Lanes,Bowling
+MEM-1143,Jerry,Vasquez,jerry.vasquez@yahoo.com,Dallas,75105,2025-05-28,2026-05-28,Word of Mouth,10,2025-10-09,Family Premium,125,Escapology Dallas,Escape Room
+MEM-1063,Morgan,Hernandez,morgan.hernandez@aol.com,Phoenix,85003,2025-01-27,2026-01-27,Groupon,3,2025-07-09,Individual,29,Children's Museum of Phoenix,Museum
+MEM-1096,Aaron,Moreau,aaron.moreau@hotmail.com,Phoenix,85018,2025-07-14,2026-07-14,Instagram Ads,1,2025-10-18,Family Premium,125,Octane Raceway,Arcade
+MEM-1121,Amara,Hernandez,amara.hernandez@yahoo.com,Dallas,75114,2025-09-04,2026-09-04,Instagram Ads,3,2026-01-21,Family Premium,125,Pinstack Plano,Bowling
+MEM-1053,Zuri,Parker,zuri.parker@gmail.com,Phoenix,85022,2025-08-03,2026-08-03,Organic Search,2,2025-08-17,Family,99,Golfland Sunsplash,Mini Golf
+MEM-1198,Soo,Scott,soo.scott@yahoo.com,Denver,80207,2025-01-01,2026-01-01,Instagram Ads,1,2025-07-21,Individual,29,Monster Mini Golf Denver,Mini Golf
+MEM-1062,Richard,Gomez,richard.gomez@icloud.com,Phoenix,85003,2025-10-24,2026-10-24,Affiliate,8,2026-01-01,Couple,49,Phoenix Escape Room,Escape Room
+MEM-1234,Priya,Chavez,priya.chavez@gmail.com,Nashville,37219,2025-10-11,2026-10-11,Word of Mouth,25,2026-03-28,Family,99,Nashville Fun Factory,Arcade
+MEM-1230,Carolyn,Cruz,carolyn.cruz@hotmail.com,Nashville,37208,2026-02-20,2027-02-20,Facebook Ads,1,2026-02-23,Family,99,Sky Zone Nashville,Trampoline Park
+MEM-1226,Ivan,Cox,ivan.cox@outlook.com,Nashville,37204,2025-02-12,2026-02-12,Groupon,3,2025-10-06,Couple,49,Nashville Mini Golf,Mini Golf
+MEM-1033,Stephanie,Foster,stephanie.foster@gmail.com,Salt Lake City,84118,2025-11-02,2026-11-02,Groupon,0,,Couple,49,,
+MEM-1061,Nikolai,Young,nikolai.young@yahoo.com,Phoenix,85023,2026-02-07,2027-02-07,Word of Mouth,4,2026-03-12,Family Premium,125,Octane Raceway,Arcade
+MEM-1042,Douglas,Wilson,douglas.wilson@yahoo.com,Salt Lake City,84120,2026-03-15,2027-03-15,Instagram Ads,0,,Family,99,,
+MEM-1097,Rebecca,Castro,rebecca.castro@outlook.com,Phoenix,85001,2025-11-11,2026-11-11,Facebook Ads,6,2025-12-25,Couple,49,Golfland Sunsplash,Mini Golf
+MEM-1141,Jordan,Mensah,jordan.mensah@outlook.com,Dallas,75123,2025-08-23,2026-08-23,Groupon,6,2026-02-01,Individual,29,Escapology Dallas,Escape Room
+MEM-1240,Malik,Russell,malik.russell@proton.me,Nashville,37217,2025-08-07,2026-08-07,Facebook Ads,3,2025-09-24,Family,99,Topgolf Nashville,Arcade
+MEM-1246,Lily,Davis,lily.davis@aol.com,Nashville,37211,2025-07-25,2026-07-25,Instagram Ads,2,2025-09-19,Couple,49,Topgolf Nashville,Arcade
+MEM-1172,Janet,Park,janet.park@proton.me,Denver,80214,2025-12-28,2026-12-28,Groupon,4,2026-02-15,Individual,29,Hyperspace Arcade,Arcade
+MEM-1024,Leah,Fischer,leah.fischer@yahoo.com,Salt Lake City,84107,2026-03-25,2027-03-25,Groupon,0,,Individual,29,,
+MEM-1176,Violet,Johansson,violet.johansson@aol.com,Denver,80212,2025-09-03,2026-09-03,Instagram Ads,2,2025-09-30,Individual,29,Wings Over the Rockies Museum,Museum
+MEM-1118,Deborah,Ross,deborah.ross@proton.me,Dallas,75121,2025-06-06,2026-06-06,Affiliate,3,2025-10-18,Family,99,iFLY Dallas,Arcade
+MEM-1215,Aiden,Castillo,aiden.castillo@proton.me,Nashville,37221,2026-01-04,2027-01-04,Word of Mouth,21,2026-04-03,Family,99,Nashville Fun Factory,Arcade
+MEM-1188,Raj,Hassan,raj.hassan@yahoo.com,Denver,80220,2026-03-26,2027-03-26,Affiliate,0,,Family Premium,125,,
+MEM-1158,Savannah,Perry,savannah.perry@aol.com,Denver,80203,2025-07-23,2026-07-23,Affiliate,13,2026-03-31,Family Premium,125,Sky Zone Denver,Trampoline Park
+MEM-1016,Raj,Adeyemi,raj.adeyemi@outlook.com,Salt Lake City,84106,2025-12-06,2026-12-06,Word of Mouth,25,2026-03-29,Family,99,Cowabunga Bay,Water Park
+MEM-1247,Morgan,Gomez,morgan.gomez@icloud.com,Nashville,37215,2026-01-01,2027-01-01,Instagram Ads,8,2026-03-05,Family,99,Nashville Mini Golf,Mini Golf
+MEM-1072,Kai,Brooks,kai.brooks@proton.me,Phoenix,85024,2025-09-02,2026-09-02,Organic Search,4,2025-12-14,Couple,49,Sky Zone Phoenix,Trampoline Park
+MEM-1068,Samuel,Butler,samuel.butler@outlook.com,Phoenix,85004,2025-02-07,2026-02-07,Instagram Ads,1,2025-09-09,Individual,29,Bowlero Scottsdale,Bowling
+MEM-1085,Peter,Ford,peter.ford@yahoo.com,Phoenix,85001,2025-06-16,2026-06-16,Facebook Ads,2,2025-09-12,Couple,49,Bowlero Scottsdale,Bowling
+MEM-1090,Tyler,Robinson,tyler.robinson@gmail.com,Phoenix,85006,2025-06-09,2026-06-09,Word of Mouth,17,2026-04-10,Couple,49,Castles N Coasters,Amusement Park
+MEM-1207,Samantha,Flores,samantha.flores@icloud.com,Nashville,37215,2026-03-26,2027-03-26,Groupon,0,,Family,99,,
+MEM-1066,Mary,Mitchell,mary.mitchell@hotmail.com,Phoenix,85006,2025-08-03,2026-08-03,Groupon,3,2025-11-22,Individual,29,Phoenix Zoo,Zoo
+MEM-1105,Kenji,Petrov,kenji.petrov@yahoo.com,Dallas,75112,2025-02-10,2026-02-10,Word of Mouth,19,2026-03-31,Family Premium,125,Hawaiian Falls,Water Park
+MEM-1078,Marcus,Cooper,marcus.cooper@aol.com,Phoenix,85016,2025-08-31,2026-08-31,Facebook Ads,8,2026-02-26,Family,99,Topgolf Scottsdale,Arcade
+MEM-1015,Joan,Bennett,joan.bennett@icloud.com,Salt Lake City,84104,2025-03-24,2026-03-24,Instagram Ads,5,2025-08-08,Family,99,Putters Fun Center,Mini Golf
+MEM-1213,Katherine,Butler,katherine.butler@outlook.com,Nashville,37206,2026-03-21,2027-03-21,Facebook Ads,0,,Individual,29,,
+MEM-1020,Edward,Flores,edward.flores@icloud.com,Salt Lake City,84120,2025-12-08,2026-12-08,Organic Search,12,2026-03-27,Couple,49,Discovery Gateway Museum,Museum
+MEM-1126,Soo,Bailey,soo.bailey@aol.com,Dallas,75115,2026-03-22,2027-03-22,Affiliate,0,,Individual,29,,
+MEM-1122,Nia,Singh,nia.singh@gmail.com,Dallas,75119,2026-01-18,2027-01-18,Facebook Ads,8,2026-02-15,Family Premium,125,Dallas World Aquarium,Aquarium
+MEM-1069,Jennifer,Turner,jennifer.turner@gmail.com,Phoenix,85003,2025-01-04,2026-01-04,Facebook Ads,1,2026-01-07,Individual,29,Arizona Science Center,Museum
+MEM-1136,Chen,Collins,chen.collins@aol.com,Dallas,75119,2025-04-23,2026-04-23,Word of Mouth,2,2025-08-20,Family Premium,125,Perot Museum of Nature,Museum
+MEM-1065,Soren,Taylor,soren.taylor@yahoo.com,Phoenix,85017,2025-06-13,2026-06-13,Facebook Ads,3,2025-06-24,Family,99,Topgolf Scottsdale,Arcade
+MEM-1190,Yuki,Powell,yuki.powell@hotmail.com,Denver,80215,2025-09-10,2026-09-10,Instagram Ads,1,2025-10-21,Family Premium,125,Punch Bowl Social,Arcade
+MEM-1098,Terrence,Yamamoto,terrence.yamamoto@icloud.com,Phoenix,85007,2025-09-21,2026-09-21,Groupon,0,,Family,99,,
+MEM-1229,Donna,Clark,donna.clark@aol.com,Nashville,37220,2025-11-27,2026-11-27,Groupon,0,,Family,99,,
+MEM-1017,Thomas,Walker,thomas.walker@outlook.com,Salt Lake City,84112,2025-12-04,2026-12-04,Affiliate,1,2025-12-27,Family,99,Loveland Living Planet Aquarium,Aquarium
+MEM-1029,Owen,Ali,owen.ali@outlook.com,Salt Lake City,84118,2025-12-19,2026-12-19,Groupon,1,2026-01-17,Family,99,Lagoon Amusement Park,Amusement Park
+MEM-1168,Mei,Henderson,mei.henderson@icloud.com,Denver,80220,2025-11-06,2026-11-06,Instagram Ads,4,2026-03-16,Couple,49,Hyperspace Arcade,Arcade
+MEM-1238,Olivia,Cooper,olivia.cooper@outlook.com,Nashville,37211,2025-04-12,2026-04-12,Facebook Ads,1,2025-11-08,Couple,49,Nashville Escape Room,Escape Room
+MEM-1167,James,Murphy,james.murphy@aol.com,Denver,80205,2025-08-17,2026-08-17,Organic Search,0,,Couple,49,,
+MEM-1216,Hassan,Coleman,hassan.coleman@yahoo.com,Nashville,37207,2025-01-12,2026-01-12,Affiliate,1,2025-04-28,Couple,49,Adventure Science Center,Museum
+MEM-1203,Nora,Parker,nora.parker@yahoo.com,Nashville,37212,2026-01-12,2027-01-12,Facebook Ads,6,2026-02-08,Individual,29,Nashville Escape Room,Escape Room
+MEM-1107,Laura,Scott,laura.scott@hotmail.com,Dallas,75110,2025-11-26,2026-11-26,Word of Mouth,13,2026-04-03,Family Premium,125,Dallas Adventure Park,Amusement Park
+MEM-1224,Malik,Patel,malik.patel@proton.me,Nashville,37216,2026-01-22,2027-01-22,Word of Mouth,10,2026-03-12,Family Premium,125,Pins Mechanical Nashville,Bowling
+MEM-1197,Quinn,Morris,quinn.morris@icloud.com,Denver,80212,2026-01-26,2027-01-26,Facebook Ads,25,2026-03-27,Family,99,Downtown Aquarium Denver,Aquarium
+MEM-1228,Xavier,Sanchez,xavier.sanchez@outlook.com,Nashville,37212,2025-08-15,2026-08-15,Word of Mouth,4,2026-03-16,Couple,49,Nashville Shores,Water Park
+MEM-1127,Priya,Rodriguez,priya.rodriguez@proton.me,Dallas,75115,2026-02-19,2027-02-19,Word of Mouth,21,2026-04-08,Family,99,iFLY Dallas,Arcade
+MEM-1244,Tanya,Cooper,tanya.cooper@yahoo.com,Nashville,37215,2025-05-23,2026-05-23,Facebook Ads,0,,Family Premium,125,,
+MEM-1162,Andrew,Choi,andrew.choi@proton.me,Denver,80208,2025-07-19,2026-07-19,Instagram Ads,1,2025-10-28,Family,99,Wings Over the Rockies Museum,Museum
+MEM-1091,Imani,Sharma,imani.sharma@gmail.com,Phoenix,85003,2026-02-14,2027-02-14,Facebook Ads,0,,Individual,29,,
+MEM-1120,Karen,Phillips,karen.phillips@outlook.com,Dallas,75122,2025-08-31,2026-08-31,Word of Mouth,1,2025-11-21,Family,99,Dallas Zoo,Zoo
+MEM-1131,Kai,Flores,kai.flores@proton.me,Dallas,75119,2025-02-01,2026-02-01,Word of Mouth,9,2026-01-13,Individual,29,Dallas World Aquarium,Aquarium
+MEM-1045,Elena,Martinez,elena.martinez@yahoo.com,Salt Lake City,84110,2025-10-28,2026-10-28,Instagram Ads,6,2026-01-24,Family Premium,125,Salt Lake Lanes,Bowling
+MEM-1157,Joseph,Campbell,joseph.campbell@proton.me,Denver,80210,2026-04-07,2027-04-07,Groupon,0,,Family Premium,125,,
+MEM-1177,Martha,Thomas,martha.thomas@proton.me,Denver,80221,2025-02-13,2026-02-13,Groupon,1,2025-04-30,Individual,29,Denver Zoo,Zoo
+MEM-1175,Ethan,Miller,ethan.miller@yahoo.com,Denver,80206,2026-03-25,2027-03-25,Word of Mouth,0,,Family,99,,
+MEM-1185,DeShawn,Nakamura,deshawn.nakamura@aol.com,Denver,80219,2026-02-20,2027-02-20,Word of Mouth,7,2026-03-14,Couple,49,Downtown Aquarium Denver,Aquarium
+MEM-1217,Nancy,Gonzalez,nancy.gonzalez@yahoo.com,Nashville,37207,2025-10-18,2026-10-18,Groupon,2,2026-03-01,Family Premium,125,Adventure Science Center,Museum
+MEM-1192,Kyle,Anderson,kyle.anderson@yahoo.com,Denver,80211,2025-07-11,2026-07-11,Organic Search,0,,Individual,29,,
+MEM-1195,Joshua,King,joshua.king@icloud.com,Denver,80219,2025-02-07,2026-02-07,Affiliate,1,2025-07-31,Family,99,EscapeWorks Denver,Escape Room
+MEM-1239,Megan,Hughes,megan.hughes@yahoo.com,Nashville,37221,2025-05-25,2026-05-25,Instagram Ads,1,2025-07-12,Couple,49,Nashville Zoo,Zoo
+MEM-1138,Amara,Watanabe,amara.watanabe@aol.com,Dallas,75120,2026-04-02,2027-04-02,Instagram Ads,0,,Family Premium,125,,
+MEM-1160,Miguel,Becker,miguel.becker@aol.com,Denver,80210,2026-04-09,2027-04-09,Instagram Ads,0,,Family,99,,
+MEM-1241,Yuki,Clark,yuki.clark@icloud.com,Nashville,37215,2026-01-01,2027-01-01,Word of Mouth,15,2026-04-04,Family,99,Sky Zone Nashville,Trampoline Park
+MEM-1035,Karen,Stewart,karen.stewart@outlook.com,Salt Lake City,84116,2025-02-28,2026-02-28,Facebook Ads,0,,Family,99,,
+MEM-1087,Karen,Chavez,karen.chavez@yahoo.com,Phoenix,85003,2025-02-10,2026-02-10,Groupon,8,2025-08-21,Family Premium,125,Bowlero Scottsdale,Bowling
+MEM-1178,Reese,Torres,reese.torres@aol.com,Denver,80204,2025-07-07,2026-07-07,Organic Search,2,2025-08-23,Couple,49,Sky Zone Denver,Trampoline Park
+MEM-1057,Malik,Cook,malik.cook@proton.me,Phoenix,85021,2026-03-19,2027-03-19,Affiliate,0,,Couple,49,,
+MEM-1014,Zoe,Diaz,zoe.diaz@hotmail.com,Salt Lake City,84102,2026-02-10,2027-02-10,Word of Mouth,9,2026-03-14,Couple,49,Cowabunga Bay,Water Park
+MEM-1218,Brian,Richardson,brian.richardson@aol.com,Nashville,37210,2026-03-28,2027-03-28,Affiliate,0,,Individual,29,,
+MEM-1182,Celeste,Wood,celeste.wood@outlook.com,Denver,80214,2025-11-21,2026-11-21,Word of Mouth,19,2026-03-29,Couple,49,Lucky Strike Denver,Bowling
+MEM-1039,Hassan,Gonzales,hassan.gonzales@outlook.com,Salt Lake City,84112,2026-01-23,2027-01-23,Instagram Ads,10,2026-03-17,Family Premium,125,Classic Fun Center,Arcade
+MEM-1025,Peyton,Graham,peyton.graham@gmail.com,Salt Lake City,84103,2025-06-13,2026-06-13,Instagram Ads,3,2025-08-21,Individual,29,Topgolf Salt Lake,Arcade
+MEM-1004,Freya,Wong,freya.wong@outlook.com,Salt Lake City,84105,2025-09-29,2026-09-29,Groupon,0,,Family Premium,125,,
+MEM-1204,Morgan,Powell,morgan.powell@icloud.com,Nashville,37201,2025-03-23,2026-03-23,Facebook Ads,9,2026-03-15,Individual,29,Wave Country Water Park,Water Park
+MEM-1140,Angela,Perez,angela.perez@gmail.com,Dallas,75118,2026-04-08,2027-04-08,Groupon,0,,Couple,49,,
+MEM-1058,Imani,Becker,imani.becker@gmail.com,Phoenix,85021,2026-02-20,2027-02-20,Organic Search,7,2026-03-26,Couple,49,Sky Zone Phoenix,Trampoline Park
+MEM-1081,Margaret,Rivera,margaret.rivera@yahoo.com,Phoenix,85006,2025-09-17,2026-09-17,Word of Mouth,11,2026-03-29,Couple,49,Phoenix Zoo,Zoo
+MEM-1054,Cristina,Diaz,cristina.diaz@yahoo.com,Phoenix,85008,2025-11-09,2026-11-09,Facebook Ads,4,2025-12-14,Individual,29,Topgolf Scottsdale,Arcade
+MEM-1152,Violet,Adeyemi,violet.adeyemi@aol.com,Dallas,75106,2025-04-08,2026-04-08,Facebook Ads,2,2025-12-27,Couple,49,Pinstack Plano,Bowling
+MEM-1248,Min,Sanders,min.sanders@aol.com,Nashville,37217,2025-06-12,2026-06-12,Groupon,3,2025-10-31,Couple,49,Nashville Fun Factory,Arcade
+MEM-1114,Noah,Clark,noah.clark@icloud.com,Dallas,75111,2025-08-23,2026-08-23,Facebook Ads,6,2025-12-19,Family,99,Hawaiian Falls,Water Park
+MEM-1232,Frank,Turner,frank.turner@icloud.com,Nashville,37211,2025-12-14,2026-12-14,Facebook Ads,0,,Couple,49,,
+MEM-1220,Priya,Lindgren,priya.lindgren@proton.me,Nashville,37208,2026-04-02,2027-04-02,Facebook Ads,0,,Family,99,,
+MEM-1137,Peyton,Hernandez,peyton.hernandez@gmail.com,Dallas,75119,2026-04-04,2027-04-04,Facebook Ads,0,,Couple,49,,
+MEM-1166,Gary,Vasquez,gary.vasquez@aol.com,Denver,80205,2026-02-09,2027-02-09,Organic Search,2,2026-02-17,Couple,49,Denver Zoo,Zoo
+MEM-1077,Laura,Wong,laura.wong@yahoo.com,Phoenix,85002,2026-03-11,2027-03-11,Affiliate,0,,Family,99,,
+MEM-1095,Samuel,Graham,samuel.graham@outlook.com,Phoenix,85021,2025-08-19,2026-08-19,Organic Search,2,2026-03-12,Couple,49,Phoenix Escape Room,Escape Room
+MEM-1101,Barbara,Becker,barbara.becker@icloud.com,Phoenix,85023,2026-02-07,2027-02-07,Facebook Ads,0,,Family Premium,125,,
+MEM-1222,Elizabeth,Nelson,elizabeth.nelson@hotmail.com,Nashville,37214,2025-05-16,2026-05-16,Affiliate,7,2026-01-09,Family Premium,125,The Frist Art Museum,Museum
+MEM-1186,Adrian,Yamamoto,adrian.yamamoto@hotmail.com,Denver,80217,2025-06-07,2026-06-07,Organic Search,0,,Family,99,,
+MEM-1113,Layla,Muller,layla.muller@yahoo.com,Dallas,75117,2025-04-11,2026-04-11,Word of Mouth,1,2025-12-22,Couple,49,iFLY Dallas,Arcade
+MEM-1079,Ashley,Murphy,ashley.murphy@aol.com,Phoenix,85002,2026-03-13,2027-03-13,Organic Search,0,,Couple,49,,
+MEM-1130,Sofia,Weber,sofia.weber@proton.me,Dallas,75116,2025-02-09,2026-02-09,Word of Mouth,18,2026-04-04,Family,99,iFLY Dallas,Arcade
+MEM-1250,Sarah,Sanchez,sarah.sanchez@gmail.com,Nashville,37221,2025-04-16,2026-04-16,Organic Search,3,2025-06-22,Couple,49,Nashville Shores,Water Park
+MEM-1055,Virginia,Roberts,virginia.roberts@hotmail.com,Phoenix,85004,2025-07-26,2026-07-26,Word of Mouth,7,2025-09-26,Family,99,Bowlero Scottsdale,Bowling
+MEM-1117,Dakota,Castro,dakota.castro@proton.me,Dallas,75117,2025-01-07,2026-01-07,Groupon,0,,Couple,49,,
+MEM-1103,Sandra,Parker,sandra.parker@outlook.com,Dallas,75114,2025-03-22,2026-03-22,Instagram Ads,2,2025-05-09,Couple,49,Topgolf Dallas,Arcade
+MEM-1074,Angela,Campbell,angela.campbell@icloud.com,Phoenix,85001,2025-08-07,2026-08-07,Word of Mouth,7,2026-01-15,Family Premium,125,Phoenix Zoo,Zoo
+MEM-1145,Christopher,Abadi,christopher.abadi@proton.me,Dallas,75101,2026-01-21,2027-01-21,Organic Search,1,2026-02-21,Individual,29,Escapology Dallas,Escape Room
+MEM-1149,Chidi,Ibrahim,chidi.ibrahim@yahoo.com,Dallas,75107,2025-08-01,2026-08-01,Instagram Ads,2,2025-12-10,Couple,49,Pinstack Plano,Bowling
+MEM-1018,Finn,Jones,finn.jones@outlook.com,Salt Lake City,84106,2025-04-28,2026-04-28,Affiliate,6,2025-12-21,Family,99,Cowabunga Bay,Water Park
+MEM-1156,Brandon,Ward,brandon.ward@yahoo.com,Denver,80210,2025-02-10,2026-02-10,Facebook Ads,5,2025-08-12,Family Premium,125,Monster Mini Golf Denver,Mini Golf
+MEM-1206,Yuki,Brown,yuki.brown@gmail.com,Nashville,37209,2025-02-16,2026-02-16,Word of Mouth,9,2025-03-10,Family,99,Nashville Mini Golf,Mini Golf
+MEM-1019,Ethan,Jackson,ethan.jackson@gmail.com,Salt Lake City,84103,2025-05-17,2026-05-17,Instagram Ads,1,2025-05-21,Family Premium,125,Salt Lake Lanes,Bowling
+MEM-1076,Kavita,Smith,kavita.smith@outlook.com,Phoenix,85018,2025-11-04,2026-11-04,Groupon,2,2026-02-24,Family Premium,125,Phoenix Escape Room,Escape Room
+MEM-1022,Leo,Cox,leo.cox@outlook.com,Salt Lake City,84104,2025-03-29,2026-03-29,Word of Mouth,27,2026-03-28,Family Premium,125,Topgolf Salt Lake,Arcade
+MEM-1089,Kenneth,Fisher,kenneth.fisher@yahoo.com,Phoenix,85024,2025-09-20,2026-09-20,Word of Mouth,1,2025-11-02,Family,99,OdySea Aquarium,Aquarium
+MEM-1009,Martha,Johnson,martha.johnson@proton.me,Salt Lake City,84107,2025-06-19,2026-06-19,Facebook Ads,2,2025-12-24,Individual,29,Discovery Gateway Museum,Museum
+MEM-1139,Aisha,Campbell,aisha.campbell@icloud.com,Dallas,75106,2025-07-29,2026-07-29,Facebook Ads,1,2025-10-02,Family Premium,125,Urban Air Trampoline Park,Trampoline Park
+MEM-1044,Susan,Chen,susan.chen@aol.com,Salt Lake City,84111,2025-05-25,2026-05-25,Instagram Ads,1,2026-02-14,Family,99,Cowabunga Bay,Water Park
+MEM-1049,Nancy,Davis,nancy.davis@icloud.com,Salt Lake City,84101,2025-11-17,2026-11-17,Instagram Ads,7,2025-12-13,Individual,29,Lagoon Amusement Park,Amusement Park
+MEM-1159,Gabriela,Perry,gabriela.perry@aol.com,Denver,80207,2026-03-22,2027-03-22,Instagram Ads,0,,Individual,29,,
+MEM-1059,Jordan,Phillips,jordan.phillips@yahoo.com,Phoenix,85001,2026-02-13,2027-02-13,Groupon,2,2026-02-24,Family,99,Sky Zone Phoenix,Trampoline Park
+MEM-1221,Audrey,Young,audrey.young@proton.me,Nashville,37210,2025-01-07,2026-01-07,Organic Search,0,,Family Premium,125,,
+MEM-1129,Gregory,Kelly,gregory.kelly@gmail.com,Dallas,75120,2026-03-18,2027-03-18,Organic Search,0,,Family Premium,125,,
+MEM-1012,Diego,Gomez,diego.gomez@proton.me,Salt Lake City,84116,2025-07-09,2026-07-09,Instagram Ads,1,2025-09-21,Couple,49,Hogle Zoo,Zoo
+MEM-1011,Emma,Richardson,emma.richardson@icloud.com,Salt Lake City,84104,2025-09-21,2026-09-21,Word of Mouth,2,2025-11-19,Family,99,Get Air Trampoline Park,Trampoline Park
+MEM-1146,Nancy,Ali,nancy.ali@gmail.com,Dallas,75112,2025-06-27,2026-06-27,Facebook Ads,3,2025-12-20,Family Premium,125,Epic Waters Indoor Waterpark,Water Park
+MEM-1200,Chidi,Harris,chidi.harris@proton.me,Denver,80219,2025-07-05,2026-07-05,Organic Search,3,2025-09-19,Couple,49,Denver Museum of Nature,Museum
+MEM-1237,Kenji,Sharma,kenji.sharma@hotmail.com,Nashville,37220,2026-03-22,2027-03-22,Groupon,0,,Individual,29,,
+MEM-1119,Aaliyah,Jimenez,aaliyah.jimenez@proton.me,Dallas,75117,2026-02-12,2027-02-12,Organic Search,3,2026-03-20,Couple,49,Escapology Dallas,Escape Room
+MEM-1110,Melissa,Lopez,melissa.lopez@outlook.com,Dallas,75119,2025-08-27,2026-08-27,Word of Mouth,5,2026-03-31,Individual,29,Epic Waters Indoor Waterpark,Water Park
+MEM-1005,Hiroshi,Fisher,hiroshi.fisher@proton.me,Salt Lake City,84102,2025-05-10,2026-05-10,Organic Search,5,2026-01-04,Individual,29,Lagoon Amusement Park,Amusement Park
+MEM-1108,Quinn,Fischer,quinn.fischer@yahoo.com,Dallas,75108,2026-01-10,2027-01-10,Instagram Ads,0,,Individual,29,,
+MEM-1189,Diego,Nakamura,diego.nakamura@yahoo.com,Denver,80215,2025-07-30,2026-07-30,Affiliate,0,,Individual,29,,
+MEM-1051,Larry,Murphy,larry.murphy@hotmail.com,Salt Lake City,84108,2025-02-20,2026-02-20,Groupon,0,,Couple,49,,
+MEM-1102,Darius,Wood,darius.wood@proton.me,Phoenix,85004,2026-03-24,2027-03-24,Organic Search,0,,Couple,49,,
+MEM-1174,Grace,James,grace.james@outlook.com,Denver,80211,2025-04-23,2026-04-23,Organic Search,7,2025-08-21,Couple,49,Denver Zoo,Zoo
+MEM-1151,Martha,Turner,martha.turner@proton.me,Dallas,75112,2025-05-22,2026-05-22,Instagram Ads,3,2025-08-19,Couple,49,Hawaiian Falls,Water Park
+MEM-1179,Ryan,Hughes,ryan.hughes@hotmail.com,Denver,80216,2025-05-08,2026-05-08,Groupon,0,,Family,99,,
+MEM-1191,Sarah,Howard,sarah.howard@icloud.com,Denver,80208,2025-05-27,2026-05-27,Groupon,2,2026-01-19,Family Premium,125,Downtown Aquarium Denver,Aquarium
+MEM-1047,Barbara,Lopez,barbara.lopez@yahoo.com,Salt Lake City,84120,2025-06-25,2026-06-25,Organic Search,1,2026-01-10,Couple,49,Loveland Living Planet Aquarium,Aquarium
+MEM-1031,Celeste,Lindgren,celeste.lindgren@yahoo.com,Salt Lake City,84102,2025-07-02,2026-07-02,Affiliate,1,2025-09-23,Family,99,Get Air Trampoline Park,Trampoline Park
+MEM-1135,Daniel,Castillo,daniel.castillo@hotmail.com,Dallas,75117,2026-01-09,2027-01-09,Facebook Ads,5,2026-02-01,Individual,29,Escapology Dallas,Escape Room
+MEM-1171,Katherine,Alvarez,katherine.alvarez@icloud.com,Denver,80202,2025-12-31,2026-12-31,Organic Search,0,,Family,99,,
+MEM-1154,Christina,Powell,christina.powell@yahoo.com,Denver,80215,2025-01-07,2026-01-07,Groupon,0,,Individual,29,,
+MEM-1132,Takeshi,Murray,takeshi.murray@proton.me,Dallas,75104,2025-07-29,2026-07-29,Word of Mouth,9,2025-11-13,Family,99,Topgolf Dallas,Arcade
+MEM-1056,Christine,Lopez,christine.lopez@outlook.com,Phoenix,85015,2025-05-16,2026-05-16,Affiliate,0,,Family Premium,125,,
+MEM-1181,Michael,Vasquez,michael.vasquez@proton.me,Denver,80205,2026-01-12,2027-01-12,Word of Mouth,4,2026-02-08,Couple,49,Hyperspace Arcade,Arcade
+MEM-1227,Matthew,Gray,matthew.gray@icloud.com,Nashville,37213,2025-02-15,2026-02-15,Instagram Ads,0,,Individual,29,,
+MEM-1030,Kenji,Miller,kenji.miller@icloud.com,Salt Lake City,84117,2025-10-01,2026-10-01,Affiliate,2,2025-12-13,Individual,29,Topgolf Salt Lake,Arcade
+MEM-1180,Kwame,Rivera,kwame.rivera@yahoo.com,Denver,80204,2025-12-09,2026-12-09,Affiliate,10,2026-01-23,Family,99,Denver Zoo,Zoo
+MEM-1194,Jessica,Simmons,jessica.simmons@proton.me,Denver,80221,2025-07-01,2026-07-01,Groupon,12,2026-04-08,Family,99,Punch Bowl Social,Arcade
+MEM-1233,Rowan,Mendoza,rowan.mendoza@gmail.com,Nashville,37206,2025-07-14,2026-07-14,Organic Search,10,2026-02-01,Individual,29,Nashville Zoo,Zoo
+MEM-1071,Nancy,King,nancy.king@gmail.com,Phoenix,85006,2025-04-13,2026-04-13,Instagram Ads,0,,Individual,29,,
+MEM-1209,Teresa,Chen,teresa.chen@proton.me,Nashville,37218,2025-02-19,2026-02-19,Organic Search,0,,Family,99,,
+MEM-1008,Tyler,Ali,tyler.ali@gmail.com,Salt Lake City,84101,2026-01-02,2027-01-02,Groupon,0,,Family,99,,
+MEM-1006,Gary,Cook,gary.cook@proton.me,Salt Lake City,84111,2025-12-21,2026-12-21,Word of Mouth,1,2026-01-09,Family Premium,125,Discovery Gateway Museum,Museum
+MEM-1027,Jose,Osei,jose.osei@icloud.com,Salt Lake City,84108,2026-03-01,2027-03-01,Affiliate,1,2026-03-05,Couple,49,Lagoon Amusement Park,Amusement Park
+MEM-1142,Mark,Hughes,mark.hughes@gmail.com,Dallas,75117,2025-10-01,2026-10-01,Groupon,0,,Family,99,,
+MEM-1092,Diego,Martin,diego.martin@aol.com,Phoenix,85022,2025-04-09,2026-04-09,Organic Search,6,2025-09-29,Family Premium,125,Arizona Science Center,Museum
+MEM-1028,James,Park,james.park@yahoo.com,Salt Lake City,84118,2025-06-18,2026-06-18,Groupon,0,,Individual,29,,
+MEM-1211,Omar,Peterson,omar.peterson@outlook.com,Nashville,37218,2025-10-23,2026-10-23,Organic Search,6,2026-03-01,Individual,29,Nashville Fun Factory,Arcade
+MEM-1111,Cynthia,Mendoza,cynthia.mendoza@hotmail.com,Dallas,75101,2025-12-24,2026-12-24,Word of Mouth,1,2026-02-04,Family,99,Perot Museum of Nature,Museum
+MEM-1163,Jessica,Murray,jessica.murray@hotmail.com,Denver,80202,2025-12-30,2026-12-30,Organic Search,2,2026-01-24,Family,99,Sky Zone Denver,Trampoline Park
+MEM-1046,Anthony,Jones,anthony.jones@gmail.com,Salt Lake City,84121,2026-04-06,2027-04-06,Groupon,0,,Family Premium,125,,
+MEM-1219,Jerry,Moreau,jerry.moreau@outlook.com,Nashville,37217,2026-01-18,2027-01-18,Groupon,5,2026-02-02,Family,99,Nashville Zoo,Zoo
+MEM-1128,Adrian,Campbell,adrian.campbell@gmail.com,Dallas,75108,2025-06-05,2026-06-05,Groupon,3,2025-10-18,Individual,29,Perot Museum of Nature,Museum
+MEM-1165,Linda,Ibrahim,linda.ibrahim@hotmail.com,Denver,80201,2025-09-27,2026-09-27,Facebook Ads,7,2025-12-04,Family Premium,125,Water World Denver,Water Park
+MEM-1249,Alejandro,Myers,alejandro.myers@aol.com,Nashville,37203,2025-07-06,2026-07-06,Affiliate,1,2025-08-08,Individual,29,Nashville Mini Golf,Mini Golf
+MEM-1083,Deepak,Ford,deepak.ford@yahoo.com,Phoenix,85015,2025-09-16,2026-09-16,Word of Mouth,18,2026-03-29,Family,99,Phoenix Escape Room,Escape Room
+MEM-1052,Christina,Thompson,christina.thompson@proton.me,Phoenix,85013,2025-12-01,2026-12-01,Facebook Ads,20,2026-04-06,Couple,49,Big Surf Water Park,Water Park
+MEM-1109,Lisa,Sanders,lisa.sanders@aol.com,Dallas,75118,2025-06-27,2026-06-27,Facebook Ads,9,2026-03-18,Family Premium,125,Escapology Dallas,Escape Room
+MEM-1010,Richard,Bell,richard.bell@proton.me,Salt Lake City,84101,2025-08-10,2026-08-10,Instagram Ads,3,2025-10-07,Family,99,Lagoon Amusement Park,Amusement Park
+MEM-1202,Kimberly,Parker,kimberly.parker@aol.com,Nashville,37204,2025-02-22,2026-02-22,Instagram Ads,3,2025-12-25,Family Premium,125,Grand Ole Golf,Mini Golf
+MEM-1199,Brian,Kelly,brian.kelly@proton.me,Denver,80218,2026-02-14,2027-02-14,Instagram Ads,1,2026-02-24,Couple,49,Hyperspace Arcade,Arcade
+MEM-1100,Luis,Weber,luis.weber@yahoo.com,Phoenix,85014,2025-11-14,2026-11-14,Affiliate,18,2026-03-28,Couple,49,Big Surf Water Park,Water Park
+MEM-1001,Amara,Muller,amara.muller@hotmail.com,Salt Lake City,84109,2026-03-12,2027-03-12,Instagram Ads,0,,Individual,29,,
+MEM-1125,Olivia,Reed,olivia.reed@outlook.com,Dallas,75104,2025-09-10,2026-09-10,Groupon,0,,Family,99,,
+MEM-1231,Michelle,Sanchez,michelle.sanchez@hotmail.com,Nashville,37203,2025-08-06,2026-08-06,Instagram Ads,1,2026-02-04,Family Premium,125,Nashville Mini Golf,Mini Golf
+MEM-1080,Dakota,Allen,dakota.allen@hotmail.com,Phoenix,85002,2025-04-16,2026-04-16,Groupon,1,2025-07-01,Couple,49,Bowlero Scottsdale,Bowling
+MEM-1021,Reese,James,reese.james@yahoo.com,Salt Lake City,84100,2025-08-05,2026-08-05,Facebook Ads,5,2026-02-23,Family,99,Escape This SLC,Escape Room
+MEM-1124,Gabriela,Lewis,gabriela.lewis@gmail.com,Dallas,75121,2026-03-16,2027-03-16,Affiliate,0,,Family Premium,125,,
+MEM-1040,Jade,Sanchez,jade.sanchez@gmail.com,Salt Lake City,84112,2025-05-24,2026-05-24,Word of Mouth,3,2025-10-25,Family Premium,125,Putters Fun Center,Mini Golf
+MEM-1235,Chen,Evans,chen.evans@yahoo.com,Nashville,37205,2025-10-27,2026-10-27,Facebook Ads,1,2025-12-11,Family,99,Nashville Escape Room,Escape Room
+MEM-1093,Kathleen,Hall,kathleen.hall@proton.me,Phoenix,85024,2025-11-21,2026-11-21,Instagram Ads,1,2026-02-24,Family Premium,125,OdySea Aquarium,Aquarium
+MEM-1161,Deepak,Morales,deepak.morales@aol.com,Denver,80217,2026-03-29,2027-03-29,Groupon,0,,Couple,49,,
+MEM-1048,Mateo,Laurent,mateo.laurent@gmail.com,Salt Lake City,84109,2026-03-12,2027-03-12,Groupon,0,,Couple,49,,
+MEM-1007,Malik,Wright,malik.wright@outlook.com,Salt Lake City,84104,2025-09-22,2026-09-22,Organic Search,2,2026-01-02,Individual,29,Cowabunga Bay,Water Park
+MEM-1173,Diego,Ali,diego.ali@hotmail.com,Denver,80219,2025-04-01,2026-04-01,Instagram Ads,2,2025-07-02,Family,99,Sky Zone Denver,Trampoline Park
+MEM-1242,William,Adeyemi,william.adeyemi@icloud.com,Nashville,37209,2026-02-18,2027-02-18,Groupon,0,,Family,99,,
