@@ -9,6 +9,7 @@ import { configureDataPaths } from './routes/data.js';
 import workspacesRouter from './routes/workspaces.js';
 import dataRouter from './routes/data.js';
 import chatRouter from './routes/chat.js';
+import { CANONICAL_FIELDS, autoMapColumns } from './mapping.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -36,6 +37,20 @@ export function createServer(options = {}) {
   app.use('/api/workspaces', workspacesRouter);
   app.use('/api/data', dataRouter);
   app.use('/api/chat', chatRouter);
+
+  // Mapping API routes
+  app.get('/api/mapping/fields', (req, res) => {
+    res.json(CANONICAL_FIELDS);
+  });
+
+  app.post('/api/mapping/auto', (req, res) => {
+    const { headers } = req.body;
+    if (!headers || !Array.isArray(headers)) {
+      return res.status(400).json({ error: 'headers array is required' });
+    }
+    const result = autoMapColumns(headers);
+    res.json(result);
+  });
 
   app.get('/api/files', (req, res) => {
     try {

@@ -4,7 +4,9 @@ import path from 'path';
 import { parse } from 'csv-parse/sync';
 import { randomUUID } from 'crypto';
 import { createTableFromCsv } from '../db/schema.js';
-import { closeDb } from '../db/connection.js';
+import { closeDb, getDb } from '../db/connection.js';
+import { autoMapColumns } from '../mapping.js';
+import { runSegmentation, DEFAULT_THRESHOLDS } from '../segmentation.js';
 
 let ROOT = process.cwd();
 let WORKSPACES_DIR = path.join(ROOT, 'server', 'workspaces');
@@ -86,6 +88,14 @@ router.post('/', (req, res) => {
     // Create SQLite database with the CSV data
     const result = createTableFromCsv(dbFile, allHeaders, allRows);
 
+    // Auto-map columns to canonical field names
+    const { mapping, unmapped, missing } = autoMapColumns(result.columns);
+
+    // Run segmentation with default thresholds
+    const db = getDb(dbFile);
+    const thresholds = { ...DEFAULT_THRESHOLDS };
+    const segResult = runSegmentation(db, mapping, thresholds);
+
     const config = {
       id,
       name,
@@ -96,6 +106,11 @@ router.post('/', (req, res) => {
         lastImported: new Date().toISOString(),
       },
       dbFile,
+      columnMapping: mapping,
+      unmappedColumns: unmapped,
+      missingRequiredFields: missing,
+      thresholds,
+      segmentation: segResult,
       customWidgets: [],
       dashboardLayout: [],
       activeFilters: {},
@@ -124,6 +139,31 @@ router.put('/:id', (req, res) => {
   const updated = { ...ws, ...req.body, id: ws.id };
   writeWorkspace(updated);
   res.json(updated);
+});
+
+// Update column mapping and re-run segmentation
+router.put('/:id/mapping', (req, res) => {
+  try {
+    const ws = readWorkspace(req.params.id);
+    if (!ws) return res.status(404).json({ error: 'Workspace not found' });
+
+    const { mapping, thresholds } = req.body;
+    if (!mapping) return res.status(400).json({ error: 'mapping is required' });
+
+    const db = getDb(ws.dbFile);
+    const useThresholds = thresholds || ws.thresholds || DEFAULT_THRESHOLDS;
+    const segResult = runSegmentation(db, mapping, useThresholds);
+
+    ws.columnMapping = mapping;
+    ws.thresholds = useThresholds;
+    ws.segmentation = segResult;
+
+    writeWorkspace(ws);
+    res.json({ mapping, segmentation: segResult });
+  } catch (err) {
+    console.error('Mapping update error:', err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Delete workspace
