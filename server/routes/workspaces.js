@@ -1,16 +1,20 @@
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { parse } from 'csv-parse/sync';
 import { randomUUID } from 'crypto';
 import { createTableFromCsv } from '../db/schema.js';
 import { closeDb } from '../db/connection.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '../..');
-const WORKSPACES_DIR = path.resolve(__dirname, '../workspaces');
-const DATA_DIR = path.resolve(ROOT, 'data');
+let ROOT = process.cwd();
+let WORKSPACES_DIR = path.join(ROOT, 'server', 'workspaces');
+let DATA_DIR = path.join(ROOT, 'data');
+
+export function configurePaths({ root, workspacesDir, dataDir }) {
+  ROOT = root;
+  WORKSPACES_DIR = workspacesDir;
+  DATA_DIR = dataDir;
+}
 
 const router = Router();
 

@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { getDb } from '../db/connection.js';
 import { getTableInfo } from '../db/schema.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '../..');
-const WORKSPACES_DIR = path.resolve(__dirname, '../workspaces');
+let WORKSPACES_DIR = path.join(process.cwd(), 'server', 'workspaces');
+
+export function configureDataPaths({ workspacesDir }) {
+  WORKSPACES_DIR = workspacesDir;
+}
 
 const router = Router();
 

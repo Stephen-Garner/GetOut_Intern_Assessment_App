@@ -1,14 +1,16 @@
 import Database from 'better-sqlite3';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '../..');
+let rootDir = process.cwd();
+
+export function setDbRoot(dir) {
+  rootDir = dir;
+}
 
 const connections = new Map();
 
 export function getDb(dbFile) {
-  const dbPath = path.resolve(ROOT, dbFile);
+  const dbPath = path.resolve(rootDir, dbFile);
 
   if (connections.has(dbPath)) {
     return connections.get(dbPath);
@@ -22,7 +24,7 @@ export function getDb(dbFile) {
 }
 
 export function closeDb(dbFile) {
-  const dbPath = path.resolve(ROOT, dbFile);
+  const dbPath = path.resolve(rootDir, dbFile);
   const db = connections.get(dbPath);
   if (db) {
     db.close();
