@@ -95,6 +95,7 @@ router.post('/', (req, res) => {
     const db = getDb(dbFile);
     const thresholds = { ...DEFAULT_THRESHOLDS };
     const segResult = runSegmentation(db, mapping, thresholds);
+    console.log(`Workspace "${name}" created: segmentation returned ${segResult.totalMembers} members, avg health ${segResult.avgHealthScore}`);
 
     const config = {
       id,

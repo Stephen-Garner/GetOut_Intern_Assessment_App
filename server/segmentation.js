@@ -235,5 +235,8 @@ export function runSegmentation(db, mapping, thresholds = DEFAULT_THRESHOLDS) {
   const totalMembers = members.length;
   const avgHealthScore = totalMembers > 0 ? Math.round(totalHealth / totalMembers) : 0;
 
+  const memberCount = totalMembers;
+  console.log(`Segmentation complete: ${memberCount} members processed, segments: ${JSON.stringify(segmentCounts)}`);
+
   return { totalMembers, segmentCounts, avgHealthScore };
 }
