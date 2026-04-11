@@ -1,5 +1,6 @@
 import Sidebar from '../components/Sidebar.jsx';
 import AIPanel from '../components/AIPanel.jsx';
+import Toast from '../components/Toast.jsx';
 import useAppStore from '../stores/useAppStore.js';
 import Dashboard from '../pages/Dashboard.jsx';
 import Members from '../pages/Members.jsx';
@@ -16,7 +17,7 @@ const pages = {
 };
 
 export default function DashboardLayout() {
-  const { activePageId } = useAppStore();
+  const { activePageId, toast, hideToast } = useAppStore();
   const Page = pages[activePageId] || Dashboard;
 
   return (
@@ -28,6 +29,7 @@ export default function DashboardLayout() {
         <Page />
       </main>
       <AIPanel />
+      {toast && <Toast message={toast} onClose={hideToast} />}
     </div>
   );
 }
