@@ -5,11 +5,13 @@ import Dashboard from '../pages/Dashboard.jsx';
 import Members from '../pages/Members.jsx';
 import Interventions from '../pages/Interventions.jsx';
 import Settings from '../pages/Settings.jsx';
+import Simulator from '../pages/Simulator.jsx';
 
 const pages = {
   dashboard: Dashboard,
   members: Members,
   interventions: Interventions,
+  simulator: Simulator,
   settings: Settings,
 };
 

@@ -1,4 +1,4 @@
-import { Radar, LayoutDashboard, Users, Zap, Settings, BotMessageSquare } from 'lucide-react';
+import { Radar, LayoutDashboard, Users, Zap, Calculator, Settings, BotMessageSquare } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import WorkspaceSwitcher from './WorkspaceSwitcher.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
@@ -7,6 +7,7 @@ const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'members', label: 'Members', icon: Users },
   { id: 'interventions', label: 'Interventions', icon: Zap },
+  { id: 'simulator', label: 'Simulator', icon: Calculator },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
