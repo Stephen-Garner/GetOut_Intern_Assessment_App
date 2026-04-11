@@ -15,8 +15,9 @@ export default function Sidebar() {
 
   return (
     <aside className="w-[220px] shrink-0 h-full flex flex-col bg-surface-secondary border-r border-border-primary">
-      {/* Logo */}
-      <div className="flex items-center gap-2.5 px-5 py-5">
+      {/* Drag region + Logo */}
+      <div className="drag-region pt-[38px]" />
+      <div className="flex items-center gap-2.5 px-5 py-4">
         <div className="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center">
           <Radar size={18} className="text-accent" />
         </div>

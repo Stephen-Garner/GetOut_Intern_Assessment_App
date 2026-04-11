@@ -59,6 +59,8 @@ function createWindow() {
     minWidth: 900,
     minHeight: 600,
     title: 'Beacon',
+    titleBarStyle: 'hiddenInset',
+    trafficLightPosition: { x: 16, y: 14 },
     backgroundColor: '#0A0A0F',
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),

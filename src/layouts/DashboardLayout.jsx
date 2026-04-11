@@ -21,6 +21,8 @@ export default function DashboardLayout() {
     <div className="flex h-full">
       <Sidebar />
       <main className="flex-1 min-w-[600px] overflow-y-auto bg-surface-primary panel-transition flex flex-col">
+        {/* Drag region for window movement (Electron hiddenInset title bar) */}
+        <div className="drag-region h-[38px] shrink-0" />
         <Page />
       </main>
       <AIPanel />
