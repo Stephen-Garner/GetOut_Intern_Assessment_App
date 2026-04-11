@@ -5,30 +5,26 @@
       <stop offset="0%" stop-color="#141420"/>
       <stop offset="100%" stop-color="#0a0a12"/>
     </linearGradient>
-    <linearGradient id="blue" x1="0" y1="0" x2="0.5" y2="1">
-      <stop offset="0%" stop-color="#60A5FA"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
   </defs>
   <!-- Background -->
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-
-  <!-- Outer radar arc (top-right quadrant sweep) -->
-  <path d="M 256,256 m 0,-170 a 170,170 0 0,1 170,170" 
-        fill="none" stroke="url(#blue)" stroke-width="28" stroke-linecap="round" stroke-opacity="0.35"/>
   
-  <!-- Middle radar arc -->
-  <path d="M 256,256 m 0,-120 a 120,120 0 0,1 120,120" 
-        fill="none" stroke="url(#blue)" stroke-width="28" stroke-linecap="round" stroke-opacity="0.6"/>
-  
-  <!-- Inner radar arc -->
-  <path d="M 256,256 m 0,-70 a 70,70 0 0,1 70,70" 
-        fill="none" stroke="url(#blue)" stroke-width="28" stroke-linecap="round" stroke-opacity="0.85"/>
-
+  <!-- Matches Lucide Radar icon: center dot + 3 concentric circle arcs -->
   <!-- Center dot -->
-  <circle cx="256" cy="256" r="22" fill="#3B82F6"/>
-  <circle cx="256" cy="256" r="32" fill="#3B82F6" fill-opacity="0.25"/>
-
-  <!-- Signal dot on outer arc -->
-  <circle cx="370" cy="148" r="14" fill="#60A5FA" fill-opacity="0.7"/>
+  <circle cx="256" cy="256" r="20" fill="#3B82F6"/>
+  
+  <!-- Inner ring (full circle, subtle) -->
+  <circle cx="256" cy="256" r="70" fill="none" stroke="#3B82F6" stroke-width="8" stroke-opacity="0.85"/>
+  
+  <!-- Middle ring -->
+  <circle cx="256" cy="256" r="125" fill="none" stroke="#3B82F6" stroke-width="8" stroke-opacity="0.55"/>
+  
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#3B82F6" stroke-width="8" stroke-opacity="0.3"/>
+  
+  <!-- Radar line sweeping to top-right -->
+  <line x1="256" y1="256" x2="384" y2="128" stroke="#3B82F6" stroke-width="8" stroke-linecap="round" stroke-opacity="0.7"/>
+  
+  <!-- Signal blip on the line -->
+  <circle cx="345" cy="167" r="10" fill="#60A5FA" fill-opacity="0.9"/>
 </svg>
