@@ -1,0 +1,53 @@
+appId: com.getout.beacon
+productName: Beacon
+copyright: Copyright © 2026 GetOut
+
+directories:
+  output: release
+  buildResources: assets
+
+files:
+  - dist/**/*
+  - server/**/*
+  - electron/**/*
+  - node_modules/**/*
+  - package.json
+
+mac:
+  category: public.app-category.business
+  icon: assets/icon.png
+  target:
+    - target: dmg
+      arch:
+        - universal
+
+dmg:
+  artifactName: Beacon-${version}-mac.${ext}
+
+win:
+  icon: assets/icon.png
+  target:
+    - target: nsis
+      arch:
+        - x64
+
+nsis:
+  oneClick: true
+  perMachine: false
+  artifactName: Beacon-${version}-win-setup.${ext}
+
+linux:
+  icon: assets/icon.png
+  category: Office
+  target:
+    - target: AppImage
+      arch:
+        - x64
+
+appImage:
+  artifactName: Beacon-${version}-linux.${ext}
+
+publish:
+  provider: github
+  owner: Stephen-Garner
+  repo: GetOut_Intern_Assessment_App
