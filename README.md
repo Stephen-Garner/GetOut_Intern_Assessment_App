@@ -3,42 +3,47 @@
 An internal analytics dashboard for monitoring member activation,
 identifying churn risk, and managing retention interventions.
 
-## Quick Start
+## Download
 
-1. Make sure you have Node.js 18+ installed
-2. Download/clone this repository
-3. Open a terminal in the `beacon` folder and run:
-   ```
-   npm install
-   npm link
-   ```
+Go to the [latest release](https://github.com/Stephen-Garner/GetOut_Intern_Assessment_App/releases/latest) and download the installer for your platform:
 
-That's it. Now you can launch Beacon from anywhere:
+- **Mac**: `Beacon-x.x.x-mac.dmg`
+- **Windows**: `Beacon-x.x.x-win-setup.exe`
+- **Linux**: `Beacon-x.x.x-linux.AppImage`
 
+The app updates automatically when new versions are published.
+
+## First Launch
+
+1. Open Beacon
+2. Go to Settings
+3. Place your CSV files in the data folder:
+   - Mac/Linux: `~/Documents/Beacon/data/`
+   - Windows: `Documents\Beacon\data\`
+4. Create a workspace from your CSV
+5. Start analyzing
+
+## Development
+
+If you want to run from source:
+
+```bash
+git clone https://github.com/Stephen-Garner/GetOut_Intern_Assessment_App.git
+cd GetOut_Intern_Assessment_App
+npm install
+npm run beacon        # Dev mode (browser)
+npm run electron:dev  # Dev mode (Electron window)
+npm run dist          # Build installer for your platform
 ```
-beacon
-```
 
-The app will start and open in your browser automatically.
+## Publishing a New Release
 
-## Alternative: Double-Click Launch (macOS)
+1. Update the version in `package.json`
+2. Commit and tag: `git tag v1.1.0`
+3. Push with tags: `git push --tags`
+4. GitHub Actions builds for Mac, Windows, and Linux and attaches installers to the release
 
-Double-click **Beacon.app** in the project folder. It opens Terminal and starts everything for you. You can drag it to your Dock for quick access.
-
-There's also a **Beacon.command** file if you prefer that approach.
-
-## Adding Data
-
-1. Place your CSV file(s) in the `data/` folder
-2. In the app, go to Settings
-3. Click "Add New Data Source"
-4. Select your file and give the workspace a name
-5. Click "Import & Create Workspace"
-
-The app will automatically detect columns and create your workspace.
-
-## Requirements
+## Requirements (for development only)
 
 - Node.js 18+
-- A modern browser (Chrome, Firefox, Safari, Edge)
-- Optional: Claude Code installed for AI-assisted analysis (Phase 3)
+- npm 9+
