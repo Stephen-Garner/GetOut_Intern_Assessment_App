@@ -4,13 +4,21 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
+import { execSync as execSyncFn } from 'child_process';
 import { setDbRoot } from './db/connection.js';
 import { configurePaths } from './routes/workspaces.js';
 import { configureDataPaths } from './routes/data.js';
 import workspacesRouter from './routes/workspaces.js';
 import dataRouter from './routes/data.js';
 import chatRouter from './routes/chat.js';
+import widgetsRouter, { configureWidgetPaths } from './routes/widgets.js';
 import { CANONICAL_FIELDS, autoMapColumns } from './mapping.js';
+
+let claudeAvailable = false;
+try {
+  execSyncFn('claude --version', { encoding: 'utf-8', timeout: 5000, stdio: 'pipe' });
+  claudeAvailable = true;
+} catch { /* not installed */ }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -35,9 +43,16 @@ export function createServer(options = {}) {
   app.use(cors());
   app.use(express.json());
 
+  configureWidgetPaths({ dataDir });
+
   app.use('/api/workspaces', workspacesRouter);
   app.use('/api/data', dataRouter);
   app.use('/api/chat', chatRouter);
+  app.use('/api/widgets', widgetsRouter);
+
+  app.get('/api/chat/status', (req, res) => {
+    res.json({ available: claudeAvailable });
+  });
 
   // Mapping API routes
   app.get('/api/mapping/fields', (req, res) => {
@@ -51,6 +66,42 @@ export function createServer(options = {}) {
     }
     const result = autoMapColumns(headers);
     res.json(result);
+  });
+
+  app.post('/api/mapping/suggest', async (req, res) => {
+    const { columns, canonicalFields } = req.body;
+    if (!columns || !Array.isArray(columns)) {
+      return res.status(400).json({ error: 'columns array required' });
+    }
+
+    // If Claude is not available, return empty suggestions
+    if (!claudeAvailable) {
+      return res.json({ suggestions: columns.map(c => ({ column: c.name, suggestedField: null, confidence: 0, reasoning: 'Claude Code not available' })) });
+    }
+
+    const prompt = `I have CSV columns that need to be mapped to canonical field names. For each column, suggest the best match from the canonical fields list, or null if no match.
+
+Columns to map:
+${columns.map(c => `- "${c.name}" with sample values: ${JSON.stringify(c.sampleValues?.slice(0, 5))}`).join('\n')}
+
+Canonical fields: ${(canonicalFields || []).join(', ')}
+
+Respond with ONLY a JSON array like: [{"column": "col_name", "suggestedField": "canonical_name_or_null", "confidence": 0.0-1.0, "reasoning": "brief reason"}]`;
+
+    try {
+      const result = execSyncFn(`claude -p ${JSON.stringify(prompt)} --output-format text`, { encoding: 'utf-8', timeout: 30000 });
+
+      // Try to parse JSON from the response
+      const jsonMatch = result.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        const suggestions = JSON.parse(jsonMatch[0]);
+        return res.json({ suggestions });
+      }
+
+      res.json({ suggestions: [], raw: result });
+    } catch (err) {
+      res.json({ suggestions: columns.map(c => ({ column: c.name, suggestedField: null, confidence: 0, reasoning: 'AI mapping failed' })) });
+    }
   });
 
   app.get('/api/files', (req, res) => {
