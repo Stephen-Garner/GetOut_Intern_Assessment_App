@@ -20,11 +20,16 @@ export default function HealthScoreTooltip() {
   const [pos, setPos] = useState({ top: 0, left: 0 });
   const btnRef = useRef(null);
 
+  const [placement, setPlacement] = useState('above');
+
   function handleEnter() {
     if (btnRef.current) {
       const rect = btnRef.current.getBoundingClientRect();
+      const tooltipHeight = 230;
+      const fitsAbove = rect.top > tooltipHeight + 8;
+      setPlacement(fitsAbove ? 'above' : 'below');
       setPos({
-        top: rect.top - 8,
+        top: fitsAbove ? rect.top - 8 : rect.bottom + 8,
         left: rect.left + rect.width / 2,
       });
     }
@@ -43,8 +48,8 @@ export default function HealthScoreTooltip() {
       </button>
       {show && (
         <div
-          className="fixed w-72 p-3 bg-surface-secondary border border-border-subtle rounded-lg shadow-xl z-[100] -translate-x-1/2"
-          style={{ top: pos.top, left: pos.left, transform: `translate(-50%, -100%)` }}
+          className="fixed w-72 p-3 bg-surface-secondary border border-border-subtle rounded-lg shadow-xl z-[100]"
+          style={{ top: pos.top, left: pos.left, transform: `translate(-50%, ${placement === 'above' ? '-100%' : '0'})` }}
         >
           <p className="text-xs font-semibold text-content-primary mb-2">Health Score (0-100)</p>
           <p className="text-xs text-content-muted mb-2">
