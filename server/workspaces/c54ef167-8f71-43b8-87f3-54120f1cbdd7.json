@@ -1,7 +1,7 @@
 {
-  "id": "89d274f2-e69c-4fd1-910c-d71da1fa08af",
-  "name": "test",
-  "createdAt": "2026-04-12T00:08:04.233Z",
+  "id": "c54ef167-8f71-43b8-87f3-54120f1cbdd7",
+  "name": "Test 1",
+  "createdAt": "2026-04-12T00:18:58.951Z",
   "dataSource": {
     "type": "csv",
     "files": [
@@ -10,9 +10,9 @@
       "visits.csv",
       "weekly_snapshots.csv"
     ],
-    "lastImported": "2026-04-12T00:08:04.233Z"
+    "lastImported": "2026-04-12T00:18:58.951Z"
   },
-  "dbFile": "data/89d274f2-e69c-4fd1-910c-d71da1fa08af.sqlite",
+  "dbFile": "data/c54ef167-8f71-43b8-87f3-54120f1cbdd7.sqlite",
   "columnMapping": {
     "member_id": "member_id",
     "first_name": "first_name",
