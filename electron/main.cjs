@@ -3,6 +3,7 @@ const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
 const net = require('net');
+const { spawn, execSync } = require('child_process');
 
 let mainWindow = null;
 let serverUrl = '';
@@ -80,6 +81,65 @@ function createWindow() {
 ipcMain.handle('get-server-url', () => serverUrl);
 ipcMain.handle('get-app-version', () => app.getVersion());
 ipcMain.handle('get-data-dir', () => DATA_DIR);
+
+// Claude Code availability check
+ipcMain.handle('check-claude', async () => {
+  try {
+    const result = execSync('claude --version', { encoding: 'utf-8', timeout: 5000, stdio: 'pipe' }).trim();
+    return { available: true, version: result };
+  } catch {
+    return { available: false, version: '' };
+  }
+});
+
+// Execute claude command (non-streaming)
+ipcMain.handle('run-claude', async (event, prompt) => {
+  return new Promise((resolve, reject) => {
+    const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
+      timeout: 120000,
+      env: { ...process.env },
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    proc.stdout.on('data', (data) => { stdout += data.toString(); });
+    proc.stderr.on('data', (data) => { stderr += data.toString(); });
+
+    proc.on('close', (code) => {
+      if (code === 0) resolve(stdout);
+      else reject(new Error(stderr || `Claude exited with code ${code}`));
+    });
+
+    proc.on('error', (err) => reject(err));
+  });
+});
+
+// Streaming claude execution
+ipcMain.on('run-claude-stream', (event, prompt) => {
+  const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
+    timeout: 120000,
+    env: { ...process.env },
+  });
+
+  proc.stdout.on('data', (data) => {
+    if (!event.sender.isDestroyed()) {
+      event.sender.send('claude-stream-chunk', data.toString());
+    }
+  });
+
+  proc.on('close', (code) => {
+    if (!event.sender.isDestroyed()) {
+      event.sender.send('claude-stream-done', { code });
+    }
+  });
+
+  proc.on('error', (err) => {
+    if (!event.sender.isDestroyed()) {
+      event.sender.send('claude-stream-error', err.message);
+    }
+  });
+});
 
 // Auto-updater configuration
 function setupAutoUpdater() {
