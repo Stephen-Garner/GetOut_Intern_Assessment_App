@@ -212,8 +212,15 @@ export default function Settings() {
 
         // Step 2: Auto-map columns from the first file with member-like headers
         const memberFile = uploadedFiles.find(f => f.detectedType === 'Member data') || uploadedFiles[0];
-        const fields = await api.get('/mapping/fields');
-        setCanonicalFields(Array.isArray(fields) ? fields : []);
+        let fields = [];
+        try {
+          const fieldsResult = await api.get('/mapping/fields');
+          fields = Array.isArray(fieldsResult) ? fieldsResult : Object.keys(fieldsResult || {});
+        } catch (e) {
+          // Fallback: use canonical field names directly
+          fields = ['member_id','first_name','last_name','email','market','zip_code','purchase_date','renewal_date','acquisition_channel','total_visits','last_visit_date','plan_tier','plan_price','venue_name','venue_type','visit_date'];
+        }
+        setCanonicalFields(fields);
 
         const autoMapResult = await api.post('/mapping/auto', { headers: memberFile.headers });
         // autoMapResult.mapping is an object { canonical_field: csv_column }
@@ -554,7 +561,7 @@ export default function Settings() {
               {allAutoMatched && (
                 <p className="text-xs text-[#22C55E] mb-3">All columns were automatically matched.</p>
               )}
-              <div className="space-y-2 max-h-60 overflow-y-auto">
+              <div className="space-y-2 max-h-[400px] overflow-y-auto">
                 {mappingEntries.map((entry) => (
                   <div key={entry.csvColumn} className="flex items-center gap-3">
                     <span className="text-xs text-content-secondary w-32 truncate">{entry.csvColumn}</span>
@@ -562,11 +569,15 @@ export default function Settings() {
                     <select
                       value={entry.canonicalField}
                       onChange={(e) => updateMapping(entry.csvColumn, e.target.value)}
-                      className="flex-1 text-xs px-2 py-1 rounded bg-surface-tertiary border border-border-subtle text-content-primary"
+                      className="flex-1 text-xs px-2 py-1.5 rounded bg-surface-tertiary border border-border-subtle text-content-primary"
                     >
                       <option value="skip">Skip this column</option>
-                      {canonicalFields.map(f => (
-                        <option key={f} value={f}>{f}</option>
+                      {(canonicalFields.length > 0 ? canonicalFields : [
+                        'member_id','first_name','last_name','email','market','zip_code',
+                        'purchase_date','renewal_date','acquisition_channel','total_visits',
+                        'last_visit_date','plan_tier','plan_price','venue_name','venue_type','visit_date'
+                      ]).map(f => (
+                        <option key={f} value={f}>{f.replace(/_/g, ' ')}</option>
                       ))}
                     </select>
                     {entry.autoMatched && <Check size={14} className="text-[#22C55E] shrink-0" />}
