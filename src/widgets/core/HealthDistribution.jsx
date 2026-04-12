@@ -36,7 +36,7 @@ export default function HealthDistribution() {
   return (
     <WidgetCard title={<span className="inline-flex items-center gap-1.5">Health Score Distribution <HealthScoreTooltip /></span>} subtitle="Distribution of member health scores across bins" loading={loading} error={error} empty={!data || bins.length === 0}>
       <ResponsiveContainer width="100%" height={240}>
-        <BarChart data={bins} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
+        <BarChart data={bins} margin={{ top: 5, right: 10, bottom: 5, left: 15 }}>
           <XAxis
             dataKey="range"
             tick={{ fontSize: 11, fill: 'var(--text-secondary, #9196A8)' }}

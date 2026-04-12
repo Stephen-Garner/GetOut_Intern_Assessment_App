@@ -2,7 +2,7 @@ import { AlertCircle, Inbox } from 'lucide-react';
 
 export default function WidgetCard({ title, subtitle, children, loading, error, empty, emptyMessage, className = '' }) {
   return (
-    <div className={`bg-surface-secondary border border-border-subtle rounded-lg overflow-hidden ${className}`}>
+    <div className={`bg-surface-secondary border border-border-subtle rounded-lg ${className}`}>
       {(title || subtitle) && (
         <div className="px-5 py-4 border-b border-border-subtle">
           {title && <h3 className="text-sm font-semibold text-content-primary">{title}</h3>}

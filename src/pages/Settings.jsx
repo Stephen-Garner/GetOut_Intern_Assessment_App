@@ -388,7 +388,8 @@ export default function Settings() {
   const requiredFields = ['member_id', 'total_visits'];
 
   return (
-    <div className="p-6 max-w-3xl mx-auto overflow-y-auto h-full">
+    <div className="overflow-y-auto h-full">
+    <div className="p-6 max-w-3xl mx-auto">
       <h1 className="text-xl font-semibold text-content-primary mb-6">Settings</h1>
 
       {/* Data Sources */}
@@ -823,6 +824,7 @@ export default function Settings() {
           </p>
         </div>
       </section>
+    </div>
     </div>
   );
 }
