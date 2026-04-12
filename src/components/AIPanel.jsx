@@ -25,8 +25,8 @@ async function buildFrontendContext() {
 
 export default function AIPanel() {
   const [input, setInput] = useState('');
-  const [attachedImages, setAttachedImages] = useState([]);
-  const imageInputRef = useRef(null);
+  const [attachedFiles, setAttachedFiles] = useState([]);
+  const fileInputRef2 = useRef(null);
   const {
     aiPanelOpen,
     toggleAIPanel,
@@ -63,11 +63,11 @@ export default function AIPanel() {
     else text = text.trim();
     if (!text || !activeChatTabId) return;
 
-    const imageNames = attachedImages.map(img => img.name);
-    const fullMessage = imageNames.length > 0 ? `${text}\n\n[Attached images: ${imageNames.join(', ')}]` : text;
+    const fileNames = attachedFiles.map(f => f.name);
+    const fullMessage = fileNames.length > 0 ? `${text}\n\n[Attached: ${fileNames.join(', ')}]` : text;
     sendMessage(activeChatTabId, fullMessage);
     setInput('');
-    setAttachedImages([]);
+    setAttachedFiles([]);
 
     const context = await buildFrontendContext();
 
@@ -153,14 +153,19 @@ export default function AIPanel() {
     document.addEventListener('mouseup', onMouseUp);
   }, [panelWidth]);
 
-  function handleImageAttach(e) {
+  function handleFileAttach(e) {
     const files = Array.from(e.target.files || []);
-    const newImages = files.map(file => ({
-      file,
-      preview: URL.createObjectURL(file),
-      name: file.name,
-    }));
-    setAttachedImages(prev => [...prev, ...newImages]);
+    const newFiles = files.map(file => {
+      const isImage = file.type.startsWith('image/');
+      return {
+        file,
+        preview: isImage ? URL.createObjectURL(file) : null,
+        name: file.name,
+        size: file.size,
+        isImage,
+      };
+    });
+    setAttachedFiles(prev => [...prev, ...newFiles]);
     e.target.value = '';
   }
 
@@ -260,14 +265,21 @@ export default function AIPanel() {
       {/* Input */}
       {claudeAvailable && (
         <div className="p-3 border-t border-border-subtle">
-          {/* Attached images preview */}
-          {attachedImages.length > 0 && (
+          {/* Attached files preview */}
+          {attachedFiles.length > 0 && (
             <div className="flex gap-2 mb-2 flex-wrap">
-              {attachedImages.map((img, i) => (
+              {attachedFiles.map((f, i) => (
                 <div key={i} className="relative group">
-                  <img src={img.preview} alt="" className="w-16 h-16 rounded-md object-cover border border-border-subtle" />
+                  {f.isImage ? (
+                    <img src={f.preview} alt="" className="w-14 h-14 rounded-md object-cover border border-border-subtle" />
+                  ) : (
+                    <div className="w-14 h-14 rounded-md border border-border-subtle bg-surface-tertiary flex flex-col items-center justify-center px-1">
+                      <ImageIcon size={14} className="text-content-muted mb-0.5" />
+                      <span className="text-[9px] text-content-muted truncate w-full text-center">{f.name.split('.').pop()}</span>
+                    </div>
+                  )}
                   <button
-                    onClick={() => setAttachedImages(prev => prev.filter((_, j) => j !== i))}
+                    onClick={() => setAttachedFiles(prev => prev.filter((_, j) => j !== i))}
                     className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-surface-primary border border-border-subtle flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <X size={8} className="text-content-muted" />
@@ -278,19 +290,18 @@ export default function AIPanel() {
           )}
           <div className="flex items-end gap-1.5 bg-surface-tertiary rounded-lg px-3 py-1.5">
             <button
-              onClick={() => imageInputRef.current?.click()}
+              onClick={() => fileInputRef2.current?.click()}
               className="shrink-0 p-1.5 rounded-md text-content-muted hover:text-content-secondary transition-colors"
-              title="Attach image"
+              title="Attach file"
             >
               <ImageIcon size={16} />
             </button>
             <input
-              ref={imageInputRef}
+              ref={fileInputRef2}
               type="file"
-              accept="image/*"
               multiple
               className="hidden"
-              onChange={handleImageAttach}
+              onChange={handleFileAttach}
             />
             <textarea
               ref={textareaRef}
@@ -304,7 +315,7 @@ export default function AIPanel() {
             />
             <button
               onClick={() => handleSend()}
-              disabled={!input.trim() && attachedImages.length === 0}
+              disabled={!input.trim() && attachedFiles.length === 0}
               className="shrink-0 p-1.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <Send size={16} />

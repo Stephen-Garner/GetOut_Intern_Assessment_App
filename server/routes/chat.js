@@ -128,6 +128,7 @@ router.post('/', async (req, res) => {
     const proc = spawn('claude', ['-p', fullPrompt, '--output-format', 'text'], {
       timeout: 120000,
       env: { ...process.env },
+      stdio: ['ignore', 'pipe', 'pipe'],
     });
 
     proc.stdout.on('data', (data) => {

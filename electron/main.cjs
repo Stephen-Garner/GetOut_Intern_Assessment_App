@@ -98,6 +98,7 @@ ipcMain.handle('run-claude', async (event, prompt) => {
     const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
       timeout: 120000,
       env: { ...process.env },
+      stdio: ['ignore', 'pipe', 'pipe'],
     });
 
     let stdout = '';
@@ -120,6 +121,7 @@ ipcMain.on('run-claude-stream', (event, prompt) => {
   const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
     timeout: 120000,
     env: { ...process.env },
+    stdio: ['ignore', 'pipe', 'pipe'],
   });
 
   proc.stdout.on('data', (data) => {

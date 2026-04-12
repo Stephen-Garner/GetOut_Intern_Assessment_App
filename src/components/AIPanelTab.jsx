@@ -208,10 +208,25 @@ export default function AIPanelTab({ tab, onSendMessage }) {
                   : 'bg-surface-tertiary text-content-primary rounded-bl-md'
               }`}
             >
-              {isUser ? msg.content : renderMarkdown(msg.content)}
-              {isStreaming && (
-                <span className="inline-block w-1.5 h-4 bg-accent animate-pulse ml-0.5 align-middle" />
-              )}
+              {isUser ? msg.content : (
+              isStreaming && !msg.content ? (
+                <div className="flex items-center gap-1.5 py-1">
+                  <div className="flex gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                  <span className="text-xs text-content-muted ml-1">Thinking...</span>
+                </div>
+              ) : (
+                <>
+                  {renderMarkdown(msg.content)}
+                  {isStreaming && (
+                    <span className="inline-block w-1.5 h-4 bg-accent animate-pulse ml-0.5 align-middle" />
+                  )}
+                </>
+              )
+            )}
             </div>
           </div>
         );
