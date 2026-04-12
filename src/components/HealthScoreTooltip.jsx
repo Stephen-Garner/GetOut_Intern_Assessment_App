@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { HelpCircle } from 'lucide-react';
 
 const SCORE_RANGES = [
@@ -17,18 +17,35 @@ export function getHealthColor(score) {
 
 export default function HealthScoreTooltip() {
   const [show, setShow] = useState(false);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+  const btnRef = useRef(null);
+
+  function handleEnter() {
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      setPos({
+        top: rect.top - 8,
+        left: rect.left + rect.width / 2,
+      });
+    }
+    setShow(true);
+  }
 
   return (
-    <div className="relative inline-flex">
+    <div className="inline-flex">
       <button
-        onMouseEnter={() => setShow(true)}
+        ref={btnRef}
+        onMouseEnter={handleEnter}
         onMouseLeave={() => setShow(false)}
         className="text-content-muted hover:text-content-secondary transition-colors"
       >
         <HelpCircle size={14} />
       </button>
       {show && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3 bg-surface-secondary border border-border-subtle rounded-lg shadow-lg z-50">
+        <div
+          className="fixed w-72 p-3 bg-surface-secondary border border-border-subtle rounded-lg shadow-xl z-[100] -translate-x-1/2"
+          style={{ top: pos.top, left: pos.left, transform: `translate(-50%, -100%)` }}
+        >
           <p className="text-xs font-semibold text-content-primary mb-2">Health Score (0-100)</p>
           <p className="text-xs text-content-muted mb-2">
             A composite measure of renewal likelihood based on:
