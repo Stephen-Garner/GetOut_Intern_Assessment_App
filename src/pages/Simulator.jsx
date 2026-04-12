@@ -292,16 +292,10 @@ export default function Simulator() {
 
           {/* Assumptions panel */}
           <div className="rounded-lg border border-border-subtle bg-surface-secondary">
-            <button
-              onClick={() => setShowAssumptions((prev) => !prev)}
-              className="w-full flex items-center justify-between p-4 text-sm font-semibold text-content-primary"
-            >
-              <span>Assumptions</span>
-              {showAssumptions ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            </button>
-
-            {showAssumptions && (
-              <div className="px-4 pb-4 space-y-3 border-t border-border-subtle pt-3">
+            <div className="p-4 text-sm font-semibold text-content-primary">
+              Assumptions
+            </div>
+            <div className="px-4 pb-4 space-y-3 border-t border-border-subtle pt-3">
                 <div>
                   <label className="text-xs text-content-muted block mb-1">Avg Plan Price ($)</label>
                   <input
@@ -332,7 +326,6 @@ export default function Simulator() {
                   </div>
                 ))}
               </div>
-            )}
           </div>
         </div>
 

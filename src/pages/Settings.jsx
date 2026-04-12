@@ -545,14 +545,22 @@ export default function Settings() {
           )}
 
           {!showMapping && (
-            <button
-              onClick={handleImport}
-              disabled={!newName.trim() || (uploadedFiles.length === 0 && selectedFiles.length === 0) || importing}
-              className="flex items-center gap-2 px-4 py-2 mt-3 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
-            >
-              {importing ? <Loader2 size={15} className="animate-spin" /> : <Upload size={15} />}
-              {importing ? 'Uploading...' : 'Import & Create Workspace'}
-            </button>
+            <div className="mt-3">
+              {!newName.trim() && (uploadedFiles.length > 0 || selectedFiles.length > 0) && (
+                <p className="text-xs text-[var(--warning)] mb-2">Enter a workspace name above to enable import.</p>
+              )}
+              {newName.trim() && uploadedFiles.length === 0 && selectedFiles.length === 0 && (
+                <p className="text-xs text-content-muted mb-2">Select or drag files above to import.</p>
+              )}
+              <button
+                onClick={handleImport}
+                disabled={!newName.trim() || (uploadedFiles.length === 0 && selectedFiles.length === 0) || importing}
+                className="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                {importing ? <Loader2 size={15} className="animate-spin" /> : <Upload size={15} />}
+                {importing ? 'Uploading...' : 'Import & Create Workspace'}
+              </button>
+            </div>
           )}
 
           {/* Inline column mapping */}
