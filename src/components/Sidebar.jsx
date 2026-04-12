@@ -12,7 +12,7 @@ const navItems = [
 ];
 
 export default function Sidebar() {
-  const { activePageId, setActivePage, aiPanelOpen, toggleAIPanel } = useAppStore();
+  const { activePageId, setActivePage, aiPanelOpen, toggleAIPanel, claudeAvailable } = useAppStore();
 
   return (
     <aside className="w-[220px] shrink-0 h-full flex flex-col bg-surface-secondary border-r border-border-primary">
@@ -67,6 +67,7 @@ export default function Sidebar() {
         >
           <BotMessageSquare size={18} />
           <span className="text-xs font-medium">AI</span>
+          <span className={`w-1.5 h-1.5 rounded-full ${claudeAvailable ? 'bg-green-500' : 'bg-content-muted'}`} />
         </button>
       </div>
     </aside>

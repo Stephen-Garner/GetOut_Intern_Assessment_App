@@ -20,6 +20,7 @@ const useAppStore = create((set, get) => ({
   workspaces: [],
 
   // AI Panel State
+  claudeAvailable: false,
   chatTabs: [
     {
       id: 'tab-1',
@@ -48,6 +49,8 @@ const useAppStore = create((set, get) => ({
     setStoredTheme(next);
     set({ theme: next });
   },
+
+  setClaudeAvailable: (available) => set({ claudeAvailable: available }),
 
   setActiveWorkspace: (id) => set({ activeWorkspaceId: id }),
 
@@ -86,24 +89,48 @@ const useAppStore = create((set, get) => ({
     }),
 
   sendMessage: (tabId, content) =>
-    set((s) => {
-      const userMsg = { role: 'user', content, timestamp: new Date().toISOString() };
-      const assistantMsg = {
-        role: 'assistant',
-        content:
-          'Claude Code integration will be connected in Phase 3. This panel will let you ask questions about your data and build custom widgets.',
-        timestamp: new Date().toISOString(),
-      };
+    set((s) => ({
+      chatTabs: s.chatTabs.map((t) => {
+        if (t.id !== tabId) return t;
+        const userMsg = { id: `msg-${Date.now()}`, role: 'user', content, timestamp: new Date().toISOString(), status: 'sent' };
+        const messages = [...t.messages, userMsg];
+        const label = t.messages.length === 0 ? content.slice(0, 20) + (content.length > 20 ? '...' : '') : t.label;
+        return { ...t, messages, label };
+      }),
+    })),
 
-      return {
-        chatTabs: s.chatTabs.map((t) => {
-          if (t.id !== tabId) return t;
-          const messages = [...t.messages, userMsg, assistantMsg];
-          const label = t.messages.length === 0 ? content.slice(0, 28) + (content.length > 28 ? '...' : '') : t.label;
-          return { ...t, messages, label };
-        }),
-      };
-    }),
+  addAssistantMessage: (tabId) => {
+    const id = `msg-${Date.now()}-ai`;
+    set((s) => ({
+      chatTabs: s.chatTabs.map((t) => {
+        if (t.id !== tabId) return t;
+        return { ...t, messages: [...t.messages, { id, role: 'assistant', content: '', timestamp: new Date().toISOString(), status: 'streaming' }] };
+      }),
+    }));
+    return id;
+  },
+
+  appendToMessage: (tabId, msgId, text) =>
+    set((s) => ({
+      chatTabs: s.chatTabs.map((t) => {
+        if (t.id !== tabId) return t;
+        return {
+          ...t,
+          messages: t.messages.map((m) => m.id === msgId ? { ...m, content: m.content + text } : m),
+        };
+      }),
+    })),
+
+  finalizeMessage: (tabId, msgId, status) =>
+    set((s) => ({
+      chatTabs: s.chatTabs.map((t) => {
+        if (t.id !== tabId) return t;
+        return {
+          ...t,
+          messages: t.messages.map((m) => m.id === msgId ? { ...m, status: status || 'complete' } : m),
+        };
+      }),
+    })),
 }));
 
 export default useAppStore;

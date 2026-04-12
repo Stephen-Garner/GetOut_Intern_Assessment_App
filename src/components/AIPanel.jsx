@@ -1,7 +1,27 @@
-import { useState } from 'react';
-import { ChevronRight, Plus, X, Send } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ChevronRight, Plus, X, Send, Sparkles } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import AIPanelTab from './AIPanelTab.jsx';
+
+async function buildFrontendContext() {
+  const wsId = useAppStore.getState().activeWorkspaceId;
+  if (!wsId) return {};
+  try {
+    const [summary, segments] = await Promise.all([
+      fetch(`/api/data/summary?workspace=${wsId}`).then(r => r.json()),
+      fetch(`/api/data/segments?workspace=${wsId}`).then(r => r.json()),
+    ]);
+    const ws = useAppStore.getState().workspaces.find(w => w.id === wsId);
+    return {
+      workspaceName: ws?.name || 'Unknown',
+      summary,
+      segments,
+      activePage: useAppStore.getState().activePageId,
+    };
+  } catch {
+    return {};
+  }
+}
 
 export default function AIPanel() {
   const [input, setInput] = useState('');
@@ -14,15 +34,84 @@ export default function AIPanel() {
     setActiveChatTab,
     closeChatTab,
     sendMessage,
+    addAssistantMessage,
+    appendToMessage,
+    finalizeMessage,
+    claudeAvailable,
+    setClaudeAvailable,
   } = useAppStore();
 
   const activeTab = chatTabs.find((t) => t.id === activeChatTabId);
 
-  function handleSend() {
-    const text = input.trim();
+  useEffect(() => {
+    if (window.beacon?.isElectron) {
+      window.beacon.checkClaude()
+        .then((available) => setClaudeAvailable(available))
+        .catch(() => setClaudeAvailable(false));
+    } else {
+      fetch('/api/chat/status')
+        .then(r => r.json())
+        .then(d => setClaudeAvailable(d.available))
+        .catch(() => setClaudeAvailable(false));
+    }
+  }, [setClaudeAvailable]);
+
+  async function handleSend(text) {
+    if (typeof text !== 'string') text = input.trim();
+    else text = text.trim();
     if (!text || !activeChatTabId) return;
+
     sendMessage(activeChatTabId, text);
     setInput('');
+
+    const context = await buildFrontendContext();
+
+    const tab = chatTabs.find(t => t.id === activeChatTabId);
+    const history = (tab?.messages || []).slice(-10).map(m => ({ role: m.role, content: m.content }));
+
+    const msgId = addAssistantMessage(activeChatTabId);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, conversationHistory: history, context }),
+      });
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n');
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          try {
+            const data = JSON.parse(line.slice(6));
+            if (data.text) appendToMessage(activeChatTabId, msgId, data.text);
+            if (data.error) {
+              appendToMessage(activeChatTabId, msgId, `\n\nError: ${data.error}`);
+              finalizeMessage(activeChatTabId, msgId, 'error');
+              return;
+            }
+            if (data.done) {
+              finalizeMessage(activeChatTabId, msgId, 'complete');
+              return;
+            }
+          } catch {
+            // skip unparseable lines
+          }
+        }
+      }
+
+      finalizeMessage(activeChatTabId, msgId, 'complete');
+    } catch (err) {
+      appendToMessage(activeChatTabId, msgId, `Error: ${err.message}`);
+      finalizeMessage(activeChatTabId, msgId, 'error');
+    }
   }
 
   function handleKeyDown(e) {
@@ -87,28 +176,45 @@ export default function AIPanel() {
       </div>
 
       {/* Chat Area */}
-      {activeTab && <AIPanelTab tab={activeTab} />}
+      {!claudeAvailable ? (
+        <div className="flex-1 flex items-center justify-center px-6">
+          <div className="text-center">
+            <Sparkles size={28} className="mx-auto mb-3 text-content-muted" />
+            <p className="text-sm font-medium text-content-primary mb-1">
+              AI features require Claude Code
+            </p>
+            <p className="text-xs text-content-muted leading-relaxed">
+              Install Claude Code to ask questions about your data,
+              generate custom widgets, and get intelligent insights.
+            </p>
+          </div>
+        </div>
+      ) : (
+        activeTab && <AIPanelTab tab={activeTab} onSendMessage={handleSend} />
+      )}
 
       {/* Input */}
-      <div className="p-3 border-t border-border-subtle">
-        <div className="flex items-end gap-2 bg-surface-tertiary rounded-lg px-3 py-2">
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask about your data..."
-            rows={1}
-            className="flex-1 bg-transparent text-sm text-content-primary placeholder:text-content-muted resize-none outline-none max-h-24"
-          />
-          <button
-            onClick={handleSend}
-            disabled={!input.trim()}
-            className="shrink-0 p-1.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          >
-            <Send size={16} />
-          </button>
+      {claudeAvailable && (
+        <div className="p-3 border-t border-border-subtle">
+          <div className="flex items-end gap-2 bg-surface-tertiary rounded-lg px-3 py-2">
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask about your data..."
+              rows={1}
+              className="flex-1 bg-transparent text-sm text-content-primary placeholder:text-content-muted resize-none outline-none max-h-24"
+            />
+            <button
+              onClick={() => handleSend()}
+              disabled={!input.trim()}
+              className="shrink-0 p-1.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            >
+              <Send size={16} />
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
