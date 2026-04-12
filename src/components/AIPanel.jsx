@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronRight, Plus, X, Send, Sparkles } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import AIPanelTab from './AIPanelTab.jsx';
@@ -121,12 +121,60 @@ export default function AIPanel() {
     }
   }
 
+  const [panelWidth, setPanelWidth] = useState(380);
+  const isDragging = useRef(false);
+  const textareaRef = useRef(null);
+
+  const handleMouseDown = useCallback((e) => {
+    e.preventDefault();
+    isDragging.current = true;
+    const startX = e.clientX;
+    const startWidth = panelWidth;
+
+    function onMouseMove(e) {
+      if (!isDragging.current) return;
+      const delta = startX - e.clientX;
+      const newWidth = Math.min(Math.max(startWidth + delta, 320), 800);
+      setPanelWidth(newWidth);
+    }
+
+    function onMouseUp() {
+      isDragging.current = false;
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }, [panelWidth]);
+
+  // Auto-resize textarea
+  function handleInputChange(e) {
+    setInput(e.target.value);
+    const el = textareaRef.current;
+    if (el) {
+      el.style.height = 'auto';
+      el.style.height = Math.min(el.scrollHeight, 150) + 'px';
+    }
+  }
+
   return (
     <div
-      className={`panel-transition shrink-0 h-full flex flex-col bg-surface-secondary border-l border-border-primary ${
-        aiPanelOpen ? 'w-[380px]' : 'w-0 overflow-hidden border-l-0'
+      className={`shrink-0 h-full flex flex-col bg-surface-secondary border-l border-border-primary transition-[width] duration-300 ease-in-out ${
+        aiPanelOpen ? '' : 'w-0 overflow-hidden border-l-0'
       }`}
+      style={aiPanelOpen ? { width: panelWidth } : undefined}
     >
+      {/* Resize handle */}
+      <div className="flex-1 flex min-h-0">
+      <div
+        onMouseDown={handleMouseDown}
+        className="w-[4px] shrink-0 cursor-col-resize hover:bg-accent/30 active:bg-accent/50 transition-colors"
+      />
+
+      {/* Panel content */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border-subtle">
         <span className="text-sm font-semibold text-content-primary">AI Assistant</span>
@@ -198,23 +246,28 @@ export default function AIPanel() {
         <div className="p-3 border-t border-border-subtle">
           <div className="flex items-end gap-2 bg-surface-tertiary rounded-lg px-3 py-2">
             <textarea
+              ref={textareaRef}
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={handleInputChange}
               onKeyDown={handleKeyDown}
               placeholder="Ask about your data..."
               rows={1}
-              className="flex-1 bg-transparent text-sm text-content-primary placeholder:text-content-muted resize-none outline-none max-h-24"
+              className="flex-1 bg-transparent text-sm text-content-primary placeholder:text-content-muted resize-none outline-none leading-5"
+              style={{ minHeight: '20px', maxHeight: '150px' }}
             />
             <button
               onClick={() => handleSend()}
               disabled={!input.trim()}
-              className="shrink-0 p-1.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="shrink-0 p-1.5 mb-0.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <Send size={16} />
             </button>
           </div>
         </div>
       )}
+
+      </div>{/* end panel content */}
+      </div>{/* end flex row */}
     </div>
   );
 }
