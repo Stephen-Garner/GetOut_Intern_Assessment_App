@@ -2,4 +2,8 @@ node_modules/
 dist/
 release/
 *.sqlite
+*.sqlite-shm
+*.sqlite-wal
+server/workspaces/*.json
+!server/workspaces/.gitkeep
 .DS_Store
