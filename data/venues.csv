@@ -1,0 +1,379 @@
+venue_id,venue_name,venue_type,market,popularity_score
+V0001,Adventure Aqua World,Water Park,Salt Lake City,0.35
+V0002,Fun Ocean World,Aquarium,Salt Lake City,0.19
+V0003,Super Garden Park,Botanical Garden,Salt Lake City,0.48
+V0004,Super Zoo,Zoo,Salt Lake City,0.31
+V0005,Adventure Spray Park,Splash Pad,Salt Lake City,0.28
+V0006,Silver Botanical Garden,Botanical Garden,Salt Lake City,0.5
+V0007,Adventure Amusement Park,Amusement Park,Salt Lake City,0.73
+V0008,Grand Go-Karts,Go-Karts,Salt Lake City,0.29
+V0009,Mega Go-Karts,Go-Karts,Salt Lake City,0.44
+V0010,Happy Tag Arena,Laser Tag,Salt Lake City,0.34
+V0011,Royal Heritage Center,Museum,Salt Lake City,0.21
+V0012,Super Ice Palace,Ice Skating,Salt Lake City,0.36
+V0013,Happy Spray Park,Splash Pad,Salt Lake City,0.27
+V0014,Family Play Palace,Arcade,Salt Lake City,0.31
+V0015,Super Escape Room,Escape Room,Salt Lake City,0.88
+V0016,Grand Skating Center,Ice Skating,Salt Lake City,0.67
+V0017,Wild Laser Quest,Laser Tag,Salt Lake City,0.42
+V0018,Super Theme Park,Amusement Park,Salt Lake City,0.67
+V0019,Cool Botanical Garden,Botanical Garden,Salt Lake City,0.52
+V0020,Sunny Amusement Park,Amusement Park,Salt Lake City,0.72
+V0021,Cool Museum,Museum,Salt Lake City,0.82
+V0022,Grand Ice Rink,Ice Skating,Salt Lake City,0.29
+V0023,Big Wildlife Park,Wildlife Park,Salt Lake City,0.69
+V0024,Royal Ice Rink,Ice Skating,Salt Lake City,0.34
+V0025,Sunny Ocean World,Aquarium,Salt Lake City,0.34
+V0026,Silver Nature Reserve,Wildlife Park,Salt Lake City,0.46
+V0027,Fun Ocean World,Aquarium,Salt Lake City,0.54
+V0028,Mega Museum,Museum,Salt Lake City,0.66
+V0029,Rainbow Climbing Gym,Rock Climbing,Salt Lake City,0.45
+V0030,Royal Spray Park,Splash Pad,Salt Lake City,0.33
+V0031,Adventure Garden Park,Botanical Garden,Salt Lake City,0.75
+V0032,Grand Garden Park,Botanical Garden,Salt Lake City,0.41
+V0033,Silver Escape Room,Escape Room,Salt Lake City,0.51
+V0034,Lucky Amusement Park,Amusement Park,Salt Lake City,0.56
+V0035,Little Aqua World,Water Park,Salt Lake City,0.56
+V0036,Fun Putt-Putt,Mini Golf,Salt Lake City,0.79
+V0037,Lucky Botanical Garden,Botanical Garden,Salt Lake City,0.64
+V0038,Adventure Cinema,Movie Theater,Salt Lake City,0.94
+V0039,Cool Escape Room,Escape Room,Salt Lake City,0.32
+V0040,Super Wildlife Park,Wildlife Park,Salt Lake City,0.76
+V0041,Sunny Arcade,Arcade,Salt Lake City,0.22
+V0042,Sunny Cinema,Movie Theater,Salt Lake City,0.34
+V0043,Silver Splash Pad,Splash Pad,Salt Lake City,0.94
+V0044,Little Putt-Putt,Mini Golf,Salt Lake City,1.0
+V0045,Royal Tag Arena,Laser Tag,Salt Lake City,0.51
+V0046,Cool Aquarium,Aquarium,Phoenix,0.4
+V0047,Sunny Wildlife Park,Wildlife Park,Phoenix,0.63
+V0048,Super Wildlife Center,Zoo,Phoenix,0.67
+V0049,Super Aquarium,Aquarium,Phoenix,0.87
+V0050,Lucky Arcade,Arcade,Phoenix,0.35
+V0051,Epic Film Center,Movie Theater,Phoenix,0.22
+V0052,Star Safari Zone,Wildlife Park,Phoenix,0.32
+V0053,Silver Cinema,Movie Theater,Phoenix,0.18
+V0054,Happy Rock Wall,Rock Climbing,Phoenix,0.47
+V0055,Mega Museum,Museum,Phoenix,0.46
+V0056,Mega Go-Karts,Go-Karts,Phoenix,0.27
+V0057,Royal Botanical Garden,Botanical Garden,Phoenix,0.48
+V0058,Royal Amusement Park,Amusement Park,Phoenix,0.89
+V0059,Royal Play Palace,Arcade,Phoenix,0.19
+V0060,Adventure Botanical Garden,Botanical Garden,Phoenix,0.93
+V0061,Wild Sea Life Center,Aquarium,Phoenix,0.54
+V0062,Golden Mini Golf,Mini Golf,Phoenix,0.25
+V0063,Golden Animal Park,Zoo,Phoenix,0.93
+V0064,Little Hit Zone,Batting Cages,Phoenix,0.73
+V0065,Magic Botanical Garden,Botanical Garden,Phoenix,0.27
+V0066,Family Golf Garden,Mini Golf,Phoenix,0.76
+V0067,Big Museum,Museum,Phoenix,0.15
+V0068,Lucky Film Center,Movie Theater,Phoenix,0.24
+V0069,Super Science Center,Science Center,Phoenix,0.16
+V0070,Cool Game Zone,Arcade,Phoenix,0.21
+V0071,Cool Nature Reserve,Wildlife Park,Phoenix,0.64
+V0072,Super Water Play,Splash Pad,Phoenix,0.69
+V0073,Lucky Safari Zone,Wildlife Park,Phoenix,0.94
+V0074,Big Mini Golf,Mini Golf,Phoenix,0.34
+V0075,Little Jump Zone,Trampoline Park,Phoenix,0.38
+V0076,Adventure Game Zone,Arcade,Phoenix,0.66
+V0077,Mega Wildlife Park,Wildlife Park,Phoenix,0.58
+V0078,Grand Science Center,Science Center,Phoenix,0.94
+V0079,Cool Game Zone,Arcade,Phoenix,0.36
+V0080,Sunny Swing Away,Batting Cages,Phoenix,0.37
+V0081,Adventure STEM World,Science Center,Phoenix,0.84
+V0082,Mega Escape Room,Escape Room,Phoenix,0.34
+V0083,Sunny Water Park,Water Park,Phoenix,0.35
+V0084,Epic Spray Park,Splash Pad,Phoenix,0.41
+V0085,Lucky Fun Park,Amusement Park,Phoenix,0.33
+V0086,Super Heritage Center,Museum,Phoenix,0.48
+V0087,Family Amusement Park,Amusement Park,Phoenix,0.4
+V0088,Grand Trampoline Park,Trampoline Park,Phoenix,0.77
+V0089,Silver Garden Park,Botanical Garden,Phoenix,0.11
+V0090,Fun Play Palace,Arcade,Phoenix,0.13
+V0091,Star Tag Arena,Laser Tag,Phoenix,0.23
+V0092,Family Jump Zone,Trampoline Park,Phoenix,0.43
+V0093,Happy Museum,Museum,Phoenix,0.71
+V0094,Happy Aqua World,Water Park,Phoenix,0.9
+V0095,Rainbow Boulder Zone,Rock Climbing,Phoenix,0.24
+V0096,Wild Aquarium,Aquarium,Phoenix,0.89
+V0097,Wild Wildlife Center,Zoo,Phoenix,0.93
+V0098,Cool Rock Wall,Rock Climbing,Dallas,0.24
+V0099,Golden Water Park,Water Park,Dallas,0.87
+V0100,Epic Sea Life Center,Aquarium,Dallas,0.41
+V0101,Cool Aquarium,Aquarium,Dallas,0.69
+V0102,Big Skating Center,Ice Skating,Dallas,0.88
+V0103,Happy Theme Park,Amusement Park,Dallas,0.56
+V0104,Big Botanical Garden,Botanical Garden,Dallas,0.2
+V0105,Wild Theme Park,Amusement Park,Dallas,0.97
+V0106,Family Amusement Park,Amusement Park,Dallas,0.64
+V0107,Big Laser Quest,Laser Tag,Dallas,0.65
+V0108,Mega Discovery Lab,Science Center,Dallas,0.91
+V0109,Grand Mini Golf,Mini Golf,Dallas,0.74
+V0110,Lucky Wildlife Center,Zoo,Dallas,0.72
+V0111,Happy Putt-Putt,Mini Golf,Dallas,0.16
+V0112,Rainbow Speedway,Go-Karts,Dallas,0.7
+V0113,Little Aqua World,Water Park,Dallas,0.38
+V0114,Big Rock Wall,Rock Climbing,Dallas,0.73
+V0115,Fun Botanical Garden,Botanical Garden,Dallas,0.48
+V0116,Wild Ice Palace,Ice Skating,Dallas,0.61
+V0117,Sunny Ice Rink,Ice Skating,Dallas,0.37
+V0118,Silver Golf Garden,Mini Golf,Dallas,0.65
+V0119,Royal Speedway,Go-Karts,Dallas,0.5
+V0120,Lucky Putt-Putt,Mini Golf,Dallas,0.81
+V0121,Super Lanes,Bowling,Dallas,0.56
+V0122,Big Splash Pad,Splash Pad,Dallas,0.84
+V0123,Little Aquarium,Aquarium,Dallas,0.83
+V0124,Adventure Trampoline Park,Trampoline Park,Dallas,0.32
+V0125,Rainbow Cinema,Movie Theater,Dallas,0.51
+V0126,Epic Nature Reserve,Wildlife Park,Dallas,0.73
+V0127,Golden Cinema,Movie Theater,Dallas,0.23
+V0128,Mega Animal Park,Zoo,Dallas,0.3
+V0129,Royal Science Center,Science Center,Dallas,0.6
+V0130,Royal Water Park,Water Park,Dallas,0.82
+V0131,Sunny STEM World,Science Center,Dallas,0.39
+V0132,Rainbow Swing Away,Batting Cages,Dallas,0.9
+V0133,Sunny Rock Wall,Rock Climbing,Dallas,0.91
+V0134,Royal Movie House,Movie Theater,Dallas,0.78
+V0135,Lucky Fun Park,Amusement Park,Dallas,0.66
+V0136,Royal Amusement Park,Amusement Park,Dallas,0.74
+V0137,Grand Sea Life Center,Aquarium,Dallas,0.39
+V0138,Super Botanical Garden,Botanical Garden,Dallas,0.24
+V0139,Fun Ice Palace,Ice Skating,Dallas,0.29
+V0140,Silver Rock Wall,Rock Climbing,Dallas,0.59
+V0141,Family Climbing Gym,Rock Climbing,Dallas,0.85
+V0142,Star Ice Palace,Ice Skating,Dallas,0.12
+V0143,Golden Safari Zone,Wildlife Park,Dallas,0.11
+V0144,Little Laser Quest,Laser Tag,Dallas,0.87
+V0145,Sunny Boulder Zone,Rock Climbing,Dallas,0.76
+V0146,Cool Water Play,Splash Pad,Houston,0.3
+V0147,Magic Climbing Gym,Rock Climbing,Houston,0.45
+V0148,Wild Skating Center,Ice Skating,Houston,0.93
+V0149,Sunny Splash Pad,Splash Pad,Houston,0.92
+V0150,Star Nature Reserve,Wildlife Park,Houston,0.12
+V0151,Fun Rock Wall,Rock Climbing,Houston,0.26
+V0152,Golden Fun Park,Amusement Park,Houston,0.29
+V0153,Big Speedway,Go-Karts,Houston,0.35
+V0154,Grand Climbing Gym,Rock Climbing,Houston,0.52
+V0155,Family Nature Center,Botanical Garden,Houston,0.3
+V0156,Family Arcade,Arcade,Houston,0.95
+V0157,Adventure Golf Garden,Mini Golf,Houston,0.24
+V0158,Magic Bounce House,Trampoline Park,Houston,0.2
+V0159,Royal Golf Garden,Mini Golf,Houston,0.33
+V0160,Wild Tag Arena,Laser Tag,Houston,0.65
+V0161,Wild Splash Zone,Water Park,Houston,0.2
+V0162,Little Wildlife Center,Zoo,Houston,0.71
+V0163,Golden Ice Palace,Ice Skating,Houston,0.28
+V0164,Cool Wildlife Park,Wildlife Park,Houston,0.73
+V0165,Rainbow Escape Room,Escape Room,Houston,0.82
+V0166,Family Safari Zone,Wildlife Park,Houston,0.58
+V0167,Super Tag Arena,Laser Tag,Houston,0.68
+V0168,Silver Animal Park,Zoo,Houston,0.19
+V0169,Royal Tag Arena,Laser Tag,Houston,0.24
+V0170,Lucky Bowl-O-Rama,Bowling,Houston,0.34
+V0171,Magic Nature Center,Botanical Garden,Houston,0.49
+V0172,Grand Safari Zone,Wildlife Park,Houston,0.87
+V0173,Grand Game Zone,Arcade,Houston,0.32
+V0174,Star Swing Away,Batting Cages,Houston,0.7
+V0175,Adventure Speedway,Go-Karts,Houston,0.87
+V0176,Magic Bowling,Bowling,Houston,0.42
+V0177,Big Fun Park,Amusement Park,Houston,0.89
+V0178,Sunny Amusement Park,Amusement Park,Houston,0.56
+V0179,Super Mini Golf,Mini Golf,Houston,0.75
+V0180,Sunny Cinema,Movie Theater,Houston,0.72
+V0181,Royal Cinema,Movie Theater,Houston,0.18
+V0182,Golden Ocean World,Aquarium,Houston,0.32
+V0183,Happy Safari Zone,Wildlife Park,Houston,0.6
+V0184,Silver Tag Arena,Laser Tag,Houston,0.6
+V0185,Royal Laser Quest,Laser Tag,Houston,0.38
+V0186,Mega Ocean World,Aquarium,Austin,0.27
+V0187,Sunny Aqua World,Water Park,Austin,0.27
+V0188,Magic Putt-Putt,Mini Golf,Austin,0.75
+V0189,Rainbow Discovery Lab,Science Center,Austin,0.98
+V0190,Little Mini Golf,Mini Golf,Austin,0.42
+V0191,Adventure Mystery Room,Escape Room,Austin,0.58
+V0192,Family Amusement Park,Amusement Park,Austin,0.6
+V0193,Magic Trampoline Park,Trampoline Park,Austin,0.89
+V0194,Little Safari Zone,Wildlife Park,Austin,0.53
+V0195,Wild Go-Karts,Go-Karts,Austin,0.33
+V0196,Mega Cinema,Movie Theater,Austin,0.46
+V0197,Star Play Palace,Arcade,Austin,0.72
+V0198,Fun Bounce House,Trampoline Park,Austin,0.95
+V0199,Cool Arcade,Arcade,Austin,0.6
+V0200,Rainbow Boulder Zone,Rock Climbing,Austin,0.81
+V0201,Lucky Sea Life Center,Aquarium,Austin,0.51
+V0202,Little Swing Away,Batting Cages,Austin,0.99
+V0203,Star Mystery Room,Escape Room,Austin,0.15
+V0204,Epic Aqua World,Water Park,Austin,0.29
+V0205,Wild Arcade,Arcade,Austin,0.26
+V0206,Wild Arcade,Arcade,Austin,0.47
+V0207,Magic Water Play,Splash Pad,Austin,0.13
+V0208,Little Mystery Room,Escape Room,Austin,0.87
+V0209,Cool Game Zone,Arcade,Austin,0.81
+V0210,Epic Safari Zone,Wildlife Park,Austin,0.2
+V0211,Fun Sea Life Center,Aquarium,Austin,0.84
+V0212,Family Arcade,Arcade,Austin,0.81
+V0213,Star Water Play,Splash Pad,Austin,0.5
+V0214,Little Swing Away,Batting Cages,Austin,0.46
+V0215,Lucky Theme Park,Amusement Park,Austin,0.54
+V0216,Rainbow Arcade,Arcade,Austin,0.9
+V0217,Rainbow Speedway,Go-Karts,Austin,0.12
+V0218,Star Ocean World,Aquarium,Austin,0.96
+V0219,Star Amusement Park,Amusement Park,Austin,0.79
+V0220,Magic Bowl-O-Rama,Bowling,Austin,0.69
+V0221,Wild Theme Park,Amusement Park,Boise,0.49
+V0222,Super Movie House,Movie Theater,Boise,0.41
+V0223,Big Raceway,Go-Karts,Boise,0.19
+V0224,Big Lanes,Bowling,Boise,0.72
+V0225,Golden Mystery Room,Escape Room,Boise,0.13
+V0226,Big Game Zone,Arcade,Boise,0.39
+V0227,Lucky Ice Rink,Ice Skating,Boise,0.69
+V0228,Royal Nature Center,Botanical Garden,Boise,0.15
+V0229,Happy STEM World,Science Center,Boise,0.78
+V0230,Family Batting Cages,Batting Cages,Boise,0.34
+V0231,Little Jump Zone,Trampoline Park,Boise,0.89
+V0232,Mega Cinema,Movie Theater,Boise,0.98
+V0233,Cool Spray Park,Splash Pad,Boise,0.24
+V0234,Adventure Garden Park,Botanical Garden,Boise,0.47
+V0235,Mega Sea Life Center,Aquarium,Boise,0.95
+V0236,Magic Bounce House,Trampoline Park,Boise,0.36
+V0237,Silver Fun Park,Amusement Park,Boise,0.98
+V0238,Royal Ocean World,Aquarium,Boise,0.23
+V0239,Rainbow Golf Garden,Mini Golf,Boise,0.77
+V0240,Super Jump Zone,Trampoline Park,Boise,0.8
+V0241,Big Boulder Zone,Rock Climbing,Boise,0.34
+V0242,Little Wildlife Center,Zoo,Boise,0.37
+V0243,Star Nature Reserve,Wildlife Park,Tucson,0.54
+V0244,Royal Bounce House,Trampoline Park,Tucson,0.54
+V0245,Sunny Raceway,Go-Karts,Tucson,0.44
+V0246,Epic Raceway,Go-Karts,Tucson,0.31
+V0247,Cool Skating Center,Ice Skating,Tucson,0.14
+V0248,Golden Movie House,Movie Theater,Tucson,0.99
+V0249,Magic Trampoline Park,Trampoline Park,Tucson,0.21
+V0250,Big Wildlife Park,Wildlife Park,Tucson,0.89
+V0251,Mega Swing Away,Batting Cages,Tucson,0.92
+V0252,Fun Animal Park,Zoo,Tucson,0.88
+V0253,Super Jump Zone,Trampoline Park,Tucson,0.8
+V0254,Big Theme Park,Amusement Park,Tucson,0.72
+V0255,Big Play Palace,Arcade,Tucson,0.87
+V0256,Big Ice Palace,Ice Skating,Tucson,0.75
+V0257,Sunny Cinema,Movie Theater,Tucson,0.66
+V0258,Little Aquarium,Aquarium,Tucson,0.77
+V0259,Mega Boulder Zone,Rock Climbing,Tucson,0.73
+V0260,Royal Water Park,Water Park,Tucson,0.72
+V0261,Family Animal Park,Zoo,San Antonio,0.82
+V0262,Happy Puzzle House,Escape Room,San Antonio,0.49
+V0263,Lucky Sea Life Center,Aquarium,San Antonio,0.61
+V0264,Wild Bowling,Bowling,San Antonio,0.17
+V0265,Rainbow Ice Palace,Ice Skating,San Antonio,0.32
+V0266,Fun Wildlife Park,Wildlife Park,San Antonio,0.52
+V0267,Royal Fun Park,Amusement Park,San Antonio,0.7
+V0268,Little Swing Away,Batting Cages,San Antonio,0.59
+V0269,Royal Game Zone,Arcade,San Antonio,0.99
+V0270,Silver Mystery Room,Escape Room,San Antonio,0.33
+V0271,Epic Puzzle House,Escape Room,San Antonio,0.87
+V0272,Cool Splash Zone,Water Park,San Antonio,0.61
+V0273,Little Nature Reserve,Wildlife Park,San Antonio,0.37
+V0274,Grand Ice Rink,Ice Skating,San Antonio,0.61
+V0275,Rainbow Heritage Center,Museum,San Antonio,0.55
+V0276,Cool Mystery Room,Escape Room,San Antonio,0.82
+V0277,Epic Ocean World,Aquarium,San Antonio,0.33
+V0278,Mega Bounce House,Trampoline Park,San Antonio,0.68
+V0279,Royal Escape Room,Escape Room,San Antonio,0.62
+V0280,Super Jump Zone,Trampoline Park,San Antonio,0.39
+V0281,Wild Climbing Gym,Rock Climbing,San Antonio,0.22
+V0282,Happy Garden Park,Botanical Garden,San Antonio,0.55
+V0283,Wild Fun Park,Amusement Park,San Antonio,0.92
+V0284,Little Film Center,Movie Theater,San Antonio,0.88
+V0285,Royal Water Park,Water Park,San Antonio,0.23
+V0286,Golden Ocean World,Aquarium,San Antonio,0.43
+V0287,Adventure Skating Center,Ice Skating,San Antonio,0.58
+V0288,Happy Swing Away,Batting Cages,San Antonio,0.77
+V0289,Star Fun Park,Amusement Park,San Antonio,0.84
+V0290,Mega Tag Arena,Laser Tag,San Antonio,0.31
+V0291,Rainbow Wildlife Center,Zoo,Provo,0.4
+V0292,Cool Spray Park,Splash Pad,Provo,0.16
+V0293,Little Swing Away,Batting Cages,Provo,0.47
+V0294,Family Trampoline Park,Trampoline Park,Provo,0.37
+V0295,Mega Cinema,Movie Theater,Provo,0.31
+V0296,Fun Nature Center,Botanical Garden,Provo,0.51
+V0297,Silver Garden Park,Botanical Garden,Provo,0.77
+V0298,Silver Bounce House,Trampoline Park,Provo,0.19
+V0299,Rainbow Movie House,Movie Theater,Provo,0.95
+V0300,Family Theme Park,Amusement Park,Provo,0.43
+V0301,Royal Batting Cages,Batting Cages,Provo,0.87
+V0302,Happy Aqua World,Water Park,Provo,0.91
+V0303,Family Laser Quest,Laser Tag,Provo,0.35
+V0304,Royal Water Park,Water Park,Provo,0.7
+V0305,Adventure Splash Pad,Splash Pad,Provo,0.81
+V0306,Fun Ocean World,Aquarium,Mesa,0.28
+V0307,Epic Garden Park,Botanical Garden,Mesa,0.29
+V0308,Big Aquarium,Aquarium,Mesa,0.81
+V0309,Adventure Water Play,Splash Pad,Mesa,0.87
+V0310,Fun Bounce House,Trampoline Park,Mesa,0.33
+V0311,Mega Bowl-O-Rama,Bowling,Mesa,0.88
+V0312,Adventure Jump Zone,Trampoline Park,Mesa,0.81
+V0313,Star Sea Life Center,Aquarium,Mesa,0.11
+V0314,Family Amusement Park,Amusement Park,Mesa,0.77
+V0315,Mega STEM World,Science Center,Mesa,0.16
+V0316,Happy Swing Away,Batting Cages,Mesa,0.63
+V0317,Lucky Batting Cages,Batting Cages,Mesa,0.95
+V0318,Lucky Discovery Center,Museum,Mesa,0.51
+V0319,Family Animal Park,Zoo,Mesa,0.86
+V0320,Mega Rock Wall,Rock Climbing,Mesa,0.74
+V0321,Super Batting Cages,Batting Cages,Mesa,0.39
+V0322,Super Trampoline Park,Trampoline Park,Mesa,0.35
+V0323,Sunny Nature Reserve,Wildlife Park,Mesa,0.39
+V0324,Lucky Water Play,Splash Pad,Mesa,0.51
+V0325,Silver Splash Pad,Splash Pad,Mesa,0.81
+V0326,Sunny Aqua World,Water Park,Idaho Falls,0.88
+V0327,Royal Climbing Gym,Rock Climbing,Idaho Falls,0.47
+V0328,Golden Hit Zone,Batting Cages,Idaho Falls,0.76
+V0329,Silver Speedway,Go-Karts,Idaho Falls,0.7
+V0330,Fun Tag Arena,Laser Tag,Idaho Falls,0.93
+V0331,Super Arcade,Arcade,Idaho Falls,0.18
+V0332,Happy Water Park,Water Park,Idaho Falls,0.6
+V0333,Sunny Nature Reserve,Wildlife Park,Idaho Falls,0.4
+V0334,Silver Splash Zone,Water Park,Idaho Falls,0.89
+V0335,Family Rock Wall,Rock Climbing,Idaho Falls,0.64
+V0336,Mega Tag Arena,Laser Tag,Idaho Falls,0.56
+V0337,Magic Trampoline Park,Trampoline Park,Idaho Falls,0.86
+V0338,Sunny Laser Quest,Laser Tag,El Paso,0.2
+V0339,Star Amusement Park,Amusement Park,El Paso,0.83
+V0340,Rainbow Garden Park,Botanical Garden,El Paso,0.71
+V0341,Adventure Garden Park,Botanical Garden,El Paso,0.94
+V0342,Adventure Amusement Park,Amusement Park,El Paso,0.35
+V0343,Big Puzzle House,Escape Room,El Paso,0.11
+V0344,Star Bounce House,Trampoline Park,El Paso,0.46
+V0345,Adventure Trampoline Park,Trampoline Park,El Paso,0.77
+V0346,Golden Putt-Putt,Mini Golf,El Paso,0.51
+V0347,Happy Lanes,Bowling,El Paso,0.75
+V0348,Rainbow Wildlife Park,Wildlife Park,El Paso,0.9
+V0349,Wild Bounce House,Trampoline Park,El Paso,0.14
+V0350,Grand Game Zone,Arcade,El Paso,0.7
+V0351,Rainbow Movie House,Movie Theater,El Paso,0.47
+V0352,Lucky Mini Golf,Mini Golf,El Paso,0.41
+V0353,Little Aqua World,Water Park,El Paso,0.71
+V0354,Lucky Film Center,Movie Theater,Fort Worth,0.38
+V0355,Golden Ocean World,Aquarium,Fort Worth,0.15
+V0356,Little Mini Golf,Mini Golf,Fort Worth,0.79
+V0357,Little Fun Park,Amusement Park,Fort Worth,0.21
+V0358,Silver Cinema,Movie Theater,Fort Worth,0.22
+V0359,Cool Garden Park,Botanical Garden,Fort Worth,0.6
+V0360,Super Laser Quest,Laser Tag,Fort Worth,0.88
+V0361,Silver Museum,Museum,Fort Worth,0.51
+V0362,Big Play Palace,Arcade,Fort Worth,0.49
+V0363,Silver Skating Center,Ice Skating,Fort Worth,0.2
+V0364,Big Zoo,Zoo,Fort Worth,0.82
+V0365,Royal Spray Park,Splash Pad,Fort Worth,0.93
+V0366,Silver Arcade,Arcade,Fort Worth,0.32
+V0367,Golden Nature Reserve,Wildlife Park,Fort Worth,0.17
+V0368,Big Escape Room,Escape Room,Fort Worth,0.4
+V0369,Super Bowl-O-Rama,Bowling,Fort Worth,0.67
+V0370,Lucky Science Center,Science Center,Fort Worth,0.92
+V0371,Happy Tag Arena,Laser Tag,Fort Worth,0.96
+V0372,Cool Trampoline Park,Trampoline Park,Fort Worth,0.23
+V0373,Wild Golf Garden,Mini Golf,Fort Worth,0.24
+V0374,Wild Play Palace,Arcade,Fort Worth,0.54
+V0375,Star Safari Zone,Wildlife Park,Fort Worth,0.71
+V0376,Rainbow Safari Zone,Wildlife Park,Fort Worth,0.88
+V0377,Fun Speedway,Go-Karts,Fort Worth,0.16
+V0378,Little Hit Zone,Batting Cages,Fort Worth,0.63

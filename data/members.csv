@@ -1,0 +1,851 @@
+member_id,first_name,last_name,email,market,zip_code,purchase_date,renewal_date,acquisition_channel,total_visits,last_visit_date,plan_tier,plan_price
+M00001,Patrick,Jackson,patrick.jackson40@gmail.com,Salt Lake City,84157,2026-02-17,2027-02-17,Instagram Ads,1,2026-04-03,Individual,36.29
+M00002,Elijah,Carter,elijah.carter42@outlook.com,El Paso,79967,2026-02-20,2027-02-20,Facebook Ads,1,2026-02-28,Family Plus,101.36
+M00003,Caleb,Green,caleb.green47@gmail.com,Phoenix,85062,2025-05-16,2026-05-16,Instagram Ads,0,,Family,61.09
+M00004,Thomas,James,thomas.james13@gmail.com,Dallas,75242,2025-11-06,2026-11-06,Organic Search,0,,Family,95.25
+M00005,Rachel,Richardson,rachel.richardson84@yahoo.com,Austin,78720,2026-01-29,2027-01-29,Groupon,0,,Couple,62.75
+M00006,Danielle,White,danielle.white83@outlook.com,Salt Lake City,84149,2025-07-30,2026-07-30,Facebook Ads,6,2026-03-25,Couple,67.43
+M00007,Kevin,Vasquez,kevin.vasquez6@gmail.com,Boise,83740,2025-08-18,2026-08-18,TikTok Ads,4,2026-04-02,Family,89.1
+M00008,Stephanie,Scott,stephanie.scott33@gmail.com,Houston,77057,2026-02-22,2027-02-22,Word of Mouth,1,2026-02-26,Individual,35.92
+M00009,Rachel,Miller,rachel.miller54@gmail.com,Houston,77040,2025-10-23,2026-10-23,Groupon,0,,Individual,23.49
+M00010,Parker,Bennett,parker.bennett19@gmail.com,Phoenix,85070,2025-08-18,2026-08-18,Organic Search,0,,Individual,33.11
+M00011,Charles,Jones,charles.jones33@gmail.com,Salt Lake City,84187,2026-02-02,2027-02-02,Word of Mouth,1,2026-02-20,Individual,24.76
+M00012,Megan,Jones,megan.jones81@gmail.com,Phoenix,85028,2025-06-16,2026-06-16,Groupon,3,2026-02-27,Individual,26.06
+M00013,Carolyn,Moore,carolyn.moore45@gmail.com,Boise,83723,2026-03-13,2027-03-13,Instagram Ads,1,2026-03-24,Family,72.3
+M00014,Danielle,Marshall,danielle.marshall90@gmail.com,Phoenix,85027,2026-02-12,2027-02-12,Facebook Ads,0,,Family,77.31
+M00015,Samuel,Richardson,samuel.richardson66@gmail.com,Provo,84670,2025-10-04,2026-10-04,Facebook Ads,0,,Family,66.64
+M00016,Richard,James,richard.james35@gmail.com,Dallas,75261,2025-12-30,2026-12-30,Organic Search,3,2026-02-28,Family Plus,102.92
+M00017,Kyle,Barnes,kyle.barnes22@yahoo.com,Salt Lake City,84155,2026-03-06,2027-03-06,Word of Mouth,1,2026-03-26,Couple,58.18
+M00018,Paul,Vasquez,paul.vasquez5@gmail.com,Phoenix,85092,2025-05-30,2026-05-30,Groupon,2,2026-02-28,Couple,56.02
+M00019,Brenda,Murphy,brenda.murphy15@gmail.com,Phoenix,85076,2025-11-22,2026-11-22,Groupon,2,2026-01-09,Family,69.47
+M00020,Parker,Simmons,parker.simmons12@outlook.com,Fort Worth,76195,2025-11-02,2026-11-02,Groupon,0,,Individual,29.84
+M00021,Isabella,Hall,isabella.hall47@gmail.com,Salt Lake City,84135,2025-10-02,2026-10-02,Instagram Ads,0,,Couple,53.82
+M00022,Dennis,Owens,dennis.owens71@gmail.com,Mesa,85218,2025-07-09,2026-07-09,Groupon,1,2025-07-15,Family Plus,114.88
+M00023,Kelly,Owens,kelly.owens88@gmail.com,Salt Lake City,84180,2025-08-26,2026-08-26,Organic Search,7,2026-04-10,Individual,38.33
+M00024,Connor,Flores,connor.flores22@outlook.com,Austin,78782,2025-05-11,2026-05-11,Facebook Ads,0,,Family Plus,91.92
+M00025,Shirley,Turner,shirley.turner99@gmail.com,Austin,78713,2025-11-01,2026-11-01,Word of Mouth,0,,Family,70.59
+M00026,Danielle,Russell,danielle.russell39@gmail.com,Boise,83730,2025-05-29,2026-05-29,Groupon,5,2026-01-01,Family,67.16
+M00027,Olivia,Murphy,olivia.murphy21@outlook.com,Tucson,85734,2025-07-23,2026-07-23,Instagram Ads,0,,Family,79.59
+M00028,Megan,Garcia,megan.garcia12@outlook.com,El Paso,79937,2025-06-03,2026-06-03,Word of Mouth,0,,Individual,24.63
+M00029,Denise,Harrison,denise.harrison37@gmail.com,Provo,84665,2025-09-10,2026-09-10,Facebook Ads,2,2025-12-22,Couple,49.97
+M00030,Andrea,Murray,andrea.murray98@gmail.com,Provo,84689,2025-09-15,2026-09-15,Organic Search,7,2026-03-27,Individual,38.5
+M00031,Andrea,Kennedy,andrea.kennedy91@gmail.com,Houston,77012,2025-06-10,2026-06-10,Groupon,4,2026-02-21,Family,98.2
+M00032,Maria,Nguyen,maria.nguyen88@gmail.com,Austin,78799,2026-01-17,2027-01-17,Facebook Ads,1,2026-01-31,Individual,25.27
+M00033,Jessica,Scott,jessica.scott67@gmail.com,Dallas,75294,2025-08-12,2026-08-12,Word of Mouth,0,,Couple,67.7
+M00034,Debra,Price,debra.price87@outlook.com,Boise,83798,2025-11-13,2026-11-13,Facebook Ads,2,2026-03-06,Family,97.29
+M00035,Rachel,Peterson,rachel.peterson37@gmail.com,Boise,83758,2026-01-21,2027-01-21,Affiliate,0,,Couple,49.35
+M00036,Charles,Ruiz,charles.ruiz57@outlook.com,Phoenix,85078,2026-02-08,2027-02-08,Facebook Ads,0,,Family,69.86
+M00037,Nicholas,Gonzalez,nicholas.gonzalez86@yahoo.com,Phoenix,85022,2025-11-15,2026-11-15,Groupon,0,,Family,63.02
+M00038,Kenneth,Sullivan,kenneth.sullivan84@outlook.com,Houston,77035,2026-03-05,2027-03-05,Instagram Ads,0,,Couple,47.56
+M00039,Daniel,Reyes,daniel.reyes69@outlook.com,Salt Lake City,84132,2026-03-17,2027-03-17,Groupon,0,,Family,96.36
+M00040,Diane,Wells,diane.wells24@outlook.com,Idaho Falls,83414,2025-10-15,2026-10-15,Facebook Ads,5,2026-04-02,Family,63.29
+M00041,Sara,Roberts,sara.roberts23@outlook.com,Dallas,75264,2025-12-31,2026-12-31,Word of Mouth,2,2026-03-03,Individual,32.39
+M00042,Elijah,Williams,elijah.williams34@outlook.com,Salt Lake City,84125,2025-10-27,2026-10-27,Word of Mouth,1,2025-10-31,Individual,32.72
+M00043,Andrew,McDonald,andrew.mcdonald20@gmail.com,Fort Worth,76157,2025-07-03,2026-07-03,Groupon,0,,Family,77.83
+M00044,Sharon,Murphy,sharon.murphy88@outlook.com,Salt Lake City,84167,2025-11-15,2026-11-15,Word of Mouth,0,,Couple,66.52
+M00045,Stephanie,Hill,stephanie.hill22@gmail.com,Houston,77024,2025-07-17,2026-07-17,Organic Search,1,2025-07-20,Family,78.55
+M00046,Noah,Anderson,noah.anderson72@gmail.com,San Antonio,78212,2025-06-12,2026-06-12,Groupon,1,2025-06-13,Family,88.83
+M00047,Sarah,Harrison,sarah.harrison5@gmail.com,Salt Lake City,84127,2025-09-01,2026-09-01,Instagram Ads,5,2026-03-22,Family Plus,112.25
+M00048,James,Garcia,james.garcia39@gmail.com,Tucson,85764,2025-10-09,2026-10-09,Word of Mouth,7,2026-02-17,Family,68.9
+M00049,Samantha,Chavez,samantha.chavez31@gmail.com,Salt Lake City,84194,2025-06-23,2026-06-23,Word of Mouth,0,,Couple,47.25
+M00050,Brian,Barnes,brian.barnes72@gmail.com,Fort Worth,76192,2025-09-03,2026-09-03,Organic Search,9,2026-04-11,Family,71.75
+M00051,Jerry,Hernandez,jerry.hernandez10@gmail.com,San Antonio,78295,2025-10-16,2026-10-16,Word of Mouth,6,2026-03-14,Family,93.78
+M00052,Betty,Harrison,betty.harrison98@outlook.com,Dallas,75262,2026-03-27,2027-03-27,Facebook Ads,1,2026-04-08,Family Plus,115.69
+M00053,Gregory,Collins,gregory.collins49@gmail.com,Phoenix,85080,2025-07-28,2026-07-28,Organic Search,0,,Family,69.29
+M00054,Nolan,Kennedy,nolan.kennedy59@gmail.com,San Antonio,78231,2025-07-01,2026-07-01,Facebook Ads,0,,Family,66.36
+M00055,Jessica,Rodriguez,jessica.rodriguez10@outlook.com,San Antonio,78262,2025-11-26,2026-11-26,Facebook Ads,4,2026-04-11,Family,61.72
+M00056,Marcus,Gonzales,marcus.gonzales23@gmail.com,Salt Lake City,84129,2025-10-05,2026-10-05,Facebook Ads,4,2026-03-28,Family,69.1
+M00057,David,White,david.white52@gmail.com,Austin,78717,2025-08-25,2026-08-25,Organic Search,0,,Family,62.31
+M00058,Gregory,Harris,gregory.harris68@yahoo.com,Idaho Falls,83498,2026-02-25,2027-02-25,Affiliate,1,2026-03-11,Family,60.86
+M00059,Rebecca,Torres,rebecca.torres97@outlook.com,Idaho Falls,83448,2025-09-17,2026-09-17,Facebook Ads,0,,Couple,64.04
+M00060,Owen,James,owen.james50@yahoo.com,Fort Worth,76120,2025-08-24,2026-08-24,Word of Mouth,5,2026-02-03,Family Plus,90.93
+M00061,Amber,Ross,amber.ross11@yahoo.com,Phoenix,85019,2025-05-15,2026-05-15,Facebook Ads,4,2026-02-07,Individual,33.23
+M00062,Patrick,White,patrick.white77@gmail.com,Dallas,75259,2025-06-22,2026-06-22,Facebook Ads,0,,Couple,62.38
+M00063,Nicholas,Baker,nicholas.baker88@gmail.com,Salt Lake City,84148,2025-11-14,2026-11-14,Facebook Ads,3,2026-03-26,Individual,22.34
+M00064,Diane,Bennett,diane.bennett80@gmail.com,Mesa,85266,2025-06-04,2026-06-04,Groupon,2,2025-12-31,Family,93.38
+M00065,Beverly,Kennedy,beverly.kennedy74@yahoo.com,Phoenix,85060,2025-06-29,2026-06-29,Groupon,8,2026-03-31,Family Plus,96.19
+M00066,Jack,Perez,jack.perez14@outlook.com,Dallas,75292,2025-09-12,2026-09-12,Word of Mouth,0,,Family,84.8
+M00067,Gregory,Gonzales,gregory.gonzales14@gmail.com,Phoenix,85075,2025-12-12,2026-12-12,Organic Search,3,2026-02-18,Family,86.51
+M00068,Rachel,Richardson,rachel.richardson44@gmail.com,Phoenix,85071,2025-08-16,2026-08-16,Groupon,1,2025-08-29,Individual,33.44
+M00069,Jennifer,Mendoza,jennifer.mendoza83@gmail.com,San Antonio,78241,2025-08-29,2026-08-29,Word of Mouth,0,,Family,72.24
+M00070,Cynthia,Russell,cynthia.russell81@gmail.com,Boise,83765,2025-08-17,2026-08-17,Groupon,0,,Family,94.32
+M00071,Heather,Johnson,heather.johnson91@gmail.com,Phoenix,85018,2025-09-29,2026-09-29,Word of Mouth,3,2026-03-30,Family,80.48
+M00072,Cooper,Kim,cooper.kim79@gmail.com,Boise,83750,2026-01-22,2027-01-22,Facebook Ads,1,2026-01-29,Couple,44.49
+M00073,Jesse,Hall,jesse.hall72@gmail.com,Phoenix,85033,2025-10-03,2026-10-03,Groupon,0,,Family,61.14
+M00074,Jesse,Wright,jesse.wright25@outlook.com,Houston,77073,2025-08-20,2026-08-20,Groupon,0,,Family,87.41
+M00075,Lisa,Davis,lisa.davis98@gmail.com,Salt Lake City,84138,2025-07-25,2026-07-25,Word of Mouth,8,2026-03-30,Individual,28.15
+M00076,Liam,Hughes,liam.hughes91@yahoo.com,Austin,78736,2025-07-06,2026-07-06,Instagram Ads,6,2026-04-02,Family,81.8
+M00077,Emily,Chavez,emily.chavez32@outlook.com,Houston,77083,2026-02-25,2027-02-25,Organic Search,0,,Family,74.01
+M00078,Nancy,Russell,nancy.russell66@outlook.com,Mesa,85268,2026-02-16,2027-02-16,TikTok Ads,1,2026-02-25,Couple,39.07
+M00079,Joyce,Diaz,joyce.diaz64@gmail.com,Provo,84653,2025-10-11,2026-10-11,Word of Mouth,0,,Individual,36.05
+M00080,Richard,Lopez,richard.lopez13@outlook.com,Salt Lake City,84130,2025-12-22,2026-12-22,Groupon,0,,Individual,38.16
+M00081,Cameron,Cox,cameron.cox21@outlook.com,Salt Lake City,84156,2025-10-26,2026-10-26,Facebook Ads,1,2025-11-12,Couple,66.11
+M00082,James,Diaz,james.diaz62@gmail.com,Austin,78776,2026-02-02,2027-02-02,Organic Search,1,2026-02-14,Individual,32.91
+M00083,Anthony,Watson,anthony.watson48@yahoo.com,San Antonio,78227,2025-06-20,2026-06-20,Organic Search,7,2026-02-23,Family,61.74
+M00084,Jean,Reed,jean.reed89@gmail.com,Provo,84648,2025-09-16,2026-09-16,Facebook Ads,8,2026-03-17,Family,66.55
+M00085,Diane,Kelly,diane.kelly81@outlook.com,Dallas,75261,2026-03-15,2027-03-15,Facebook Ads,1,2026-03-28,Family,83.64
+M00086,Katherine,Powell,katherine.powell76@outlook.com,Boise,83718,2026-03-13,2027-03-13,Groupon,0,,Couple,67.6
+M00087,Sandra,Ford,sandra.ford79@yahoo.com,Tucson,85732,2026-01-11,2027-01-11,Facebook Ads,1,2026-01-17,Family,87.06
+M00088,Stephen,Walker,stephen.walker99@yahoo.com,Dallas,75277,2026-02-24,2027-02-24,Facebook Ads,1,2026-03-10,Family,82.07
+M00089,Dennis,Green,dennis.green33@outlook.com,Boise,83724,2026-03-29,2027-03-29,Facebook Ads,1,2026-04-10,Family,60.76
+M00090,Parker,Butler,parker.butler29@gmail.com,Dallas,75250,2025-07-21,2026-07-21,Facebook Ads,0,,Individual,26.46
+M00091,Susan,Rivera,susan.rivera29@outlook.com,El Paso,79918,2025-10-27,2026-10-27,Affiliate,2,2026-02-03,Family Plus,116.85
+M00092,Dennis,Wells,dennis.wells99@outlook.com,Austin,78741,2025-07-01,2026-07-01,Facebook Ads,8,2026-02-28,Family Plus,89.86
+M00093,Jessica,Fisher,jessica.fisher85@yahoo.com,Phoenix,85050,2025-10-19,2026-10-19,Affiliate,1,2025-10-21,Couple,63.96
+M00094,Andrew,Ramirez,andrew.ramirez20@gmail.com,Houston,77050,2025-12-19,2026-12-19,Groupon,0,,Family,97.59
+M00095,Donald,White,donald.white21@yahoo.com,Tucson,85787,2026-02-17,2027-02-17,Facebook Ads,0,,Family,72.11
+M00096,Diane,Gonzalez,diane.gonzalez87@gmail.com,Provo,84632,2025-06-27,2026-06-27,Facebook Ads,1,2025-06-28,Couple,52.57
+M00097,Ryan,King,ryan.king26@yahoo.com,Boise,83792,2026-03-19,2027-03-19,Facebook Ads,1,2026-04-04,Family,95.7
+M00098,Gregory,Young,gregory.young6@yahoo.com,Idaho Falls,83465,2025-08-29,2026-08-29,Instagram Ads,4,2026-02-07,Couple,39.88
+M00099,Kimberly,Butler,kimberly.butler26@outlook.com,Phoenix,85079,2025-10-03,2026-10-03,Instagram Ads,4,2025-12-14,Family Plus,117.15
+M00100,Carolyn,Reyes,carolyn.reyes21@gmail.com,Boise,83744,2025-12-13,2026-12-13,Word of Mouth,0,,Family,88.48
+M00101,Heather,Price,heather.price23@gmail.com,Austin,78799,2025-10-06,2026-10-06,Groupon,0,,Family,87.14
+M00102,Hunter,Torres,hunter.torres73@outlook.com,Provo,84673,2026-03-07,2027-03-07,Word of Mouth,1,2026-03-17,Individual,19.76
+M00103,Dorothy,Mendoza,dorothy.mendoza92@gmail.com,San Antonio,78251,2026-01-22,2027-01-22,Facebook Ads,0,,Individual,33.09
+M00104,Janet,Jackson,janet.jackson48@outlook.com,Austin,78753,2025-08-24,2026-08-24,Groupon,0,,Individual,22.15
+M00105,Jesse,Brooks,jesse.brooks23@outlook.com,Mesa,85288,2025-09-29,2026-09-29,Instagram Ads,0,,Couple,56.67
+M00106,Steven,Rivera,steven.rivera94@gmail.com,Tucson,85783,2026-03-19,2027-03-19,Groupon,1,2026-04-01,Family Plus,123.75
+M00107,Ryan,Clark,ryan.clark64@gmail.com,Tucson,85740,2026-02-18,2027-02-18,Groupon,0,,Couple,58.09
+M00108,Christine,Graham,christine.graham2@gmail.com,Phoenix,85018,2026-03-11,2027-03-11,Groupon,1,2026-04-07,Family,87.82
+M00109,Jerry,Sanchez,jerry.sanchez62@outlook.com,San Antonio,78238,2026-01-28,2027-01-28,Facebook Ads,0,,Individual,35.92
+M00110,Christopher,Mendoza,christopher.mendoza22@yahoo.com,Salt Lake City,84121,2026-03-20,2027-03-20,Groupon,1,2026-04-09,Family Plus,121.16
+M00111,Gregory,Evans,gregory.evans25@gmail.com,Austin,78779,2026-03-10,2027-03-10,Facebook Ads,1,2026-03-11,Couple,46.13
+M00112,Emma,McDonald,emma.mcdonald26@gmail.com,Phoenix,85091,2025-10-29,2026-10-29,Groupon,0,,Individual,35.88
+M00113,Adrian,Kennedy,adrian.kennedy85@gmail.com,Boise,83759,2025-08-19,2026-08-19,Facebook Ads,3,2026-02-19,Family Plus,102.3
+M00114,Alexander,Bell,alexander.bell97@gmail.com,Austin,78759,2025-08-04,2026-08-04,Instagram Ads,0,,Couple,55.07
+M00115,Gary,Fernandez,gary.fernandez39@gmail.com,Idaho Falls,83414,2025-05-22,2026-05-22,Word of Mouth,13,2026-04-10,Family Plus,117.82
+M00116,Denise,Washington,denise.washington74@yahoo.com,Phoenix,85028,2025-09-14,2026-09-14,Word of Mouth,0,,Family,75.07
+M00117,Gregory,Stewart,gregory.stewart7@outlook.com,Mesa,85212,2025-07-27,2026-07-27,Groupon,0,,Family,71.44
+M00118,Danielle,Sanchez,danielle.sanchez30@gmail.com,Fort Worth,76166,2025-05-30,2026-05-30,Instagram Ads,0,,Couple,60.86
+M00119,Timothy,Simmons,timothy.simmons28@yahoo.com,Houston,77076,2025-10-05,2026-10-05,Affiliate,0,,Family,79.61
+M00120,Andrew,Davis,andrew.davis23@gmail.com,Provo,84617,2025-12-07,2026-12-07,Facebook Ads,2,2026-02-23,Family,95.72
+M00121,Joan,Hughes,joan.hughes45@gmail.com,Mesa,85298,2025-06-16,2026-06-16,Facebook Ads,0,,Individual,19.99
+M00122,Edward,Cruz,edward.cruz83@gmail.com,Phoenix,85093,2026-03-31,2027-03-31,Groupon,0,,Individual,34.61
+M00123,Dorothy,Hall,dorothy.hall77@yahoo.com,Austin,78749,2025-09-24,2026-09-24,Organic Search,0,,Family,70.02
+M00124,Lauren,Cook,lauren.cook28@gmail.com,Boise,83789,2025-09-25,2026-09-25,Groupon,0,,Individual,29.23
+M00125,Aiden,Reed,aiden.reed39@yahoo.com,Dallas,75245,2025-11-23,2026-11-23,Organic Search,0,,Family Plus,98.4
+M00126,Joseph,Russell,joseph.russell85@gmail.com,Salt Lake City,84113,2025-09-02,2026-09-02,Organic Search,4,2026-03-03,Family Plus,98.34
+M00127,Landon,Campbell,landon.campbell38@gmail.com,Salt Lake City,84143,2025-10-15,2026-10-15,Organic Search,0,,Family,95.5
+M00128,Ryan,Price,ryan.price29@yahoo.com,San Antonio,78252,2026-02-03,2027-02-03,Groupon,0,,Family,77.55
+M00129,Frances,Jackson,frances.jackson61@outlook.com,Mesa,85258,2026-02-12,2027-02-12,Word of Mouth,1,2026-03-29,Couple,65.13
+M00130,Diana,Campbell,diana.campbell11@gmail.com,Boise,83732,2025-12-18,2026-12-18,Groupon,1,2026-01-15,Individual,28.04
+M00131,Ruth,Barnes,ruth.barnes62@gmail.com,Salt Lake City,84135,2025-07-07,2026-07-07,Organic Search,2,2026-01-22,Family Plus,121.11
+M00132,Luke,Ward,luke.ward22@gmail.com,Salt Lake City,84147,2025-08-25,2026-08-25,Groupon,0,,Family,79.96
+M00133,Andrew,Mendoza,andrew.mendoza63@gmail.com,Phoenix,85061,2025-12-17,2026-12-17,Facebook Ads,0,,Couple,68.55
+M00134,Carol,Young,carol.young47@outlook.com,Dallas,75291,2026-03-11,2027-03-11,Facebook Ads,0,,Family,60.94
+M00135,Denise,Garcia,denise.garcia7@yahoo.com,Dallas,75280,2025-05-17,2026-05-17,Facebook Ads,5,2026-04-04,Family,67.22
+M00136,Hannah,Phillips,hannah.phillips46@yahoo.com,Salt Lake City,84173,2025-10-15,2026-10-15,Affiliate,3,2025-12-03,Family,78.23
+M00137,Angela,Reyes,angela.reyes59@yahoo.com,Houston,77022,2025-10-02,2026-10-02,Instagram Ads,0,,Family Plus,119.68
+M00138,Samuel,Barnes,samuel.barnes95@gmail.com,Provo,84615,2025-10-18,2026-10-18,Facebook Ads,1,2025-11-12,Individual,31.94
+M00139,Jose,Perry,jose.perry59@gmail.com,Dallas,75271,2025-10-01,2026-10-01,Instagram Ads,4,2026-04-04,Family,90.88
+M00140,Dorothy,Woods,dorothy.woods63@gmail.com,Dallas,75215,2025-07-10,2026-07-10,Facebook Ads,0,,Family,59.49
+M00141,Madison,Edwards,madison.edwards86@outlook.com,Boise,83789,2025-10-09,2026-10-09,Facebook Ads,0,,Family,68.94
+M00142,Nolan,Foster,nolan.foster20@outlook.com,Fort Worth,76116,2025-08-07,2026-08-07,Facebook Ads,0,,Family Plus,107.2
+M00143,Kevin,Martin,kevin.martin97@gmail.com,Phoenix,85045,2025-09-10,2026-09-10,Facebook Ads,0,,Couple,58.3
+M00144,Charles,Castro,charles.castro57@yahoo.com,Provo,84667,2026-03-26,2027-03-26,Groupon,1,2026-03-28,Family Plus,115.83
+M00145,Sebastian,Cox,sebastian.cox66@gmail.com,Boise,83768,2025-12-11,2026-12-11,TikTok Ads,3,2026-01-21,Couple,40.63
+M00146,Scott,Myers,scott.myers90@gmail.com,Mesa,85273,2026-02-13,2027-02-13,Facebook Ads,1,2026-02-26,Family,87.86
+M00147,Frank,Ramirez,frank.ramirez97@gmail.com,Idaho Falls,83496,2025-06-07,2026-06-07,Word of Mouth,0,,Family,77.02
+M00148,Andrew,Vargas,andrew.vargas1@gmail.com,Salt Lake City,84165,2026-01-04,2027-01-04,Instagram Ads,1,2026-01-29,Family,79.33
+M00149,Tyler,Butler,tyler.butler78@outlook.com,Phoenix,85053,2025-09-05,2026-09-05,Direct,0,,Family,64.33
+M00150,Cheryl,Kim,cheryl.kim90@gmail.com,Phoenix,85080,2025-11-07,2026-11-07,Organic Search,0,,Couple,57.73
+M00151,Dorothy,Rivera,dorothy.rivera65@gmail.com,Boise,83724,2025-09-03,2026-09-03,Instagram Ads,0,,Family,82.31
+M00152,Logan,Kelly,logan.kelly55@outlook.com,Salt Lake City,84128,2026-01-12,2027-01-12,Facebook Ads,0,,Individual,24.34
+M00153,Emily,Thomas,emily.thomas89@yahoo.com,Austin,78755,2025-06-21,2026-06-21,Instagram Ads,0,,Individual,36.36
+M00154,Grace,Jimenez,grace.jimenez31@gmail.com,San Antonio,78299,2025-09-18,2026-09-18,Groupon,3,2026-04-10,Family,96.06
+M00155,Liam,Gomez,liam.gomez93@yahoo.com,Salt Lake City,84197,2025-12-16,2026-12-16,Facebook Ads,1,2025-12-19,Family Plus,115.46
+M00156,Angela,Johnson,angela.johnson43@gmail.com,El Paso,79915,2025-05-19,2026-05-19,Facebook Ads,0,,Couple,40.53
+M00157,Amber,Cox,amber.cox63@outlook.com,Salt Lake City,84150,2025-07-20,2026-07-20,Word of Mouth,3,2026-03-25,Family Plus,107.74
+M00158,Cameron,Williams,cameron.williams15@yahoo.com,Idaho Falls,83488,2025-10-22,2026-10-22,Affiliate,2,2026-01-26,Couple,40.2
+M00159,Cheryl,Graham,cheryl.graham63@gmail.com,Mesa,85234,2025-07-03,2026-07-03,Groupon,0,,Individual,20.92
+M00160,Wyatt,Taylor,wyatt.taylor27@outlook.com,Mesa,85264,2025-08-25,2026-08-25,Instagram Ads,0,,Couple,63.86
+M00161,Christopher,Flores,christopher.flores4@gmail.com,Dallas,75221,2026-02-27,2027-02-27,Facebook Ads,1,2026-03-14,Individual,24.04
+M00162,Donald,Johnson,donald.johnson83@yahoo.com,Tucson,85715,2025-10-11,2026-10-11,Organic Search,6,2026-03-13,Individual,37.56
+M00163,Grace,Myers,grace.myers2@gmail.com,Austin,78725,2025-06-28,2026-06-28,Facebook Ads,0,,Family,74.76
+M00164,Benjamin,Turner,benjamin.turner96@outlook.com,Phoenix,85092,2025-05-24,2026-05-24,Affiliate,0,,Individual,22.68
+M00165,Deborah,Robinson,deborah.robinson24@outlook.com,Salt Lake City,84180,2026-03-01,2027-03-01,Word of Mouth,1,2026-03-23,Family,70.63
+M00166,Sebastian,Moore,sebastian.moore25@gmail.com,Houston,77088,2025-06-18,2026-06-18,Organic Search,11,2026-03-12,Family,65.1
+M00167,Elizabeth,Gutierrez,elizabeth.gutierrez70@outlook.com,Boise,83729,2025-11-27,2026-11-27,Groupon,0,,Couple,62.16
+M00168,Diane,Sanders,diane.sanders65@gmail.com,Phoenix,85088,2025-11-11,2026-11-11,Organic Search,0,,Family,64.61
+M00169,Emily,Woods,emily.woods46@gmail.com,San Antonio,78239,2025-12-20,2026-12-20,Facebook Ads,0,,Couple,40.28
+M00170,Heather,Harrison,heather.harrison59@yahoo.com,Boise,83723,2025-11-21,2026-11-21,Organic Search,2,2026-02-13,Family,92.19
+M00171,Ruth,Price,ruth.price45@gmail.com,Houston,77087,2025-10-22,2026-10-22,Facebook Ads,4,2026-02-25,Family Plus,104.84
+M00172,Grace,Bell,grace.bell3@gmail.com,Salt Lake City,84185,2025-06-15,2026-06-15,Facebook Ads,9,2026-04-07,Family,60.57
+M00173,Stephanie,Butler,stephanie.butler20@yahoo.com,Idaho Falls,83486,2025-10-18,2026-10-18,Facebook Ads,6,2026-04-11,Family,79.13
+M00174,Angela,McDonald,angela.mcdonald99@gmail.com,Provo,84646,2026-04-02,2027-04-02,Word of Mouth,1,2026-04-03,Family,69.31
+M00175,Jason,Watson,jason.watson53@gmail.com,Salt Lake City,84193,2025-06-19,2026-06-19,Word of Mouth,3,2026-03-05,Couple,55.08
+M00176,Eric,Ward,eric.ward74@gmail.com,Tucson,85727,2025-08-19,2026-08-19,Affiliate,0,,Family,88.91
+M00177,Michelle,Sanchez,michelle.sanchez28@gmail.com,San Antonio,78280,2025-09-17,2026-09-17,Word of Mouth,0,,Family,61.08
+M00178,Mary,White,mary.white19@gmail.com,Austin,78721,2026-03-16,2027-03-16,Facebook Ads,0,,Couple,41.4
+M00179,Jose,Kelly,jose.kelly92@yahoo.com,San Antonio,78232,2025-07-13,2026-07-13,Organic Search,10,2026-02-11,Couple,45.05
+M00180,Luke,Ramos,luke.ramos44@outlook.com,El Paso,79978,2025-09-23,2026-09-23,Instagram Ads,0,,Family,86.77
+M00181,Nicholas,Gray,nicholas.gray59@outlook.com,Mesa,85271,2025-12-13,2026-12-13,Facebook Ads,2,2025-12-21,Individual,31.67
+M00182,Pamela,White,pamela.white52@outlook.com,Salt Lake City,84132,2025-09-25,2026-09-25,Word of Mouth,8,2026-03-30,Couple,65.83
+M00183,Madison,Peterson,madison.peterson63@gmail.com,San Antonio,78275,2026-03-08,2027-03-08,Groupon,0,,Couple,56.3
+M00184,Peter,McDonald,peter.mcdonald70@gmail.com,Dallas,75297,2025-07-13,2026-07-13,Instagram Ads,3,2025-10-09,Family,63.81
+M00185,Gary,Morgan,gary.morgan61@yahoo.com,Phoenix,85064,2025-09-11,2026-09-11,Facebook Ads,4,2026-01-29,Family,73.89
+M00186,Megan,Wright,megan.wright81@gmail.com,Tucson,85772,2025-09-13,2026-09-13,Groupon,3,2026-03-27,Family,81.71
+M00187,Ann,Rogers,ann.rogers45@gmail.com,Salt Lake City,84196,2025-07-03,2026-07-03,TikTok Ads,6,2026-04-03,Individual,30.52
+M00188,Debra,Collins,debra.collins41@gmail.com,Phoenix,85044,2025-10-01,2026-10-01,Word of Mouth,2,2025-11-26,Couple,65.63
+M00189,Gary,Cook,gary.cook96@yahoo.com,Salt Lake City,84123,2026-03-08,2027-03-08,Facebook Ads,1,2026-03-13,Family Plus,106.03
+M00190,Lisa,Jimenez,lisa.jimenez40@gmail.com,Tucson,85766,2026-03-21,2027-03-21,Word of Mouth,1,2026-03-27,Individual,35.77
+M00191,Christina,Cooper,christina.cooper71@gmail.com,El Paso,79999,2025-05-14,2026-05-14,Word of Mouth,0,,Family,77.26
+M00192,Virginia,Richardson,virginia.richardson45@gmail.com,Phoenix,85021,2025-10-31,2026-10-31,Groupon,1,2025-11-05,Couple,46.79
+M00193,Robert,Kennedy,robert.kennedy97@gmail.com,Salt Lake City,84165,2025-06-28,2026-06-28,Instagram Ads,4,2026-02-09,Family,90.87
+M00194,Carter,Cooper,carter.cooper37@outlook.com,Phoenix,85034,2025-05-13,2026-05-13,Affiliate,1,2025-05-19,Individual,24.79
+M00195,Richard,Garcia,richard.garcia24@yahoo.com,Salt Lake City,84166,2025-07-26,2026-07-26,Organic Search,7,2026-03-26,Couple,43.52
+M00196,Tyler,Simmons,tyler.simmons32@yahoo.com,Houston,77022,2025-10-27,2026-10-27,Word of Mouth,0,,Family Plus,106.02
+M00197,Kenneth,Hernandez,kenneth.hernandez96@outlook.com,Phoenix,85091,2025-12-14,2026-12-14,Groupon,1,2026-01-10,Couple,40.56
+M00198,Robert,Hernandez,robert.hernandez75@yahoo.com,Austin,78757,2025-05-23,2026-05-23,Instagram Ads,6,2026-04-08,Couple,54.0
+M00199,William,Washington,william.washington91@gmail.com,Phoenix,85099,2025-10-21,2026-10-21,Word of Mouth,4,2026-03-26,Family,80.74
+M00200,John,Sanders,john.sanders80@gmail.com,Tucson,85794,2025-07-24,2026-07-24,TikTok Ads,0,,Family,66.59
+M00201,Donna,Reed,donna.reed42@gmail.com,Dallas,75222,2026-03-27,2027-03-27,Word of Mouth,1,2026-03-29,Individual,35.7
+M00202,Nolan,Jimenez,nolan.jimenez85@gmail.com,Boise,83785,2026-02-10,2027-02-10,Facebook Ads,0,,Couple,57.18
+M00203,Charles,Owens,charles.owens82@gmail.com,Austin,78763,2025-05-24,2026-05-24,Instagram Ads,7,2026-03-10,Family,61.33
+M00204,Anthony,Nelson,anthony.nelson24@gmail.com,Houston,77094,2025-10-06,2026-10-06,Facebook Ads,0,,Family Plus,104.95
+M00205,Isaac,Wood,isaac.wood48@gmail.com,Boise,83751,2025-06-27,2026-06-27,Word of Mouth,0,,Family,67.56
+M00206,Angela,Castillo,angela.castillo58@gmail.com,Dallas,75214,2026-02-07,2027-02-07,Direct,1,2026-02-20,Family,79.7
+M00207,Colton,Peterson,colton.peterson71@gmail.com,Austin,78783,2025-11-06,2026-11-06,Facebook Ads,3,2026-02-19,Individual,26.11
+M00208,Madison,Ross,madison.ross11@outlook.com,Dallas,75265,2025-12-09,2026-12-09,Groupon,0,,Family Plus,120.31
+M00209,Robert,Ross,robert.ross7@gmail.com,Salt Lake City,84179,2025-09-29,2026-09-29,Word of Mouth,0,,Couple,59.93
+M00210,Kyle,White,kyle.white29@gmail.com,San Antonio,78228,2026-03-10,2027-03-10,Facebook Ads,1,2026-03-17,Individual,30.43
+M00211,Marcus,King,marcus.king98@gmail.com,Austin,78772,2025-07-10,2026-07-10,Groupon,6,2026-03-04,Family,81.45
+M00212,Donna,Perez,donna.perez15@yahoo.com,Boise,83728,2025-12-05,2026-12-05,Affiliate,2,2026-02-22,Family,59.55
+M00213,Evelyn,Torres,evelyn.torres89@yahoo.com,Austin,78794,2025-12-23,2026-12-23,Word of Mouth,5,2026-03-31,Couple,40.8
+M00214,Jesse,Thompson,jesse.thompson24@gmail.com,El Paso,79981,2025-07-07,2026-07-07,Affiliate,5,2026-01-13,Individual,23.95
+M00215,Laura,Hill,laura.hill44@outlook.com,Salt Lake City,84158,2025-12-09,2026-12-09,Word of Mouth,2,2026-01-15,Family,93.91
+M00216,Stephanie,Scott,stephanie.scott40@outlook.com,Idaho Falls,83465,2025-06-19,2026-06-19,Direct,0,,Family Plus,94.23
+M00217,Samantha,Moore,samantha.moore72@gmail.com,Tucson,85733,2025-10-23,2026-10-23,Groupon,0,,Family Plus,115.17
+M00218,Julie,Bell,julie.bell39@gmail.com,El Paso,79991,2026-03-29,2027-03-29,TikTok Ads,0,,Couple,62.37
+M00219,Carter,Morgan,carter.morgan78@gmail.com,Phoenix,85039,2025-08-03,2026-08-03,Facebook Ads,5,2026-03-13,Individual,20.59
+M00220,Stephanie,Evans,stephanie.evans9@gmail.com,El Paso,79966,2025-08-13,2026-08-13,Affiliate,0,,Family,72.0
+M00221,Joyce,Russell,joyce.russell6@outlook.com,Tucson,85760,2025-07-10,2026-07-10,Word of Mouth,7,2026-02-07,Family,82.75
+M00222,Carter,Wilson,carter.wilson89@gmail.com,Salt Lake City,84192,2025-06-09,2026-06-09,Groupon,0,,Family,63.53
+M00223,Marcus,Wright,marcus.wright51@gmail.com,Houston,77032,2025-08-15,2026-08-15,Groupon,2,2026-03-18,Family Plus,121.25
+M00224,Nancy,Robinson,nancy.robinson91@gmail.com,Dallas,75277,2025-05-26,2026-05-26,Organic Search,0,,Family,98.01
+M00225,Jerry,Ross,jerry.ross6@outlook.com,Austin,78794,2026-03-09,2027-03-09,Affiliate,1,2026-03-20,Individual,21.89
+M00226,Dorothy,Phillips,dorothy.phillips1@yahoo.com,Houston,77073,2025-10-18,2026-10-18,Word of Mouth,8,2026-03-28,Individual,36.65
+M00227,Cooper,Reed,cooper.reed79@outlook.com,Austin,78781,2026-03-17,2027-03-17,Facebook Ads,1,2026-03-19,Family,82.16
+M00228,Isaac,Taylor,isaac.taylor38@gmail.com,Salt Lake City,84145,2025-12-18,2026-12-18,Groupon,2,2026-04-03,Couple,45.3
+M00229,Tristan,Kelly,tristan.kelly55@yahoo.com,Houston,77089,2025-07-12,2026-07-12,Groupon,0,,Individual,30.25
+M00230,Megan,Wells,megan.wells24@yahoo.com,Phoenix,85034,2026-02-03,2027-02-03,Facebook Ads,1,2026-02-09,Individual,31.51
+M00231,Sophia,Diaz,sophia.diaz2@outlook.com,Phoenix,85018,2026-04-01,2027-04-01,Groupon,1,2026-04-08,Family,71.96
+M00232,Abigail,Davis,abigail.davis23@gmail.com,Provo,84696,2026-01-25,2027-01-25,Word of Mouth,3,2026-04-08,Family,60.42
+M00233,Mason,Jones,mason.jones27@gmail.com,Dallas,75255,2025-10-13,2026-10-13,Facebook Ads,0,,Individual,35.81
+M00234,Wyatt,Nelson,wyatt.nelson74@yahoo.com,Salt Lake City,84149,2025-09-05,2026-09-05,Organic Search,3,2025-12-16,Couple,39.95
+M00235,Victoria,Miller,victoria.miller62@yahoo.com,Dallas,75271,2026-01-21,2027-01-21,Organic Search,2,2026-02-21,Family,90.02
+M00236,Danielle,Thompson,danielle.thompson43@gmail.com,Salt Lake City,84176,2025-10-27,2026-10-27,Instagram Ads,0,,Family,59.9
+M00237,Rebecca,Chavez,rebecca.chavez26@gmail.com,Phoenix,85050,2026-04-01,2027-04-01,Instagram Ads,0,,Family,69.91
+M00238,Ann,Clark,ann.clark27@gmail.com,Austin,78744,2026-01-15,2027-01-15,Facebook Ads,0,,Family,70.33
+M00239,Frank,Simmons,frank.simmons7@gmail.com,Houston,77096,2025-09-16,2026-09-16,Facebook Ads,3,2026-04-05,Couple,41.58
+M00240,Christina,King,christina.king12@outlook.com,Houston,77068,2025-08-07,2026-08-07,Groupon,4,2026-03-22,Family,89.66
+M00241,Ethan,Baker,ethan.baker37@outlook.com,Salt Lake City,84123,2025-06-24,2026-06-24,Groupon,0,,Family,63.28
+M00242,Nicole,Marshall,nicole.marshall52@gmail.com,Phoenix,85041,2025-10-12,2026-10-12,Word of Mouth,10,2026-04-11,Family Plus,102.82
+M00243,Christian,Smith,christian.smith97@gmail.com,Salt Lake City,84178,2025-12-20,2026-12-20,Groupon,1,2025-12-27,Family,76.89
+M00244,Alexander,Thompson,alexander.thompson75@gmail.com,Fort Worth,76161,2025-06-27,2026-06-27,Instagram Ads,0,,Family Plus,91.25
+M00245,James,Alvarez,james.alvarez15@outlook.com,Phoenix,85099,2025-09-09,2026-09-09,Word of Mouth,3,2025-12-22,Family,87.47
+M00246,Doris,Allen,doris.allen18@gmail.com,Boise,83728,2025-10-22,2026-10-22,Organic Search,0,,Family,76.47
+M00247,Noah,Henderson,noah.henderson80@gmail.com,Houston,77080,2025-08-30,2026-08-30,Instagram Ads,0,,Couple,45.77
+M00248,Madison,Vargas,madison.vargas94@gmail.com,Houston,77062,2026-03-16,2027-03-16,Affiliate,0,,Family,60.34
+M00249,Tristan,Patel,tristan.patel15@gmail.com,El Paso,79920,2025-11-12,2026-11-12,Facebook Ads,3,2026-02-12,Family,98.34
+M00250,Logan,Williams,logan.williams61@gmail.com,Idaho Falls,83483,2026-03-26,2027-03-26,Organic Search,0,,Couple,67.82
+M00251,Aiden,Cox,aiden.cox94@yahoo.com,Boise,83784,2025-05-20,2026-05-20,Facebook Ads,5,2025-10-13,Individual,38.81
+M00252,Brian,Gutierrez,brian.gutierrez90@gmail.com,Phoenix,85077,2026-01-20,2027-01-20,Affiliate,0,,Couple,41.53
+M00253,Gabriel,Bell,gabriel.bell99@gmail.com,Boise,83791,2026-03-08,2027-03-08,Facebook Ads,0,,Family,92.67
+M00254,Sandra,Wilson,sandra.wilson22@gmail.com,Houston,77070,2025-09-22,2026-09-22,Organic Search,0,,Family,80.3
+M00255,Heather,Fernandez,heather.fernandez34@gmail.com,Mesa,85211,2025-10-25,2026-10-25,Groupon,0,,Family,74.28
+M00256,Carson,Hernandez,carson.hernandez13@outlook.com,El Paso,79965,2026-03-10,2027-03-10,Word of Mouth,1,2026-03-31,Family,69.9
+M00257,Marilyn,Campbell,marilyn.campbell41@gmail.com,Boise,83718,2025-08-19,2026-08-19,Facebook Ads,3,2026-02-05,Individual,21.08
+M00258,Donald,Thompson,donald.thompson78@gmail.com,Boise,83792,2025-12-06,2026-12-06,Word of Mouth,5,2026-04-10,Family Plus,121.26
+M00259,Zachary,Moore,zachary.moore63@yahoo.com,Dallas,75292,2025-12-14,2026-12-14,Word of Mouth,4,2026-03-29,Individual,34.37
+M00260,Elizabeth,Jimenez,elizabeth.jimenez35@gmail.com,Dallas,75260,2025-07-27,2026-07-27,Word of Mouth,2,2026-02-11,Family,96.6
+M00261,Sara,Alvarez,sara.alvarez43@yahoo.com,Boise,83792,2026-02-22,2027-02-22,Facebook Ads,0,,Family,97.44
+M00262,Scott,Phillips,scott.phillips23@gmail.com,El Paso,79994,2025-05-17,2026-05-17,Facebook Ads,0,,Family,94.86
+M00263,Jesse,Perez,jesse.perez81@gmail.com,Phoenix,85014,2025-07-28,2026-07-28,Facebook Ads,7,2026-04-07,Family,82.72
+M00264,Connor,Reyes,connor.reyes10@gmail.com,Salt Lake City,84193,2025-12-01,2026-12-01,Facebook Ads,2,2026-03-03,Family Plus,111.26
+M00265,Margaret,Robinson,margaret.robinson64@gmail.com,Austin,78718,2025-09-11,2026-09-11,Instagram Ads,4,2025-12-25,Couple,63.35
+M00266,Dennis,Nelson,dennis.nelson57@gmail.com,Austin,78727,2025-12-01,2026-12-01,Facebook Ads,5,2026-04-08,Family,83.5
+M00267,George,Vargas,george.vargas79@outlook.com,San Antonio,78254,2025-07-07,2026-07-07,Groupon,0,,Family,66.68
+M00268,Sebastian,Castillo,sebastian.castillo98@outlook.com,Houston,77090,2026-01-18,2027-01-18,Organic Search,0,,Couple,44.81
+M00269,Joan,Vargas,joan.vargas23@gmail.com,Idaho Falls,83416,2025-10-15,2026-10-15,Organic Search,0,,Couple,52.04
+M00270,Noah,Lopez,noah.lopez14@outlook.com,Salt Lake City,84113,2025-08-20,2026-08-20,Word of Mouth,6,2026-04-11,Individual,36.9
+M00271,Emily,Parker,emily.parker79@gmail.com,Dallas,75227,2026-03-03,2027-03-03,Groupon,1,2026-03-11,Individual,26.17
+M00272,Carol,Mendoza,carol.mendoza29@outlook.com,San Antonio,78291,2025-06-25,2026-06-25,TikTok Ads,0,,Family Plus,109.81
+M00273,Daniel,Bell,daniel.bell67@gmail.com,Fort Worth,76185,2025-08-28,2026-08-28,Word of Mouth,5,2026-01-02,Family,59.58
+M00274,Peter,Powell,peter.powell62@outlook.com,Salt Lake City,84173,2025-09-08,2026-09-08,Facebook Ads,0,,Family,59.5
+M00275,Dorothy,Alvarez,dorothy.alvarez38@gmail.com,Fort Worth,76112,2025-06-16,2026-06-16,Word of Mouth,12,2026-03-23,Couple,60.1
+M00276,Ann,Evans,ann.evans18@yahoo.com,Salt Lake City,84171,2025-12-18,2026-12-18,Organic Search,0,,Family,93.85
+M00277,Raymond,Price,raymond.price35@gmail.com,Dallas,75216,2025-07-09,2026-07-09,Facebook Ads,0,,Couple,53.59
+M00278,Adrian,Howard,adrian.howard58@outlook.com,El Paso,79918,2025-09-16,2026-09-16,Facebook Ads,0,,Family Plus,92.14
+M00279,Pamela,Martin,pamela.martin14@gmail.com,Salt Lake City,84128,2025-05-18,2026-05-18,Word of Mouth,9,2026-03-06,Family Plus,107.74
+M00280,Jonathan,Collins,jonathan.collins62@gmail.com,Phoenix,85016,2025-05-23,2026-05-23,Facebook Ads,0,,Couple,67.69
+M00281,Parker,Kelly,parker.kelly24@outlook.com,Tucson,85795,2025-10-24,2026-10-24,Instagram Ads,0,,Individual,21.34
+M00282,Zachary,Gutierrez,zachary.gutierrez48@gmail.com,Austin,78714,2025-08-18,2026-08-18,Organic Search,6,2026-03-26,Family Plus,94.33
+M00283,Victoria,Gray,victoria.gray89@gmail.com,Houston,77015,2025-09-11,2026-09-11,Facebook Ads,0,,Family,71.32
+M00284,Ryan,Graham,ryan.graham46@gmail.com,Salt Lake City,84192,2026-03-14,2027-03-14,Facebook Ads,1,2026-03-25,Family,90.25
+M00285,Cheryl,Powell,cheryl.powell25@gmail.com,Austin,78775,2026-01-19,2027-01-19,TikTok Ads,1,2026-01-24,Family Plus,102.0
+M00286,Ann,Thompson,ann.thompson28@yahoo.com,Fort Worth,76166,2025-08-30,2026-08-30,Groupon,0,,Family,97.81
+M00287,Henry,Scott,henry.scott76@gmail.com,Salt Lake City,84148,2026-03-02,2027-03-02,Word of Mouth,0,,Family Plus,124.52
+M00288,Kathryn,Long,kathryn.long12@gmail.com,Boise,83744,2025-12-28,2026-12-28,Groupon,1,2026-01-11,Family,87.41
+M00289,Frances,Cox,frances.cox64@gmail.com,Houston,77013,2025-05-12,2026-05-12,Instagram Ads,0,,Individual,25.0
+M00290,Adrian,Young,adrian.young84@yahoo.com,Salt Lake City,84198,2025-07-26,2026-07-26,Organic Search,0,,Individual,34.29
+M00291,Sarah,Castillo,sarah.castillo75@gmail.com,Dallas,75243,2025-09-29,2026-09-29,Word of Mouth,6,2026-04-01,Family,86.77
+M00292,Matthew,Nelson,matthew.nelson70@gmail.com,Phoenix,85097,2025-10-01,2026-10-01,Instagram Ads,2,2026-01-13,Couple,59.94
+M00293,Debra,Adams,debra.adams14@gmail.com,Houston,77034,2025-07-09,2026-07-09,Instagram Ads,0,,Family,86.59
+M00294,Parker,Robinson,parker.robinson54@gmail.com,Salt Lake City,84126,2025-10-01,2026-10-01,Affiliate,1,2025-10-07,Family,71.46
+M00295,Nicole,Davis,nicole.davis96@yahoo.com,Provo,84628,2026-02-23,2027-02-23,Organic Search,0,,Couple,45.3
+M00296,Mark,Martin,mark.martin3@outlook.com,Salt Lake City,84123,2025-08-07,2026-08-07,Facebook Ads,7,2026-04-08,Family,82.73
+M00297,Carter,Morris,carter.morris65@gmail.com,Salt Lake City,84184,2025-09-23,2026-09-23,Instagram Ads,4,2026-02-01,Family,87.63
+M00298,Cheryl,Collins,cheryl.collins53@gmail.com,Fort Worth,76125,2025-10-02,2026-10-02,Word of Mouth,5,2026-02-18,Family,78.83
+M00299,Marilyn,Patel,marilyn.patel23@gmail.com,Boise,83796,2025-12-24,2026-12-24,Facebook Ads,1,2026-01-28,Couple,58.76
+M00300,Ronald,Gray,ronald.gray26@gmail.com,Fort Worth,76125,2025-06-11,2026-06-11,Facebook Ads,0,,Couple,53.97
+M00301,Nolan,Perry,nolan.perry46@gmail.com,Austin,78761,2025-08-15,2026-08-15,Direct,4,2026-03-24,Family,64.89
+M00302,Donna,Cox,donna.cox80@outlook.com,Boise,83776,2025-07-24,2026-07-24,Instagram Ads,5,2026-03-23,Family,67.08
+M00303,Tristan,Nelson,tristan.nelson63@gmail.com,Phoenix,85059,2025-06-25,2026-06-25,Word of Mouth,11,2026-02-01,Individual,32.5
+M00304,Jennifer,Wood,jennifer.wood5@gmail.com,Mesa,85282,2025-08-07,2026-08-07,Word of Mouth,10,2026-03-21,Couple,39.61
+M00305,Kathryn,Gray,kathryn.gray35@gmail.com,San Antonio,78270,2025-11-01,2026-11-01,Groupon,2,2026-04-10,Couple,41.3
+M00306,George,Jones,george.jones81@outlook.com,Austin,78737,2025-11-18,2026-11-18,Organic Search,1,2025-11-28,Family,96.52
+M00307,Jessica,Phillips,jessica.phillips47@gmail.com,Phoenix,85097,2026-03-03,2027-03-03,Instagram Ads,0,,Family,75.41
+M00308,Julie,Morgan,julie.morgan37@yahoo.com,Austin,78761,2025-10-28,2026-10-28,Facebook Ads,1,2025-11-13,Individual,19.55
+M00309,Anna,Wright,anna.wright4@gmail.com,San Antonio,78294,2025-07-30,2026-07-30,Word of Mouth,0,,Family,60.69
+M00310,Joseph,Perez,joseph.perez41@outlook.com,Idaho Falls,83462,2025-09-13,2026-09-13,Affiliate,0,,Family,94.43
+M00311,Kimberly,Stewart,kimberly.stewart15@gmail.com,Houston,77025,2025-07-10,2026-07-10,Word of Mouth,9,2026-03-06,Family,96.99
+M00312,Benjamin,Garcia,benjamin.garcia83@outlook.com,Provo,84694,2025-12-27,2026-12-27,Instagram Ads,1,2026-01-14,Individual,37.35
+M00313,Gary,Simmons,gary.simmons50@gmail.com,El Paso,79942,2026-02-22,2027-02-22,Groupon,0,,Family Plus,116.24
+M00314,Judy,Brooks,judy.brooks99@outlook.com,Phoenix,85020,2025-09-05,2026-09-05,Instagram Ads,0,,Family Plus,105.96
+M00315,Christine,Henderson,christine.henderson13@outlook.com,Houston,77055,2025-10-19,2026-10-19,Groupon,0,,Family,80.91
+M00316,Linda,Wilson,linda.wilson83@outlook.com,San Antonio,78227,2025-06-14,2026-06-14,Facebook Ads,7,2026-02-01,Couple,48.17
+M00317,Elijah,Edwards,elijah.edwards3@outlook.com,Boise,83790,2025-11-21,2026-11-21,Facebook Ads,4,2026-03-20,Individual,28.25
+M00318,Cooper,Wells,cooper.wells16@gmail.com,Phoenix,85044,2025-12-20,2026-12-20,Groupon,0,,Family,64.21
+M00319,Justin,Carter,justin.carter54@gmail.com,San Antonio,78213,2025-10-11,2026-10-11,Groupon,0,,Couple,57.53
+M00320,Lisa,Williams,lisa.williams61@gmail.com,Dallas,75298,2025-08-31,2026-08-31,Groupon,0,,Couple,50.5
+M00321,Angela,Jackson,angela.jackson13@gmail.com,Salt Lake City,84140,2025-06-02,2026-06-02,Word of Mouth,8,2026-03-23,Couple,57.19
+M00322,Brenda,Castillo,brenda.castillo56@gmail.com,Mesa,85288,2025-08-24,2026-08-24,Instagram Ads,0,,Family Plus,107.61
+M00323,Samuel,Kennedy,samuel.kennedy98@outlook.com,Idaho Falls,83491,2025-12-05,2026-12-05,Instagram Ads,2,2026-02-19,Individual,21.97
+M00324,Lauren,Wells,lauren.wells15@outlook.com,Salt Lake City,84121,2025-07-18,2026-07-18,Facebook Ads,0,,Couple,64.05
+M00325,Hunter,Diaz,hunter.diaz75@yahoo.com,San Antonio,78233,2026-02-15,2027-02-15,Groupon,1,2026-02-25,Individual,34.37
+M00326,Margaret,Chavez,margaret.chavez20@gmail.com,Houston,77094,2026-04-02,2027-04-02,Word of Mouth,1,2026-04-07,Family,69.77
+M00327,Sara,King,sara.king28@outlook.com,Phoenix,85017,2026-02-18,2027-02-18,Organic Search,1,2026-02-22,Family,83.09
+M00328,Ruth,Reed,ruth.reed83@outlook.com,Salt Lake City,84172,2025-05-31,2026-05-31,Instagram Ads,3,2025-12-25,Family,95.87
+M00329,Peter,Patel,peter.patel79@gmail.com,Boise,83721,2025-12-11,2026-12-11,Facebook Ads,0,,Couple,52.91
+M00330,Gabriel,Perez,gabriel.perez38@gmail.com,Salt Lake City,84171,2025-11-02,2026-11-02,Groupon,0,,Family Plus,113.64
+M00331,Emma,Gonzalez,emma.gonzalez71@gmail.com,Salt Lake City,84123,2025-06-17,2026-06-17,Word of Mouth,0,,Couple,52.94
+M00332,Patrick,Rogers,patrick.rogers75@gmail.com,Houston,77024,2025-09-15,2026-09-15,Organic Search,1,2025-09-27,Family,90.45
+M00333,Doris,Murray,doris.murray80@yahoo.com,Idaho Falls,83433,2025-11-23,2026-11-23,Facebook Ads,3,2026-03-22,Individual,38.64
+M00334,Jackson,Washington,jackson.washington39@outlook.com,Dallas,75296,2026-04-01,2027-04-01,TikTok Ads,1,2026-04-02,Family,91.19
+M00335,Cameron,Nguyen,cameron.nguyen84@gmail.com,Provo,84678,2025-08-05,2026-08-05,Facebook Ads,1,2025-08-08,Couple,52.9
+M00336,Victoria,Washington,victoria.washington61@gmail.com,Houston,77041,2026-03-09,2027-03-09,Facebook Ads,1,2026-03-16,Family,92.35
+M00337,Connor,Howard,connor.howard5@gmail.com,Houston,77085,2025-07-29,2026-07-29,Organic Search,9,2026-01-12,Family Plus,121.58
+M00338,Christina,King,christina.king38@yahoo.com,Dallas,75296,2026-01-12,2027-01-12,Organic Search,2,2026-03-20,Couple,53.17
+M00339,Gabriel,Cox,gabriel.cox31@gmail.com,Salt Lake City,84112,2026-01-05,2027-01-05,Groupon,0,,Couple,59.31
+M00340,David,Taylor,david.taylor44@gmail.com,Austin,78725,2025-10-05,2026-10-05,Word of Mouth,0,,Family,98.75
+M00341,Mason,Morgan,mason.morgan20@outlook.com,Austin,78723,2025-08-13,2026-08-13,Organic Search,0,,Family Plus,104.76
+M00342,Mark,Ramirez,mark.ramirez79@outlook.com,Salt Lake City,84181,2025-12-20,2026-12-20,Facebook Ads,1,2025-12-28,Individual,31.6
+M00343,Megan,Sanchez,megan.sanchez20@yahoo.com,Salt Lake City,84135,2025-11-30,2026-11-30,Groupon,0,,Couple,62.07
+M00344,Pamela,Baker,pamela.baker11@gmail.com,Tucson,85763,2025-07-07,2026-07-07,Groupon,4,2026-04-05,Family,65.06
+M00345,Samuel,Perry,samuel.perry99@gmail.com,Salt Lake City,84114,2026-03-06,2027-03-06,Organic Search,0,,Family,95.1
+M00346,Parker,Ramos,parker.ramos54@gmail.com,Boise,83780,2025-10-10,2026-10-10,Affiliate,5,2026-04-04,Family,71.55
+M00347,Nicole,Perez,nicole.perez5@gmail.com,Dallas,75226,2025-07-17,2026-07-17,Word of Mouth,1,2025-07-18,Family,67.55
+M00348,Owen,Gutierrez,owen.gutierrez31@yahoo.com,Dallas,75274,2025-05-18,2026-05-18,Facebook Ads,5,2026-03-25,Individual,26.46
+M00349,Brandon,Reed,brandon.reed86@outlook.com,Boise,83758,2025-06-10,2026-06-10,Word of Mouth,9,2026-03-31,Couple,48.84
+M00350,Tristan,Walker,tristan.walker89@gmail.com,Houston,77030,2025-05-31,2026-05-31,TikTok Ads,0,,Couple,67.55
+M00351,Mark,Walker,mark.walker48@gmail.com,Salt Lake City,84129,2025-11-05,2026-11-05,Facebook Ads,0,,Couple,50.23
+M00352,Paul,Butler,paul.butler7@yahoo.com,Phoenix,85033,2025-10-08,2026-10-08,Instagram Ads,1,2025-10-16,Family,63.89
+M00353,Hunter,Murray,hunter.murray44@yahoo.com,Tucson,85787,2025-08-17,2026-08-17,Facebook Ads,0,,Individual,31.73
+M00354,Joshua,Wood,joshua.wood12@outlook.com,Dallas,75239,2025-08-21,2026-08-21,Affiliate,0,,Couple,40.37
+M00355,Grace,Thompson,grace.thompson22@outlook.com,San Antonio,78249,2025-12-27,2026-12-27,Word of Mouth,3,2026-01-12,Individual,30.19
+M00356,Nicholas,Simmons,nicholas.simmons11@outlook.com,Dallas,75215,2026-01-02,2027-01-02,Word of Mouth,0,,Family Plus,101.24
+M00357,Samantha,Ross,samantha.ross33@gmail.com,Fort Worth,76179,2025-12-21,2026-12-21,Facebook Ads,0,,Individual,24.11
+M00358,Jessica,Wood,jessica.wood24@gmail.com,Salt Lake City,84159,2026-03-05,2027-03-05,Facebook Ads,1,2026-03-15,Individual,36.86
+M00359,Gabriel,Foster,gabriel.foster15@gmail.com,Phoenix,85080,2025-12-06,2026-12-06,Groupon,1,2025-12-19,Family,75.3
+M00360,Steven,Cox,steven.cox73@gmail.com,Salt Lake City,84191,2025-07-02,2026-07-02,Word of Mouth,0,,Family,64.69
+M00361,Nicholas,Henderson,nicholas.henderson72@gmail.com,Salt Lake City,84169,2025-12-02,2026-12-02,TikTok Ads,2,2026-01-27,Family,85.12
+M00362,Jordan,Reed,jordan.reed6@gmail.com,Houston,77018,2026-01-23,2027-01-23,Groupon,0,,Couple,42.69
+M00363,Douglas,Turner,douglas.turner79@gmail.com,San Antonio,78297,2025-08-16,2026-08-16,TikTok Ads,3,2026-02-20,Family,98.19
+M00364,Cooper,Hall,cooper.hall53@gmail.com,Tucson,85772,2026-02-24,2027-02-24,Instagram Ads,0,,Family,90.49
+M00365,Doris,Simmons,doris.simmons87@gmail.com,Fort Worth,76158,2026-03-31,2027-03-31,Instagram Ads,1,2026-04-04,Couple,44.32
+M00366,Ryan,Garcia,ryan.garcia98@gmail.com,Idaho Falls,83455,2025-11-29,2026-11-29,Facebook Ads,0,,Family,84.01
+M00367,Elizabeth,Bailey,elizabeth.bailey64@outlook.com,Phoenix,85035,2025-11-13,2026-11-13,Direct,1,2025-12-03,Family,63.44
+M00368,Steven,Taylor,steven.taylor17@gmail.com,Austin,78739,2026-03-24,2027-03-24,Affiliate,0,,Family,69.97
+M00369,Beverly,Cook,beverly.cook88@gmail.com,Houston,77064,2025-10-21,2026-10-21,Organic Search,3,2026-04-01,Family Plus,90.87
+M00370,Logan,Graham,logan.graham41@gmail.com,Phoenix,85020,2025-12-10,2026-12-10,Affiliate,2,2026-03-06,Family,98.61
+M00371,Douglas,Miller,douglas.miller76@outlook.com,Provo,84641,2026-03-08,2027-03-08,Facebook Ads,0,,Couple,49.22
+M00372,Hannah,Stewart,hannah.stewart10@outlook.com,San Antonio,78290,2026-03-18,2027-03-18,Groupon,1,2026-04-06,Individual,38.49
+M00373,Victoria,Anderson,victoria.anderson39@yahoo.com,Salt Lake City,84117,2026-02-14,2027-02-14,Word of Mouth,2,2026-04-04,Couple,50.44
+M00374,Cooper,Miller,cooper.miller59@gmail.com,Austin,78723,2025-12-26,2026-12-26,Facebook Ads,1,2026-01-01,Family,61.7
+M00375,Sebastian,Simmons,sebastian.simmons24@gmail.com,San Antonio,78217,2025-10-03,2026-10-03,Facebook Ads,6,2026-03-08,Family,79.53
+M00376,Sarah,Mendoza,sarah.mendoza25@outlook.com,Fort Worth,76186,2025-10-15,2026-10-15,Organic Search,0,,Family Plus,109.38
+M00377,Olivia,James,olivia.james21@gmail.com,Mesa,85215,2025-12-08,2026-12-08,Word of Mouth,1,2025-12-21,Family Plus,112.0
+M00378,Gregory,Long,gregory.long27@gmail.com,Provo,84610,2025-12-13,2026-12-13,Groupon,1,2025-12-14,Individual,19.6
+M00379,Justin,Hall,justin.hall29@outlook.com,Dallas,75280,2025-11-21,2026-11-21,Facebook Ads,1,2025-12-09,Individual,22.52
+M00380,Rebecca,Ward,rebecca.ward59@gmail.com,San Antonio,78294,2025-05-20,2026-05-20,Facebook Ads,0,,Family,90.96
+M00381,Parker,Taylor,parker.taylor16@gmail.com,Idaho Falls,83434,2025-06-02,2026-06-02,Facebook Ads,1,2025-06-26,Couple,50.23
+M00382,Katherine,Murphy,katherine.murphy7@yahoo.com,Salt Lake City,84175,2026-02-22,2027-02-22,TikTok Ads,0,,Family Plus,96.53
+M00383,Abigail,Taylor,abigail.taylor22@gmail.com,San Antonio,78292,2025-12-30,2026-12-30,Instagram Ads,1,2026-01-07,Couple,54.57
+M00384,Connor,Perry,connor.perry82@outlook.com,Salt Lake City,84138,2025-12-29,2026-12-29,Affiliate,0,,Family,68.38
+M00385,Catherine,Rogers,catherine.rogers71@gmail.com,San Antonio,78247,2025-08-09,2026-08-09,Groupon,0,,Couple,56.52
+M00386,Frank,Barnes,frank.barnes58@gmail.com,Dallas,75273,2026-03-16,2027-03-16,Groupon,1,2026-03-27,Couple,44.39
+M00387,Larry,Collins,larry.collins13@gmail.com,Dallas,75279,2025-11-01,2026-11-01,Facebook Ads,0,,Individual,25.58
+M00388,Larry,Carter,larry.carter91@yahoo.com,Provo,84679,2025-10-09,2026-10-09,Affiliate,0,,Individual,24.99
+M00389,Ruth,Russell,ruth.russell75@yahoo.com,Boise,83729,2025-12-18,2026-12-18,Affiliate,0,,Couple,60.7
+M00390,Teresa,Owens,teresa.owens93@yahoo.com,Salt Lake City,84134,2025-08-23,2026-08-23,Groupon,4,2026-03-19,Family Plus,104.04
+M00391,Colton,Kim,colton.kim42@gmail.com,Austin,78714,2025-10-17,2026-10-17,Affiliate,0,,Individual,38.05
+M00392,Jackson,Powell,jackson.powell49@gmail.com,Dallas,75278,2025-08-16,2026-08-16,Groupon,0,,Family,72.15
+M00393,Nicole,White,nicole.white22@gmail.com,Austin,78714,2025-12-27,2026-12-27,Instagram Ads,2,2025-12-30,Family,60.07
+M00394,Aaron,Green,aaron.green15@gmail.com,Dallas,75218,2025-10-05,2026-10-05,Groupon,0,,Family Plus,96.43
+M00395,Kenneth,Richardson,kenneth.richardson76@gmail.com,Tucson,85768,2026-03-03,2027-03-03,Facebook Ads,0,,Individual,21.85
+M00396,Jackson,Murphy,jackson.murphy68@gmail.com,Austin,78772,2025-11-08,2026-11-08,Word of Mouth,0,,Family,88.49
+M00397,Alexander,Kim,alexander.kim51@outlook.com,Salt Lake City,84141,2025-09-20,2026-09-20,Facebook Ads,0,,Family,76.28
+M00398,George,Harris,george.harris51@yahoo.com,Mesa,85230,2026-03-01,2027-03-01,Facebook Ads,0,,Family,70.68
+M00399,Sharon,Wells,sharon.wells53@outlook.com,Fort Worth,76119,2025-09-07,2026-09-07,Instagram Ads,7,2026-03-07,Family,90.18
+M00400,Parker,Vasquez,parker.vasquez18@gmail.com,Phoenix,85030,2025-09-27,2026-09-27,Facebook Ads,6,2026-03-06,Individual,21.01
+M00401,Jerry,Phillips,jerry.phillips32@gmail.com,Phoenix,85021,2025-12-27,2026-12-27,Facebook Ads,2,2026-01-22,Individual,19.29
+M00402,Katherine,Chavez,katherine.chavez72@outlook.com,El Paso,79960,2025-10-04,2026-10-04,TikTok Ads,6,2026-03-17,Individual,23.28
+M00403,Sara,Baker,sara.baker33@outlook.com,Fort Worth,76199,2025-10-24,2026-10-24,Groupon,0,,Family Plus,116.77
+M00404,Colton,Brooks,colton.brooks86@gmail.com,Dallas,75287,2025-12-06,2026-12-06,Affiliate,0,,Couple,54.33
+M00405,Patricia,Reyes,patricia.reyes3@outlook.com,Phoenix,85064,2025-09-25,2026-09-25,Instagram Ads,4,2026-04-10,Family,61.4
+M00406,Hannah,Coleman,hannah.coleman83@outlook.com,Phoenix,85052,2025-11-28,2026-11-28,Groupon,0,,Couple,40.62
+M00407,Ryan,Ross,ryan.ross67@gmail.com,Houston,77010,2026-03-09,2027-03-09,Facebook Ads,0,,Family,97.15
+M00408,Paul,Evans,paul.evans17@gmail.com,Austin,78736,2025-10-27,2026-10-27,Facebook Ads,3,2026-01-16,Individual,33.5
+M00409,Jerry,Nelson,jerry.nelson61@gmail.com,Houston,77065,2026-03-25,2027-03-25,Instagram Ads,0,,Family,90.74
+M00410,Joyce,Perez,joyce.perez98@yahoo.com,Houston,77080,2025-08-15,2026-08-15,Organic Search,8,2026-01-13,Couple,52.91
+M00411,Deborah,Fisher,deborah.fisher33@outlook.com,Dallas,75272,2025-09-19,2026-09-19,Organic Search,0,,Couple,40.73
+M00412,Amy,Morales,amy.morales62@gmail.com,Provo,84690,2025-12-09,2026-12-09,Organic Search,0,,Individual,32.31
+M00413,Emily,Rogers,emily.rogers32@outlook.com,Provo,84611,2025-09-20,2026-09-20,Facebook Ads,1,2025-09-24,Individual,33.23
+M00414,Kevin,Barnes,kevin.barnes33@outlook.com,Houston,77058,2025-11-09,2026-11-09,Word of Mouth,0,,Family,89.1
+M00415,Alexander,Torres,alexander.torres35@outlook.com,Dallas,75249,2025-10-08,2026-10-08,Facebook Ads,1,2025-10-13,Individual,28.83
+M00416,Carol,Rivera,carol.rivera48@gmail.com,Salt Lake City,84172,2026-03-20,2027-03-20,Facebook Ads,0,,Family Plus,105.22
+M00417,Deborah,Gutierrez,deborah.gutierrez53@gmail.com,Idaho Falls,83423,2025-09-23,2026-09-23,Affiliate,3,2025-10-27,Individual,24.86
+M00418,William,Harris,william.harris28@gmail.com,Salt Lake City,84187,2025-07-30,2026-07-30,Word of Mouth,7,2026-03-04,Family Plus,98.57
+M00419,Michael,Young,michael.young68@gmail.com,Tucson,85741,2025-08-04,2026-08-04,Groupon,0,,Family,85.36
+M00420,Amber,Carter,amber.carter1@outlook.com,Provo,84612,2025-10-20,2026-10-20,Organic Search,0,,Family Plus,123.91
+M00421,Cynthia,Washington,cynthia.washington52@outlook.com,Dallas,75270,2025-09-19,2026-09-19,Direct,5,2026-04-01,Family Plus,121.59
+M00422,Owen,Morris,owen.morris32@gmail.com,San Antonio,78294,2026-03-21,2027-03-21,Organic Search,1,2026-04-09,Individual,38.87
+M00423,Max,Fernandez,max.fernandez86@gmail.com,Salt Lake City,84178,2025-10-16,2026-10-16,Organic Search,0,,Family,90.82
+M00424,Madison,Taylor,madison.taylor83@gmail.com,Idaho Falls,83458,2025-08-24,2026-08-24,Organic Search,0,,Family,97.65
+M00425,Laura,Gutierrez,laura.gutierrez15@gmail.com,Salt Lake City,84153,2026-02-04,2027-02-04,Organic Search,1,2026-02-25,Family Plus,115.81
+M00426,Peter,Brooks,peter.brooks99@gmail.com,Boise,83726,2025-09-14,2026-09-14,Word of Mouth,8,2026-04-03,Family,67.89
+M00427,Diana,Turner,diana.turner94@yahoo.com,Tucson,85732,2026-01-13,2027-01-13,Affiliate,0,,Family,70.96
+M00428,Frank,Henderson,frank.henderson87@gmail.com,Dallas,75260,2025-12-26,2026-12-26,Groupon,0,,Family,70.32
+M00429,Matthew,King,matthew.king42@outlook.com,San Antonio,78248,2025-07-31,2026-07-31,Groupon,4,2026-04-08,Individual,21.75
+M00430,Matthew,Alvarez,matthew.alvarez61@gmail.com,Salt Lake City,84175,2025-05-18,2026-05-18,Organic Search,0,,Family,97.79
+M00431,Nicholas,Rodriguez,nicholas.rodriguez16@gmail.com,Houston,77098,2026-02-18,2027-02-18,Word of Mouth,0,,Individual,33.9
+M00432,Cameron,Ross,cameron.ross36@yahoo.com,Salt Lake City,84124,2025-07-18,2026-07-18,Facebook Ads,6,2026-04-09,Family,85.75
+M00433,Isabella,Garcia,isabella.garcia51@gmail.com,Houston,77077,2026-01-31,2027-01-31,Word of Mouth,1,2026-02-15,Family,82.39
+M00434,Samuel,Young,samuel.young6@gmail.com,Phoenix,85030,2026-02-20,2027-02-20,Facebook Ads,1,2026-03-01,Couple,61.59
+M00435,Landon,Smith,landon.smith32@gmail.com,El Paso,79976,2026-01-23,2027-01-23,Affiliate,0,,Couple,55.02
+M00436,Hannah,Price,hannah.price78@gmail.com,Phoenix,85022,2026-02-08,2027-02-08,Organic Search,0,,Individual,19.73
+M00437,Jackson,Parker,jackson.parker76@gmail.com,Salt Lake City,84189,2026-01-11,2027-01-11,Groupon,1,2026-01-28,Family,69.43
+M00438,Stephen,Roberts,stephen.roberts92@gmail.com,Boise,83775,2025-08-25,2026-08-25,Word of Mouth,9,2026-04-10,Couple,43.6
+M00439,Matthew,Hughes,matthew.hughes90@gmail.com,Phoenix,85044,2025-09-17,2026-09-17,Word of Mouth,7,2026-04-01,Family Plus,95.15
+M00440,Christina,Kelly,christina.kelly36@outlook.com,Tucson,85739,2025-09-08,2026-09-08,Groupon,0,,Family Plus,123.11
+M00441,Nancy,Lee,nancy.lee10@outlook.com,Salt Lake City,84117,2026-03-30,2027-03-30,Facebook Ads,0,,Couple,66.89
+M00442,Peter,Wright,peter.wright62@gmail.com,Boise,83796,2025-05-24,2026-05-24,Affiliate,1,2025-06-21,Family,75.22
+M00443,Alexander,Morales,alexander.morales95@outlook.com,Fort Worth,76177,2026-01-08,2027-01-08,Organic Search,0,,Individual,27.97
+M00444,Caleb,Edwards,caleb.edwards23@gmail.com,Provo,84675,2026-03-07,2027-03-07,Groupon,1,2026-04-09,Individual,28.91
+M00445,Emma,Ortiz,emma.ortiz28@gmail.com,Boise,83760,2025-07-15,2026-07-15,Facebook Ads,0,,Couple,66.99
+M00446,Elizabeth,Marshall,elizabeth.marshall80@yahoo.com,Salt Lake City,84168,2025-12-30,2026-12-30,Groupon,1,2026-01-03,Couple,39.15
+M00447,Cheryl,Flores,cheryl.flores53@gmail.com,Houston,77029,2025-09-25,2026-09-25,Instagram Ads,2,2026-02-14,Couple,53.12
+M00448,Virginia,Johnson,virginia.johnson46@outlook.com,Salt Lake City,84146,2026-03-19,2027-03-19,Facebook Ads,1,2026-03-27,Couple,61.32
+M00449,Stephen,Walker,stephen.walker54@gmail.com,Houston,77097,2025-09-12,2026-09-12,Organic Search,9,2026-04-05,Couple,61.93
+M00450,Isabella,Murphy,isabella.murphy86@yahoo.com,Tucson,85723,2025-06-06,2026-06-06,Organic Search,0,,Family,66.25
+M00451,Joshua,Collins,joshua.collins16@gmail.com,Salt Lake City,84134,2026-02-17,2027-02-17,Affiliate,1,2026-03-01,Couple,57.49
+M00452,Cynthia,Cruz,cynthia.cruz44@gmail.com,Salt Lake City,84164,2025-11-12,2026-11-12,Organic Search,0,,Couple,47.08
+M00453,Amy,Brooks,amy.brooks7@gmail.com,Salt Lake City,84194,2025-05-29,2026-05-29,Organic Search,10,2026-04-09,Couple,53.16
+M00454,Sebastian,Mendoza,sebastian.mendoza39@outlook.com,Phoenix,85029,2025-11-26,2026-11-26,Facebook Ads,0,,Individual,30.01
+M00455,Ann,Ruiz,ann.ruiz47@gmail.com,Tucson,85765,2025-07-21,2026-07-21,Facebook Ads,0,,Couple,66.94
+M00456,Kevin,Peterson,kevin.peterson90@yahoo.com,El Paso,79917,2025-09-13,2026-09-13,Instagram Ads,8,2026-02-13,Family,88.63
+M00457,Theresa,Morgan,theresa.morgan71@gmail.com,Phoenix,85078,2025-11-13,2026-11-13,Facebook Ads,3,2026-03-02,Individual,21.96
+M00458,Isaac,Ortiz,isaac.ortiz93@gmail.com,Mesa,85247,2025-10-04,2026-10-04,Groupon,1,2025-10-19,Individual,35.32
+M00459,Frances,Ramirez,frances.ramirez93@yahoo.com,Boise,83790,2026-02-11,2027-02-11,Organic Search,1,2026-02-15,Family,91.67
+M00460,Virginia,Patel,virginia.patel19@yahoo.com,Phoenix,85033,2026-01-02,2027-01-02,Instagram Ads,1,2026-01-05,Individual,30.39
+M00461,Danielle,Carter,danielle.carter9@gmail.com,Dallas,75268,2025-07-09,2026-07-09,Affiliate,4,2025-12-01,Family Plus,92.61
+M00462,Robert,Ramirez,robert.ramirez70@yahoo.com,Tucson,85735,2025-12-03,2026-12-03,Facebook Ads,2,2026-02-23,Family,94.7
+M00463,Anthony,Ramos,anthony.ramos14@gmail.com,Provo,84628,2025-09-19,2026-09-19,Facebook Ads,3,2026-01-07,Couple,45.8
+M00464,Donald,Castillo,donald.castillo11@outlook.com,Salt Lake City,84177,2025-11-01,2026-11-01,Groupon,1,2025-12-01,Individual,27.5
+M00465,Shirley,Martin,shirley.martin1@outlook.com,San Antonio,78228,2025-08-03,2026-08-03,Groupon,0,,Couple,60.64
+M00466,Mark,Barnes,mark.barnes94@gmail.com,Salt Lake City,84126,2025-08-30,2026-08-30,Facebook Ads,7,2026-02-16,Couple,48.58
+M00467,Jack,Fernandez,jack.fernandez18@yahoo.com,Dallas,75227,2025-09-01,2026-09-01,Groupon,2,2026-03-18,Individual,36.07
+M00468,Michael,Henderson,michael.henderson48@gmail.com,Salt Lake City,84184,2026-03-20,2027-03-20,Facebook Ads,1,2026-04-03,Family,93.82
+M00469,Joshua,Campbell,joshua.campbell61@outlook.com,Tucson,85748,2026-03-29,2027-03-29,Word of Mouth,1,2026-04-09,Family,76.76
+M00470,Brian,Adams,brian.adams2@gmail.com,Dallas,75268,2025-07-22,2026-07-22,Word of Mouth,8,2026-02-27,Family,95.77
+M00471,Linda,Morris,linda.morris37@gmail.com,Salt Lake City,84137,2025-06-26,2026-06-26,Word of Mouth,17,2026-04-07,Family,71.36
+M00472,Douglas,Hernandez,douglas.hernandez92@yahoo.com,Phoenix,85088,2025-07-24,2026-07-24,Word of Mouth,13,2026-04-08,Family Plus,109.41
+M00473,Julie,Murray,julie.murray34@outlook.com,Salt Lake City,84192,2025-06-21,2026-06-21,Facebook Ads,6,2026-04-11,Family,86.99
+M00474,Gregory,Taylor,gregory.taylor41@gmail.com,Austin,78737,2026-03-16,2027-03-16,Organic Search,1,2026-03-26,Family,70.14
+M00475,Janice,Ross,janice.ross8@yahoo.com,Dallas,75270,2025-08-31,2026-08-31,Facebook Ads,4,2026-01-03,Couple,39.69
+M00476,Nancy,Barnes,nancy.barnes44@yahoo.com,Phoenix,85063,2025-08-24,2026-08-24,Word of Mouth,5,2026-03-13,Family,90.35
+M00477,Emily,Vargas,emily.vargas41@gmail.com,El Paso,79962,2026-01-30,2027-01-30,Facebook Ads,0,,Family,98.53
+M00478,Connor,Harris,connor.harris5@gmail.com,Fort Worth,76163,2026-02-15,2027-02-15,Organic Search,0,,Family,83.04
+M00479,Madison,Brown,madison.brown48@yahoo.com,Mesa,85274,2025-08-14,2026-08-14,Instagram Ads,2,2026-01-09,Individual,28.98
+M00480,Amanda,Castro,amanda.castro55@gmail.com,Austin,78730,2025-08-24,2026-08-24,Word of Mouth,4,2026-03-21,Couple,64.35
+M00481,Betty,Simmons,betty.simmons65@gmail.com,Salt Lake City,84147,2025-06-26,2026-06-26,Affiliate,1,2025-07-04,Couple,62.31
+M00482,Rachel,Marshall,rachel.marshall53@outlook.com,San Antonio,78260,2025-10-18,2026-10-18,Facebook Ads,5,2026-03-04,Couple,45.72
+M00483,Douglas,Morris,douglas.morris72@yahoo.com,Boise,83716,2025-05-14,2026-05-14,Instagram Ads,1,2025-06-08,Family,64.15
+M00484,Virginia,Reyes,virginia.reyes13@yahoo.com,Salt Lake City,84183,2025-11-22,2026-11-22,Instagram Ads,2,2026-01-02,Family,84.09
+M00485,Elijah,Ross,elijah.ross4@yahoo.com,Houston,77090,2025-11-18,2026-11-18,Instagram Ads,0,,Individual,32.05
+M00486,Jerry,Gutierrez,jerry.gutierrez85@gmail.com,Salt Lake City,84128,2025-11-03,2026-11-03,Word of Mouth,5,2026-01-01,Family,82.17
+M00487,Jerry,Watson,jerry.watson82@outlook.com,Salt Lake City,84111,2026-03-19,2027-03-19,Affiliate,1,2026-04-03,Family,84.25
+M00488,Angela,Young,angela.young25@outlook.com,Houston,77029,2026-03-20,2027-03-20,Facebook Ads,1,2026-04-01,Couple,65.96
+M00489,Steven,Morgan,steven.morgan36@gmail.com,El Paso,79954,2025-07-25,2026-07-25,Organic Search,12,2026-04-05,Family,77.68
+M00490,Catherine,Nguyen,catherine.nguyen41@gmail.com,Phoenix,85011,2025-10-22,2026-10-22,Organic Search,0,,Couple,56.02
+M00491,Ann,Taylor,ann.taylor50@gmail.com,Phoenix,85037,2026-02-25,2027-02-25,Facebook Ads,0,,Couple,57.24
+M00492,Carson,Fisher,carson.fisher41@yahoo.com,Salt Lake City,84173,2026-01-31,2027-01-31,Word of Mouth,1,2026-02-15,Family Plus,104.16
+M00493,Nolan,Johnson,nolan.johnson60@gmail.com,Provo,84661,2025-10-14,2026-10-14,Facebook Ads,0,,Family,80.1
+M00494,Sarah,Harrison,sarah.harrison13@yahoo.com,Phoenix,85050,2025-10-26,2026-10-26,Instagram Ads,4,2026-03-05,Couple,55.69
+M00495,Timothy,Patel,timothy.patel69@outlook.com,Mesa,85243,2025-10-31,2026-10-31,Affiliate,2,2026-02-16,Individual,19.96
+M00496,Kimberly,Castro,kimberly.castro16@gmail.com,Mesa,85284,2025-08-19,2026-08-19,Affiliate,0,,Family Plus,103.88
+M00497,Hannah,Morris,hannah.morris74@gmail.com,Houston,77045,2025-11-20,2026-11-20,Groupon,0,,Family,68.03
+M00498,Patrick,Morales,patrick.morales85@outlook.com,Tucson,85719,2025-12-15,2026-12-15,Direct,1,2026-02-16,Individual,19.26
+M00499,Helen,Ford,helen.ford84@gmail.com,Houston,77026,2025-05-22,2026-05-22,Facebook Ads,6,2026-03-13,Couple,68.25
+M00500,Isaac,Perez,isaac.perez46@gmail.com,Salt Lake City,84174,2025-09-27,2026-09-27,Groupon,1,2025-10-02,Couple,52.24
+M00501,Amanda,Peterson,amanda.peterson68@outlook.com,Salt Lake City,84116,2026-03-08,2027-03-08,Organic Search,0,,Family Plus,96.9
+M00502,Madison,Morgan,madison.morgan31@gmail.com,Salt Lake City,84138,2025-09-15,2026-09-15,Affiliate,1,2025-11-02,Family,75.18
+M00503,Carol,Evans,carol.evans45@outlook.com,Phoenix,85010,2025-08-03,2026-08-03,Facebook Ads,0,,Family,87.02
+M00504,Colton,Morris,colton.morris22@gmail.com,Salt Lake City,84133,2025-08-05,2026-08-05,Groupon,8,2026-03-22,Family,97.49
+M00505,Gloria,Rogers,gloria.rogers85@gmail.com,Dallas,75211,2025-07-13,2026-07-13,Instagram Ads,0,,Couple,49.01
+M00506,Aiden,Woods,aiden.woods15@gmail.com,Houston,77091,2026-03-28,2027-03-28,Facebook Ads,1,2026-04-09,Family Plus,119.83
+M00507,Deborah,Long,deborah.long82@gmail.com,Phoenix,85090,2025-07-09,2026-07-09,Organic Search,8,2026-04-01,Family Plus,105.17
+M00508,Emma,Brown,emma.brown59@gmail.com,Phoenix,85085,2025-10-06,2026-10-06,Facebook Ads,0,,Family,59.2
+M00509,James,Gonzalez,james.gonzalez33@gmail.com,Mesa,85274,2026-02-19,2027-02-19,Organic Search,1,2026-03-08,Family,65.2
+M00510,David,Fernandez,david.fernandez46@gmail.com,Boise,83759,2025-11-22,2026-11-22,Groupon,0,,Family Plus,92.53
+M00511,Brian,Fisher,brian.fisher87@outlook.com,Salt Lake City,84135,2025-10-30,2026-10-30,Facebook Ads,1,2025-11-06,Couple,44.99
+M00512,Virginia,Harris,virginia.harris18@gmail.com,Tucson,85774,2025-08-29,2026-08-29,TikTok Ads,3,2026-02-18,Family,77.74
+M00513,Connor,Myers,connor.myers17@outlook.com,Mesa,85216,2026-04-01,2027-04-01,Instagram Ads,1,2026-04-04,Couple,51.09
+M00514,Margaret,Bennett,margaret.bennett77@gmail.com,Phoenix,85071,2025-06-09,2026-06-09,Organic Search,0,,Family Plus,93.37
+M00515,Diana,Wilson,diana.wilson90@gmail.com,Salt Lake City,84173,2026-01-15,2027-01-15,Facebook Ads,0,,Family Plus,112.03
+M00516,Mary,Washington,mary.washington80@yahoo.com,Salt Lake City,84187,2026-02-10,2027-02-10,Affiliate,0,,Family,68.89
+M00517,Victoria,Powell,victoria.powell8@yahoo.com,Houston,77033,2025-05-26,2026-05-26,Instagram Ads,0,,Family,80.87
+M00518,Landon,Young,landon.young56@gmail.com,Salt Lake City,84128,2025-06-29,2026-06-29,Instagram Ads,2,2026-03-14,Family,65.83
+M00519,Tyler,Ramirez,tyler.ramirez60@gmail.com,Dallas,75213,2025-06-11,2026-06-11,Groupon,1,2025-07-07,Individual,26.79
+M00520,Christina,Castro,christina.castro36@gmail.com,Salt Lake City,84174,2025-07-10,2026-07-10,Affiliate,1,2025-07-21,Family,72.95
+M00521,Denise,Gray,denise.gray59@outlook.com,Phoenix,85094,2025-07-31,2026-07-31,Groupon,1,2025-10-19,Couple,66.48
+M00522,Jonathan,King,jonathan.king90@gmail.com,El Paso,79954,2026-03-20,2027-03-20,Word of Mouth,0,,Family,61.7
+M00523,Kenneth,Reyes,kenneth.reyes13@yahoo.com,Boise,83751,2026-02-19,2027-02-19,Instagram Ads,0,,Family Plus,118.11
+M00524,Tyler,Butler,tyler.butler9@gmail.com,Phoenix,85014,2025-05-29,2026-05-29,Instagram Ads,0,,Individual,34.27
+M00525,Linda,Hall,linda.hall42@gmail.com,Houston,77027,2025-11-26,2026-11-26,Direct,0,,Family,66.99
+M00526,Laura,Phillips,laura.phillips95@gmail.com,Provo,84634,2026-02-28,2027-02-28,Facebook Ads,0,,Individual,38.2
+M00527,Jack,Sullivan,jack.sullivan73@gmail.com,Salt Lake City,84133,2025-07-08,2026-07-08,Organic Search,7,2026-01-15,Family Plus,115.22
+M00528,Laura,Howard,laura.howard33@gmail.com,Dallas,75230,2025-07-13,2026-07-13,TikTok Ads,0,,Individual,30.51
+M00529,Luke,Richardson,luke.richardson52@outlook.com,Mesa,85284,2026-03-20,2027-03-20,Word of Mouth,1,2026-04-10,Family Plus,98.47
+M00530,Gregory,Thomas,gregory.thomas31@gmail.com,San Antonio,78282,2026-03-17,2027-03-17,Affiliate,1,2026-03-24,Family,89.62
+M00531,Carter,Lee,carter.lee71@gmail.com,Salt Lake City,84115,2025-10-07,2026-10-07,Facebook Ads,2,2025-12-13,Family,68.01
+M00532,Carson,Jones,carson.jones71@gmail.com,Dallas,75258,2026-03-05,2027-03-05,Organic Search,0,,Couple,51.81
+M00533,Dennis,Price,dennis.price25@gmail.com,Idaho Falls,83440,2025-07-04,2026-07-04,Facebook Ads,0,,Family,68.09
+M00534,Patricia,Murphy,patricia.murphy8@gmail.com,Salt Lake City,84133,2025-11-30,2026-11-30,Groupon,3,2026-02-13,Couple,57.07
+M00535,Ryan,Simmons,ryan.simmons92@gmail.com,Dallas,75280,2025-11-17,2026-11-17,Groupon,0,,Family,80.07
+M00536,Susan,Ruiz,susan.ruiz53@outlook.com,Phoenix,85036,2025-10-30,2026-10-30,Affiliate,0,,Family,79.84
+M00537,Rebecca,Young,rebecca.young48@outlook.com,Salt Lake City,84140,2026-03-27,2027-03-27,Organic Search,1,2026-04-07,Family,77.15
+M00538,Maria,Foster,maria.foster57@gmail.com,Phoenix,85033,2026-03-19,2027-03-19,Organic Search,1,2026-03-20,Family,85.42
+M00539,Frank,Ortiz,frank.ortiz97@gmail.com,San Antonio,78253,2026-03-06,2027-03-06,Organic Search,0,,Family,93.63
+M00540,Teresa,Jimenez,teresa.jimenez93@yahoo.com,Fort Worth,76178,2025-07-13,2026-07-13,Word of Mouth,11,2026-03-31,Family,81.73
+M00541,Thomas,Vasquez,thomas.vasquez24@gmail.com,San Antonio,78243,2026-01-19,2027-01-19,Affiliate,0,,Individual,31.61
+M00542,Cynthia,Robinson,cynthia.robinson84@gmail.com,Boise,83766,2026-03-04,2027-03-04,Word of Mouth,0,,Individual,33.35
+M00543,Jonathan,Rogers,jonathan.rogers3@outlook.com,Dallas,75215,2025-08-20,2026-08-20,Word of Mouth,5,2026-03-14,Couple,41.32
+M00544,Cameron,Myers,cameron.myers61@yahoo.com,Salt Lake City,84157,2026-03-22,2027-03-22,Facebook Ads,1,2026-04-09,Family Plus,121.83
+M00545,Frances,Rodriguez,frances.rodriguez85@yahoo.com,Fort Worth,76120,2025-06-19,2026-06-19,TikTok Ads,8,2026-04-10,Family Plus,124.72
+M00546,Andrea,Martin,andrea.martin47@outlook.com,Houston,77063,2025-07-03,2026-07-03,Facebook Ads,9,2026-03-25,Family,98.47
+M00547,Jacqueline,Jimenez,jacqueline.jimenez55@gmail.com,Dallas,75281,2025-10-14,2026-10-14,Facebook Ads,0,,Couple,49.1
+M00548,Abigail,Ramirez,abigail.ramirez93@gmail.com,Tucson,85755,2025-08-24,2026-08-24,TikTok Ads,2,2026-03-01,Family Plus,111.71
+M00549,Jordan,Perez,jordan.perez20@outlook.com,Dallas,75293,2025-06-07,2026-06-07,Groupon,4,2026-03-04,Couple,44.3
+M00550,William,Turner,william.turner56@gmail.com,Austin,78788,2025-12-13,2026-12-13,Groupon,1,2025-12-18,Couple,43.97
+M00551,Margaret,Reyes,margaret.reyes86@gmail.com,Salt Lake City,84180,2026-03-15,2027-03-15,Instagram Ads,0,,Family,60.09
+M00552,Owen,Roberts,owen.roberts1@gmail.com,Provo,84657,2025-08-20,2026-08-20,Facebook Ads,5,2025-12-01,Family Plus,109.56
+M00553,Ryan,Martin,ryan.martin42@gmail.com,Dallas,75268,2025-10-25,2026-10-25,Organic Search,0,,Family,90.08
+M00554,Elizabeth,Gonzales,elizabeth.gonzales13@outlook.com,Phoenix,85081,2025-05-15,2026-05-15,Organic Search,0,,Family Plus,90.28
+M00555,Nicholas,Scott,nicholas.scott76@gmail.com,El Paso,79996,2025-12-30,2026-12-30,Facebook Ads,1,2026-01-01,Family,78.38
+M00556,Edward,Smith,edward.smith56@gmail.com,Austin,78736,2025-05-25,2026-05-25,Organic Search,2,2025-11-06,Individual,32.76
+M00557,Doris,Washington,doris.washington63@yahoo.com,Dallas,75271,2025-11-08,2026-11-08,Groupon,1,2025-11-15,Couple,67.89
+M00558,Ethan,Brooks,ethan.brooks85@gmail.com,Tucson,85726,2025-07-28,2026-07-28,Instagram Ads,0,,Family,91.19
+M00559,Danielle,Stewart,danielle.stewart4@gmail.com,Houston,77062,2025-10-24,2026-10-24,Facebook Ads,3,2026-01-12,Family,69.46
+M00560,Kevin,Evans,kevin.evans81@gmail.com,El Paso,79988,2026-03-25,2027-03-25,Groupon,0,,Family,59.8
+M00561,Nancy,Bennett,nancy.bennett46@outlook.com,Boise,83776,2025-07-04,2026-07-04,Facebook Ads,2,2026-01-10,Family,98.41
+M00562,Amy,Brown,amy.brown5@outlook.com,Houston,77074,2025-10-25,2026-10-25,Groupon,0,,Family,65.28
+M00563,Amy,Rodriguez,amy.rodriguez35@outlook.com,Dallas,75261,2025-11-26,2026-11-26,Facebook Ads,0,,Family,69.8
+M00564,Henry,Garcia,henry.garcia2@outlook.com,Idaho Falls,83422,2025-05-29,2026-05-29,Organic Search,0,,Family,66.77
+M00565,Raymond,Henderson,raymond.henderson66@yahoo.com,Houston,77022,2025-11-06,2026-11-06,Facebook Ads,2,2026-01-20,Family,77.86
+M00566,Aaron,Myers,aaron.myers98@gmail.com,Salt Lake City,84138,2025-08-19,2026-08-19,Word of Mouth,8,2026-03-18,Individual,34.42
+M00567,Elizabeth,Chavez,elizabeth.chavez89@gmail.com,Dallas,75210,2025-07-28,2026-07-28,Facebook Ads,3,2025-12-30,Couple,55.87
+M00568,Karen,Long,karen.long17@yahoo.com,Tucson,85731,2025-08-30,2026-08-30,Facebook Ads,7,2026-03-11,Family Plus,93.09
+M00569,Jackson,Cook,jackson.cook61@gmail.com,El Paso,79927,2025-10-24,2026-10-24,Facebook Ads,3,2025-12-09,Family,77.95
+M00570,Sarah,Hughes,sarah.hughes82@gmail.com,Phoenix,85090,2025-08-29,2026-08-29,Facebook Ads,0,,Individual,24.68
+M00571,Benjamin,Patel,benjamin.patel80@outlook.com,Austin,78792,2026-01-27,2027-01-27,Organic Search,1,2026-02-05,Individual,22.05
+M00572,Tyler,James,tyler.james74@outlook.com,Phoenix,85088,2025-12-07,2026-12-07,Organic Search,3,2026-02-25,Family,65.72
+M00573,Adrian,Wood,adrian.wood39@gmail.com,Salt Lake City,84181,2025-10-05,2026-10-05,Groupon,1,2025-10-14,Family,87.25
+M00574,Jackson,Diaz,jackson.diaz22@outlook.com,Tucson,85765,2026-02-02,2027-02-02,Word of Mouth,1,2026-02-10,Family,90.56
+M00575,Alexander,Henderson,alexander.henderson28@outlook.com,Idaho Falls,83434,2026-03-30,2027-03-30,Groupon,1,2026-04-03,Individual,33.95
+M00576,Helen,James,helen.james13@outlook.com,Houston,77011,2025-08-02,2026-08-02,Word of Mouth,12,2026-03-02,Individual,24.5
+M00577,Cooper,Brooks,cooper.brooks91@gmail.com,Fort Worth,76156,2026-03-04,2027-03-04,Word of Mouth,1,2026-03-27,Family Plus,103.51
+M00578,Victoria,Lopez,victoria.lopez36@outlook.com,Dallas,75291,2025-11-15,2026-11-15,Organic Search,1,2025-11-23,Family,59.13
+M00579,Nancy,Campbell,nancy.campbell94@gmail.com,Phoenix,85090,2025-12-14,2026-12-14,TikTok Ads,2,2026-02-27,Family,90.55
+M00580,Helen,Wilson,helen.wilson49@yahoo.com,Salt Lake City,84150,2026-01-19,2027-01-19,Groupon,1,2026-01-25,Family,69.91
+M00581,Nolan,Murray,nolan.murray81@yahoo.com,El Paso,79984,2025-08-25,2026-08-25,Groupon,3,2026-02-14,Family,67.43
+M00582,Jonathan,Parker,jonathan.parker60@gmail.com,Idaho Falls,83476,2025-06-08,2026-06-08,Organic Search,2,2025-07-01,Individual,21.8
+M00583,Christine,Gray,christine.gray83@yahoo.com,Dallas,75230,2025-05-24,2026-05-24,Word of Mouth,6,2026-03-07,Individual,19.43
+M00584,Linda,Adams,linda.adams66@gmail.com,Phoenix,85086,2025-06-18,2026-06-18,TikTok Ads,0,,Family Plus,96.14
+M00585,Dorothy,Bennett,dorothy.bennett7@yahoo.com,San Antonio,78254,2026-02-19,2027-02-19,Groupon,1,2026-02-21,Individual,19.02
+M00586,Donna,Myers,donna.myers1@gmail.com,Dallas,75270,2025-08-06,2026-08-06,Word of Mouth,8,2026-03-24,Couple,45.37
+M00587,Karen,Collins,karen.collins18@gmail.com,Salt Lake City,84148,2025-08-30,2026-08-30,Groupon,2,2025-12-21,Couple,58.62
+M00588,Carson,Ramirez,carson.ramirez60@yahoo.com,Tucson,85793,2025-10-23,2026-10-23,Affiliate,4,2026-03-08,Family,59.49
+M00589,Kelly,Myers,kelly.myers61@outlook.com,Fort Worth,76124,2025-09-20,2026-09-20,Instagram Ads,0,,Family Plus,108.14
+M00590,Charles,Hill,charles.hill1@gmail.com,El Paso,79985,2025-08-15,2026-08-15,Facebook Ads,4,2026-02-23,Family,83.58
+M00591,Carolyn,Coleman,carolyn.coleman3@gmail.com,Phoenix,85014,2025-09-14,2026-09-14,Word of Mouth,6,2026-02-22,Couple,40.1
+M00592,Sophia,Sanchez,sophia.sanchez49@gmail.com,Tucson,85753,2026-03-24,2027-03-24,Affiliate,1,2026-04-10,Family,75.9
+M00593,Elijah,Gutierrez,elijah.gutierrez39@outlook.com,San Antonio,78298,2025-08-24,2026-08-24,Instagram Ads,1,2025-09-09,Couple,53.19
+M00594,George,Reed,george.reed35@gmail.com,Phoenix,85063,2025-05-14,2026-05-14,Organic Search,7,2026-04-07,Couple,52.87
+M00595,Heather,Rogers,heather.rogers52@gmail.com,Provo,84620,2025-12-19,2026-12-19,Organic Search,2,2026-03-29,Family,72.81
+M00596,Frances,Nelson,frances.nelson80@gmail.com,Dallas,75212,2025-11-18,2026-11-18,Instagram Ads,1,2025-11-22,Couple,61.32
+M00597,Mark,Howard,mark.howard23@outlook.com,Fort Worth,76161,2025-06-02,2026-06-02,Word of Mouth,3,2026-03-27,Couple,45.53
+M00598,Kelly,Green,kelly.green23@gmail.com,Salt Lake City,84152,2025-10-19,2026-10-19,Instagram Ads,2,2026-03-31,Family,86.33
+M00599,Elijah,Sullivan,elijah.sullivan3@gmail.com,Phoenix,85082,2026-03-24,2027-03-24,Word of Mouth,1,2026-04-04,Family,97.07
+M00600,Lauren,Patel,lauren.patel93@yahoo.com,El Paso,79935,2025-12-20,2026-12-20,Groupon,0,,Couple,65.83
+M00601,Danielle,Simmons,danielle.simmons31@outlook.com,Houston,77024,2025-10-02,2026-10-02,Instagram Ads,0,,Family,93.88
+M00602,Mary,Rodriguez,mary.rodriguez88@outlook.com,Fort Worth,76159,2025-07-03,2026-07-03,Facebook Ads,6,2026-03-23,Couple,46.8
+M00603,Landon,Gray,landon.gray19@outlook.com,Phoenix,85022,2025-07-27,2026-07-27,Groupon,0,,Family,77.33
+M00604,Jonathan,Mendoza,jonathan.mendoza38@yahoo.com,Houston,77043,2026-01-19,2027-01-19,Word of Mouth,1,2026-02-12,Family,89.45
+M00605,Diana,Green,diana.green73@yahoo.com,Dallas,75247,2025-05-28,2026-05-28,Facebook Ads,2,2025-08-16,Family,64.14
+M00606,Jordan,Russell,jordan.russell62@yahoo.com,Dallas,75229,2025-09-23,2026-09-23,Word of Mouth,0,,Family,79.93
+M00607,Jesse,Baker,jesse.baker68@gmail.com,Houston,77058,2025-10-28,2026-10-28,Facebook Ads,4,2026-03-05,Family Plus,101.33
+M00608,Caleb,Collins,caleb.collins95@gmail.com,Boise,83761,2025-11-17,2026-11-17,Word of Mouth,3,2026-03-22,Family Plus,107.27
+M00609,Diana,Ford,diana.ford23@gmail.com,Austin,78780,2026-03-03,2027-03-03,Facebook Ads,0,,Family,88.33
+M00610,Dorothy,Cox,dorothy.cox8@gmail.com,Phoenix,85084,2026-03-09,2027-03-09,Word of Mouth,1,2026-03-27,Individual,36.63
+M00611,Joan,Gomez,joan.gomez13@gmail.com,Phoenix,85072,2026-02-06,2027-02-06,Groupon,1,2026-03-09,Individual,27.6
+M00612,Nathan,Cooper,nathan.cooper64@yahoo.com,Houston,77046,2025-10-13,2026-10-13,TikTok Ads,0,,Couple,65.02
+M00613,Helen,Vasquez,helen.vasquez15@outlook.com,Houston,77050,2025-12-15,2026-12-15,Affiliate,0,,Family,78.83
+M00614,Matthew,Simmons,matthew.simmons44@outlook.com,Phoenix,85023,2025-10-23,2026-10-23,Instagram Ads,0,,Couple,54.05
+M00615,Adrian,Clark,adrian.clark88@gmail.com,Austin,78783,2025-09-14,2026-09-14,Organic Search,0,,Couple,44.76
+M00616,Kenneth,Green,kenneth.green42@outlook.com,Boise,83763,2025-08-06,2026-08-06,Instagram Ads,0,,Couple,66.99
+M00617,Nicole,Patel,nicole.patel19@gmail.com,Tucson,85750,2025-09-03,2026-09-03,Groupon,1,2025-10-01,Couple,50.81
+M00618,Kimberly,Ford,kimberly.ford99@gmail.com,Provo,84635,2025-09-25,2026-09-25,Facebook Ads,2,2026-02-19,Family,70.79
+M00619,Karen,Morales,karen.morales21@gmail.com,Houston,77085,2025-09-17,2026-09-17,Word of Mouth,7,2026-03-23,Family Plus,90.66
+M00620,Ann,Thompson,ann.thompson57@gmail.com,Austin,78794,2026-03-24,2027-03-24,Facebook Ads,1,2026-04-04,Family,70.66
+M00621,Edward,Mitchell,edward.mitchell42@gmail.com,Houston,77052,2025-05-30,2026-05-30,Facebook Ads,0,,Family Plus,98.32
+M00622,Jennifer,Scott,jennifer.scott16@yahoo.com,San Antonio,78216,2025-09-25,2026-09-25,Instagram Ads,1,2025-09-26,Individual,38.79
+M00623,Katherine,Kennedy,katherine.kennedy37@gmail.com,Boise,83719,2025-07-06,2026-07-06,Word of Mouth,1,2025-07-27,Family Plus,117.1
+M00624,Danielle,Gonzales,danielle.gonzales36@gmail.com,Mesa,85229,2025-10-13,2026-10-13,Organic Search,3,2026-03-27,Individual,31.96
+M00625,Raymond,Barnes,raymond.barnes20@gmail.com,Phoenix,85096,2025-12-23,2026-12-23,Instagram Ads,0,,Family,85.14
+M00626,Patrick,Flores,patrick.flores25@yahoo.com,Phoenix,85013,2026-01-29,2027-01-29,Word of Mouth,0,,Family Plus,90.42
+M00627,Katherine,Watson,katherine.watson30@yahoo.com,Salt Lake City,84144,2026-03-22,2027-03-22,Facebook Ads,1,2026-04-04,Family Plus,116.8
+M00628,Rebecca,Ross,rebecca.ross7@gmail.com,Dallas,75236,2026-01-05,2027-01-05,Instagram Ads,0,,Family,63.99
+M00629,Dylan,Young,dylan.young21@yahoo.com,Houston,77087,2025-12-18,2026-12-18,Groupon,0,,Family Plus,103.94
+M00630,Jack,McDonald,jack.mcdonald33@gmail.com,El Paso,79912,2026-01-15,2027-01-15,Facebook Ads,0,,Family,75.01
+M00631,Virginia,Kim,virginia.kim30@yahoo.com,Boise,83759,2025-10-21,2026-10-21,Affiliate,1,2025-11-05,Individual,38.28
+M00632,Donna,Scott,donna.scott89@gmail.com,Salt Lake City,84186,2025-09-26,2026-09-26,Instagram Ads,0,,Family Plus,112.79
+M00633,Kenneth,Butler,kenneth.butler23@gmail.com,Houston,77029,2026-02-07,2027-02-07,Organic Search,1,2026-02-21,Family,66.26
+M00634,Raymond,Davis,raymond.davis4@gmail.com,Mesa,85214,2025-07-02,2026-07-02,Organic Search,9,2026-03-17,Individual,27.15
+M00635,Dorothy,Torres,dorothy.torres29@outlook.com,Tucson,85746,2025-12-31,2026-12-31,Affiliate,1,2026-01-23,Individual,23.52
+M00636,Dorothy,Wood,dorothy.wood55@gmail.com,Salt Lake City,84114,2025-12-24,2026-12-24,Organic Search,1,2026-02-08,Family,84.28
+M00637,Raymond,Williams,raymond.williams74@gmail.com,Provo,84634,2025-08-16,2026-08-16,Word of Mouth,0,,Family,82.09
+M00638,Noah,Ortiz,noah.ortiz70@gmail.com,Tucson,85793,2025-12-01,2026-12-01,Instagram Ads,0,,Family Plus,101.14
+M00639,Noah,Harris,noah.harris86@outlook.com,Phoenix,85056,2025-12-08,2026-12-08,Groupon,0,,Individual,29.87
+M00640,Donald,Ramos,donald.ramos17@yahoo.com,Dallas,75220,2025-07-17,2026-07-17,TikTok Ads,6,2025-11-24,Family Plus,95.57
+M00641,Laura,Hill,laura.hill70@outlook.com,Provo,84645,2025-09-17,2026-09-17,Facebook Ads,0,,Family Plus,103.43
+M00642,Olivia,Fernandez,olivia.fernandez60@gmail.com,Tucson,85748,2025-10-27,2026-10-27,Facebook Ads,2,2026-02-27,Couple,55.67
+M00643,Michelle,Morales,michelle.morales51@outlook.com,Dallas,75234,2025-12-23,2026-12-23,Facebook Ads,1,2025-12-31,Couple,45.79
+M00644,Larry,Wood,larry.wood2@outlook.com,Houston,77090,2026-01-31,2027-01-31,Word of Mouth,1,2026-02-13,Couple,52.15
+M00645,Debra,Cooper,debra.cooper6@gmail.com,Mesa,85224,2025-07-29,2026-07-29,Word of Mouth,0,,Couple,44.05
+M00646,Laura,Clark,laura.clark12@outlook.com,Austin,78756,2025-08-26,2026-08-26,Facebook Ads,1,2025-09-07,Family,78.78
+M00647,Eric,James,eric.james54@yahoo.com,Dallas,75211,2025-07-25,2026-07-25,Facebook Ads,1,2025-07-30,Family,68.71
+M00648,Theresa,Washington,theresa.washington72@outlook.com,Austin,78795,2026-02-13,2027-02-13,Groupon,1,2026-03-29,Family,82.61
+M00649,Diana,Hernandez,diana.hernandez45@yahoo.com,Houston,77076,2025-08-26,2026-08-26,Facebook Ads,0,,Couple,63.16
+M00650,Michael,Parker,michael.parker73@gmail.com,Boise,83752,2025-08-14,2026-08-14,Facebook Ads,0,,Family Plus,117.87
+M00651,Eric,Alvarez,eric.alvarez88@gmail.com,Fort Worth,76141,2025-05-14,2026-05-14,Facebook Ads,3,2026-02-19,Family,71.98
+M00652,Abigail,Collins,abigail.collins41@yahoo.com,Tucson,85791,2025-09-21,2026-09-21,Groupon,3,2026-04-11,Family,84.58
+M00653,Connor,Richardson,connor.richardson65@outlook.com,San Antonio,78278,2025-11-02,2026-11-02,Facebook Ads,0,,Family,62.04
+M00654,Amber,Russell,amber.russell34@gmail.com,Dallas,75255,2025-11-05,2026-11-05,Groupon,0,,Family Plus,92.73
+M00655,Raymond,Edwards,raymond.edwards57@yahoo.com,Salt Lake City,84145,2026-02-06,2027-02-06,Facebook Ads,1,2026-03-02,Couple,59.85
+M00656,Jennifer,Woods,jennifer.woods57@gmail.com,Austin,78782,2025-09-12,2026-09-12,Facebook Ads,0,,Individual,29.37
+M00657,Heather,Gutierrez,heather.gutierrez91@yahoo.com,San Antonio,78265,2025-10-23,2026-10-23,Groupon,0,,Family Plus,122.73
+M00658,Karen,Wright,karen.wright42@outlook.com,Phoenix,85078,2025-07-19,2026-07-19,Word of Mouth,5,2026-01-27,Individual,37.35
+M00659,Carol,Garcia,carol.garcia72@gmail.com,Boise,83754,2025-10-05,2026-10-05,Word of Mouth,4,2026-02-23,Family,61.55
+M00660,Nicole,James,nicole.james30@gmail.com,Mesa,85262,2025-10-25,2026-10-25,Facebook Ads,0,,Family,86.25
+M00661,Carter,Wilson,carter.wilson92@outlook.com,San Antonio,78219,2025-11-02,2026-11-02,Word of Mouth,0,,Family,88.22
+M00662,Amanda,Campbell,amanda.campbell4@yahoo.com,Salt Lake City,84121,2025-09-18,2026-09-18,Facebook Ads,0,,Couple,60.03
+M00663,Maria,Fernandez,maria.fernandez18@yahoo.com,Phoenix,85032,2026-02-12,2027-02-12,Organic Search,2,2026-03-14,Family Plus,106.99
+M00664,Mason,Thomas,mason.thomas88@gmail.com,Salt Lake City,84177,2025-06-18,2026-06-18,Facebook Ads,0,,Couple,48.19
+M00665,Sarah,Hall,sarah.hall25@yahoo.com,Houston,77054,2025-09-25,2026-09-25,Facebook Ads,0,,Family,65.19
+M00666,Zachary,Rivera,zachary.rivera65@gmail.com,Provo,84613,2026-02-02,2027-02-02,Word of Mouth,1,2026-02-08,Family Plus,120.98
+M00667,Kathryn,Nelson,kathryn.nelson13@gmail.com,Austin,78788,2025-06-28,2026-06-28,Affiliate,0,,Family Plus,122.43
+M00668,Kyle,Robinson,kyle.robinson86@gmail.com,Dallas,75256,2025-09-10,2026-09-10,Facebook Ads,9,2026-03-25,Family Plus,106.67
+M00669,Raymond,Woods,raymond.woods79@gmail.com,Houston,77046,2026-03-14,2027-03-14,Instagram Ads,1,2026-03-24,Family,80.1
+M00670,Elijah,Hall,elijah.hall83@gmail.com,Salt Lake City,84113,2025-07-03,2026-07-03,Facebook Ads,8,2026-01-09,Couple,44.65
+M00671,Jacob,Myers,jacob.myers52@gmail.com,Salt Lake City,84141,2025-06-16,2026-06-16,Word of Mouth,1,2025-07-09,Couple,66.67
+M00672,Robert,Coleman,robert.coleman53@gmail.com,Provo,84634,2025-05-19,2026-05-19,Instagram Ads,0,,Family,83.01
+M00673,William,Graham,william.graham17@yahoo.com,Boise,83724,2025-07-04,2026-07-04,Facebook Ads,7,2026-01-04,Family,61.66
+M00674,Melissa,Perez,melissa.perez98@yahoo.com,Dallas,75257,2026-03-14,2027-03-14,Groupon,0,,Individual,30.94
+M00675,Luke,Carter,luke.carter99@gmail.com,Phoenix,85082,2025-11-27,2026-11-27,Facebook Ads,2,2026-01-26,Individual,36.19
+M00676,Andrea,Taylor,andrea.taylor29@gmail.com,Phoenix,85094,2025-11-30,2026-11-30,Organic Search,4,2026-03-17,Individual,27.81
+M00677,Danielle,Reyes,danielle.reyes1@gmail.com,Austin,78759,2025-05-18,2026-05-18,Instagram Ads,9,2026-02-18,Individual,23.49
+M00678,Dennis,Garcia,dennis.garcia56@yahoo.com,Houston,77079,2025-05-19,2026-05-19,Affiliate,7,2026-03-19,Family Plus,93.5
+M00679,Aaron,Torres,aaron.torres61@gmail.com,Boise,83748,2025-09-05,2026-09-05,Affiliate,2,2026-03-02,Family Plus,120.32
+M00680,George,Simmons,george.simmons4@yahoo.com,Boise,83744,2025-05-11,2026-05-11,Direct,8,2026-04-06,Family,89.77
+M00681,Alice,Watson,alice.watson75@yahoo.com,Dallas,75232,2026-03-05,2027-03-05,Groupon,0,,Individual,30.24
+M00682,Sebastian,Sullivan,sebastian.sullivan21@gmail.com,Boise,83799,2026-02-05,2027-02-05,Direct,1,2026-02-18,Family,95.15
+M00683,Maria,Fernandez,maria.fernandez49@gmail.com,San Antonio,78285,2025-06-09,2026-06-09,Organic Search,6,2026-01-08,Family,96.24
+M00684,Gabriel,Jones,gabriel.jones80@yahoo.com,Salt Lake City,84142,2026-03-23,2027-03-23,Facebook Ads,1,2026-04-05,Couple,54.61
+M00685,Kyle,Gonzales,kyle.gonzales44@gmail.com,Tucson,85794,2026-01-28,2027-01-28,Groupon,0,,Individual,30.03
+M00686,Robert,Jones,robert.jones39@gmail.com,Idaho Falls,83458,2025-09-24,2026-09-24,Groupon,3,2026-02-22,Family,69.81
+M00687,Kelly,Perez,kelly.perez86@outlook.com,Mesa,85212,2026-03-19,2027-03-19,Instagram Ads,1,2026-04-10,Family,63.28
+M00688,Debra,Jackson,debra.jackson20@gmail.com,El Paso,79968,2025-05-26,2026-05-26,Organic Search,6,2026-02-21,Couple,58.95
+M00689,Pamela,Thomas,pamela.thomas57@gmail.com,Salt Lake City,84132,2025-06-14,2026-06-14,Direct,0,,Couple,65.35
+M00690,Isabella,Young,isabella.young90@yahoo.com,Provo,84639,2025-06-01,2026-06-01,Facebook Ads,4,2025-10-31,Family,82.69
+M00691,Alexander,Thomas,alexander.thomas80@yahoo.com,Boise,83767,2025-06-07,2026-06-07,Facebook Ads,0,,Family,62.53
+M00692,Jack,Taylor,jack.taylor73@gmail.com,Provo,84667,2025-11-02,2026-11-02,Groupon,2,2026-03-27,Family,73.82
+M00693,Ruth,Marshall,ruth.marshall60@gmail.com,Salt Lake City,84159,2025-10-24,2026-10-24,Groupon,2,2026-01-03,Individual,21.79
+M00694,Sharon,Harris,sharon.harris3@gmail.com,Salt Lake City,84153,2025-06-27,2026-06-27,Facebook Ads,7,2026-01-01,Family,65.33
+M00695,Helen,Barnes,helen.barnes79@gmail.com,Salt Lake City,84146,2025-12-04,2026-12-04,Groupon,2,2026-04-11,Couple,59.66
+M00696,Samuel,Fernandez,samuel.fernandez36@gmail.com,Austin,78752,2025-05-16,2026-05-16,Organic Search,12,2026-03-06,Family Plus,123.76
+M00697,Martha,Phillips,martha.phillips83@gmail.com,Idaho Falls,83487,2025-12-26,2026-12-26,Facebook Ads,1,2026-01-02,Family,88.42
+M00698,Robert,Kim,robert.kim34@gmail.com,Phoenix,85013,2025-08-09,2026-08-09,Organic Search,0,,Family,62.15
+M00699,Emily,Graham,emily.graham81@gmail.com,Salt Lake City,84166,2025-10-31,2026-10-31,Instagram Ads,3,2026-02-28,Individual,24.47
+M00700,Diane,Rivera,diane.rivera42@outlook.com,Boise,83751,2026-03-07,2027-03-07,Word of Mouth,1,2026-03-24,Family,94.33
+M00701,Anthony,Adams,anthony.adams92@gmail.com,San Antonio,78255,2025-07-26,2026-07-26,Groupon,5,2025-12-13,Couple,61.53
+M00702,Cynthia,Flores,cynthia.flores18@gmail.com,Dallas,75291,2025-07-26,2026-07-26,Organic Search,7,2026-03-31,Individual,34.31
+M00703,Catherine,Jimenez,catherine.jimenez21@outlook.com,Phoenix,85035,2025-11-09,2026-11-09,Groupon,3,2026-01-18,Couple,42.58
+M00704,Brandon,Diaz,brandon.diaz76@yahoo.com,Salt Lake City,84190,2025-12-14,2026-12-14,Facebook Ads,1,2025-12-17,Family Plus,119.37
+M00705,Jason,Vargas,jason.vargas93@gmail.com,Dallas,75260,2025-06-21,2026-06-21,Word of Mouth,9,2026-01-21,Individual,28.83
+M00706,Jason,Walker,jason.walker82@outlook.com,Salt Lake City,84170,2025-08-14,2026-08-14,Facebook Ads,0,,Individual,33.5
+M00707,Connor,Cooper,connor.cooper35@gmail.com,Austin,78718,2025-09-23,2026-09-23,Organic Search,1,2025-10-07,Individual,20.3
+M00708,Brian,Brown,brian.brown74@outlook.com,El Paso,79945,2026-01-25,2027-01-25,Organic Search,0,,Family,67.11
+M00709,Timothy,Stewart,timothy.stewart89@gmail.com,Salt Lake City,84193,2025-06-22,2026-06-22,Facebook Ads,0,,Family,93.28
+M00710,Judith,Reyes,judith.reyes92@yahoo.com,Dallas,75286,2025-09-25,2026-09-25,Groupon,0,,Family,80.78
+M00711,Catherine,Nguyen,catherine.nguyen42@yahoo.com,Salt Lake City,84161,2026-01-19,2027-01-19,Groupon,0,,Family Plus,116.62
+M00712,Gabriel,Sullivan,gabriel.sullivan47@yahoo.com,Phoenix,85027,2025-07-02,2026-07-02,Groupon,0,,Couple,53.0
+M00713,Kevin,Hernandez,kevin.hernandez44@gmail.com,Provo,84690,2026-01-13,2027-01-13,Facebook Ads,0,,Couple,57.98
+M00714,Jason,Jenkins,jason.jenkins11@outlook.com,Fort Worth,76179,2025-06-27,2026-06-27,Facebook Ads,0,,Individual,19.08
+M00715,Kevin,Collins,kevin.collins88@yahoo.com,Salt Lake City,84157,2025-09-15,2026-09-15,Word of Mouth,4,2026-04-10,Couple,58.71
+M00716,Beverly,Ward,beverly.ward31@yahoo.com,Phoenix,85091,2026-03-20,2027-03-20,Facebook Ads,1,2026-04-03,Family,59.94
+M00717,Christopher,Moore,christopher.moore33@gmail.com,Salt Lake City,84155,2025-10-11,2026-10-11,Organic Search,4,2026-02-03,Individual,30.95
+M00718,Peter,Hughes,peter.hughes88@gmail.com,Salt Lake City,84114,2025-11-26,2026-11-26,TikTok Ads,4,2026-04-01,Family,62.47
+M00719,Sharon,Bell,sharon.bell13@gmail.com,Salt Lake City,84196,2025-07-21,2026-07-21,Instagram Ads,4,2026-03-25,Family Plus,105.0
+M00720,Joyce,Lewis,joyce.lewis88@gmail.com,Provo,84635,2026-01-04,2027-01-04,Word of Mouth,4,2026-03-26,Couple,50.62
+M00721,Dorothy,Miller,dorothy.miller57@gmail.com,San Antonio,78265,2025-05-14,2026-05-14,Facebook Ads,5,2026-01-25,Family,86.75
+M00722,Kyle,Myers,kyle.myers72@gmail.com,Salt Lake City,84194,2026-01-18,2027-01-18,Facebook Ads,1,2026-02-03,Couple,55.79
+M00723,Patricia,Lewis,patricia.lewis68@outlook.com,Salt Lake City,84127,2025-12-04,2026-12-04,Groupon,0,,Couple,53.41
+M00724,Edward,Sanchez,edward.sanchez23@gmail.com,Boise,83779,2025-07-17,2026-07-17,Affiliate,4,2026-04-04,Individual,32.34
+M00725,William,Chavez,william.chavez51@gmail.com,Boise,83757,2026-01-29,2027-01-29,Groupon,0,,Family,93.68
+M00726,Jordan,Sullivan,jordan.sullivan83@outlook.com,Phoenix,85076,2026-03-20,2027-03-20,Groupon,1,2026-04-04,Family,76.31
+M00727,Dennis,Bailey,dennis.bailey51@gmail.com,Boise,83753,2025-10-29,2026-10-29,Groupon,0,,Family,72.08
+M00728,Adrian,Washington,adrian.washington50@outlook.com,Austin,78781,2025-06-15,2026-06-15,Affiliate,2,2025-11-17,Family,85.44
+M00729,Aiden,Collins,aiden.collins41@yahoo.com,Phoenix,85034,2025-07-13,2026-07-13,Groupon,0,,Couple,63.77
+M00730,Brenda,Ortiz,brenda.ortiz77@gmail.com,Boise,83788,2025-10-11,2026-10-11,Affiliate,4,2026-03-29,Individual,34.4
+M00731,Grace,Vargas,grace.vargas48@gmail.com,Houston,77044,2025-11-25,2026-11-25,TikTok Ads,5,2026-02-27,Family,72.66
+M00732,Margaret,Fernandez,margaret.fernandez56@gmail.com,Salt Lake City,84133,2026-03-14,2027-03-14,Facebook Ads,0,,Family,98.77
+M00733,Brenda,Ramirez,brenda.ramirez71@gmail.com,Salt Lake City,84122,2025-06-18,2026-06-18,Affiliate,3,2025-11-21,Family,67.2
+M00734,Gary,Hill,gary.hill3@gmail.com,Phoenix,85038,2025-07-01,2026-07-01,Facebook Ads,0,,Family Plus,102.8
+M00735,Michelle,White,michelle.white74@outlook.com,Phoenix,85072,2025-12-02,2026-12-02,Facebook Ads,2,2026-01-31,Couple,51.19
+M00736,Tyler,Graham,tyler.graham28@gmail.com,Provo,84662,2025-09-20,2026-09-20,Organic Search,0,,Couple,61.17
+M00737,Maria,Garcia,maria.garcia70@yahoo.com,Boise,83765,2025-07-23,2026-07-23,Instagram Ads,6,2026-01-31,Family,71.88
+M00738,Maria,Harrison,maria.harrison4@outlook.com,Boise,83718,2025-10-10,2026-10-10,Groupon,3,2025-12-23,Family,74.55
+M00739,Frances,Gomez,frances.gomez5@yahoo.com,San Antonio,78221,2025-06-25,2026-06-25,Organic Search,7,2026-02-02,Individual,31.31
+M00740,Ronald,Martin,ronald.martin9@yahoo.com,San Antonio,78278,2026-02-16,2027-02-16,Facebook Ads,2,2026-03-07,Family,89.43
+M00741,Adrian,Flores,adrian.flores17@gmail.com,Austin,78757,2026-01-05,2027-01-05,Word of Mouth,2,2026-01-24,Couple,46.37
+M00742,Pamela,Castro,pamela.castro68@outlook.com,Dallas,75279,2025-07-12,2026-07-12,Organic Search,2,2025-10-27,Family Plus,105.8
+M00743,Elizabeth,Evans,elizabeth.evans10@gmail.com,Dallas,75248,2026-01-14,2027-01-14,Facebook Ads,1,2026-02-02,Family Plus,102.77
+M00744,Kathryn,Scott,kathryn.scott84@yahoo.com,Salt Lake City,84139,2025-08-09,2026-08-09,Affiliate,4,2026-02-12,Couple,50.98
+M00745,Emma,Price,emma.price66@gmail.com,Salt Lake City,84171,2025-07-19,2026-07-19,Facebook Ads,6,2026-01-15,Couple,48.31
+M00746,Jesse,Gonzales,jesse.gonzales98@gmail.com,Boise,83780,2026-01-16,2027-01-16,Organic Search,1,2026-02-04,Family,61.69
+M00747,Ronald,White,ronald.white79@gmail.com,Dallas,75215,2025-09-02,2026-09-02,Facebook Ads,0,,Individual,21.66
+M00748,Henry,Hill,henry.hill55@gmail.com,Phoenix,85036,2025-11-20,2026-11-20,Facebook Ads,0,,Individual,36.18
+M00749,Ryan,Owens,ryan.owens22@yahoo.com,Salt Lake City,84168,2025-09-26,2026-09-26,Instagram Ads,0,,Couple,60.84
+M00750,Jonathan,James,jonathan.james81@outlook.com,Boise,83785,2026-03-30,2027-03-30,Word of Mouth,1,2026-04-08,Couple,56.82
+M00751,Ruth,Wilson,ruth.wilson76@gmail.com,Mesa,85223,2025-12-13,2026-12-13,Instagram Ads,4,2026-04-05,Family,92.78
+M00752,Joseph,Fisher,joseph.fisher52@yahoo.com,Houston,77013,2025-07-29,2026-07-29,Groupon,0,,Couple,48.24
+M00753,Judith,Jenkins,judith.jenkins76@gmail.com,Dallas,75240,2026-01-13,2027-01-13,Groupon,0,,Family,65.6
+M00754,Lisa,Sanchez,lisa.sanchez11@gmail.com,Tucson,85729,2026-01-17,2027-01-17,Word of Mouth,1,2026-01-20,Family,62.69
+M00755,Janet,Alvarez,janet.alvarez86@gmail.com,Salt Lake City,84149,2026-03-15,2027-03-15,Groupon,0,,Individual,30.66
+M00756,Deborah,Baker,deborah.baker51@yahoo.com,Phoenix,85047,2025-12-07,2026-12-07,Word of Mouth,3,2026-01-19,Family,92.27
+M00757,Carolyn,Ward,carolyn.ward38@outlook.com,Dallas,75240,2026-02-25,2027-02-25,Instagram Ads,0,,Family,85.65
+M00758,Elizabeth,Lee,elizabeth.lee8@gmail.com,Salt Lake City,84123,2025-11-11,2026-11-11,Direct,0,,Individual,33.46
+M00759,Connor,Morris,connor.morris92@gmail.com,Dallas,75292,2025-11-01,2026-11-01,Organic Search,6,2026-03-01,Family,88.18
+M00760,Theresa,Henderson,theresa.henderson85@gmail.com,Idaho Falls,83482,2026-01-10,2027-01-10,Affiliate,1,2026-01-13,Individual,36.38
+M00761,Jackson,Wells,jackson.wells36@outlook.com,Dallas,75211,2025-09-26,2026-09-26,Organic Search,5,2026-02-22,Family,91.01
+M00762,Carter,Gomez,carter.gomez56@outlook.com,Salt Lake City,84185,2026-03-13,2027-03-13,Word of Mouth,1,2026-04-10,Family,89.23
+M00763,Jean,Reyes,jean.reyes41@yahoo.com,Phoenix,85093,2025-06-12,2026-06-12,Affiliate,5,2026-03-28,Family,85.74
+M00764,Sophia,Ward,sophia.ward99@yahoo.com,Fort Worth,76137,2025-12-05,2026-12-05,Word of Mouth,3,2026-03-26,Family,90.19
+M00765,Carol,Howard,carol.howard86@gmail.com,Salt Lake City,84164,2025-11-17,2026-11-17,Facebook Ads,0,,Individual,20.95
+M00766,Sophia,Moore,sophia.moore10@outlook.com,Provo,84610,2025-11-17,2026-11-17,TikTok Ads,1,2025-11-19,Individual,34.41
+M00767,Logan,Owens,logan.owens66@gmail.com,Boise,83745,2026-02-15,2027-02-15,Instagram Ads,1,2026-04-11,Couple,41.76
+M00768,Thomas,Adams,thomas.adams19@gmail.com,Houston,77098,2025-05-16,2026-05-16,Word of Mouth,10,2026-03-20,Family,95.99
+M00769,Mary,Watson,mary.watson60@gmail.com,Provo,84686,2025-08-05,2026-08-05,Word of Mouth,12,2026-03-26,Family,82.72
+M00770,Jackson,Sanchez,jackson.sanchez47@gmail.com,Fort Worth,76152,2025-06-10,2026-06-10,Groupon,0,,Individual,30.53
+M00771,Cynthia,Gonzalez,cynthia.gonzalez36@gmail.com,San Antonio,78279,2025-06-13,2026-06-13,Affiliate,0,,Individual,33.26
+M00772,Gloria,Kim,gloria.kim71@yahoo.com,Dallas,75215,2025-10-16,2026-10-16,Groupon,2,2026-03-18,Family Plus,92.35
+M00773,William,Harrison,william.harrison47@gmail.com,Salt Lake City,84130,2026-02-16,2027-02-16,Word of Mouth,1,2026-03-09,Family,90.76
+M00774,Steven,Baker,steven.baker95@outlook.com,Houston,77062,2025-12-29,2026-12-29,Facebook Ads,1,2026-01-08,Family,69.93
+M00775,Deborah,Howard,deborah.howard45@gmail.com,Fort Worth,76162,2026-01-31,2027-01-31,Affiliate,1,2026-02-10,Couple,46.47
+M00776,Eric,Allen,eric.allen74@gmail.com,Boise,83725,2025-12-07,2026-12-07,TikTok Ads,0,,Couple,60.33
+M00777,Christopher,Jenkins,christopher.jenkins18@yahoo.com,Salt Lake City,84110,2026-03-28,2027-03-28,Organic Search,1,2026-04-05,Family,92.2
+M00778,Grace,Young,grace.young48@gmail.com,Dallas,75294,2025-05-14,2026-05-14,Word of Mouth,6,2026-02-06,Couple,58.89
+M00779,Joyce,Brown,joyce.brown61@outlook.com,Austin,78754,2025-11-14,2026-11-14,Groupon,0,,Couple,45.03
+M00780,Anna,Adams,anna.adams62@gmail.com,Idaho Falls,83412,2025-06-26,2026-06-26,Instagram Ads,6,2026-02-14,Family,74.38
+M00781,James,Hill,james.hill3@gmail.com,Boise,83780,2026-01-16,2027-01-16,Groupon,0,,Couple,53.43
+M00782,Peter,Cook,peter.cook90@outlook.com,Boise,83795,2025-10-27,2026-10-27,Instagram Ads,3,2026-03-28,Family,81.56
+M00783,Anthony,Scott,anthony.scott30@gmail.com,Salt Lake City,84169,2025-06-28,2026-06-28,Groupon,4,2026-01-16,Family Plus,91.61
+M00784,Rebecca,White,rebecca.white44@outlook.com,Salt Lake City,84142,2025-10-10,2026-10-10,Instagram Ads,5,2026-04-09,Family,84.16
+M00785,Kelly,Nelson,kelly.nelson4@outlook.com,Austin,78795,2026-03-12,2027-03-12,Facebook Ads,0,,Individual,22.14
+M00786,Ronald,Turner,ronald.turner26@gmail.com,Houston,77094,2025-09-23,2026-09-23,Groupon,0,,Family,60.26
+M00787,Brandon,Gonzales,brandon.gonzales20@outlook.com,Salt Lake City,84158,2025-09-01,2026-09-01,Facebook Ads,7,2026-03-13,Couple,54.99
+M00788,Kyle,Henderson,kyle.henderson23@outlook.com,Phoenix,85043,2026-03-25,2027-03-25,Word of Mouth,1,2026-03-27,Family Plus,117.74
+M00789,Sandra,Allen,sandra.allen7@gmail.com,Tucson,85724,2026-02-17,2027-02-17,Word of Mouth,2,2026-02-24,Couple,58.49
+M00790,Christopher,Morris,christopher.morris69@gmail.com,Dallas,75278,2025-11-30,2026-11-30,Facebook Ads,0,,Couple,55.47
+M00791,Jason,Scott,jason.scott29@yahoo.com,Salt Lake City,84166,2025-10-22,2026-10-22,Facebook Ads,1,2025-10-23,Family,80.87
+M00792,Michael,Miller,michael.miller93@gmail.com,Dallas,75291,2026-02-13,2027-02-13,Word of Mouth,0,,Individual,22.81
+M00793,Grace,Myers,grace.myers8@outlook.com,Austin,78729,2025-07-20,2026-07-20,Direct,0,,Couple,59.17
+M00794,Scott,Gutierrez,scott.gutierrez21@gmail.com,Provo,84686,2025-07-11,2026-07-11,Organic Search,0,,Family,70.49
+M00795,Karen,Hill,karen.hill23@yahoo.com,Boise,83715,2025-08-08,2026-08-08,Groupon,1,2025-08-31,Family,79.29
+M00796,Jerry,Ruiz,jerry.ruiz82@gmail.com,Dallas,75276,2026-02-25,2027-02-25,Facebook Ads,0,,Individual,26.55
+M00797,Jordan,Collins,jordan.collins42@gmail.com,Salt Lake City,84149,2026-03-14,2027-03-14,Instagram Ads,0,,Family,74.01
+M00798,William,Harrison,william.harrison7@gmail.com,Phoenix,85087,2026-03-27,2027-03-27,Affiliate,0,,Family,83.72
+M00799,Christian,Mitchell,christian.mitchell17@gmail.com,Phoenix,85016,2025-07-08,2026-07-08,Affiliate,1,2025-07-19,Family Plus,98.1
+M00800,Nolan,Rivera,nolan.rivera71@yahoo.com,El Paso,79976,2026-03-03,2027-03-03,Facebook Ads,1,2026-03-14,Family,66.51
+M00801,Marcus,Perry,marcus.perry80@outlook.com,Houston,77092,2025-12-18,2026-12-18,Organic Search,0,,Family,75.31
+M00802,Dorothy,Patel,dorothy.patel93@outlook.com,Phoenix,85049,2026-03-15,2027-03-15,TikTok Ads,0,,Couple,52.86
+M00803,Scott,Jimenez,scott.jimenez21@gmail.com,San Antonio,78247,2025-12-08,2026-12-08,Affiliate,1,2025-12-22,Individual,27.07
+M00804,Jennifer,Perez,jennifer.perez61@gmail.com,Dallas,75245,2025-07-07,2026-07-07,Affiliate,0,,Family,97.4
+M00805,Jennifer,Edwards,jennifer.edwards94@gmail.com,Phoenix,85099,2025-10-17,2026-10-17,Word of Mouth,4,2026-01-10,Individual,38.65
+M00806,Rebecca,Price,rebecca.price25@yahoo.com,Phoenix,85025,2025-10-04,2026-10-04,Groupon,0,,Couple,43.24
+M00807,Caleb,Owens,caleb.owens93@yahoo.com,Salt Lake City,84135,2025-07-26,2026-07-26,Facebook Ads,3,2026-03-26,Individual,32.58
+M00808,Megan,Wood,megan.wood50@gmail.com,El Paso,79962,2026-03-31,2027-03-31,Instagram Ads,1,2026-04-10,Family,79.98
+M00809,Linda,Ramirez,linda.ramirez43@yahoo.com,Salt Lake City,84186,2025-10-16,2026-10-16,Word of Mouth,4,2026-02-10,Individual,32.77
+M00810,Karen,Richardson,karen.richardson78@gmail.com,Salt Lake City,84177,2025-12-24,2026-12-24,Organic Search,1,2025-12-25,Family,63.35
+M00811,Nathan,Roberts,nathan.roberts22@yahoo.com,Phoenix,85087,2025-10-15,2026-10-15,Word of Mouth,6,2026-02-14,Individual,28.03
+M00812,Steven,Barnes,steven.barnes3@outlook.com,Mesa,85217,2025-05-28,2026-05-28,Word of Mouth,10,2026-04-05,Couple,50.72
+M00813,Mary,Graham,mary.graham25@gmail.com,Phoenix,85095,2025-09-08,2026-09-08,Affiliate,3,2026-03-31,Family,80.14
+M00814,Theresa,Taylor,theresa.taylor38@gmail.com,Phoenix,85012,2026-01-10,2027-01-10,Organic Search,3,2026-04-07,Family,69.21
+M00815,Emily,Sanders,emily.sanders75@gmail.com,El Paso,79941,2025-07-22,2026-07-22,Facebook Ads,0,,Family,70.78
+M00816,Sara,Roberts,sara.roberts23@yahoo.com,Provo,84638,2025-09-10,2026-09-10,Groupon,0,,Individual,38.38
+M00817,Joseph,Sullivan,joseph.sullivan80@outlook.com,Houston,77060,2026-03-20,2027-03-20,Organic Search,0,,Family,75.71
+M00818,Brian,Parker,brian.parker40@gmail.com,Fort Worth,76139,2025-05-31,2026-05-31,Word of Mouth,0,,Couple,59.1
+M00819,Cameron,Morales,cameron.morales67@gmail.com,Mesa,85212,2025-10-10,2026-10-10,Instagram Ads,0,,Family Plus,118.81
+M00820,Amber,Walker,amber.walker19@outlook.com,Dallas,75213,2025-06-06,2026-06-06,Word of Mouth,0,,Family,64.89
+M00821,Gloria,Nguyen,gloria.nguyen56@yahoo.com,Austin,78783,2025-12-02,2026-12-02,Groupon,0,,Couple,41.18
+M00822,Betty,Nguyen,betty.nguyen99@gmail.com,Houston,77083,2025-12-27,2026-12-27,Groupon,2,2026-02-16,Family Plus,93.33
+M00823,Kevin,McDonald,kevin.mcdonald97@gmail.com,Salt Lake City,84175,2026-03-03,2027-03-03,Groupon,0,,Couple,65.56
+M00824,Sandra,Jimenez,sandra.jimenez65@gmail.com,Salt Lake City,84134,2026-03-22,2027-03-22,Instagram Ads,1,2026-03-31,Couple,68.08
+M00825,Grace,Bailey,grace.bailey11@gmail.com,Austin,78751,2025-05-17,2026-05-17,Facebook Ads,12,2026-03-19,Couple,44.32
+M00826,Noah,Reyes,noah.reyes12@outlook.com,Phoenix,85031,2025-08-08,2026-08-08,Facebook Ads,1,2025-08-09,Family Plus,103.45
+M00827,Kevin,Clark,kevin.clark11@yahoo.com,Salt Lake City,84164,2026-01-27,2027-01-27,Facebook Ads,2,2026-03-14,Family,85.79
+M00828,Carol,Chavez,carol.chavez7@gmail.com,Dallas,75275,2025-11-10,2026-11-10,Facebook Ads,2,2026-02-25,Family,76.25
+M00829,Paul,Marshall,paul.marshall95@outlook.com,Salt Lake City,84133,2025-07-27,2026-07-27,Facebook Ads,0,,Family,84.56
+M00830,Liam,Campbell,liam.campbell14@yahoo.com,El Paso,79963,2025-07-27,2026-07-27,Facebook Ads,0,,Family,88.38
+M00831,Danielle,Vasquez,danielle.vasquez30@outlook.com,Phoenix,85079,2025-06-30,2026-06-30,Facebook Ads,0,,Individual,29.31
+M00832,Samantha,Sullivan,samantha.sullivan4@gmail.com,Austin,78767,2025-06-07,2026-06-07,TikTok Ads,4,2026-01-31,Individual,34.71
+M00833,Owen,Torres,owen.torres11@yahoo.com,Phoenix,85054,2025-09-29,2026-09-29,Groupon,1,2025-10-07,Individual,38.84
+M00834,Danielle,Ortiz,danielle.ortiz52@gmail.com,Tucson,85776,2025-06-16,2026-06-16,Organic Search,1,2025-08-21,Family Plus,91.62
+M00835,Carson,Morgan,carson.morgan31@gmail.com,Austin,78746,2026-01-30,2027-01-30,Instagram Ads,1,2026-01-31,Family Plus,123.31
+M00836,Beverly,Collins,beverly.collins85@yahoo.com,Tucson,85798,2025-11-03,2026-11-03,Facebook Ads,2,2026-04-06,Family Plus,112.34
+M00837,Elizabeth,Vasquez,elizabeth.vasquez12@gmail.com,Salt Lake City,84179,2025-10-29,2026-10-29,Groupon,0,,Couple,44.88
+M00838,Maria,Martin,maria.martin79@gmail.com,Boise,83769,2026-01-18,2027-01-18,Word of Mouth,1,2026-01-26,Family,74.38
+M00839,Donna,King,donna.king41@gmail.com,Phoenix,85014,2026-04-04,2027-04-04,Instagram Ads,1,2026-04-05,Family,86.26
+M00840,Linda,Castillo,linda.castillo97@yahoo.com,Austin,78797,2025-11-17,2026-11-17,Groupon,3,2026-03-13,Individual,32.46
+M00841,Melissa,Murphy,melissa.murphy82@outlook.com,Tucson,85744,2025-12-26,2026-12-26,Instagram Ads,0,,Family,67.89
+M00842,Elijah,Clark,elijah.clark44@gmail.com,Phoenix,85097,2025-10-14,2026-10-14,Organic Search,0,,Couple,54.99
+M00843,Evelyn,Rivera,evelyn.rivera44@gmail.com,El Paso,79931,2025-10-31,2026-10-31,Groupon,0,,Family,93.73
+M00844,Dennis,Clark,dennis.clark29@outlook.com,Salt Lake City,84160,2025-07-13,2026-07-13,Groupon,1,2025-07-23,Individual,31.92
+M00845,Jesse,Kelly,jesse.kelly34@gmail.com,Phoenix,85090,2025-06-13,2026-06-13,Word of Mouth,13,2026-02-16,Family Plus,121.18
+M00846,Justin,Thompson,justin.thompson5@yahoo.com,Dallas,75277,2025-08-05,2026-08-05,TikTok Ads,0,,Individual,30.83
+M00847,Jackson,King,jackson.king97@gmail.com,Phoenix,85026,2025-10-08,2026-10-08,Facebook Ads,6,2026-03-12,Family,81.31
+M00848,Doris,Bailey,doris.bailey70@outlook.com,Dallas,75256,2025-05-25,2026-05-25,Instagram Ads,1,2025-05-30,Couple,60.38
+M00849,Donald,Perez,donald.perez89@gmail.com,Dallas,75227,2026-01-15,2027-01-15,TikTok Ads,1,2026-01-19,Individual,19.79
+M00850,Sandra,Wood,sandra.wood41@gmail.com,Salt Lake City,84153,2025-08-30,2026-08-30,Word of Mouth,10,2026-04-07,Family,84.34

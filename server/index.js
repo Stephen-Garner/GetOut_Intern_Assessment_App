@@ -41,7 +41,7 @@ export function createServer(options = {}) {
 
   // Mapping API routes
   app.get('/api/mapping/fields', (req, res) => {
-    res.json(CANONICAL_FIELDS);
+    res.json(Object.keys(CANONICAL_FIELDS));
   });
 
   app.post('/api/mapping/auto', (req, res) => {

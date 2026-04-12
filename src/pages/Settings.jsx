@@ -216,16 +216,21 @@ export default function Settings() {
         setCanonicalFields(Array.isArray(fields) ? fields : []);
 
         const autoMapResult = await api.post('/mapping/auto', { headers: memberFile.headers });
-        const entries = Array.isArray(autoMapResult) ? autoMapResult :
-          (autoMapResult && autoMapResult.mapping ? autoMapResult.mapping : []);
+        // autoMapResult.mapping is an object { canonical_field: csv_column }
+        // Convert to a reverse lookup: { csv_column: canonical_field }
+        const mappingObj = autoMapResult?.mapping || {};
+        const reverseLookup = {};
+        for (const [canonical, csvCol] of Object.entries(mappingObj)) {
+          reverseLookup[csvCol] = canonical;
+        }
 
         // Build mapping entries with auto-match info
         const mapped = memberFile.headers.map((col) => {
-          const match = entries.find(e => e.csv_column === col);
+          const canonicalMatch = reverseLookup[col] || null;
           return {
             csvColumn: col,
-            canonicalField: match ? (match.canonical_field || 'skip') : 'skip',
-            autoMatched: match ? (match.canonical_field && match.canonical_field !== 'skip') : false,
+            canonicalField: canonicalMatch || 'skip',
+            autoMatched: !!canonicalMatch,
           };
         });
         setMappingEntries(mapped);
@@ -284,6 +289,8 @@ export default function Settings() {
       setMappingEntries([]);
       loadFiles();
       await loadWorkspaces();
+      const totalRows = uploadedFiles.reduce((sum, f) => sum + (f.rowCount || 0), 0);
+      useAppStore.getState().showToast(`Imported ${totalRows} rows into "${newName.trim()}". Segmentation complete.`);
       useAppStore.getState().setActivePage('dashboard');
     } catch (err) {
       setError(err.message);
@@ -432,11 +439,14 @@ export default function Settings() {
         <div className="p-4 rounded-lg bg-surface-secondary border border-border-subtle">
           <h3 className="text-sm font-medium text-content-primary mb-3">Add New Data Source</h3>
 
+          <label className="block text-xs font-medium text-content-secondary mb-1.5">
+            Name your workspace to save this data source
+          </label>
           <input
             type="text"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
-            placeholder="Workspace name (e.g. Q1 2026 Member Data)"
+            placeholder="e.g. Q1 2026 Member Data, March Export"
             className="w-full px-3 py-2 rounded-md bg-surface-tertiary border border-border-subtle text-sm text-content-primary placeholder:text-content-muted outline-none focus:border-accent transition-colors mb-3"
           />
 
