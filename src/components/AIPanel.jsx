@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronRight, Plus, X, Send, Sparkles } from 'lucide-react';
+import { ChevronRight, Plus, X, Send, Sparkles, Image as ImageIcon } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import AIPanelTab from './AIPanelTab.jsx';
 
@@ -25,6 +25,8 @@ async function buildFrontendContext() {
 
 export default function AIPanel() {
   const [input, setInput] = useState('');
+  const [attachedImages, setAttachedImages] = useState([]);
+  const imageInputRef = useRef(null);
   const {
     aiPanelOpen,
     toggleAIPanel,
@@ -61,8 +63,11 @@ export default function AIPanel() {
     else text = text.trim();
     if (!text || !activeChatTabId) return;
 
-    sendMessage(activeChatTabId, text);
+    const imageNames = attachedImages.map(img => img.name);
+    const fullMessage = imageNames.length > 0 ? `${text}\n\n[Attached images: ${imageNames.join(', ')}]` : text;
+    sendMessage(activeChatTabId, fullMessage);
     setInput('');
+    setAttachedImages([]);
 
     const context = await buildFrontendContext();
 
@@ -147,6 +152,17 @@ export default function AIPanel() {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   }, [panelWidth]);
+
+  function handleImageAttach(e) {
+    const files = Array.from(e.target.files || []);
+    const newImages = files.map(file => ({
+      file,
+      preview: URL.createObjectURL(file),
+      name: file.name,
+    }));
+    setAttachedImages(prev => [...prev, ...newImages]);
+    e.target.value = '';
+  }
 
   // Auto-resize textarea
   function handleInputChange(e) {
@@ -244,7 +260,38 @@ export default function AIPanel() {
       {/* Input */}
       {claudeAvailable && (
         <div className="p-3 border-t border-border-subtle">
-          <div className="flex items-end gap-2 bg-surface-tertiary rounded-lg px-3 py-2">
+          {/* Attached images preview */}
+          {attachedImages.length > 0 && (
+            <div className="flex gap-2 mb-2 flex-wrap">
+              {attachedImages.map((img, i) => (
+                <div key={i} className="relative group">
+                  <img src={img.preview} alt="" className="w-16 h-16 rounded-md object-cover border border-border-subtle" />
+                  <button
+                    onClick={() => setAttachedImages(prev => prev.filter((_, j) => j !== i))}
+                    className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-surface-primary border border-border-subtle flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <X size={8} className="text-content-muted" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="flex items-end gap-1.5 bg-surface-tertiary rounded-lg px-3 py-1.5">
+            <button
+              onClick={() => imageInputRef.current?.click()}
+              className="shrink-0 p-1.5 rounded-md text-content-muted hover:text-content-secondary transition-colors"
+              title="Attach image"
+            >
+              <ImageIcon size={16} />
+            </button>
+            <input
+              ref={imageInputRef}
+              type="file"
+              accept="image/*"
+              multiple
+              className="hidden"
+              onChange={handleImageAttach}
+            />
             <textarea
               ref={textareaRef}
               value={input}
@@ -252,13 +299,13 @@ export default function AIPanel() {
               onKeyDown={handleKeyDown}
               placeholder="Ask about your data..."
               rows={1}
-              className="flex-1 bg-transparent text-sm text-content-primary placeholder:text-content-muted resize-none outline-none leading-5"
-              style={{ minHeight: '20px', maxHeight: '150px' }}
+              className="flex-1 bg-transparent text-sm text-content-primary placeholder:text-content-muted resize-none outline-none py-1.5"
+              style={{ lineHeight: '20px', minHeight: '20px', maxHeight: '150px' }}
             />
             <button
               onClick={() => handleSend()}
-              disabled={!input.trim()}
-              className="shrink-0 p-1.5 mb-0.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              disabled={!input.trim() && attachedImages.length === 0}
+              className="shrink-0 p-1.5 rounded-md text-accent hover:bg-accent/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <Send size={16} />
             </button>

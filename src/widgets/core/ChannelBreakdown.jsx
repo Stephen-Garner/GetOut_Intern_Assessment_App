@@ -26,45 +26,9 @@ export default function ChannelBreakdown() {
 
   return (
     <WidgetCard title="Channel Breakdown" subtitle="Member distribution and performance by channel" loading={loading} error={error} empty={!data || channels.length === 0}>
-      <div className="flex flex-col lg:flex-row gap-5">
-        {/* Donut chart */}
-        <div className="flex-shrink-0">
-          <ResponsiveContainer width={200} height={200}>
-            <PieChart>
-              <Pie
-                data={channels}
-                dataKey="memberCount"
-                nameKey="channel"
-                cx="50%"
-                cy="50%"
-                innerRadius={55}
-                outerRadius={85}
-                paddingAngle={2}
-                strokeWidth={0}
-              >
-                {channels.map((_, i) => (
-                  <Cell key={i} fill={CHANNEL_COLORS[i % CHANNEL_COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip
-                contentStyle={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-primary)', borderRadius: 8, color: 'var(--text-primary)', fontSize: 12 }}
-                formatter={(value) => [value.toLocaleString(), 'Members']}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-          {/* Legend */}
-          <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 px-2">
-            {channels.map((ch, i) => (
-              <div key={ch.channel} className="flex items-center gap-1.5 text-xs text-content-muted">
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: CHANNEL_COLORS[i % CHANNEL_COLORS.length] }} />
-                {ch.channel}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Comparison table */}
-        <div className="flex-1 overflow-x-auto">
+      <div className="space-y-4">
+        {/* Comparison table with color indicators */}
+        <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border-subtle">
@@ -100,6 +64,33 @@ export default function ChannelBreakdown() {
               })}
             </tbody>
           </table>
+        </div>
+
+        {/* Donut chart */}
+        <div className="flex justify-center">
+          <ResponsiveContainer width={220} height={180}>
+            <PieChart>
+              <Pie
+                data={channels}
+                dataKey="memberCount"
+                nameKey="channel"
+                cx="50%"
+                cy="50%"
+                innerRadius={50}
+                outerRadius={75}
+                paddingAngle={2}
+                strokeWidth={0}
+              >
+                {channels.map((_, i) => (
+                  <Cell key={i} fill={CHANNEL_COLORS[i % CHANNEL_COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip
+                contentStyle={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-primary)', borderRadius: 8, color: 'var(--text-primary)', fontSize: 12 }}
+                formatter={(value) => [value.toLocaleString(), 'Members']}
+              />
+            </PieChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </WidgetCard>
