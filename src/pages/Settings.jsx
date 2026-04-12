@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Database, Trash2, Check, FolderOpen, Upload, Loader2, RotateCcw, Save, RefreshCw, FileText, X } from 'lucide-react';
+import { Database, Trash2, Check, FolderOpen, Upload, Loader2, RotateCcw, Save, RefreshCw, FileText, X, MoreHorizontal, Pencil, ChevronDown, ChevronUp } from 'lucide-react';
 import useAppStore from '../stores/useAppStore.js';
 import { useWorkspace } from '../hooks/useWorkspace.js';
 import { api } from '../utils/api.js';
@@ -56,6 +56,8 @@ export default function Settings() {
   const { theme } = useAppStore();
   const { workspaces, activeWorkspace, activeWorkspaceId, createWorkspace, deleteWorkspace, switchWorkspace, loadWorkspaces } = useWorkspace();
 
+  const [wsMenuId, setWsMenuId] = useState(null);
+  const [wsExpandedId, setWsExpandedId] = useState(null);
   const [files, setFiles] = useState([]);
   const [newName, setNewName] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -399,41 +401,114 @@ export default function Settings() {
         {workspaces.length > 0 ? (
           <div className="space-y-2 mb-5">
             {workspaces.map((ws) => (
-              <div
-                key={ws.id}
-                className="flex items-center gap-3 p-3.5 rounded-lg bg-surface-secondary border border-border-subtle"
-              >
-                <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                  <Database size={16} className="text-accent" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-content-primary truncate">{ws.name}</p>
-                  <p className="text-xs text-content-muted">
-                    {ws.dataSource?.files?.length || 0} file(s)
-                    {ws.dataSource?.lastImported && (
-                      <> &middot; Imported {new Date(ws.dataSource.lastImported).toLocaleDateString()}</>
+              <div key={ws.id} className="rounded-lg bg-surface-secondary border border-border-subtle">
+                {/* Main row */}
+                <div className="flex items-center gap-3 p-3.5">
+                  <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <Database size={16} className="text-accent" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-content-primary truncate">{ws.name}</p>
+                    <p className="text-xs text-content-muted">
+                      {ws.dataSource?.files?.length || 0} file(s)
+                      {ws.dataSource?.lastImported && (
+                        <> &middot; Imported {new Date(ws.dataSource.lastImported).toLocaleDateString()}</>
+                      )}
+                    </p>
+                  </div>
+                  {activeWorkspace?.id === ws.id ? (
+                    <span className="flex items-center gap-1 text-xs text-accent font-medium">
+                      <Check size={13} /> Active
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => switchWorkspace(ws.id)}
+                      className="text-xs text-content-muted hover:text-accent font-medium transition-colors"
+                    >
+                      Switch to
+                    </button>
+                  )}
+                  {/* 3-dot menu */}
+                  <div className="relative">
+                    <button
+                      onClick={() => setWsMenuId(wsMenuId === ws.id ? null : ws.id)}
+                      className="p-1.5 rounded-md text-content-muted hover:text-content-primary hover:bg-surface-tertiary transition-colors"
+                    >
+                      <MoreHorizontal size={16} />
+                    </button>
+                    {wsMenuId === ws.id && (
+                      <>
+                        <div className="fixed inset-0 z-40" onClick={() => setWsMenuId(null)} />
+                        <div className="absolute right-0 top-full mt-1 w-44 bg-surface-primary border border-border-subtle rounded-lg shadow-xl z-50 py-1">
+                          <button
+                            onClick={() => { setWsExpandedId(wsExpandedId === ws.id ? null : ws.id); setWsMenuId(null); }}
+                            className="w-full flex items-center gap-2 px-3 py-1.5 text-xs text-content-secondary hover:bg-surface-tertiary transition-colors"
+                          >
+                            <Pencil size={12} /> Edit details
+                          </button>
+                          <button
+                            onClick={() => { setWsExpandedId(wsExpandedId === ws.id ? null : ws.id); setWsMenuId(null); }}
+                            className="w-full flex items-center gap-2 px-3 py-1.5 text-xs text-content-secondary hover:bg-surface-tertiary transition-colors"
+                          >
+                            <FileText size={12} /> View files
+                          </button>
+                          <div className="border-t border-border-subtle my-1" />
+                          <button
+                            onClick={() => { deleteWorkspace(ws.id); setWsMenuId(null); }}
+                            className="w-full flex items-center gap-2 px-3 py-1.5 text-xs text-[var(--danger)] hover:bg-[var(--danger)]/10 transition-colors"
+                          >
+                            <Trash2 size={12} /> Delete workspace
+                          </button>
+                        </div>
+                      </>
                     )}
-                  </p>
+                  </div>
                 </div>
-                {activeWorkspace?.id === ws.id ? (
-                  <span className="flex items-center gap-1 text-xs text-accent font-medium">
-                    <Check size={13} /> Active
-                  </span>
-                ) : (
-                  <button
-                    onClick={() => switchWorkspace(ws.id)}
-                    className="text-xs text-content-muted hover:text-accent font-medium transition-colors"
-                  >
-                    Switch to
-                  </button>
+
+                {/* Expandable detail panel */}
+                {wsExpandedId === ws.id && (
+                  <div className="border-t border-border-subtle p-3.5 space-y-3">
+                    <div>
+                      <p className="text-xs font-medium text-content-secondary mb-1.5">Included Files</p>
+                      {ws.dataSource?.files?.length > 0 ? (
+                        <div className="space-y-1">
+                          {ws.dataSource.files.map((f, i) => (
+                            <div key={i} className="flex items-center gap-2 px-2.5 py-1.5 rounded bg-surface-tertiary">
+                              <FileText size={12} className="text-content-muted shrink-0" />
+                              <span className="text-xs text-content-primary truncate">{f}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-xs text-content-muted">No files recorded</p>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <p className="text-xs font-medium text-content-secondary mb-0.5">Created</p>
+                        <p className="text-xs text-content-muted">{ws.createdAt ? new Date(ws.createdAt).toLocaleString() : 'Unknown'}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-medium text-content-secondary mb-0.5">Last Import</p>
+                        <p className="text-xs text-content-muted">{ws.dataSource?.lastImported ? new Date(ws.dataSource.lastImported).toLocaleString() : 'Never'}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-medium text-content-secondary mb-0.5">Database</p>
+                        <p className="text-xs text-content-muted font-mono">{ws.dbFile || 'N/A'}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-medium text-content-secondary mb-0.5">Members</p>
+                        <p className="text-xs text-content-muted">{ws.importResult?.rowCount?.toLocaleString() || 'Unknown'}</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setWsExpandedId(null)}
+                      className="flex items-center gap-1 text-xs text-content-muted hover:text-content-secondary transition-colors"
+                    >
+                      <ChevronUp size={12} /> Collapse
+                    </button>
+                  </div>
                 )}
-                <button
-                  onClick={() => deleteWorkspace(ws.id)}
-                  className="p-1.5 rounded-md text-content-muted hover:text-[var(--danger)] hover:bg-[var(--danger)]/10 transition-colors"
-                  title="Delete workspace"
-                >
-                  <Trash2 size={14} />
-                </button>
               </div>
             ))}
           </div>
