@@ -379,8 +379,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
-      <div className="px-6 pt-6 pb-4 shrink-0">
+    <div className={dashboardTab === 'playground' ? 'min-h-full flex flex-col' : 'h-full flex flex-col overflow-hidden'}>
+      <div className={`px-6 pt-6 pb-4 shrink-0${dashboardTab === 'playground' ? ' sticky top-0 z-10 bg-surface-primary' : ''}`}>
         <div className="flex items-end justify-between gap-4">
           <div>
             <h1 className="text-xl font-semibold text-content-primary">Dashboard</h1>
@@ -438,7 +438,7 @@ export default function Dashboard() {
       </div>
 
       {dashboardTab === 'playground' ? (
-        <div className="flex-1 min-h-0 px-6">
+        <div className="flex-1 px-6 pb-6">
           <PlaygroundPanel
             activeWorkspace={activeWorkspace}
             onGoToSettings={() => setActivePage('settings')}

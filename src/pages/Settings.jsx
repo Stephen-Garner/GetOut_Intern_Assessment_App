@@ -1116,7 +1116,7 @@ export default function Settings() {
       <section>
         <h2 className="text-sm font-semibold text-content-primary mb-3 uppercase tracking-wider">About</h2>
         <div className="p-3.5 rounded-lg bg-surface-secondary border border-border-subtle">
-          <p className="text-sm font-medium text-content-primary">Beacon v3.0.0</p>
+          <p className="text-sm font-medium text-content-primary">Beacon v4.0.0</p>
           <p className="text-xs text-content-muted mt-1 leading-relaxed">
             GetOut Activation Command Center. An internal analytics dashboard for monitoring member activation,
             identifying churn risk, and managing retention interventions.

@@ -444,7 +444,7 @@ export default function PlaygroundPanel({ activeWorkspace, onGoToSettings }) {
 
   return (
     <div
-      className={`relative h-full min-h-0 flex flex-col bg-surface-secondary border border-border-subtle border-b-0 rounded-t-2xl rounded-b-none overflow-hidden ${dragOver ? 'bg-accent/5' : ''}`}
+      className={`relative flex flex-col bg-surface-secondary border border-border-subtle border-b-0 rounded-t-2xl rounded-b-none ${dragOver ? 'bg-accent/5' : ''}`}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -501,7 +501,7 @@ export default function PlaygroundPanel({ activeWorkspace, onGoToSettings }) {
       </div>
 
       {activeThread?.messages.length ? (
-        <div className="flex-1 min-h-0 overflow-y-auto px-5 py-5 space-y-4 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_transparent_38%)]">
+        <div className="px-5 py-5 space-y-4 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_transparent_38%)]">
           {activeThread.messages.map((message) => {
             const isUser = message.role === 'user';
             const isError = message.status === 'error';
@@ -583,7 +583,7 @@ export default function PlaygroundPanel({ activeWorkspace, onGoToSettings }) {
         </div>
       )}
 
-      <div className="border-t border-border-subtle bg-surface-primary px-5 py-4">
+      <div className="sticky bottom-0 z-10 border-t border-border-subtle bg-surface-primary px-5 py-4">
         {activeThread?.attachments?.length > 0 && (
           <div className="mb-3 flex items-center gap-2 text-xs text-content-muted">
             <FileText size={12} />
