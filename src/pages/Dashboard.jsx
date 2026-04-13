@@ -141,6 +141,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (!activeWorkspace) {
       setCustomWidgets([]);
+      setEditingWidget(null);
       return;
     }
 
@@ -198,6 +199,7 @@ export default function Dashboard() {
       current.map((w) => (w.id === updatedWidget.id ? updatedWidget : w))
     );
     setEditingWidget(null);
+    setShowCode(null);
   }
 
   return (
