@@ -226,6 +226,11 @@ export default function PlaygroundPanel({ activeWorkspace, onGoToSettings }) {
     return payload.files || [];
   }
 
+  function stripJsxBlock(text) {
+    if (!text) return text;
+    return text.replace(/```jsx[\s\S]*?```/gi, '').trim();
+  }
+
   function maybeAttachVisualizationArtifact(threadId, messageId, requestMode) {
     if (requestMode !== 'build') return;
 
@@ -505,41 +510,52 @@ export default function PlaygroundPanel({ activeWorkspace, onGoToSettings }) {
             return (
               <div key={message.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
                 <div className={`${isUser ? 'max-w-[76%]' : 'max-w-[88%]'} ${isUser ? '' : 'w-full'}`}>
-                  <div
-                    className={`px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap shadow-sm ${
-                      isUser
-                        ? 'bg-accent text-white rounded-br-md'
-                        : isError
-                        ? 'bg-red-500/10 text-red-400 border border-red-500/20 rounded-bl-md'
-                        : 'bg-surface-primary text-content-primary border border-border-subtle rounded-bl-md'
-                    }`}
-                  >
-                    {isUser ? (
-                      message.content
-                    ) : isStreaming && !message.content.trim() ? (
-                      <div className="flex items-center gap-1.5 py-1">
-                        <div className="flex gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '0ms' }} />
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '150ms' }} />
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '300ms' }} />
-                        </div>
-                        <span className="text-xs text-content-muted ml-1">Thinking...</span>
-                      </div>
-                    ) : !message.content.trim() && !isError ? (
-                      <span className="text-xs text-content-muted italic">
-                        No response received. Try again or run{' '}
-                        <code className="bg-surface-secondary px-1 rounded font-mono">claude login</code>{' '}
-                        in a terminal if the issue persists.
-                      </span>
-                    ) : (
-                      <>
-                        <ChatMessageContent text={message.content} />
-                        {isStreaming && (
-                          <span className="inline-block w-1.5 h-4 bg-accent animate-pulse ml-0.5 align-middle" />
+                  {(() => {
+                    const strippedContent = message.artifact
+                      ? stripJsxBlock(message.content)
+                      : message.content;
+                    const hideTextBubble = message.artifact && strippedContent.trim() === '';
+
+                    if (hideTextBubble && !isUser) return null;
+
+                    return (
+                      <div
+                        className={`px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap shadow-sm ${
+                          isUser
+                            ? 'bg-accent text-white rounded-br-md'
+                            : isError
+                            ? 'bg-red-500/10 text-red-400 border border-red-500/20 rounded-bl-md'
+                            : 'bg-surface-primary text-content-primary border border-border-subtle rounded-bl-md'
+                        }`}
+                      >
+                        {isUser ? (
+                          message.content
+                        ) : isStreaming && !message.content.trim() ? (
+                          <div className="flex items-center gap-1.5 py-1">
+                            <div className="flex gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '0ms' }} />
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '150ms' }} />
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-bounce" style={{ animationDelay: '300ms' }} />
+                            </div>
+                            <span className="text-xs text-content-muted ml-1">Thinking...</span>
+                          </div>
+                        ) : !message.content.trim() && !isError ? (
+                          <span className="text-xs text-content-muted italic">
+                            No response received. Try again or run{' '}
+                            <code className="bg-surface-secondary px-1 rounded font-mono">claude login</code>{' '}
+                            in a terminal if the issue persists.
+                          </span>
+                        ) : (
+                          <>
+                            <ChatMessageContent text={strippedContent} />
+                            {isStreaming && (
+                              <span className="inline-block w-1.5 h-4 bg-accent animate-pulse ml-0.5 align-middle" />
+                            )}
+                          </>
                         )}
-                      </>
-                    )}
-                  </div>
+                      </div>
+                    );
+                  })()}
 
                   {message.artifact && (
                     <VisualizationArtifactCard
