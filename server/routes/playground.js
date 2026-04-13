@@ -123,18 +123,11 @@ function writeAttachmentManifest(workspaceId, threadId, attachments) {
 }
 
 function buildFullPrompt({ workspace, message, mode, conversationHistory, attachments }) {
-  const workspaceConfigPath = path.join(WORKSPACES_DIR, `${workspace.id}.json`);
-  const workspaceRoot = path.resolve(DATA_DIR, '..');
-  const dataFiles = (workspace.dataSource?.files || []).map((fileName) => ({
-    fileName,
-    absolutePath: path.join(DATA_DIR, fileName),
-  }));
-  const dbAbsolutePath = workspace.dbFile ? path.resolve(workspaceRoot, workspace.dbFile) : null;
+  const dataFileNames = workspace.dataSource?.files || [];
 
   const parts = [
     'You are the AI engine for Beacon, an internal analytics app for GetOut.',
     'Beacon focuses on member activation, retention, churn risk, and dashboard visualizations.',
-    'Prefer grounding your answers in the provided workspace context and referenced files.',
     'Be concise, concrete, and analytical.',
   ];
 
@@ -149,7 +142,9 @@ function buildFullPrompt({ workspace, message, mode, conversationHistory, attach
       'Handle loading, empty, and error states in the component.',
       'Use Beacon-compatible data sources only: /api/data/summary, /api/data/segments, /api/data/members, and /api/data/metrics endpoints with the active workspace query parameter.',
       'Export a single self-contained component with export default function ... and no external imports beyond react, recharts, and lucide-react.',
-      'Do not emit explanations around the code block when you are returning a visualization component.'
+      'Always give Recharts ResponsiveContainer a fixed pixel height (e.g. height={300}) — never use percentages for height since the container has no fixed parent height.',
+      'Do not emit explanations around the code block when you are returning a visualization component.',
+      'If the user asks to modify an existing visualization, output the complete revised component as a new ```jsx block — not a diff, not a snippet.'
     );
   } else {
     parts.push(
@@ -161,20 +156,11 @@ function buildFullPrompt({ workspace, message, mode, conversationHistory, attach
 
   parts.push(
     '',
-    `CURRENT WORKSPACE: ${workspace.name} (${workspace.id})`,
-    `Workspace config path: ${workspaceConfigPath}`,
-    `SQLite database path: ${dbAbsolutePath || 'N/A'}`,
-    '',
-    'DATA SOURCE FILES:'
+    `CURRENT WORKSPACE: ${workspace.name}`,
+    `Total members: ${workspace.importResult?.rowCount ?? 0}`,
+    `Columns: ${(workspace.importResult?.columns || []).join(', ')}`,
+    `Data files: ${dataFileNames.join(', ') || 'none'}`,
   );
-
-  if (dataFiles.length > 0) {
-    for (const file of dataFiles) {
-      parts.push(`- ${file.fileName}: ${file.absolutePath}`);
-    }
-  } else {
-    parts.push('- None');
-  }
 
   if (workspace.segmentation && Object.keys(workspace.segmentation).length > 0) {
     parts.push('', 'SEGMENTATION SUMMARY:');
@@ -183,11 +169,17 @@ function buildFullPrompt({ workspace, message, mode, conversationHistory, attach
     }
   }
 
-  if (attachments?.length) {
-    parts.push('', 'ATTACHMENTS:');
-    for (const attachment of attachments) {
-      parts.push(`- ${attachment.name}: ${attachment.absolutePath}`);
+  if (workspace.columnMapping && Object.keys(workspace.columnMapping).length > 0) {
+    parts.push('', 'COLUMN MAPPING (canonical field: source column):');
+    for (const [canonical, source] of Object.entries(workspace.columnMapping)) {
+      if (source && source !== 'skip') {
+        parts.push(`- ${canonical}: ${source}`);
+      }
     }
+  }
+
+  if (attachments?.length) {
+    parts.push('', `ATTACHMENTS: ${attachments.map((a) => a.name).join(', ')}`);
   }
 
   if (conversationHistory?.length) {
