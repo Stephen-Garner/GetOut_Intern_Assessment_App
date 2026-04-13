@@ -1,37 +1,90 @@
 import { Router } from 'express';
-import { spawn, execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
+import { claudeAvailable, claudeVersion, claudeBin, spawnClaude } from '../claude-runner.js';
 
 const router = Router();
 
-// Check if Claude Code CLI is available
-let claudeAvailable = false;
-let claudeVersion = '';
+const TEXT_EXTENSIONS = new Set([
+  '.csv',
+  '.css',
+  '.html',
+  '.js',
+  '.json',
+  '.jsx',
+  '.md',
+  '.sql',
+  '.svg',
+  '.ts',
+  '.tsx',
+  '.tsv',
+  '.txt',
+  '.xml',
+  '.yaml',
+  '.yml',
+]);
+const TEXT_MIME_PREFIXES = ['text/'];
+const TEXT_MIME_TYPES = new Set([
+  'application/csv',
+  'application/javascript',
+  'application/json',
+  'application/sql',
+  'application/typescript',
+  'application/xml',
+  'image/svg+xml',
+]);
+const INLINE_FILE_CHAR_LIMIT = 12000;
+const INLINE_TOTAL_CHAR_LIMIT = 24000;
 
-try {
-  const result = execSync('claude --version 2>/dev/null || echo ""', { encoding: 'utf-8', timeout: 5000 }).trim();
-  if (result && !result.includes('not found')) {
-    claudeAvailable = true;
-    claudeVersion = result;
-  }
-} catch {
-  claudeAvailable = false;
-}
 
-// Availability check endpoint
 router.get('/status', (req, res) => {
   res.json({ available: claudeAvailable, version: claudeVersion });
 });
 
-// Build context from workspace data
+// Debug endpoint: runs a trivial Claude query and reports stdout, stderr, and exit code.
+// Visit /api/chat/debug in the browser to diagnose connection issues.
+router.get('/debug', (req, res) => {
+  if (!claudeAvailable) {
+    return res.json({ ok: false, error: 'Claude binary not found', bin: claudeBin });
+  }
+
+  const proc = spawnClaude(['-p', 'Reply with exactly the word: PONG', '--output-format', 'text'], { timeout: 30000 });
+
+  let stdout = '';
+  let stderr = '';
+
+  proc.stdout.on('data', (d) => { stdout += d.toString(); });
+  proc.stderr.on('data', (d) => { stderr += d.toString(); });
+
+  proc.on('close', (code) => {
+    res.json({
+      ok: code === 0 && stdout.trim().length > 0,
+      bin: claudeBin,
+      version: claudeVersion,
+      exitCode: code,
+      stdout: stdout.trim(),
+      stderr: stderr.trim(),
+      hint: code === 0 && !stdout.trim()
+        ? 'Claude ran but produced no output. Run "claude login" in a terminal to re-authenticate.'
+        : code !== 0
+        ? `Claude exited with code ${code}. Check stderr for details.`
+        : 'OK',
+    });
+  });
+
+  proc.on('error', (err) => {
+    res.json({ ok: false, bin: claudeBin, error: err.message });
+  });
+});
+
 function buildContext(context) {
   const parts = ['You are an AI assistant embedded in Beacon, a member activation analytics dashboard for GetOut, a family entertainment membership company.'];
 
   if (context?.workspaceName) parts.push(`\nCURRENT WORKSPACE: ${context.workspaceName}`);
 
   if (context?.summary) {
-    parts.push(`\nDATA SUMMARY:`);
+    parts.push('\nDATA SUMMARY:');
     parts.push(`- Total members: ${context.summary.totalMembers || 0}`);
     if (context.summary.segmentCounts) parts.push(`- Segments: ${JSON.stringify(context.summary.segmentCounts)}`);
     if (context.summary.avgHealthScore != null) parts.push(`- Average health score: ${context.summary.avgHealthScore}`);
@@ -39,76 +92,123 @@ function buildContext(context) {
     if (context.summary.firstUseRate != null) parts.push(`- First-use rate (14-day): ${context.summary.firstUseRate}%`);
   }
 
-  parts.push(`\nCAPABILITIES:`);
-  parts.push(`- Answer questions about member data and retention`);
-  parts.push(`- Provide strategic insights about activation and churn`);
-  parts.push(`- Draft intervention emails and campaign copy`);
-  parts.push(`- Help interpret trends and anomalies`);
-  parts.push(`- Build custom dashboard widgets (React + Recharts + Tailwind)`);
-  parts.push(`\nRespond concisely. Reference actual numbers when relevant.`);
+  parts.push('\nCAPABILITIES:');
+  parts.push('- Answer questions about member data and health scores');
+  parts.push('- Provide strategic insights about activation, churn, and retention');
+  parts.push('- Analyze segment trends and surface anomalies');
+  parts.push('- Draft intervention emails and campaign copy');
+  parts.push('- Interpret specific member or cohort behavior on request');
+  parts.push('\nFocus on numerical insights and data analysis. To build dashboard visualizations, direct the user to the Playground tab.');
+  parts.push('Respond concisely. Reference actual numbers when relevant.');
 
   return parts.join('\n');
 }
 
-// Check if message is a widget creation request
-function isWidgetRequest(message) {
-  const triggers = ['build a chart', 'create a widget', 'show me a visualization', 'add a graph', 'make a table', 'build a widget', 'create a chart', 'build me a', 'make a chart', 'visualize', 'create a visualization'];
-  const lower = message.toLowerCase();
-  return triggers.some(t => lower.includes(t));
+
+function isTextLikeAttachment(attachment) {
+  const extension = path.extname(attachment.originalName || attachment.filename || '').toLowerCase();
+  if (TEXT_EXTENSIONS.has(extension)) return true;
+  if (TEXT_MIME_TYPES.has(attachment.mimeType)) return true;
+  return TEXT_MIME_PREFIXES.some(prefix => (attachment.mimeType || '').startsWith(prefix));
 }
 
-function getWidgetInstructions() {
-  return `
-WIDGET CREATION INSTRUCTIONS:
+function normalizeAttachment(attachment) {
+  if (!attachment || typeof attachment !== 'object') return null;
 
-Generate a COMPLETE, self-contained React component that:
-1. Uses Recharts for charts (BarChart, LineChart, PieChart, AreaChart, etc.)
-2. Uses Tailwind CSS classes for styling
-3. Uses Lucide React icons if needed
-4. Fetches data from the app's API:
-   - GET /api/data/members?workspace=WORKSPACE_ID&limit=1000
-   - GET /api/data/segments?workspace=WORKSPACE_ID
-   - GET /api/data/metrics?type=channel_breakdown&workspace=WORKSPACE_ID
-   - GET /api/data/metrics?type=market_comparison&workspace=WORKSPACE_ID
-   - GET /api/data/metrics?type=activity_timeline&workspace=WORKSPACE_ID
-   - GET /api/data/summary?workspace=WORKSPACE_ID
-5. Handles loading, empty, and error states
-6. Uses CSS variables for theme: var(--text-primary), var(--bg-secondary), etc.
-7. Exports as default: export default function MyWidget() { ... }
-8. Uses optional chaining (?.) on all data access
-9. MUST be a single component in a single code block
+  const filename = typeof attachment.filename === 'string' ? attachment.filename : '';
+  const filePath = typeof attachment.path === 'string' ? attachment.path : '';
+  if (!filename && !filePath) return null;
 
-CRITICAL: Output ONLY the React component code inside a single \`\`\`jsx code block. No explanation outside the code block.
-`;
+  const resolvedPath = path.resolve(filePath || filename);
+  return {
+    filename,
+    originalName: attachment.originalName || filename || path.basename(resolvedPath),
+    mimeType: attachment.mimeType || 'application/octet-stream',
+    size: attachment.size,
+    path: resolvedPath,
+  };
 }
 
-// Main chat endpoint with SSE streaming
+function buildAttachmentContext(attachments) {
+  if (!Array.isArray(attachments) || attachments.length === 0) return '';
+
+  let remainingChars = INLINE_TOTAL_CHAR_LIMIT;
+  const parts = ['\nATTACHMENTS:'];
+
+  for (const rawAttachment of attachments) {
+    const attachment = normalizeAttachment(rawAttachment);
+    if (!attachment) continue;
+
+    const descriptor = `- ${attachment.originalName} (${attachment.mimeType || 'unknown type'}${attachment.size != null ? `, ${attachment.size} bytes` : ''})`;
+
+    if (!fs.existsSync(attachment.path)) {
+      parts.push(`${descriptor}\n  File could not be found on disk when the request was processed.`);
+      continue;
+    }
+
+    if (!isTextLikeAttachment(attachment)) {
+      parts.push(`${descriptor}\n  Binary or image attachment received. Raw binary/image analysis is not enabled in this flow, so only metadata is available.`);
+      continue;
+    }
+
+    if (remainingChars <= 0) {
+      parts.push(`${descriptor}\n  Text content omitted because the total attachment context budget was exhausted.`);
+      continue;
+    }
+
+    try {
+      const fileText = fs.readFileSync(attachment.path, 'utf-8');
+      const trimmedText = fileText.trim();
+
+      if (!trimmedText) {
+        parts.push(`${descriptor}\n  Text file was empty.`);
+        continue;
+      }
+
+      const sliceLength = Math.min(trimmedText.length, INLINE_FILE_CHAR_LIMIT, remainingChars);
+      const snippet = trimmedText.slice(0, sliceLength);
+      remainingChars -= sliceLength;
+      const truncationNote = trimmedText.length > sliceLength
+        ? `\n  File content was truncated to the first ${sliceLength} characters.`
+        : '';
+
+      parts.push(`${descriptor}\n  Begin file contents:\n${snippet}\n  End file contents.${truncationNote}`);
+    } catch (err) {
+      parts.push(`${descriptor}\n  Text content could not be read: ${err.message}`);
+    }
+  }
+
+  return parts.join('\n');
+}
+
 router.post('/', async (req, res) => {
-  const { message, conversationHistory, context } = req.body;
+  const { message, conversationHistory, context, attachments } = req.body;
+  const normalizedMessage = typeof message === 'string' ? message.trim() : '';
+  const hasAttachments = Array.isArray(attachments) && attachments.length > 0;
 
-  if (!message) {
-    return res.status(400).json({ error: 'message is required' });
+  if (!normalizedMessage && !hasAttachments) {
+    return res.status(400).json({ error: 'message or attachments are required' });
   }
 
   if (!claudeAvailable) {
-    return res.json({
-      role: 'assistant',
-      content: 'Claude Code is not installed on this system. Install it from https://docs.anthropic.com/en/docs/claude-code to enable AI features.',
-      timestamp: new Date().toISOString(),
-    });
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.flushHeaders();
+    res.write(`data: ${JSON.stringify({ text: 'Claude Code is not available on this system. Make sure it is installed and accessible (expected at ~/.local/bin/claude or /usr/local/bin/claude).' })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.end();
+    return;
   }
 
-  // Set up SSE headers
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
 
-  // Build prompt
   const systemContext = buildContext(context);
   let fullPrompt = systemContext;
 
-  // Add conversation history (last 10 messages)
   if (conversationHistory && conversationHistory.length > 0) {
     const recent = conversationHistory.slice(-10);
     fullPrompt += '\n\nConversation so far:\n';
@@ -117,32 +217,47 @@ router.post('/', async (req, res) => {
     }
   }
 
-  // Add widget instructions if needed
-  if (isWidgetRequest(message)) {
-    fullPrompt += '\n\n' + getWidgetInstructions();
+  const attachmentContext = buildAttachmentContext(attachments);
+  if (attachmentContext) {
+    fullPrompt += `\n\n${attachmentContext}`;
   }
 
-  fullPrompt += `\n\nUser: ${message}`;
+  fullPrompt += `\n\nUser: ${normalizedMessage || 'Please review the attached files and respond based on them.'}`;
 
   try {
-    const proc = spawn('claude', ['-p', fullPrompt, '--output-format', 'text'], {
-      timeout: 120000,
-      env: { ...process.env },
-      stdio: ['ignore', 'pipe', 'pipe'],
-    });
+    const proc = spawnClaude(['-p', fullPrompt, '--output-format', 'text']);
+
+    let stdoutReceived = false;
+    let stderrContent = '';
 
     proc.stdout.on('data', (data) => {
       const text = data.toString();
+      if (text.trim()) stdoutReceived = true;
       res.write(`data: ${JSON.stringify({ text })}\n\n`);
     });
 
     proc.stderr.on('data', (data) => {
-      console.error('Claude stderr:', data.toString());
+      const chunk = data.toString();
+      stderrContent += chunk;
+      console.error('Claude stderr:', chunk);
     });
 
     proc.on('close', (code) => {
       if (code !== 0 && code !== null) {
-        res.write(`data: ${JSON.stringify({ error: `Claude exited with code ${code}` })}\n\n`);
+        const stderrHint = stderrContent.trim();
+        const errorMsg = stderrHint
+          ? `Claude exited with code ${code}: ${stderrHint}`
+          : `Claude exited with code ${code}. Try running \`claude --version\` in your terminal to verify it is working.`;
+        res.write(`data: ${JSON.stringify({ error: errorMsg })}\n\n`);
+      } else if (!stdoutReceived) {
+        // Claude ran successfully but produced no output. This usually means
+        // authentication has expired or a permission prompt was shown in a
+        // non-interactive context where it could not be answered.
+        const stderrHint = stderrContent.trim();
+        const errorMsg = stderrHint
+          ? `Claude returned no response: ${stderrHint}`
+          : 'Claude returned an empty response. This usually means it needs to be re-authenticated. Open a terminal and run: claude login';
+        res.write(`data: ${JSON.stringify({ error: errorMsg })}\n\n`);
       }
       res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
       res.end();
@@ -154,8 +269,7 @@ router.post('/', async (req, res) => {
       res.end();
     });
 
-    // Handle client disconnect
-    req.on('close', () => {
+    res.on('close', () => {
       proc.kill();
     });
   } catch (err) {
