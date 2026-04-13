@@ -299,7 +299,7 @@ router.post('/chat', (req, res) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     res.flushHeaders();
-    res.write(`data: ${JSON.stringify({ text: 'Claude Code is not available. Make sure it is installed and run `claude login` in a terminal.' })}\n\n`);
+    res.write(`data: ${JSON.stringify({ error: 'Claude Code is not available. Make sure it is installed and run `claude login` in a terminal.' })}\n\n`);
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     return res.end();
   }
@@ -309,7 +309,6 @@ router.post('/chat', (req, res) => {
     return res.status(404).json({ error: 'Workspace not found' });
   }
 
-  const workspaceRoot = path.resolve(DATA_DIR, '..');
   const { threadDir, attachmentsDir } = touchThreadDir(workspaceId, threadId);
   const workspaceContextPath = writeWorkspaceContextFile(workspace, workspaceId, threadId);
   const attachmentManifestPath = writeAttachmentManifest(workspaceId, threadId, attachments);
