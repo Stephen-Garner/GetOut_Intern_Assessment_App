@@ -152,6 +152,39 @@ function renderInlineMarkdown(text) {
 
     flushTable();
 
+    const headingMatch = line.match(/^(#{1,3})\s+(.*)/);
+    if (headingMatch) {
+      flushList();
+      flushTable();
+      const level = headingMatch[1].length;
+      const headingClass = level === 1
+        ? 'text-base font-bold text-content-primary mt-2 mb-1'
+        : level === 2
+        ? 'text-sm font-semibold text-content-primary mt-2 mb-0.5'
+        : 'text-xs font-semibold text-content-secondary uppercase tracking-wide mt-1.5 mb-0.5';
+      result.push(
+        <p key={`h${level}-${index}`} className={headingClass}>
+          {formatInline(headingMatch[2])}
+        </p>
+      );
+      continue;
+    }
+
+    const blockquoteMatch = line.match(/^>\s*(.*)/);
+    if (blockquoteMatch) {
+      flushList();
+      flushTable();
+      result.push(
+        <blockquote
+          key={`bq-${index}`}
+          className="pl-3 border-l-2 border-accent/40 text-content-secondary italic my-1"
+        >
+          {formatInline(blockquoteMatch[1])}
+        </blockquote>
+      );
+      continue;
+    }
+
     const bulletMatch = line.match(/^[*-]\s+(.*)/);
     const numberedMatch = line.match(/^\d+\.\s+(.*)/);
 
