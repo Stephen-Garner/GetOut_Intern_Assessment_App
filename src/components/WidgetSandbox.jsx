@@ -3,6 +3,9 @@ import * as React from 'react';
 import * as Recharts from 'recharts';
 import * as LucideReact from 'lucide-react';
 import { AlertTriangle, Code, RotateCcw } from 'lucide-react';
+import useAppStore from '../stores/useAppStore.js';
+import { api } from '../utils/api.js';
+import WidgetCard from '../widgets/core/WidgetCard.jsx';
 
 // Error boundary class component
 class WidgetErrorBoundary extends React.Component {
@@ -66,6 +69,9 @@ export default function WidgetSandbox({ code, title, onRetry }) {
           if (name === 'react') return React;
           if (name === 'recharts') return Recharts;
           if (name === 'lucide-react') return LucideReact;
+          if (name.includes('stores/useAppStore')) return useAppStore;
+          if (name.includes('utils/api')) return { api };
+          if (name.includes('WidgetCard')) return WidgetCard;
           return {};
         };
 

@@ -54,10 +54,18 @@ const THRESHOLD_FIELDS = {
 
 export default function Settings() {
   const { theme } = useAppStore();
-  const { workspaces, activeWorkspace, activeWorkspaceId, createWorkspace, deleteWorkspace, switchWorkspace, loadWorkspaces } = useWorkspace();
+  const { workspaces, activeWorkspace, activeWorkspaceId, createWorkspace, updateWorkspace, reimportWorkspace, deleteWorkspace, switchWorkspace, loadWorkspaces } = useWorkspace();
 
   const [wsMenuId, setWsMenuId] = useState(null);
   const [wsExpandedId, setWsExpandedId] = useState(null);
+  const [wsEditId, setWsEditId] = useState(null);
+  const [editName, setEditName] = useState('');
+  const [editFiles, setEditFiles] = useState([]);
+  const [editUploadedFiles, setEditUploadedFiles] = useState([]);
+  const [editSelectedFiles, setEditSelectedFiles] = useState([]);
+  const [editImporting, setEditImporting] = useState(false);
+  const [editError, setEditError] = useState(null);
+  const editFileInputRef = useRef(null);
   const [files, setFiles] = useState([]);
   const [newName, setNewName] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -310,6 +318,81 @@ export default function Settings() {
 
   const allAutoMatched = mappingEntries.length > 0 && mappingEntries.every(e => e.autoMatched || e.canonicalField === 'skip');
 
+  function openEdit(ws) {
+    setWsEditId(ws.id);
+    setEditName(ws.name);
+    setEditFiles(ws.dataSource?.files || []);
+    setEditUploadedFiles([]);
+    setEditSelectedFiles([]);
+    setEditError(null);
+    setWsExpandedId(null);
+    setWsMenuId(null);
+  }
+
+  function closeEdit() {
+    setWsEditId(null);
+    setEditName('');
+    setEditFiles([]);
+    setEditUploadedFiles([]);
+    setEditSelectedFiles([]);
+    setEditError(null);
+  }
+
+  function handleEditFileDrop(fileList) {
+    if (!fileList || fileList.length === 0) return;
+    const newFiles = Array.from(fileList);
+    const promises = newFiles.map((file) => new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        const lines = text.split('\n').filter(l => l.trim());
+        const headers = lines.length > 0 ? lines[0].split(/[,\t]/).map(h => h.trim().replace(/^["']|["']$/g, '')) : [];
+        resolve({ file, name: file.name, size: file.size, headers, rowCount: Math.max(0, lines.length - 1) });
+      };
+      reader.readAsText(file);
+    }));
+    Promise.all(promises).then((parsed) => setEditUploadedFiles((prev) => [...prev, ...parsed]));
+  }
+
+  function toggleEditSelectedFile(filename) {
+    setEditSelectedFiles((prev) => prev.includes(filename) ? prev.filter(f => f !== filename) : [...prev, filename]);
+  }
+
+  async function handleEditSave(ws) {
+    const filesUnchanged =
+      editUploadedFiles.length === 0 &&
+      editSelectedFiles.length === 0 &&
+      JSON.stringify([...editFiles].sort()) === JSON.stringify([...(ws.dataSource?.files || [])].sort());
+
+    setEditImporting(true);
+    setEditError(null);
+    try {
+      if (filesUnchanged) {
+        await updateWorkspace(ws.id, { name: editName.trim() });
+      } else {
+        let allFileNames = [...editFiles, ...editSelectedFiles];
+        if (editUploadedFiles.length > 0) {
+          const formData = new FormData();
+          for (const f of editUploadedFiles) formData.append('files', f.file);
+          const res = await fetch('/api/upload', { method: 'POST', body: formData });
+          if (!res.ok) throw new Error('Upload failed');
+          const uploadResult = await res.json();
+          allFileNames = [...allFileNames, ...uploadResult.files.map(f => f.filename)];
+        }
+        if (allFileNames.length === 0) {
+          throw new Error('At least one file is required');
+        }
+        await reimportWorkspace(ws.id, editName.trim(), allFileNames);
+        useAppStore.getState().showToast(`"${editName.trim()}" updated and re-imported successfully.`);
+      }
+      closeEdit();
+    } catch (err) {
+      setEditError(err.message);
+    } finally {
+      setEditImporting(false);
+    }
+  }
+
   function handleMappingChange(csvColumn, canonicalField) {
     setColumnMapping((prev) =>
       prev.map((entry) =>
@@ -441,13 +524,13 @@ export default function Settings() {
                         <div className="fixed inset-0 z-40" onClick={() => setWsMenuId(null)} />
                         <div className="absolute right-0 top-full mt-1 w-44 bg-surface-primary border border-border-subtle rounded-lg shadow-xl z-50 py-1">
                           <button
-                            onClick={() => { setWsExpandedId(wsExpandedId === ws.id ? null : ws.id); setWsMenuId(null); }}
+                            onClick={() => openEdit(ws)}
                             className="w-full flex items-center gap-2 px-3 py-1.5 text-xs text-content-secondary hover:bg-surface-tertiary transition-colors"
                           >
                             <Pencil size={12} /> Edit details
                           </button>
                           <button
-                            onClick={() => { setWsExpandedId(wsExpandedId === ws.id ? null : ws.id); setWsMenuId(null); }}
+                            onClick={() => { setWsExpandedId(wsExpandedId === ws.id ? null : ws.id); setWsEditId(null); setWsMenuId(null); }}
                             className="w-full flex items-center gap-2 px-3 py-1.5 text-xs text-content-secondary hover:bg-surface-tertiary transition-colors"
                           >
                             <FileText size={12} /> View files
@@ -465,7 +548,7 @@ export default function Settings() {
                   </div>
                 </div>
 
-                {/* Expandable detail panel */}
+                {/* Read-only detail panel */}
                 {wsExpandedId === ws.id && (
                   <div className="border-t border-border-subtle p-3.5 space-y-3">
                     <div>
@@ -507,6 +590,139 @@ export default function Settings() {
                     >
                       <ChevronUp size={12} /> Collapse
                     </button>
+                  </div>
+                )}
+
+                {/* Edit panel */}
+                {wsEditId === ws.id && (
+                  <div className="border-t border-border-subtle p-3.5 space-y-3">
+                    <p className="text-xs font-semibold text-content-primary">Edit Data Source</p>
+
+                    {/* Name */}
+                    <div>
+                      <label className="block text-xs font-medium text-content-secondary mb-1">Name</label>
+                      <input
+                        type="text"
+                        value={editName}
+                        onChange={(e) => setEditName(e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-md bg-surface-tertiary border border-border-subtle text-sm text-content-primary outline-none focus:border-accent transition-colors"
+                      />
+                    </div>
+
+                    {/* Current files */}
+                    <div>
+                      <p className="text-xs font-medium text-content-secondary mb-1.5">Source Files</p>
+                      {editFiles.length > 0 ? (
+                        <div className="space-y-1">
+                          {editFiles.map((f) => (
+                            <div key={f} className="flex items-center gap-2 px-2.5 py-1.5 rounded bg-surface-tertiary">
+                              <FileText size={12} className="text-content-muted shrink-0" />
+                              <span className="text-xs text-content-primary truncate flex-1">{f}</span>
+                              <button
+                                onClick={() => setEditFiles((prev) => prev.filter((x) => x !== f))}
+                                className="text-content-muted hover:text-[var(--danger)] transition-colors"
+                                title="Remove file"
+                              >
+                                <X size={13} />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-xs text-[var(--warning)]">No files — add at least one below.</p>
+                      )}
+                    </div>
+
+                    {/* Newly uploaded files */}
+                    {editUploadedFiles.length > 0 && (
+                      <div className="space-y-1">
+                        <p className="text-xs font-medium text-content-secondary mb-1">Files to add</p>
+                        {editUploadedFiles.map((f, i) => (
+                          <div key={i} className="flex items-center gap-2 px-2.5 py-1.5 rounded bg-accent/10 border border-accent/20">
+                            <FileText size={12} className="text-accent shrink-0" />
+                            <span className="text-xs text-content-primary truncate flex-1">{f.name}</span>
+                            <span className="text-xs text-content-muted">{f.rowCount} rows</span>
+                            <button
+                              onClick={() => setEditUploadedFiles((prev) => prev.filter((_, j) => j !== i))}
+                              className="text-content-muted hover:text-[var(--danger)] transition-colors"
+                            >
+                              <X size={13} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Add more files */}
+                    <div>
+                      <p className="text-xs font-medium text-content-secondary mb-1.5">Add Files</p>
+                      <div
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={(e) => { e.preventDefault(); handleEditFileDrop(e.dataTransfer.files); }}
+                        onClick={() => editFileInputRef.current?.click()}
+                        className="border border-dashed border-border-primary rounded-lg p-4 text-center cursor-pointer hover:border-accent/50 hover:bg-surface-tertiary transition-colors"
+                      >
+                        <Upload size={16} className="mx-auto mb-1 text-content-muted" />
+                        <p className="text-xs text-content-muted">Drag & drop or click to upload CSV</p>
+                        <input
+                          ref={editFileInputRef}
+                          type="file"
+                          accept=".csv,.tsv,.txt"
+                          multiple
+                          className="hidden"
+                          onChange={(e) => handleEditFileDrop(e.target.files)}
+                        />
+                      </div>
+
+                      {/* Select from data/ directory */}
+                      {files.length > 0 && (
+                        <details className="mt-2">
+                          <summary className="text-xs text-content-muted cursor-pointer hover:text-content-secondary">
+                            Or select from data/ directory
+                          </summary>
+                          <div className="mt-1.5 space-y-1 max-h-36 overflow-y-auto">
+                            {files
+                              .filter((f) => !editFiles.includes(f))
+                              .map((f) => (
+                                <button
+                                  key={f}
+                                  onClick={() => toggleEditSelectedFile(f)}
+                                  className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded text-xs text-left transition-colors ${
+                                    editSelectedFiles.includes(f)
+                                      ? 'bg-accent/10 text-accent'
+                                      : 'text-content-secondary hover:bg-surface-tertiary'
+                                  }`}
+                                >
+                                  <div className={`w-3 h-3 rounded border flex items-center justify-center shrink-0 ${editSelectedFiles.includes(f) ? 'bg-accent border-accent' : 'border-border-primary'}`}>
+                                    {editSelectedFiles.includes(f) && <Check size={8} className="text-white" />}
+                                  </div>
+                                  <span className="truncate">{f}</span>
+                                </button>
+                              ))}
+                          </div>
+                        </details>
+                      )}
+                    </div>
+
+                    {editError && <p className="text-xs text-[var(--danger)]">{editError}</p>}
+
+                    <div className="flex items-center gap-2 pt-1">
+                      <button
+                        onClick={() => handleEditSave(ws)}
+                        disabled={editImporting || !editName.trim()}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-accent hover:bg-accent-hover disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-medium rounded-lg transition-colors"
+                      >
+                        {editImporting ? <Loader2 size={12} className="animate-spin" /> : <Save size={12} />}
+                        {editImporting ? 'Saving...' : 'Save Changes'}
+                      </button>
+                      <button
+                        onClick={closeEdit}
+                        disabled={editImporting}
+                        className="px-3 py-1.5 text-xs text-content-muted hover:text-content-primary transition-colors"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

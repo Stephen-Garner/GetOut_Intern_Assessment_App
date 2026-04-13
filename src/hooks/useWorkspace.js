@@ -38,6 +38,24 @@ export function useWorkspace() {
     [activeWorkspaceId, loadWorkspaces, setActiveWorkspace]
   );
 
+  const updateWorkspace = useCallback(
+    async (id, updates) => {
+      const data = await api.put(`/workspaces/${id}`, updates);
+      await loadWorkspaces();
+      return data;
+    },
+    [loadWorkspaces]
+  );
+
+  const reimportWorkspace = useCallback(
+    async (id, name, files) => {
+      const data = await api.put(`/workspaces/${id}/reimport`, { name, files });
+      await loadWorkspaces();
+      return data;
+    },
+    [loadWorkspaces]
+  );
+
   const switchWorkspace = useCallback(
     (id) => {
       setActiveWorkspace(id);
@@ -57,6 +75,8 @@ export function useWorkspace() {
     activeWorkspaceId,
     loadWorkspaces,
     createWorkspace,
+    updateWorkspace,
+    reimportWorkspace,
     deleteWorkspace,
     switchWorkspace,
   };

@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+import ChatMessageContent from './ChatMessageContent.jsx';
 
 const SUGGESTIONS = [
   'Which market has the worst Ghost rate?',
@@ -8,156 +8,6 @@ const SUGGESTIONS = [
   'Build a chart comparing channels by health score',
   'What should we focus on this quarter?',
 ];
-
-function CopyButton({ text }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  }, [text]);
-
-  return (
-    <button
-      onClick={handleCopy}
-      className="absolute top-2 right-2 p-1 rounded text-content-muted hover:text-content-primary hover:bg-surface-secondary transition-colors"
-      title="Copy code"
-    >
-      {copied ? <Check size={12} /> : <Copy size={12} />}
-    </button>
-  );
-}
-
-function renderMarkdown(text) {
-  if (!text) return null;
-
-  // Split on code blocks first
-  const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
-  const parts = [];
-  let lastIndex = 0;
-  let match;
-
-  while ((match = codeBlockRegex.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push({ type: 'text', content: text.slice(lastIndex, match.index) });
-    }
-    parts.push({ type: 'code-block', lang: match[1], content: match[2] });
-    lastIndex = match.index + match[0].length;
-  }
-  if (lastIndex < text.length) {
-    parts.push({ type: 'text', content: text.slice(lastIndex) });
-  }
-
-  return parts.map((part, i) => {
-    if (part.type === 'code-block') {
-      return (
-        <div key={i} className="relative my-2">
-          <CopyButton text={part.content} />
-          <pre className="bg-surface-tertiary rounded-lg p-3 text-xs font-mono overflow-x-auto text-content-primary">
-            <code>{part.content}</code>
-          </pre>
-        </div>
-      );
-    }
-
-    // Process inline markdown for text parts
-    return <span key={i}>{renderInlineMarkdown(part.content)}</span>;
-  });
-}
-
-function renderInlineMarkdown(text) {
-  const lines = text.split('\n');
-  const result = [];
-  let listBuffer = [];
-  let listType = null; // 'bullet' or 'numbered'
-
-  function flushList() {
-    if (listBuffer.length === 0) return;
-    if (listType === 'bullet') {
-      result.push(
-        <ul key={`list-${result.length}`} className="list-disc list-inside my-1 space-y-0.5">
-          {listBuffer.map((item, j) => (
-            <li key={j}>{formatInline(item)}</li>
-          ))}
-        </ul>
-      );
-    } else {
-      result.push(
-        <ol key={`list-${result.length}`} className="list-decimal list-inside my-1 space-y-0.5">
-          {listBuffer.map((item, j) => (
-            <li key={j}>{formatInline(item)}</li>
-          ))}
-        </ol>
-      );
-    }
-    listBuffer = [];
-    listType = null;
-  }
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const bulletMatch = line.match(/^[\-\*]\s+(.*)/);
-    const numberedMatch = line.match(/^\d+\.\s+(.*)/);
-
-    if (bulletMatch) {
-      if (listType && listType !== 'bullet') flushList();
-      listType = 'bullet';
-      listBuffer.push(bulletMatch[1]);
-    } else if (numberedMatch) {
-      if (listType && listType !== 'numbered') flushList();
-      listType = 'numbered';
-      listBuffer.push(numberedMatch[1]);
-    } else {
-      flushList();
-      if (line.trim() === '') {
-        result.push(<br key={`br-${i}`} />);
-      } else {
-        result.push(
-          <span key={`line-${i}`}>
-            {formatInline(line)}
-            {i < lines.length - 1 ? '\n' : ''}
-          </span>
-        );
-      }
-    }
-  }
-  flushList();
-
-  return result;
-}
-
-function formatInline(text) {
-  // Process bold and inline code
-  const parts = [];
-  const regex = /(\*\*([^*]+)\*\*|`([^`]+)`)/g;
-  let lastIdx = 0;
-  let m;
-
-  while ((m = regex.exec(text)) !== null) {
-    if (m.index > lastIdx) {
-      parts.push(text.slice(lastIdx, m.index));
-    }
-    if (m[2]) {
-      // Bold
-      parts.push(<strong key={m.index} className="font-semibold">{m[2]}</strong>);
-    } else if (m[3]) {
-      // Inline code
-      parts.push(
-        <code key={m.index} className="bg-surface-tertiary px-1 py-0.5 rounded text-xs font-mono">
-          {m[3]}
-        </code>
-      );
-    }
-    lastIdx = m.index + m[0].length;
-  }
-  if (lastIdx < text.length) {
-    parts.push(text.slice(lastIdx));
-  }
-
-  return parts.length > 0 ? parts : text;
-}
 
 export default function AIPanelTab({ tab, onSendMessage }) {
   const bottomRef = useRef(null);
@@ -218,9 +68,15 @@ export default function AIPanelTab({ tab, onSendMessage }) {
                   </div>
                   <span className="text-xs text-content-muted ml-1">Thinking...</span>
                 </div>
+              ) : !msg.content && !isError ? (
+                <span className="text-xs text-content-muted italic">
+                  No response received. Try again or run{' '}
+                  <code className="bg-surface-secondary px-1 rounded font-mono">claude login</code>{' '}
+                  in a terminal if the issue persists.
+                </span>
               ) : (
                 <>
-                  {renderMarkdown(msg.content)}
+                  <ChatMessageContent text={msg.content} />
                   {isStreaming && (
                     <span className="inline-block w-1.5 h-4 bg-accent animate-pulse ml-0.5 align-middle" />
                   )}

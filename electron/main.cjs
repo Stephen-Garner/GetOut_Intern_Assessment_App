@@ -3,7 +3,27 @@ const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
 const net = require('net');
+const os = require('os');
 const { spawn, execSync } = require('child_process');
+
+// Resolve the claude binary path at startup. Electron launches with a minimal
+// PATH that excludes ~/.local/bin, so we check known locations explicitly.
+const CLAUDE_CANDIDATES = [
+  path.join(os.homedir(), '.local', 'bin', 'claude'),
+  '/usr/local/bin/claude',
+  '/opt/homebrew/bin/claude',
+];
+
+let claudeBin = 'claude';
+for (const candidate of CLAUDE_CANDIDATES) {
+  try {
+    if (fs.existsSync(candidate)) {
+      execSync(`"${candidate}" --version`, { encoding: 'utf-8', timeout: 5000 });
+      claudeBin = candidate;
+      break;
+    }
+  } catch { /* try next */ }
+}
 
 let mainWindow = null;
 let serverUrl = '';
@@ -85,7 +105,7 @@ ipcMain.handle('get-data-dir', () => DATA_DIR);
 // Claude Code availability check
 ipcMain.handle('check-claude', async () => {
   try {
-    const result = execSync('claude --version', { encoding: 'utf-8', timeout: 5000, stdio: 'pipe' }).trim();
+    const result = execSync(`"${claudeBin}" --version`, { encoding: 'utf-8', timeout: 5000, stdio: 'pipe' }).trim();
     return { available: true, version: result };
   } catch {
     return { available: false, version: '' };
@@ -95,7 +115,7 @@ ipcMain.handle('check-claude', async () => {
 // Execute claude command (non-streaming)
 ipcMain.handle('run-claude', async (event, prompt) => {
   return new Promise((resolve, reject) => {
-    const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
+    const proc = spawn(claudeBin, ['-p', prompt, '--output-format', 'text'], {
       timeout: 120000,
       env: { ...process.env },
       stdio: ['ignore', 'pipe', 'pipe'],
@@ -118,7 +138,7 @@ ipcMain.handle('run-claude', async (event, prompt) => {
 
 // Streaming claude execution
 ipcMain.on('run-claude-stream', (event, prompt) => {
-  const proc = spawn('claude', ['-p', prompt, '--output-format', 'text'], {
+  const proc = spawn(claudeBin, ['-p', prompt, '--output-format', 'text'], {
     timeout: 120000,
     env: { ...process.env },
     stdio: ['ignore', 'pipe', 'pipe'],

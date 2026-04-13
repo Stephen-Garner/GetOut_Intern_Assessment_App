@@ -167,6 +167,73 @@ router.put('/:id/mapping', (req, res) => {
   }
 });
 
+// Reimport workspace with new/updated files (rebuilds the database)
+router.put('/:id/reimport', (req, res) => {
+  try {
+    const ws = readWorkspace(req.params.id);
+    if (!ws) return res.status(404).json({ error: 'Workspace not found' });
+
+    const { name, files } = req.body;
+    if (!files || files.length === 0) {
+      return res.status(400).json({ error: 'files is required' });
+    }
+
+    // Close and delete the old database
+    if (ws.dbFile) {
+      closeDb(ws.dbFile);
+      const dbPath = path.resolve(ROOT, ws.dbFile);
+      if (fs.existsSync(dbPath)) fs.unlinkSync(dbPath);
+    }
+
+    // Read and combine all CSV files
+    let allHeaders = null;
+    let allRows = [];
+    for (const file of files) {
+      const filePath = path.join(DATA_DIR, file);
+      if (!fs.existsSync(filePath)) {
+        return res.status(400).json({ error: `File not found: ${file}` });
+      }
+      const content = fs.readFileSync(filePath, 'utf-8');
+      const records = parse(content, { relax_column_count: true });
+      if (records.length < 2) {
+        return res.status(400).json({ error: `File ${file} has no data rows` });
+      }
+      const headers = records[0];
+      const rows = records.slice(1);
+      if (!allHeaders) allHeaders = headers;
+      allRows = allRows.concat(rows);
+    }
+
+    const result = createTableFromCsv(ws.dbFile, allHeaders, allRows);
+    const { mapping, unmapped, missing } = autoMapColumns(result.columns);
+
+    const db = getDb(ws.dbFile);
+    const thresholds = ws.thresholds || { ...DEFAULT_THRESHOLDS };
+    const segResult = runSegmentation(db, mapping, thresholds);
+
+    const updated = {
+      ...ws,
+      name: name || ws.name,
+      dataSource: {
+        type: 'csv',
+        files,
+        lastImported: new Date().toISOString(),
+      },
+      columnMapping: mapping,
+      unmappedColumns: unmapped,
+      missingRequiredFields: missing,
+      segmentation: segResult,
+      importResult: { rowCount: result.rowCount, columns: result.columns },
+    };
+
+    writeWorkspace(updated);
+    res.json(updated);
+  } catch (err) {
+    console.error('Workspace reimport error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Delete workspace
 router.delete('/:id', (req, res) => {
   const ws = readWorkspace(req.params.id);

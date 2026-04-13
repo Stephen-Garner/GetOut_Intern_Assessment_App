@@ -9,7 +9,7 @@
   },
   "main": "electron/main.cjs",
   "scripts": {
-    "beacon": "concurrently -n server,client -c blue,green \"node server/index.js\" \"vite\"",
+    "beacon": "concurrently --kill-others -n server,client -c blue,green \"node server/index.js\" \"vite\"",
     "dev": "npm run beacon",
     "build": "vite build",
     "server": "node server/index.js",
