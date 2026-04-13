@@ -2,6 +2,7 @@ import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
 import { randomUUID } from 'crypto';
+import { claudeAvailable, spawnClaude } from '../claude-runner.js';
 
 const router = Router();
 
@@ -83,6 +84,80 @@ router.delete('/:id', (req, res) => {
   widgets = widgets.filter(w => w.id !== req.params.id);
   writeRegistry(wsId, widgets);
   res.json({ ok: true });
+});
+
+// AI-assisted widget edit — streams SSE, returns revised JSX code
+router.post('/:id/ai-edit', (req, res) => {
+  const wsId = req.query.workspace;
+  if (!wsId) return res.status(400).json({ error: 'workspace required' });
+
+  const widgets = readRegistry(wsId);
+  const widget = widgets.find((w) => w.id === req.params.id);
+  if (!widget) return res.status(404).json({ error: 'Widget not found' });
+
+  const { prompt } = req.body;
+  if (!prompt || typeof prompt !== 'string' || !prompt.trim()) {
+    return res.status(400).json({ error: 'prompt is required' });
+  }
+
+  if (!claudeAvailable) {
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.flushHeaders();
+    res.write(`data: ${JSON.stringify({ error: 'Claude Code is not available.' })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    return res.end();
+  }
+
+  const editPrompt = [
+    'You are editing a React visualization widget for the Beacon analytics dashboard.',
+    'The widget uses Recharts, Tailwind CSS utility classes, and optional Lucide icons.',
+    'It fetches data from /api/data/* endpoints using the active workspace ID.',
+    '',
+    'CURRENT WIDGET CODE:',
+    '```jsx',
+    widget.code,
+    '```',
+    '',
+    `REQUESTED CHANGE: ${prompt.trim()}`,
+    '',
+    'Return ONLY the complete updated React component inside a single ```jsx code block.',
+    'Do not include any explanation outside the code block.',
+    'Preserve all existing functionality unless the change requires removing it.',
+    'Keep the same export default function signature.',
+  ].join('\n');
+
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  const proc = spawnClaude(['-p', editPrompt, '--output-format', 'text']);
+
+  proc.stdout.on('data', (chunk) => {
+    res.write(`data: ${JSON.stringify({ text: chunk.toString() })}\n\n`);
+  });
+
+  proc.stderr.on('data', (chunk) => {
+    console.error('Widget edit Claude stderr:', chunk.toString());
+  });
+
+  proc.on('close', (code) => {
+    if (code !== 0 && code !== null) {
+      res.write(`data: ${JSON.stringify({ error: `Claude exited with code ${code}` })}\n\n`);
+    }
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.end();
+  });
+
+  proc.on('error', (err) => {
+    res.write(`data: ${JSON.stringify({ error: err.message })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.end();
+  });
+
+  res.on('close', () => proc.kill());
 });
 
 export default router;
