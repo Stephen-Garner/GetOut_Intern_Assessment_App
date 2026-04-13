@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import os from 'os';
 import { claudeAvailable, claudeVersion, claudeBin, spawnClaude } from '../claude-runner.js';
 
 const router = Router();
@@ -181,7 +180,7 @@ function buildAttachmentContext(attachments) {
   return parts.join('\n');
 }
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
   const { message, conversationHistory, context, attachments } = req.body;
   const normalizedMessage = typeof message === 'string' ? message.trim() : '';
   const hasAttachments = Array.isArray(attachments) && attachments.length > 0;
