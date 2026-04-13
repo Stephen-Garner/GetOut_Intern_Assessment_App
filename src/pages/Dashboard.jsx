@@ -130,7 +130,6 @@ export default function Dashboard() {
     setActivePage,
     dashboardTab,
     setDashboardTab,
-    toggleAIPanel,
   } = useAppStore();
   const { activeWorkspace } = useWorkspace();
   const [customWidgets, setCustomWidgets] = useState([]);
@@ -151,11 +150,6 @@ export default function Dashboard() {
   }, [activeWorkspace]);
 
   useEffect(() => {
-    function handleWidgetPreview(event) {
-      setPreviewWidget(event.detail);
-      setDashboardTab('main');
-    }
-
     function handleWidgetAdded(event) {
       const widget = event.detail;
       if (!widget) return;
@@ -165,14 +159,12 @@ export default function Dashboard() {
       });
     }
 
-    window.addEventListener('beacon-widget-preview', handleWidgetPreview);
     window.addEventListener('beacon-dashboard-widget-added', handleWidgetAdded);
 
     return () => {
-      window.removeEventListener('beacon-widget-preview', handleWidgetPreview);
       window.removeEventListener('beacon-dashboard-widget-added', handleWidgetAdded);
     };
-  }, [setDashboardTab]);
+  }, []);
 
   async function addWidget(widget) {
     const saved = await api.post(`/widgets?workspace=${activeWorkspace.id}`, widget);
@@ -252,7 +244,7 @@ export default function Dashboard() {
           onEditWidget={setEditingWidget}
           onDiscardPreview={() => setPreviewWidget(null)}
           onRevisePreview={() => {
-            toggleAIPanel();
+            setDashboardTab('playground');
             setPreviewWidget(null);
           }}
           onGoToSettings={() => setActivePage('settings')}

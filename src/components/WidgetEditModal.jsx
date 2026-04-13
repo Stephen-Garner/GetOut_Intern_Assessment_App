@@ -13,6 +13,11 @@ export default function WidgetEditModal({ widget, workspaceId, onSave, onClose }
   async function handleGenerate() {
     if (!prompt.trim() || streaming) return;
 
+    if (!workspaceId) {
+      setError('No active workspace. Please select a workspace before editing.');
+      return;
+    }
+
     setStreaming(true);
     setStreamedContent('');
     setRevisedCode(null);

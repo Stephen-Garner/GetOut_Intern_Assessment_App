@@ -4,21 +4,16 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
-import { execSync as execSyncFn } from 'child_process';
 import { setDbRoot } from './db/connection.js';
 import { configurePaths } from './routes/workspaces.js';
 import { configureDataPaths } from './routes/data.js';
 import workspacesRouter from './routes/workspaces.js';
 import dataRouter from './routes/data.js';
 import chatRouter from './routes/chat.js';
+import playgroundRouter, { configurePlaygroundPaths, sweepPlaygroundThreads } from './routes/playground.js';
 import widgetsRouter, { configureWidgetPaths } from './routes/widgets.js';
 import { CANONICAL_FIELDS, autoMapColumns } from './mapping.js';
-
-let claudeAvailable = false;
-try {
-  execSyncFn('claude --version', { encoding: 'utf-8', timeout: 5000, stdio: 'pipe' });
-  claudeAvailable = true;
-} catch { /* not installed */ }
+import { spawnClaude, claudeAvailable } from './claude-runner.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -35,9 +30,11 @@ export function createServer(options = {}) {
   setDbRoot(rootDir);
   configurePaths({ root: rootDir, workspacesDir, dataDir });
   configureDataPaths({ workspacesDir });
+  configurePlaygroundPaths({ dataDir, workspacesDir });
 
   fs.mkdirSync(dataDir, { recursive: true });
   fs.mkdirSync(workspacesDir, { recursive: true });
+  sweepPlaygroundThreads();
 
   const app = express();
   app.use(cors());
@@ -48,11 +45,24 @@ export function createServer(options = {}) {
   app.use('/api/workspaces', workspacesRouter);
   app.use('/api/data', dataRouter);
   app.use('/api/chat', chatRouter);
+  app.use('/api/playground', playgroundRouter);
   app.use('/api/widgets', widgetsRouter);
 
-  app.get('/api/chat/status', (req, res) => {
-    res.json({ available: claudeAvailable });
-  });
+  // Helper: run Claude and collect full stdout as a Promise
+  function runClaudeSync(args) {
+    return new Promise((resolve, reject) => {
+      const proc = spawnClaude(args);
+      let stdout = '';
+      let stderr = '';
+      proc.stdout.on('data', (d) => { stdout += d.toString(); });
+      proc.stderr.on('data', (d) => { stderr += d.toString(); });
+      proc.on('close', (code) => {
+        if (code !== 0) reject(new Error(stderr.trim() || `Claude exited with code ${code}`));
+        else resolve(stdout.trim());
+      });
+      proc.on('error', reject);
+    });
+  }
 
   // Mapping API routes
   app.get('/api/mapping/fields', (req, res) => {
@@ -89,7 +99,7 @@ Canonical fields: ${(canonicalFields || []).join(', ')}
 Respond with ONLY a JSON array like: [{"column": "col_name", "suggestedField": "canonical_name_or_null", "confidence": 0.0-1.0, "reasoning": "brief reason"}]`;
 
     try {
-      const result = execSyncFn(`claude -p ${JSON.stringify(prompt)} --output-format text`, { encoding: 'utf-8', timeout: 30000 });
+      const result = await runClaudeSync(['-p', prompt, '--output-format', 'text']);
 
       // Try to parse JSON from the response
       const jsonMatch = result.match(/\[[\s\S]*\]/);
