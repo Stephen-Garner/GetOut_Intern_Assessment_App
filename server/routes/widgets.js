@@ -117,7 +117,7 @@ router.post('/:id/ai-edit', (req, res) => {
     '',
     'CURRENT WIDGET CODE:',
     '```jsx',
-    widget.code,
+    widget.code.replace(/```/g, '\\`\\`\\`'),
     '```',
     '',
     `REQUESTED CHANGE: ${prompt.trim()}`,

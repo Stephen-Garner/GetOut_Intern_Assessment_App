@@ -17,7 +17,7 @@ export default function WidgetMenu({ widget, onViewCode, onEditWithAI, onToggleS
 
   function handleItem(fn) {
     setOpen(false);
-    fn();
+    fn?.();
   }
 
   return (

@@ -1,5 +1,5 @@
 // src/components/WidgetEditModal.jsx
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { CheckCircle2, Send, X } from 'lucide-react';
 import { api } from '../utils/api.js';
 import { extractVisualizationArtifact } from '../utils/playground.js';
@@ -10,8 +10,6 @@ export default function WidgetEditModal({ widget, workspaceId, onSave, onClose }
   const [streamedContent, setStreamedContent] = useState('');
   const [revisedCode, setRevisedCode] = useState(null);
   const [error, setError] = useState('');
-  const textareaRef = useRef(null);
-
   async function handleGenerate() {
     if (!prompt.trim() || streaming) return;
 
@@ -57,6 +55,7 @@ export default function WidgetEditModal({ widget, workspaceId, onSave, onClose }
             if (data.error) {
               setError(data.error);
               setStreaming(false);
+              reader.cancel();
               return;
             }
             if (data.done) {
@@ -67,6 +66,7 @@ export default function WidgetEditModal({ widget, workspaceId, onSave, onClose }
                 setError('Claude did not return valid JSX code. Try rephrasing your request.');
               }
               setStreaming(false);
+              reader.cancel();
               return;
             }
           } catch { /* skip malformed */ }
@@ -120,7 +120,6 @@ export default function WidgetEditModal({ widget, workspaceId, onSave, onClose }
             </label>
             <div className="flex gap-2">
               <textarea
-                ref={textareaRef}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={(e) => {
