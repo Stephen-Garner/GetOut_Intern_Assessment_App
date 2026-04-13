@@ -363,7 +363,7 @@ router.post('/chat', (req, res) => {
     res.end();
   });
 
-  req.on('close', () => {
+  res.on('close', () => {
     proc.kill();
   });
 });
