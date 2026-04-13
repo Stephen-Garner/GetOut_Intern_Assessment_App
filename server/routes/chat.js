@@ -104,6 +104,18 @@ function buildContext(context) {
 }
 
 
+function isVisualizationRequest(message) {
+  const triggers = [
+    'build a chart', 'create a chart', 'make a chart', 'add a chart',
+    'build a graph', 'create a graph', 'make a graph', 'add a graph',
+    'build a widget', 'create a widget', 'make a widget',
+    'create a visualization', 'make a visualization', 'show me a visualization',
+    'visualize', 'build me a visualization', 'add a visualization',
+  ];
+  const lower = message.toLowerCase();
+  return triggers.some((t) => lower.includes(t));
+}
+
 function isTextLikeAttachment(attachment) {
   const extension = path.extname(attachment.originalName || attachment.filename || '').toLowerCase();
   if (TEXT_EXTENSIONS.has(extension)) return true;
@@ -219,6 +231,10 @@ router.post('/', (req, res) => {
   const attachmentContext = buildAttachmentContext(attachments);
   if (attachmentContext) {
     fullPrompt += `\n\n${attachmentContext}`;
+  }
+
+  if (isVisualizationRequest(normalizedMessage || '')) {
+    fullPrompt += '\n\nINSTRUCTION: The user is asking for a visualization or chart. Do NOT generate any code. Instead, respond conversationally: acknowledge what they want to build, then tell them to go to the Dashboard > Playground tab and use Build mode to create it. Offer to help them plan what the visualization should show first (data questions, which metrics to include, etc.).';
   }
 
   fullPrompt += `\n\nUser: ${normalizedMessage || 'Please review the attached files and respond based on them.'}`;
