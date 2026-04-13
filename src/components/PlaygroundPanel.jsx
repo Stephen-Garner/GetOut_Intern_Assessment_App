@@ -525,6 +525,12 @@ export default function PlaygroundPanel({ activeWorkspace, onGoToSettings }) {
                         </div>
                         <span className="text-xs text-content-muted ml-1">Thinking...</span>
                       </div>
+                    ) : !message.content.trim() && !isError ? (
+                      <span className="text-xs text-content-muted italic">
+                        No response received. Try again or run{' '}
+                        <code className="bg-surface-secondary px-1 rounded font-mono">claude login</code>{' '}
+                        in a terminal if the issue persists.
+                      </span>
                     ) : (
                       <>
                         <ChatMessageContent text={message.content} />

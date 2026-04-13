@@ -122,17 +122,25 @@ function writeAttachmentManifest(workspaceId, threadId, attachments) {
   return outputPath;
 }
 
-function buildSystemPrompt(mode) {
-  const shared = [
+function buildFullPrompt({ workspace, message, mode, conversationHistory, attachments }) {
+  const workspaceConfigPath = path.join(WORKSPACES_DIR, `${workspace.id}.json`);
+  const workspaceRoot = path.resolve(DATA_DIR, '..');
+  const dataFiles = (workspace.dataSource?.files || []).map((fileName) => ({
+    fileName,
+    absolutePath: path.join(DATA_DIR, fileName),
+  }));
+  const dbAbsolutePath = workspace.dbFile ? path.resolve(workspaceRoot, workspace.dbFile) : null;
+
+  const parts = [
     'You are the AI engine for Beacon, an internal analytics app for GetOut.',
     'Beacon focuses on member activation, retention, churn risk, and dashboard visualizations.',
-    'You have directory access to the active workspace files, workspace config, SQLite database path, and any chat-scoped attachments.',
     'Prefer grounding your answers in the provided workspace context and referenced files.',
     'Be concise, concrete, and analytical.',
   ];
 
   if (mode === 'build') {
-    shared.push(
+    parts.push(
+      '',
       'You are in BUILD mode. Prioritize producing new visualizations or concrete implementation guidance for a visualization.',
       'When the user asks for a visualization, return ONLY a single ```jsx code block containing one default-exported React component and nothing outside the code block.',
       'The component must use React, Recharts, Tailwind utility classes, and optional Lucide icons only.',
@@ -144,42 +152,54 @@ function buildSystemPrompt(mode) {
       'Do not emit explanations around the code block when you are returning a visualization component.'
     );
   } else {
-    shared.push(
+    parts.push(
+      '',
       'You are in PLAN mode. Focus on hypotheses, questions, available data, possible analyses, risks, caveats, and recommended next steps.',
       'Do not output React visualization code unless the user explicitly asks to switch to Build mode.'
     );
   }
 
-  return shared.join('\n');
-}
-
-function buildUserPrompt({ workspace, workspaceContextPath, attachmentManifestPath, message, mode, conversationHistory, attachments }) {
-  const lines = [
-    `Beacon Playground mode: ${mode.toUpperCase()}`,
-    `Active workspace: ${workspace.name} (${workspace.id})`,
-    `Workspace context file: ${workspaceContextPath}`,
-    `Attachment manifest file: ${attachmentManifestPath}`,
+  parts.push(
     '',
-    'You can inspect the workspace context file, workspace config, source data files, and any uploaded attachments from the allowed directories.',
-  ];
+    `CURRENT WORKSPACE: ${workspace.name} (${workspace.id})`,
+    `Workspace config path: ${workspaceConfigPath}`,
+    `SQLite database path: ${dbAbsolutePath || 'N/A'}`,
+    '',
+    'DATA SOURCE FILES:'
+  );
+
+  if (dataFiles.length > 0) {
+    for (const file of dataFiles) {
+      parts.push(`- ${file.fileName}: ${file.absolutePath}`);
+    }
+  } else {
+    parts.push('- None');
+  }
+
+  if (workspace.segmentation && Object.keys(workspace.segmentation).length > 0) {
+    parts.push('', 'SEGMENTATION SUMMARY:');
+    for (const [key, value] of Object.entries(workspace.segmentation)) {
+      parts.push(`- ${key}: ${typeof value === 'object' ? JSON.stringify(value) : value}`);
+    }
+  }
 
   if (attachments?.length) {
-    lines.push('', 'Attachments available in this thread:');
+    parts.push('', 'ATTACHMENTS:');
     for (const attachment of attachments) {
-      lines.push(`- ${attachment.name}: ${attachment.absolutePath}`);
+      parts.push(`- ${attachment.name}: ${attachment.absolutePath}`);
     }
   }
 
   if (conversationHistory?.length) {
-    lines.push('', 'Recent conversation history:');
+    parts.push('', 'Conversation so far:');
     for (const item of conversationHistory.slice(-10)) {
-      lines.push(`${item.role === 'user' ? 'User' : 'Assistant'}: ${item.content}`);
+      parts.push(`${item.role === 'user' ? 'User' : 'Assistant'}: ${item.content}`);
     }
   }
 
-  lines.push('', 'Latest user request:', message);
+  parts.push('', `User: ${message}`);
 
-  return lines.join('\n');
+  return parts.join('\n');
 }
 
 export function configurePlaygroundPaths({ dataDir, workspacesDir }) {
@@ -309,41 +329,25 @@ router.post('/chat', (req, res) => {
     return res.status(404).json({ error: 'Workspace not found' });
   }
 
-  const { threadDir, attachmentsDir } = touchThreadDir(workspaceId, threadId);
-  const workspaceContextPath = writeWorkspaceContextFile(workspace, workspaceId, threadId);
-  const attachmentManifestPath = writeAttachmentManifest(workspaceId, threadId, attachments);
-  const prompt = buildUserPrompt({
+  touchThreadDir(workspaceId, threadId);
+  writeWorkspaceContextFile(workspace, workspaceId, threadId);
+  writeAttachmentManifest(workspaceId, threadId, attachments);
+  const fullPrompt = buildFullPrompt({
     workspace,
-    workspaceContextPath,
-    attachmentManifestPath,
     message,
     mode,
     conversationHistory,
     attachments,
   });
-  const systemPrompt = buildSystemPrompt(mode);
 
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
 
-  const args = [
-    '-p',
-    prompt,
-    '--output-format',
-    'text',
-    '--append-system-prompt',
-    systemPrompt,
-    '--add-dir',
-    DATA_DIR,
-    '--add-dir',
-    WORKSPACES_DIR,
-    '--add-dir',
-    attachmentsDir,
-  ];
+  const args = ['-p', fullPrompt, '--output-format', 'text'];
 
-  const proc = spawnClaude(args, { cwd: threadDir });
+  const proc = spawnClaude(args);
 
   proc.stdout.on('data', (chunk) => {
     res.write(`data: ${JSON.stringify({ text: chunk.toString() })}\n\n`);
