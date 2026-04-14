@@ -1,4 +1,4 @@
-# Beacon — GetOut Activation Command Center
+# Beacon - GetOut Activation Command Center
 
 An internal analytics dashboard for monitoring member activation,
 identifying churn risk, and managing retention interventions.
