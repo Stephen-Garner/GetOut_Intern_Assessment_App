@@ -143,7 +143,7 @@ function DashboardMainContent({
             return (
               <div
                 key={id}
-                className={`${colSpan === 2 ? 'col-span-2' : ''} relative group ${
+                className={`${colSpan === 2 ? 'col-span-2' : ''} relative group hover:z-10 ${
                   isEditMode ? 'cursor-grab active:cursor-grabbing' : ''
                 } ${dragSrcId === id ? 'opacity-50' : ''}`}
                 draggable={isEditMode}

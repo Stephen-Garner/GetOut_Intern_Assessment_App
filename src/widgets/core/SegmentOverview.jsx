@@ -96,6 +96,7 @@ export default function SegmentOverview() {
           <XAxis type="number" hide />
           <YAxis type="category" dataKey="name" hide />
           <Tooltip
+            wrapperStyle={{ zIndex: 9999 }}
             contentStyle={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-primary)', borderRadius: 8, color: 'var(--text-primary)', fontSize: 12 }}
             formatter={(value, name) => [value.toLocaleString(), SEGMENT_LABELS[name] || name]}
           />
